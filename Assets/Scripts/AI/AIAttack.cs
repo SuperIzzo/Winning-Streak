@@ -127,6 +127,10 @@ public class AIAttack : MonoBehaviour {
 	void AttackPlayer()
 	{
 		//dive animation here
+		if(true) //change to collision hit
+		{
+			player.GetComponentInChildren<GoRagdoll>().KillPlayer();
+		}
 	}
 
 	//calculate if the player is in range of the enemy

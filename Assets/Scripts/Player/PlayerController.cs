@@ -131,6 +131,7 @@ public class PlayerController : MonoBehaviour {
 		{
 			if(TestButton("X"))
 			{
+				Debug.Log("Dashed");
 				Dash();
 				dashTimer = dashInterval;
 			}
@@ -215,15 +216,37 @@ public class PlayerController : MonoBehaviour {
 	{
 		if(physicsMovement)
 		{
-			this.rigidbody.AddForce(this.transform.forward * 300);
+			this.rigidbody.AddForce(this.transform.forward * 30000);
 		}
 		else
 		{
-			this.rigidbody.AddForce(this.transform.forward * 300);
+			StartCoroutine("StartDash");
+			//this.rigidbody.isKinematic = false;
+			//this.rigidbody.AddForce(this.transform.forward * 30000);
 			//this.transform.position += this.transform.right;
+			//this.rigidbody.isKinematic = true;
 		}
 	}
-	
+
+	IEnumerator StartDash()
+	{
+		Debug.Log("dash ienum");
+
+		Vector3 toPos = this.transform.position + Vector3.forward;
+		float timer = 0;
+
+		while(timer < 1)
+		{
+			timer += Time.deltaTime * 6;
+
+			this.transform.position = Vector3.Lerp(this.transform.position,toPos, Time.deltaTime * 6);
+
+			yield return null;
+		}
+
+		Debug.Log("dashed");
+	}
+
 
 	//CONTROLLER STUFF
 
@@ -418,7 +441,6 @@ public class PlayerController : MonoBehaviour {
 		
 		return false;
 	}
-
 }
 
 
