@@ -14,4 +14,20 @@ public class PersistantManager : MonoBehaviour {
 		}
 		else Destroy(gameObject);
 	}
+
+	void Start()
+	{
+		//PlayerPrefs.DeleteAll();
+		for(int i = 0; i < 5; i++)
+		{
+			if(PlayerPrefs.GetString("Score" + i) == "" ||
+			   PlayerPrefs.GetString("Score"  + i) == null)
+			{
+				Debug.Log("resetting");
+				PlayerPrefs.SetString("Score" + i, "0");
+			}
+		}
+
+
+	}
 }

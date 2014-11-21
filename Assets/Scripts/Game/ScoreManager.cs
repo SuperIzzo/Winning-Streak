@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ScoreManager : MonoBehaviour {
 
-	static int score = 0;
+	public static int score = 0;
 
 	float timer = 0;
 
@@ -15,6 +15,9 @@ public class ScoreManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
+		if(Application.loadedLevelName != "main")
+			return;
+
 		timer += Time.deltaTime;
 
 		if(timer > 0.1f)

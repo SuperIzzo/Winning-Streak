@@ -3,6 +3,8 @@ using System.Collections;
 
 public class VanityPicker : MonoBehaviour {
 
+	float testTimer = 0;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -11,6 +13,12 @@ public class VanityPicker : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
+		testTimer += Time.deltaTime;
+
+		if(testTimer > 7)
+		{
+			Application.LoadLevel("scoreboard");
+		}
 		if(Input.GetMouseButtonDown(0))
 		{
 			RaycastHit hit = new RaycastHit();

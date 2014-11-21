@@ -34,7 +34,7 @@ public class ItemControl : MonoBehaviour {
 
 	void OnApplicationQuit()
 	{
-		PlayerPrefs.DeleteAll();
+		PlayerPrefs.DeleteKey("ActiveHat");
 	}
 	
 	void Update () 
