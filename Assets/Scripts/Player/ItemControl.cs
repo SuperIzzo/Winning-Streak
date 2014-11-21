@@ -40,8 +40,9 @@ public class ItemControl : MonoBehaviour {
 	void Update () 
 	{
 		//pick up
-		if(player.GetComponent<PlayerController>().TestButton("Y"))
+		if(player.GetComponent<PlayerController>().TestButton("Y") || Input.GetKeyDown(KeyCode.O))
 		{
+			Debug.Log("O pressed");
 			if(!weaponEquipped)
 			{
 				foreach(GameObject wep in weaponList)
@@ -65,7 +66,8 @@ public class ItemControl : MonoBehaviour {
 		}
 
 		//throw
-		if(player.GetComponent<PlayerController>().TestButton("B") && weaponEquipped)
+		if((player.GetComponent<PlayerController>().TestButton("B") || Input.GetKeyDown(KeyCode.P))
+		   && weaponEquipped)
 		{
 			equippedWeapon.GetComponent<AssignSlot>().Unequip();
 

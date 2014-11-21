@@ -43,14 +43,14 @@ public class PlayerController : MonoBehaviour {
 		dashTimer -= Time.deltaTime;
 
 		//controller movement
-		if(isConnected)
-		{
+		//if(isConnected)
+		//{
 			ControllerMovement();
-		}
-		else
-		{
+		//}
+		//else
+		//{
 			KeyboardMovement();
-		}
+		//}
 	}
 
 	void RotatePlayerController()
@@ -200,6 +200,15 @@ public class PlayerController : MonoBehaviour {
 
 			RotatePlayerKeyboard();
 		}
+
+		if(dashTimer < 0)
+		{
+			if(Input.GetKeyDown(KeyCode.K))
+			{
+				Dash();
+				dashTimer = dashInterval;
+			}
+		}
 	}
 
 	void Dash()
@@ -300,7 +309,20 @@ public class PlayerController : MonoBehaviour {
 				return true;
 			}
 			break;
-
+		case "DPAD-RIGHT":
+			if(controllerStatePrev.DPad.Right == ButtonState.Released &&
+			   controllerState.DPad.Right == ButtonState.Pressed)
+			{
+				return true;
+			}
+			break;
+		case "DPAD-LEFT":
+			if(controllerStatePrev.DPad.Left == ButtonState.Released &&
+			   controllerState.DPad.Left == ButtonState.Pressed)
+			{
+				return true;
+			}
+			break;
 		}
 
 		return false;
