@@ -327,6 +327,7 @@ public class PlayerController : MonoBehaviour {
 
 		return false;
 	}
+
 	float TestLeftStick(string axis)
 	{
 		if(axis == "X")
@@ -344,6 +345,78 @@ public class PlayerController : MonoBehaviour {
 			return controllerState.ThumbSticks.Right.Y;
 		
 		return 0;
+	}
+
+
+	public bool TestButtonDown(string button)
+	{
+		switch(button)
+		{
+		case "Y":
+			if(controllerState.Buttons.Y == ButtonState.Pressed)
+			{
+				return true;
+			}
+			break;
+		case "B":
+			if(controllerState.Buttons.B == ButtonState.Pressed)
+			{
+				return true;
+			}
+			break;
+		case "A":
+			if(controllerState.Buttons.A == ButtonState.Pressed)
+			{
+				return true;
+			}
+			break;
+		case "X":
+			if(controllerState.Buttons.X == ButtonState.Pressed)
+			{
+				return true;
+			}
+			break;
+			
+		case "LB":
+			if(controllerState.Buttons.LeftShoulder == ButtonState.Pressed)
+			{
+				return true;
+			}
+			break;
+		case "RB":
+			if(controllerState.Buttons.RightShoulder == ButtonState.Pressed)
+			{
+				return true;
+			}
+			break;
+			
+		case "START":
+			if(controllerState.Buttons.Start == ButtonState.Pressed)
+			{
+				return true;
+			}
+			break;
+		case "BACK":
+			if(controllerState.Buttons.Back == ButtonState.Pressed)
+			{
+				return true;
+			}
+			break;
+		case "DPAD-RIGHT":
+			if(controllerState.DPad.Right == ButtonState.Pressed)
+			{
+				return true;
+			}
+			break;
+		case "DPAD-LEFT":
+			if(controllerState.DPad.Left == ButtonState.Pressed)
+			{
+				return true;
+			}
+			break;
+		}
+		
+		return false;
 	}
 
 }

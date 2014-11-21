@@ -52,4 +52,44 @@ public class AssignSlot : MonoBehaviour {
 		this.transform.parent = null;
 		equipped = false;
 	}
+
+	public void SetColliderOff()
+	{
+		StartCoroutine("ColliderOff");
+	}
+
+	IEnumerator ColliderOff()
+	{
+		float timer = 0;
+
+		if(GetComponent<BoxCollider>())
+			this.GetComponent<BoxCollider>().enabled = false;
+
+		if(GetComponent<MeshCollider>())
+			this.GetComponent<MeshCollider>().enabled = false;
+
+		if(GetComponent<CapsuleCollider>())
+			this.GetComponent<CapsuleCollider>().enabled = false;
+
+		while(timer < 0.15f)
+		{
+			timer += Time.deltaTime;
+			yield return null;
+		}
+
+		if(GetComponent<BoxCollider>())
+			this.GetComponent<BoxCollider>().enabled = true;
+		
+		if(GetComponent<MeshCollider>())
+			this.GetComponent<MeshCollider>().enabled = true;
+		
+		if(GetComponent<CapsuleCollider>())
+			this.GetComponent<CapsuleCollider>().enabled = true;
+	}
+
 }
+
+
+
+
+

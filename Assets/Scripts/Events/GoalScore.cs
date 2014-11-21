@@ -14,11 +14,12 @@ public class GoalScore : MonoBehaviour {
 		
 	}
 
-	void OnCollisionEnter(Collision collision)
+	void OnTriggerEnter(Collider other)
 	{
-		if(collider.name == "ball")
+		if(other.name == "GameBall")
 		{
-			SoundManager.TriggerEvent("goal");
+			Debug.Log("Goal!");
+			//SoundManager.TriggerEvent("goal");
 		}
 	}
 }

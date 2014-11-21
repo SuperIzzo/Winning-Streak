@@ -22,7 +22,15 @@ public class Controls : MonoBehaviour {
 		{
 			if(player.GetComponent<PlayerController>().TestButton("DPAD-RIGHT") && !inHatPicker)
 			{
+				Debug.Log("pressed dpad right");
 				inHatPicker = true;
+				transitioning = true;
+			}
+
+			if(player.GetComponent<PlayerController>().TestButton("DPAD-LEFT") && inHatPicker)
+			{
+				Debug.Log("pressed dpad left");
+				inHatPicker = false;
 				transitioning = true;
 			}
 		}
@@ -31,7 +39,32 @@ public class Controls : MonoBehaviour {
 			//going to hatPicker
 			if(inHatPicker)
 			{
-				//this.transform.rotation
+				Quaternion toRot = Quaternion.identity;
+
+				toRot.eulerAngles = new Vector3(0,73,0);
+
+				this.transform.rotation = Quaternion.Lerp (this.transform.rotation,toRot,Time.deltaTime * 10);
+
+				if(this.transform.eulerAngles.y > 71)
+				{
+					Debug.Log("ended transition");
+					transitioning = false;
+				}
+			}
+
+			//going to mainmenu
+			if(!inHatPicker)
+			{
+				Quaternion toRot = Quaternion.identity;
+				
+				toRot.eulerAngles = new Vector3(0,0,0);
+				
+				this.transform.rotation = Quaternion.Lerp (this.transform.rotation,toRot,Time.deltaTime * 10);
+				
+				if(this.transform.eulerAngles.y < 1)
+				{
+					transitioning = false;
+				}
 			}
 		}
 	

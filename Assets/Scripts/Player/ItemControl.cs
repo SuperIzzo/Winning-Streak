@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class ItemControl : MonoBehaviour {
 	
 	GameObject player;
+	public GameObject powerupBars;
 	public GameObject weaponSlot, hatSlot, scarfSlot;
 	
 	public List<GameObject> weaponList;
@@ -17,7 +18,12 @@ public class ItemControl : MonoBehaviour {
 	float pickupRadius = 1;
 
 	public float throwForce = 500;
-	
+
+
+	bool inThrowPowerup = false;
+	float powerupTimer = 1;
+	const float POWERUP_MAX = 3;
+
 	void Start () 
 	{
 		player = gameObject;
@@ -42,7 +48,6 @@ public class ItemControl : MonoBehaviour {
 		//pick up
 		if(player.GetComponent<PlayerController>().TestButton("Y") || Input.GetKeyDown(KeyCode.O))
 		{
-			Debug.Log("O pressed");
 			if(!weaponEquipped)
 			{
 				foreach(GameObject wep in weaponList)
@@ -69,14 +74,36 @@ public class ItemControl : MonoBehaviour {
 		if((player.GetComponent<PlayerController>().TestButton("B") || Input.GetKeyDown(KeyCode.P))
 		   && weaponEquipped)
 		{
-			equippedWeapon.GetComponent<AssignSlot>().Unequip();
-
-			equippedWeapon.rigidbody.AddForce(this.transform.forward * throwForce / equippedWeapon.GetComponent<ItemStats>().weight);
-			equippedWeapon.rigidbody.AddForce(this.transform.up * throwForce / 3);
-
-			weaponEquipped = false;
+			inThrowPowerup = true;
+			powerupBars.GetComponent<PowerupVisuals>().EnableLow();
 		}
-		
+
+		if(inThrowPowerup)
+		{
+			powerupTimer += Time.deltaTime;
+
+			if(powerupTimer > 2)
+				powerupBars.GetComponent<PowerupVisuals>().EnableMid();
+
+			if(powerupTimer > 2.8f)
+				powerupBars.GetComponent<PowerupVisuals>().EnableHigh();
+
+			if(!player.GetComponent<PlayerController>().TestButtonDown("B") || powerupTimer > POWERUP_MAX)
+			{
+				equippedWeapon.GetComponent<AssignSlot>().Unequip();
+				
+				equippedWeapon.rigidbody.AddForce(this.transform.forward * throwForce / equippedWeapon.GetComponent<ItemStats>().weight);
+				equippedWeapon.rigidbody.AddForce((this.transform.up * throwForce / 3) * powerupTimer);
+				equippedWeapon.GetComponent<AssignSlot>().SetColliderOff();
+
+				powerupBars.GetComponent<PowerupVisuals>().Shutdown();
+
+				weaponEquipped = false;
+
+				powerupTimer = 1;
+				inThrowPowerup = false;
+			}
+		}
 	}
 
 	public void AddHat(GameObject hat)
