@@ -43,14 +43,14 @@ public class PlayerController : MonoBehaviour {
 		dashTimer -= Time.deltaTime;
 
 		//controller movement
-		//if(isConnected)
-		//{
+		if(isConnected)
+		{
 			ControllerMovement();
-		//}
-		//else
-		//{
+		}
+		else
+		{
 			KeyboardMovement();
-		//}
+		}
 	}
 
 	void RotatePlayerController()
@@ -131,7 +131,6 @@ public class PlayerController : MonoBehaviour {
 		{
 			if(TestButton("X"))
 			{
-				Debug.Log("Dashed");
 				Dash();
 				dashTimer = dashInterval;
 			}
@@ -177,26 +176,26 @@ public class PlayerController : MonoBehaviour {
 			//left movement
 			if(Input.GetKey(KeyCode.A))
 			{
-				this.transform.position += new Vector3(-speed * Time.deltaTime,0,0);
+				this.transform.position += new Vector3(-speed * Time.deltaTime,0,0) * 0.9f;
 			}
 			
 			//right movement
 			if(Input.GetKey(KeyCode.D))
 			{
-				this.transform.position += new Vector3(speed * Time.deltaTime,0,0);
+				this.transform.position += new Vector3(speed * Time.deltaTime,0,0) * 0.9f;
 			}
 			
 			
 			//up movement
 			if(Input.GetKey(KeyCode.W))
 			{
-				this.transform.position += new Vector3(0,0,speed * Time.deltaTime);
+				this.transform.position += new Vector3(0,0,speed * Time.deltaTime) * 0.9f;
 			}
 			
 			//down
 			if(Input.GetKey(KeyCode.S))
 			{
-				this.transform.position += new Vector3(0,0,-speed * Time.deltaTime);
+				this.transform.position += new Vector3(0,0,-speed * Time.deltaTime) * 0.9f;
 			}
 
 			RotatePlayerKeyboard();
@@ -214,43 +213,28 @@ public class PlayerController : MonoBehaviour {
 
 	void Dash()
 	{
-		if(physicsMovement)
-		{
-			this.rigidbody.AddForce(this.transform.forward * 30000);
-		}
-		else
-		{
-			StartCoroutine("StartDash");
-			//this.rigidbody.isKinematic = false;
-			//this.rigidbody.AddForce(this.transform.forward * 30000);
-			//this.transform.position += this.transform.right;
-			//this.rigidbody.isKinematic = true;
-		}
+		StartCoroutine("StartDash");
 	}
 
 	IEnumerator StartDash()
 	{
-		Debug.Log("dash ienum");
-
-		Vector3 toPos = this.transform.position + Vector3.forward;
+		Vector3 toPos = this.transform.position + this.transform.forward * 2;
 		float timer = 0;
 
 		while(timer < 1)
 		{
-			timer += Time.deltaTime * 6;
+			timer += Time.deltaTime * 3;
 
-			this.transform.position = Vector3.Lerp(this.transform.position,toPos, Time.deltaTime * 6);
+			this.transform.position = Vector3.Lerp(this.transform.position,toPos, Time.deltaTime * 3);
 
 			yield return null;
 		}
-
-		Debug.Log("dashed");
 	}
 
 
 	//CONTROLLER STUFF
 
-	void UpdateController()
+	public void UpdateController()
 	{
 		controllerStatePrev = controllerState;
 		controllerState = GamePad.GetState(index);

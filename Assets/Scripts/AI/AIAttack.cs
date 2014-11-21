@@ -16,6 +16,7 @@ public class AIAttack : MonoBehaviour {
 
 	bool doChase  = false;
 	bool isAttacking = false;
+	bool playerDead = false;
 
 	//following variables
 	float angle;
@@ -50,13 +51,19 @@ public class AIAttack : MonoBehaviour {
 
 	void Update () 
 	{
+		if(playerDead)
+		{
+			this.rigidbody.Sleep();
+			return;
+		}
+
 		if(doChase)
 		{
 			giveUpTimer += Time.deltaTime;
 
 			if(giveUpTimer > GIVE_UP_MAX)
 			{
-				if(Random.Range(0.0f,100.0f) < giveUpChance)
+				if(Random.Range(0.0f,100.0f) < giveUpChance + Vector3.Distance(this.transform.position,player.transform.position))
 				{
 					attackTime = attackTimer;
 					isAttacking = false;
@@ -89,6 +96,20 @@ public class AIAttack : MonoBehaviour {
 		}
 	}
 
+	IEnumerator RestartLevel()
+	{
+		float timer = 0;
+
+		while (timer < 1.5f)
+		{
+			timer += Time.deltaTime;
+
+			yield return null;
+		}
+
+		Application.LoadLevel(Application.loadedLevel);
+	}
+
 	void ChasePlayer()
 	{
 		offsetTimer += Time.deltaTime;
@@ -99,6 +120,12 @@ public class AIAttack : MonoBehaviour {
 			                     0,
 			                     Random.Range(-3.0f,3.0f));
 
+			if(Random.Range (0.0f,100.0f) < 10)
+			{
+				offset += new Vector3(Vector3.Distance(this.transform.position,player.transform.position),
+				                      Vector3.Distance(this.transform.position,player.transform.position),
+				                      Vector3.Distance(this.transform.position,player.transform.position));
+			}
 
 			offsetTimer = 0;
 		}
@@ -130,6 +157,7 @@ public class AIAttack : MonoBehaviour {
 		if(true) //change to collision hit
 		{
 			player.GetComponentInChildren<GoRagdoll>().KillPlayer();
+			StartCoroutine("RestartLevel");
 		}
 	}
 

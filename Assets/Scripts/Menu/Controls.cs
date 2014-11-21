@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Controls : MonoBehaviour {
 
-	GameObject player;
+	public GameObject player;
 
 	int cameraSwing = 75;
 
@@ -18,16 +18,18 @@ public class Controls : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		player.GetComponent<PlayerController>().UpdateController();
+
 		if(!transitioning)
 		{
-			if(player.GetComponent<PlayerController>().TestButton("DPAD-RIGHT") && !inHatPicker)
+			if((player.GetComponent<PlayerController>().TestButton("DPAD-RIGHT") || Input.GetKeyDown(KeyCode.D)) && !inHatPicker)
 			{
 				Debug.Log("pressed dpad right");
 				inHatPicker = true;
 				transitioning = true;
 			}
 
-			if(player.GetComponent<PlayerController>().TestButton("DPAD-LEFT") && inHatPicker)
+			if((player.GetComponent<PlayerController>().TestButton("DPAD-LEFT") || Input.GetKeyDown(KeyCode.A)) && inHatPicker)
 			{
 				Debug.Log("pressed dpad left");
 				inHatPicker = false;

@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseRadius: 15
-  attackRadius: 1
+  attackRadius: .800000012
   attackTimer: 1
   speed: 4.75
   chaseChance: 100

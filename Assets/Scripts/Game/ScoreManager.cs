@@ -15,7 +15,7 @@ public class ScoreManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		if(Application.loadedLevelName != "main")
+		if(Application.loadedLevelName != "main-2")
 			return;
 
 		timer += Time.deltaTime;

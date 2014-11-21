@@ -6,6 +6,7 @@ public class GoRagdoll : MonoBehaviour {
 
 	public List<GameObject> ragdollParts;
 	public GameObject player;
+	public GameObject pixelateGO;
 
 	// Use this for initialization
 	void Start () {
@@ -33,6 +34,7 @@ public class GoRagdoll : MonoBehaviour {
 	public void KillPlayer()
 	{
 		this.GetComponent<Animator>().enabled = false;
+		pixelateGO.SetActive(false);
 		player.GetComponent<PlayerController>().canMove = false;
 		
 		foreach(GameObject go in ragdollParts)

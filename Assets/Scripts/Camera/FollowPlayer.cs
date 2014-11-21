@@ -8,6 +8,11 @@ public class FollowPlayer : MonoBehaviour {
 	public Vector3 lookatOffset = new Vector3();
 	public Vector3 positionOffset = new Vector3();
 
+	Vector3 lastLookAt;
+	Vector3 lookAtNow;
+
+	float lookTimer = 0;
+
 	public float followSpeed = 6;
 
 	void Start () 
@@ -17,7 +22,21 @@ public class FollowPlayer : MonoBehaviour {
 
 	void Update () 
 	{
-		this.transform.LookAt(player.transform.position + lookatOffset);
+		lookTimer += Time.deltaTime;
+
+		if(lookTimer > 1)
+		{
+			lastLookAt = lookAtNow;
+			lookAtNow = player.transform.position + lookatOffset;
+
+
+			lookTimer =0;
+		}
+
+		//this.transform.LookAt(Vector3.Lerp(lastLookAt,lookAtNow,Time.deltaTime));
+
+		Quaternion targetRot = Quaternion.LookRotation(player.transform.position - this.transform.position);
+		this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRot, Time.deltaTime);
 
 		//side to side tracking
 		Vector3 newPos = new Vector3(player.transform.position.x,positionOffset.y,positionOffset.z);

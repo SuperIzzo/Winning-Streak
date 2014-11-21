@@ -18,7 +18,7 @@ public class ItemControl : MonoBehaviour {
 	float pickupRadius = 1;
 
 	public float throwForce = 500;
-
+	bool byKeyboard = false;
 
 	bool inThrowPowerup = false;
 	float powerupTimer = 1;
@@ -74,6 +74,10 @@ public class ItemControl : MonoBehaviour {
 		if((player.GetComponent<PlayerController>().TestButton("B") || Input.GetKeyDown(KeyCode.P))
 		   && weaponEquipped)
 		{
+			if(Input.GetKey(KeyCode.P))
+				byKeyboard = true;
+			else byKeyboard = false;
+
 			inThrowPowerup = true;
 			powerupBars.GetComponent<PowerupVisuals>().EnableLow();
 		}
@@ -87,6 +91,22 @@ public class ItemControl : MonoBehaviour {
 
 			if(powerupTimer > 2.8f)
 				powerupBars.GetComponent<PowerupVisuals>().EnableHigh();
+
+			if(byKeyboard && (!Input.GetKey(KeyCode.P) || powerupTimer > POWERUP_MAX))
+			{
+				equippedWeapon.GetComponent<AssignSlot>().Unequip();
+				
+				equippedWeapon.rigidbody.AddForce(this.transform.forward * throwForce / equippedWeapon.GetComponent<ItemStats>().weight);
+				equippedWeapon.rigidbody.AddForce((this.transform.up * throwForce / 3) * powerupTimer);
+				equippedWeapon.GetComponent<AssignSlot>().SetColliderOff();
+				
+				powerupBars.GetComponent<PowerupVisuals>().Shutdown();
+				
+				weaponEquipped = false;
+				
+				powerupTimer = 1;
+				inThrowPowerup = false;
+			}
 
 			if(!player.GetComponent<PlayerController>().TestButtonDown("B") || powerupTimer > POWERUP_MAX)
 			{
