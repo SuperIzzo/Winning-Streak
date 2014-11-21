@@ -89,7 +89,7 @@ public class AIAttack : MonoBehaviour {
 	//will execute when the enemy is close enough to the player
 	void AttackPlayer()
 	{
-
+		//dive animation here
 	}
 
 	//calculate if the player is in range of the enemy
