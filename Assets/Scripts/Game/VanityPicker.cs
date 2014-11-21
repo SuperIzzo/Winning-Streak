@@ -1,9 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MousePicker : MonoBehaviour {
-
-	//public GameObject play;
+public class VanityPicker : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -17,15 +15,17 @@ public class MousePicker : MonoBehaviour {
 		{
 			RaycastHit hit = new RaycastHit();
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
+			
 			if(Physics.Raycast(ray,out hit, 100.0f))
 			{
-				if(hit.collider.name == "play")
-					Application.LoadLevel("main");
-
-				if(hit.collider.name == "exit")
-					Application.Quit();
-
+				if(hit.collider.tag == "hat")
+				{
+					this.GetComponent<ItemControl>().AddHat(hit.collider.gameObject);
+				}
+				
+				//if(hit.collider.name == "scarf")
+				//	Application.Quit();
+				
 			}
 		}
 	}

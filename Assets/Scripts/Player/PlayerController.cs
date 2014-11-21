@@ -21,15 +21,15 @@ public class PlayerController : MonoBehaviour {
 
 	public bool isConnected = false;
 
-	bool canMove = true;
+	public bool canMove = true;
 
-	public float dodgeInterval = 1;
-	float dodgeTimer = 0;
+	public float dashInterval = 1;
+	float dashTimer = 0;
 
 	void Start () 
 	{
 		InitialiseController();
-		dodgeTimer = dodgeInterval;
+		dashTimer = dashInterval;
 
 		if(physicsMovement)
 			speed *= 100;
@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour {
 		if(!canMove)
 			return;
 
-		dodgeTimer -= Time.deltaTime;
+		dashTimer -= Time.deltaTime;
 
 		//controller movement
 		if(isConnected)
@@ -120,18 +120,12 @@ public class PlayerController : MonoBehaviour {
 			RotatePlayerController();
 		}
 
-		if(dodgeTimer < 0)
+		if(dashTimer < 0)
 		{
-			if(TestButton("LB"))
+			if(TestButton("X"))
 			{
-				DodgeLeft();
-				dodgeTimer = dodgeInterval;
-			}
-
-			if(TestButton("RB"))
-			{
-				DodgeRight();
-				dodgeTimer = dodgeInterval;
+				Dash();
+				dashTimer = dashInterval;
 			}
 		}
 
@@ -201,33 +195,19 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
-
-	void DodgeRight()
+	void Dash()
 	{
 		if(physicsMovement)
 		{
-			this.rigidbody.AddForce(this.transform.right * 300);
+			this.rigidbody.AddForce(this.transform.forward * 300);
 		}
 		else
 		{
-			this.rigidbody.AddForce(this.transform.right * 300);
+			this.rigidbody.AddForce(this.transform.forward * 300);
 			//this.transform.position += this.transform.right;
 		}
 	}
-
-	void DodgeLeft()
-	{
-		if(physicsMovement)
-		{
-			this.rigidbody.AddForce(-this.transform.right * 300);
-		}
-		else
-		{
-			this.rigidbody.AddForce(-this.transform.right * 300);
-			//this.transform.position += this.transform.right;
-		}
-	}
-
+	
 
 	//CONTROLLER STUFF
 
@@ -251,7 +231,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	//controller getters
-	bool TestButton(string button)
+	public bool TestButton(string button)
 	{
 		switch(button)
 		{
