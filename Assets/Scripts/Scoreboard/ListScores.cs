@@ -13,7 +13,7 @@ public class ListScores : MonoBehaviour {
 	{
 		text = this.GetComponent<TextMesh>();
 
-		int currentScore = ScoreManager.score;
+		int currentScore = 3;//ScoreManager.score;
 
 		for(int i = 0; i < 5; i++)
 		{
@@ -27,7 +27,34 @@ public class ListScores : MonoBehaviour {
 		for(int i = 0; i < 5; i++)
 		{
 			Debug.Log (scoreListInt[i]);
+		}
 
+		for(int i = 0; i < 5; i++)
+		{
+			if(currentScore > scoreListInt[i])
+			{
+				if(i + 4 < 5) scoreListInt[i+4] = scoreListInt[i+3];
+				if(i + 3 < 5) scoreListInt[i+3] = scoreListInt[i+2];
+				if(i + 2 < 5) scoreListInt[i+2] = scoreListInt[i+1];
+				if(i + 1 < 5) scoreListInt[i+1] = scoreListInt[i];
+
+				scoreListInt[i] = currentScore;
+
+				//skip the rest
+				i = 6;
+			}
+		}
+
+		text.text += "\n";
+
+		for(int i = 0; i < 5; i++)
+		{
+			text.text += i+1 + ": " + scoreListInt[i] + "\n";
+		}
+
+		for(int i = 0; i < 5; i++)
+		{
+			PlayerPrefs.SetString("Score" + i, scoreListInt[i].ToString());
 		}
 	}
 	

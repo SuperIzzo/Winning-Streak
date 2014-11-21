@@ -7,7 +7,7 @@ public class VanityPicker : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		//PlayerPrefs.DeleteAll();
 	}
 	
 	// Update is called once per frame
@@ -15,7 +15,7 @@ public class VanityPicker : MonoBehaviour {
 	{
 		testTimer += Time.deltaTime;
 
-		if(testTimer > 7)
+		if(testTimer > 2)
 		{
 			Application.LoadLevel("scoreboard");
 		}
