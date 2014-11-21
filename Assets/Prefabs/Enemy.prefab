@@ -104,6 +104,7 @@ MonoBehaviour:
   speed: 4.75
   chaseChance: 100
   recoveryTime: 2
+  giveUpChance: 20
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -32,6 +32,15 @@ public class AIAttack : MonoBehaviour {
 	public float recoveryTime = 0;
 
 
+	public float giveUpChance = 0;
+	const float GIVE_UP_MAX = 3;
+	float giveUpTimer = 0;
+
+
+	//chase variables
+	Vector3 offset = new Vector3();
+	float offsetTimer = 0;
+
 
 	// Use this for initialization
 	void Start () {
@@ -43,6 +52,22 @@ public class AIAttack : MonoBehaviour {
 	{
 		if(doChase)
 		{
+			giveUpTimer += Time.deltaTime;
+
+			if(giveUpTimer > GIVE_UP_MAX)
+			{
+				if(Random.Range(0.0f,100.0f) < giveUpChance)
+				{
+					attackTime = attackTimer;
+					isAttacking = false;
+					doChase = false;
+
+					return;
+				}
+
+				giveUpTimer = 0;
+			}
+
 			ChasePlayer ();
 		}
 		else
@@ -66,8 +91,20 @@ public class AIAttack : MonoBehaviour {
 
 	void ChasePlayer()
 	{
-		angle = Mathf.Atan2(this.transform.position.x - player.transform.position.x,
-		                          this.transform.position.z - player.transform.position.z);
+		offsetTimer += Time.deltaTime;
+
+		if(offsetTimer > 4)
+		{
+			offset = new Vector3(Random.Range(-3.0f,3.0f),
+			                     0,
+			                     Random.Range(-3.0f,3.0f));
+
+
+			offsetTimer = 0;
+		}
+
+		angle = Mathf.Atan2(this.transform.position.x - (player.transform.position.x + offset.x),
+		                          this.transform.position.z - (player.transform.position.z + offset.z));
 
 		velocity = -new Vector3(Mathf.Sin (angle),
 		                               0,
