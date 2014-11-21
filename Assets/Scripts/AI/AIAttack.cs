@@ -7,17 +7,31 @@ public class AIAttack : MonoBehaviour {
 
 	//if the player is in this radius then the enemy will start testing if
 	//it should attack using AIStats::chaseChance
+	public float chaseRadius;
 	public float attackRadius;
 
 	//test if the enemy should chase
 	public float attackTimer = 0;
 	float attackTime;
 
-	bool doChase  = true;
+	bool doChase  = false;
+	bool isAttacking = false;
 
 	//following variables
 	float angle;
 	Vector3 velocity;
+
+
+	//running speed for running after the player
+	public float speed = 0;
+	
+	//willingness to chase the player 0 - 100 %
+	public float chaseChance = 0;
+	
+	//recovery time to be normal after an attack
+	public float recoveryTime = 0;
+
+
 
 	// Use this for initialization
 	void Start () {
@@ -39,7 +53,7 @@ public class AIAttack : MonoBehaviour {
 			{
 				if(InRange())
 				{
-					if(Random.Range(0.0f, 100.0f) < this.GetComponent<AIStats>().chaseChance)
+					if(Random.Range(0.0f, 100.0f) < chaseChance)
 					{
 						doChase = true;
 					}
@@ -59,14 +73,42 @@ public class AIAttack : MonoBehaviour {
 		                               0,
 		                               Mathf.Cos (angle));
 
-		this.transform.position += velocity * this.GetComponent<AIStats>().speed * Time.deltaTime;
+		this.transform.position += velocity * speed * Time.deltaTime;
+
+		if(InAttackRange())
+		{
+			AttackPlayer ();
+
+			doChase = false;
+			isAttacking = false;
+
+			attackTime = attackTimer + recoveryTime;
+		}
+	}
+
+	//will execute when the enemy is close enough to the player
+	void AttackPlayer()
+	{
+
 	}
 
 	//calculate if the player is in range of the enemy
 	bool InRange()
 	{
-		if(Vector3.Distance(this.transform.position,player.transform.position) < attackRadius)
+		if(Vector3.Distance(this.transform.position,player.transform.position) < chaseRadius)
+		{
 			return true;
+		}
+		else
+			return false;
+	}
+
+	bool InAttackRange()
+	{
+		if(Vector3.Distance(this.transform.position,player.transform.position) < attackRadius)
+		{
+			return true;
+		}
 		else
 			return false;
 	}

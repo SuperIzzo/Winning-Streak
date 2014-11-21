@@ -19,15 +19,70 @@ public class PlayerController : MonoBehaviour {
 	GamePadState controllerState = new GamePadState();
 	GamePadState controllerStatePrev = new GamePadState();
 
-	bool isConnected = false;
+	public bool isConnected = false;
 
+	bool canMove = true;
+
+	public float dodgeInterval = 1;
+	float dodgeTimer = 0;
 
 	void Start () 
 	{
 		InitialiseController();
+		dodgeTimer = dodgeInterval;
+
+		if(physicsMovement)
+			speed *= 100;
 	}
 
 	void Update () 
+	{
+		if(!canMove)
+			return;
+
+		dodgeTimer -= Time.deltaTime;
+
+		//controller movement
+		if(isConnected)
+		{
+			ControllerMovement();
+		}
+		else
+		{
+			KeyboardMovement();
+		}
+	}
+
+	void RotatePlayerController()
+	{
+		Quaternion rot = this.transform.rotation;
+		
+		rot.eulerAngles = new Vector3(this.transform.eulerAngles.x,
+		                              Mathf.Atan2(TestLeftStick("X"),TestLeftStick("Y")) * Mathf.Rad2Deg,
+		                              this.transform.eulerAngles.z);
+		
+		//smooth transitioning for rotation, also makes the rotation and movement more human like
+		this.transform.rotation = Quaternion.Lerp (this.transform.rotation,
+		                                           rot,
+		                                           Time.deltaTime * 6);
+	}
+
+	void RotatePlayerKeyboard()
+	{
+		//todo sort out rotate for keyboard
+		Quaternion rot = this.transform.rotation;
+		
+		rot.eulerAngles = new Vector3(this.transform.eulerAngles.x,
+		                              Mathf.Atan2(TestLeftStick("X"),TestLeftStick("Y")) * Mathf.Rad2Deg,
+		                              this.transform.eulerAngles.z);
+		
+		//smooth transitioning for rotation, also makes the rotation and movement more human like
+		this.transform.rotation = Quaternion.Lerp (this.transform.rotation,
+		                                           rot,
+		                                           Time.deltaTime * 6);
+	}
+
+	void ControllerMovement()
 	{
 		//player movement
 		if(physicsMovement)
@@ -37,7 +92,7 @@ public class PlayerController : MonoBehaviour {
 			{
 				this.rigidbody.AddForce(TestLeftStick("X") * speed * Time.deltaTime,0,0);
 			}
-
+			
 			//up/down movement
 			if(TestLeftStick("Y") != 0)
 			{
@@ -58,39 +113,130 @@ public class PlayerController : MonoBehaviour {
 				this.transform.position += new Vector3 (0,0,TestLeftStick("Y") * speed * Time.deltaTime);
 			}
 		}
-
+		
 		//player rotation towards direction
-//		if(physicsMovement)
-//		{
-			if(TestLeftStick("X") != 0 || TestLeftStick("Y") != 0)
-			{
-				Quaternion rot = this.transform.rotation;
+		if(TestLeftStick("X") != 0 || TestLeftStick("Y") != 0)
+		{
+			RotatePlayerController();
+		}
 
-				rot.eulerAngles = new Vector3(this.transform.eulerAngles.x,
-				                              Mathf.Atan2(TestLeftStick("X"),TestLeftStick("Y")) * Mathf.Rad2Deg,
-				            				  this.transform.eulerAngles.z);
-				
-				//smooth transitioning for rotation, also makes the rotation and movement more human like
-				this.transform.rotation = Quaternion.Lerp (this.transform.rotation,
-			                                               rot,
-			                                           	   Time.deltaTime * 6);
+		if(dodgeTimer < 0)
+		{
+			if(TestButton("LB"))
+			{
+				DodgeLeft();
+				dodgeTimer = dodgeInterval;
 			}
-//		}
-//		else
-//		{
-//
-//		}
+
+			if(TestButton("RB"))
+			{
+				DodgeRight();
+				dodgeTimer = dodgeInterval;
+			}
+		}
 
 		UpdateController();
-
 	}
+
+	void KeyboardMovement()
+	{
+		//player movement
+		if(physicsMovement)
+		{
+			//left movement
+			if(Input.GetKey(KeyCode.A))
+			{
+				this.rigidbody.AddForce(-speed * Time.deltaTime,0,0);
+			}
+
+			//right movement
+			if(Input.GetKey(KeyCode.D))
+			{
+				this.rigidbody.AddForce(speed * Time.deltaTime,0,0);
+			}
+
+			
+			//up movement
+			if(Input.GetKey(KeyCode.W))
+			{
+				this.rigidbody.AddForce(0,0,speed * Time.deltaTime);
+			}
+
+			//down
+			if(Input.GetKey(KeyCode.S))
+			{
+				this.rigidbody.AddForce(0,0,-speed * Time.deltaTime);
+			}
+
+			RotatePlayerKeyboard();
+		}
+		else
+		{
+			//left movement
+			if(Input.GetKey(KeyCode.A))
+			{
+				this.transform.position += new Vector3(-speed * Time.deltaTime,0,0);
+			}
+			
+			//right movement
+			if(Input.GetKey(KeyCode.D))
+			{
+				this.transform.position += new Vector3(speed * Time.deltaTime,0,0);
+			}
+			
+			
+			//up movement
+			if(Input.GetKey(KeyCode.W))
+			{
+				this.transform.position += new Vector3(0,0,speed * Time.deltaTime);
+			}
+			
+			//down
+			if(Input.GetKey(KeyCode.S))
+			{
+				this.transform.position += new Vector3(0,0,-speed * Time.deltaTime);
+			}
+
+			RotatePlayerKeyboard();
+		}
+	}
+
+
+	void DodgeRight()
+	{
+		if(physicsMovement)
+		{
+			this.rigidbody.AddForce(this.transform.right * 300);
+		}
+		else
+		{
+			this.rigidbody.AddForce(this.transform.right * 300);
+			//this.transform.position += this.transform.right;
+		}
+	}
+
+	void DodgeLeft()
+	{
+		if(physicsMovement)
+		{
+			this.rigidbody.AddForce(-this.transform.right * 300);
+		}
+		else
+		{
+			this.rigidbody.AddForce(-this.transform.right * 300);
+			//this.transform.position += this.transform.right;
+		}
+	}
+
+
+	//CONTROLLER STUFF
 
 	void UpdateController()
 	{
 		controllerStatePrev = controllerState;
 		controllerState = GamePad.GetState(index);
 	}
-
+	
 	void InitialiseController()
 	{
 		PlayerIndex testPlayerIndex = (PlayerIndex)0;
