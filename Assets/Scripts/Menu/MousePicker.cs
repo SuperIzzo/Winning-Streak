@@ -21,7 +21,7 @@ public class MousePicker : MonoBehaviour {
 			if(Physics.Raycast(ray,out hit, 100.0f))
 			{
 				if(hit.collider.name == "play")
-					Application.LoadLevel("main");
+					Application.LoadLevel("main-2");
 
 				if(hit.collider.name == "exit")
 					Application.Quit();

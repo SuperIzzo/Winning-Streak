@@ -19,8 +19,16 @@ public class FollowPlayer : MonoBehaviour {
 	{
 		this.transform.LookAt(player.transform.position + lookatOffset);
 
-		Vector3 newPos = player.transform.position + positionOffset;
-
+		//side to side tracking
+		Vector3 newPos = new Vector3(player.transform.position.x,positionOffset.y,positionOffset.z);
 		this.transform.position = Vector3.Lerp(this.transform.position,newPos,Time.deltaTime * followSpeed);
+
+		//fov tracking
+		Vector3 invertedCamera = new Vector3(this.transform.position.x, this.transform.position.y,
+		                                     -this.transform.position.z - 10);
+
+		this.camera.fieldOfView = Vector3.Distance(player.transform.position,invertedCamera);
+
+
 	}
 }

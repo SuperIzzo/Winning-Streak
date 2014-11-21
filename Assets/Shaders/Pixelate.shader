@@ -8,8 +8,7 @@
 		
 		GrabPass { "_PixelationGrabTexture" }
 		
-		Pass
-			{
+		Pass {
 			CGPROGRAM
 			#pragma vertex vert
 			#pragma fragment frag
@@ -44,9 +43,9 @@
 				
 				return tex2D(_PixelationGrabTexture, steppedUV);
 			}	
-			
-			}
 		ENDCG
 		}
-	} 
-}
+		
+	}
+} 
+
