@@ -71,11 +71,18 @@ public class PlayerController : MonoBehaviour {
 	{
 		//todo sort out rotate for keyboard
 		Quaternion rot = this.transform.rotation;
-		
-		rot.eulerAngles = new Vector3(this.transform.eulerAngles.x,
-		                              Mathf.Atan2(TestLeftStick("X"),TestLeftStick("Y")) * Mathf.Rad2Deg,
-		                              this.transform.eulerAngles.z);
-		
+
+		//hardcoded rotation for the keyboard input
+		if(Input.GetKey(KeyCode.W)) rot.eulerAngles = new Vector3(0,0,0);
+		if(Input.GetKey(KeyCode.D)) rot.eulerAngles = new Vector3(0, 90,0);
+		if(Input.GetKey(KeyCode.S)) rot.eulerAngles = new Vector3(0, 180,0);
+		if(Input.GetKey(KeyCode.A)) rot.eulerAngles = new Vector3(0,270,0);
+
+		if(Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.S)) rot.eulerAngles = new Vector3(0, 135,0);
+		if(Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.S)) rot.eulerAngles = new Vector3(0, 225,0);
+		if(Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.W)) rot.eulerAngles = new Vector3(0,315);
+		if(Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D)) rot.eulerAngles = new Vector3(0, 45,0);
+
 		//smooth transitioning for rotation, also makes the rotation and movement more human like
 		this.transform.rotation = Quaternion.Lerp (this.transform.rotation,
 		                                           rot,

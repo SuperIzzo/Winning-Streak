@@ -26,11 +26,6 @@ public class ListScores : MonoBehaviour {
 
 		for(int i = 0; i < 5; i++)
 		{
-			Debug.Log (scoreListInt[i]);
-		}
-
-		for(int i = 0; i < 5; i++)
-		{
 			if(currentScore > scoreListInt[i])
 			{
 				if(i + 4 < 5) scoreListInt[i+4] = scoreListInt[i+3];

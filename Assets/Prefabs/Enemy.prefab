@@ -99,9 +99,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseRadius: 15
-  attackRadius: 1
+  attackRadius: .5
   attackTimer: 1
-  speed: 4
+  speed: 4.75
   chaseChance: 100
   recoveryTime: 2
 --- !u!114 &11400002
@@ -115,9 +115,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 385c46d9edd7c9548867b59fb88489ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
-  chaseChance: 70
-  recoveryTime: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

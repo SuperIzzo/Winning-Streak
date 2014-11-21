@@ -14,11 +14,7 @@ public class VanityPicker : MonoBehaviour {
 	void Update () 
 	{
 		testTimer += Time.deltaTime;
-
-		if(testTimer > 2)
-		{
-			Application.LoadLevel("scoreboard");
-		}
+		
 		if(Input.GetMouseButtonDown(0))
 		{
 			RaycastHit hit = new RaycastHit();
