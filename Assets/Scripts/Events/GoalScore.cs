@@ -3,6 +3,8 @@ using System.Collections;
 
 public class GoalScore : MonoBehaviour {
 
+	public GameObject soundManager;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -19,8 +21,12 @@ public class GoalScore : MonoBehaviour {
 		if(other.name == "GameBall")
 		{
 			ScoreManager.AddScore(100);
-			Debug.Log("GOOOOOOOAL!");
-			//SoundManager.TriggerEvent("goal");
+
+			if(soundManager == null)
+				soundManager = GameObject.FindGameObjectWithTag("SoundManager");
+
+			Debug.Log("GOAL");
+			soundManager.GetComponent<AudioMan>().PlayCelebrate();
 		}
 	}
 }

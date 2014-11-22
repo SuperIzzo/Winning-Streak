@@ -6,6 +6,7 @@ public class Controls : MonoBehaviour
 
 	//public GameObject player;
 
+
 	public AudioClip toHats;
 	public AudioClip fromHats;
 	AudioSource sound;
@@ -31,14 +32,14 @@ public class Controls : MonoBehaviour
 		{
 			if( x>0.1f && !inHatPicker )
 			{
-				sound.PlayOneShot(toHats,1);
+				sound.PlayOneShot(toHats,0.5f);
 				inHatPicker = true;
 				transitioning = true;
 			}
 
 			if( x<-0.1f && inHatPicker )
 			{
-				sound.PlayOneShot(fromHats,1);
+				sound.PlayOneShot(fromHats,0.5f);
 				inHatPicker = false;
 				transitioning = true;
 			}

@@ -3,8 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class ItemControl : MonoBehaviour {
-	
-	GameObject player;
+
 	public GameObject powerupBars;
 	public GameObject weaponSlot, hatSlot, scarfSlot;
 
@@ -30,8 +29,6 @@ public class ItemControl : MonoBehaviour {
 
 	void Start () 
 	{
-		player = gameObject;
-		
 		weaponEquipped = false;
 		hatEquipped = false;
 		scarfEquipped = false;
@@ -55,7 +52,7 @@ public class ItemControl : MonoBehaviour {
 			{
 				foreach(GameObject wep in weaponList)
 				{
-					if(Vector3.Distance(wep.transform.position, player.transform.position) < pickupRadius)
+					if(Vector3.Distance(wep.transform.position, this.transform.position) < pickupRadius)
 					{
 						equippedWeapon = wep;
 						equippedWeapon.GetComponent<AssignSlot>().Equip(weaponSlot);
@@ -70,6 +67,7 @@ public class ItemControl : MonoBehaviour {
 			{
 				//throw
 				inThrowPowerup = true;
+				equippedWeapon.GetComponent<AssignSlot>().slowTimer = 0;
 				powerupBars.GetComponent<PowerupVisuals>().EnableLow();
 				
 				if( animator )
@@ -118,8 +116,6 @@ public class ItemControl : MonoBehaviour {
 		if(hat == equippedHat)
 			return;
 
-
-
 		if(Application.loadedLevelName == "menu")
 		{
 			Debug.Log("saved hat");
@@ -130,8 +126,6 @@ public class ItemControl : MonoBehaviour {
 
 		if(equippedHat == null)
 		{
-			Debug.Log("equip hat");
-
 			hat.GetComponent<BoxCollider>().isTrigger = true;
 			hat.GetComponent<Rigidbody>().useGravity = false;
 
@@ -148,8 +142,6 @@ public class ItemControl : MonoBehaviour {
 		}
 		else
 		{
-			Debug.Log("unequip hat");
-
 			equippedHat.rigidbody.AddForce(this.transform.up * throwForce);
 			equippedHat.rigidbody.AddTorque(new Vector3(100,100,100));
 

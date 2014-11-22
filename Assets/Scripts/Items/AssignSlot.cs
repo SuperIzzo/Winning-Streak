@@ -6,6 +6,8 @@ public class AssignSlot : MonoBehaviour {
 	bool equipped = false;
 	GameObject slot;
 
+	public float slowTimer = 0;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -15,6 +17,14 @@ public class AssignSlot : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
+		slowTimer += Time.deltaTime;
+
+		if(slowTimer > 3)
+		{
+			if(this.rigidbody.velocity.x < 0.001f && this.rigidbody.velocity.y < 0.001f && this.rigidbody.velocity.z < 0.001f)
+				this.rigidbody.Sleep();
+		}
+
 		if(equipped)
 		{
 			if(this.tag == "weapon")
@@ -52,6 +62,7 @@ public class AssignSlot : MonoBehaviour {
 
 	public void Unequip()
 	{
+		slowTimer = 0;
 		this.rigidbody.isKinematic = false;
 		this.transform.parent = null;
 		equipped = false;
@@ -65,6 +76,7 @@ public class AssignSlot : MonoBehaviour {
 	IEnumerator ColliderOff()
 	{
 		float timer = 0;
+		slowTimer = 0;
 
 		if(GetComponent<BoxCollider>())
 			this.GetComponent<BoxCollider>().enabled = false;

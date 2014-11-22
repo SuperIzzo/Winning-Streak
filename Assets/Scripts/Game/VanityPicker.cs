@@ -4,6 +4,7 @@ using System.Collections;
 public class VanityPicker : MonoBehaviour {
 
 	float testTimer = 0;
+	public GameObject soundManager;
 
 	// Use this for initialization
 	void Start () {
@@ -24,6 +25,8 @@ public class VanityPicker : MonoBehaviour {
 			{
 				if(hit.collider.tag == "hat")
 				{
+					soundManager.GetComponent<AudioMan>().PlayChangeHat();
+
 					this.GetComponent<ItemControl>().AddHat(hit.collider.gameObject);
 				}
 				
