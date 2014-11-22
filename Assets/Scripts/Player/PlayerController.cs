@@ -48,10 +48,25 @@ public class PlayerController : MonoBehaviour {
 
 	void ProcessInput()
 	{
+		bool wiggling = Input.GetButton( "Wiggle" );
+		animator.SetBool( "wiggle", wiggling );
+
+
+		if( wiggling )
+		{
+			// DO the WIGGLE
+			//   Game logic to add points etc
+
+			// process no more input
+			return;
+		}
+
+		
 		float x = Input.GetAxis( "Horizontal" );	
 		float y = Input.GetAxis( "Vertical" );
-
+		
 		Vector2 controlVector = new Vector2(x,y);
+
 
 		if( controlVector.magnitude> 0 )
 		{
@@ -83,7 +98,7 @@ public class PlayerController : MonoBehaviour {
 				Dash();
 				dashTimer = dashInterval;
 			}
-		}
+		} 
 	}
 
 	void RotatePlayer( Vector3 moveVector )
