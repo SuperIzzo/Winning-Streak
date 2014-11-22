@@ -4193,6 +4193,18 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 8227b5d1cf5a28e4fba24496699f0f2b, type: 2}
+      propertyPath: animationController
+      value: 
+      objectReference: {fileID: 1854572447}
+    - target: {fileID: 11400000, guid: 8227b5d1cf5a28e4fba24496699f0f2b, type: 2}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1854572447}
+    - target: {fileID: 11400002, guid: 8227b5d1cf5a28e4fba24496699f0f2b, type: 2}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1854572447}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8227b5d1cf5a28e4fba24496699f0f2b, type: 2}
   m_RootGameObject: {fileID: 1836583561}
@@ -4836,7 +4848,7 @@ Transform:
   m_GameObject: {fileID: 1610115081}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -71.9062729, y: .33987236, z: -43.7030869}
-  m_LocalScale: {x: .168902189, y: .168902203, z: .168902203}
+  m_LocalScale: {x: .497710347, y: .497710407, z: .497710407}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 10
@@ -4938,7 +4950,7 @@ Transform:
   m_GameObject: {fileID: 1615411497}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -70.9125443, y: .304934978, z: -43.6896591}
-  m_LocalScale: {x: .168902203, y: .168902203, z: .168902203}
+  m_LocalScale: {x: .497710347, y: .497710407, z: .497710407}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 12
@@ -5646,7 +5658,8 @@ MonoBehaviour:
   jumpSpeed: 0
   spawnPoints: []
   physicsMovement: 0
-  isConnected: 0
+  goofiness: 1
+  animator: {fileID: 1854572447}
   canMove: 1
   dashInterval: 1
 --- !u!114 &1836583563
@@ -5744,6 +5757,7 @@ MonoBehaviour:
   - {fileID: 1310853997}
   - {fileID: 1131267469}
   throwForce: 500
+  animator: {fileID: 1854572447}
 --- !u!114 &1836583569
 MonoBehaviour:
   m_ObjectHideFlags: 0
