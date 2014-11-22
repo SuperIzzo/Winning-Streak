@@ -218,14 +218,13 @@ public class AIAttack : MonoBehaviour {
 
 			cam.camera.fieldOfView -= timer / 10;
 
-			player.GetComponent<PlayerController>().UpdateController();
-			if(player.GetComponent<PlayerController>().TestButton("A") || Input.GetKeyDown(KeyCode.E))
+			if(Input.GetButtonDown( "Dash" ))
 			{
 				endGame = false;
 				timer = 12;
 			}
 
-			if(player.GetComponent<PlayerController>().TestButton("B") || Input.GetKeyDown(KeyCode.Escape))
+			if(Input.GetButtonDown( "Grab" ))
 			{
 				endGame = true;
 				timer = 12;

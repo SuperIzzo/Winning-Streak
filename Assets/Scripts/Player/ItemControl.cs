@@ -20,6 +20,8 @@ public class ItemControl : MonoBehaviour {
 	public float throwForce = 500;
 	bool byKeyboard = false;
 
+	public Animator animator;
+
 	bool inThrowPowerup = false;
 	float powerupTimer = 1;
 	const float POWERUP_MAX = 3;
@@ -45,7 +47,7 @@ public class ItemControl : MonoBehaviour {
 	void Update () 
 	{
 		//pick up
-		if(player.GetComponent<PlayerController>().TestButton("Y") || Input.GetKeyDown(KeyCode.O))
+		if( Input.GetButtonDown( "Grab" ))
 		{
 			if(!weaponEquipped)
 			{
@@ -64,25 +66,18 @@ public class ItemControl : MonoBehaviour {
 			}
 			else
 			{
-				equippedWeapon.GetComponent<AssignSlot>().Unequip();
-				weaponEquipped = false;
+				//throw
+				inThrowPowerup = true;
+				powerupBars.GetComponent<PowerupVisuals>().EnableLow();
+				
+				if( animator )
+				{
+					animator.SetBool( "charge_throw", true );
+				}
 			}
 		}
 
-		//throw
-		if((player.GetComponent<PlayerController>().TestButton("B") || Input.GetKeyDown(KeyCode.P))
-		   && weaponEquipped)
-		{
-			if(Input.GetKey(KeyCode.P))
-				byKeyboard = true;
-			else byKeyboard = false;
-
-			inThrowPowerup = true;
-			powerupBars.GetComponent<PowerupVisuals>().EnableLow();
-
-			this.GetComponentInChildren<AnimationController>().SetAnimationOn("charge_throw");
-		}
-
+		// TODO: Expected fail! inThrowPowerup == true
 		if(inThrowPowerup)
 		{
 			powerupTimer += Time.deltaTime;
@@ -93,7 +88,7 @@ public class ItemControl : MonoBehaviour {
 			if(powerupTimer > 2.8f)
 				powerupBars.GetComponent<PowerupVisuals>().EnableHigh();
 
-			if(byKeyboard && (!Input.GetKey(KeyCode.P) || powerupTimer > POWERUP_MAX))
+			if( (!Input.GetButton("Grab") || powerupTimer > POWERUP_MAX))
 			{
 				equippedWeapon.GetComponent<AssignSlot>().Unequip();
 				
@@ -107,23 +102,11 @@ public class ItemControl : MonoBehaviour {
 				
 				powerupTimer = 1;
 				inThrowPowerup = false;
-			}
 
-			if(!player.GetComponent<PlayerController>().TestButtonDown("B") || powerupTimer > POWERUP_MAX)
-			{
-				equippedWeapon.GetComponent<AssignSlot>().Unequip();
-				
-				equippedWeapon.rigidbody.AddForce(this.transform.forward * throwForce / equippedWeapon.GetComponent<ItemStats>().weight);
-				equippedWeapon.rigidbody.AddForce((this.transform.up * throwForce / 3) * powerupTimer);
-				equippedWeapon.GetComponent<AssignSlot>().SetColliderOff();
-
-				powerupBars.GetComponent<PowerupVisuals>().Shutdown();
-				this.GetComponentInChildren<AnimationController>().SetAnimationOff("charge_throw");
-
-				weaponEquipped = false;
-
-				powerupTimer = 1;
-				inThrowPowerup = false;
+				if( animator )
+				{
+					animator.SetBool( "charge_throw", false );
+				}
 			}
 		}
 	}

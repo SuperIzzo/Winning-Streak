@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Controls : MonoBehaviour {
+public class Controls : MonoBehaviour
+{
 
-	public GameObject player;
+	//public GameObject player;
 
 	public AudioClip toHats;
 	public AudioClip fromHats;
@@ -15,26 +16,26 @@ public class Controls : MonoBehaviour {
 	bool transitioning = false;
 
 	// Use this for initialization
-	void Start () {
-		player = GameObject.FindGameObjectWithTag("Player");
+	void Start ()
+	{
 		sound = this.GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		float x = Input.GetAxis("Horizontal");
 
-		player.GetComponent<PlayerController>().UpdateController();
 
 		if(!transitioning)
 		{
-			if((player.GetComponent<PlayerController>().TestButton("DPAD-RIGHT") || Input.GetKeyDown(KeyCode.D)) && !inHatPicker)
+			if( x>0.1f && !inHatPicker )
 			{
 				sound.PlayOneShot(toHats,1);
 				inHatPicker = true;
 				transitioning = true;
 			}
 
-			if((player.GetComponent<PlayerController>().TestButton("DPAD-LEFT") || Input.GetKeyDown(KeyCode.A)) && inHatPicker)
+			if( x<-0.1f && inHatPicker )
 			{
 				sound.PlayOneShot(fromHats,1);
 				inHatPicker = false;
