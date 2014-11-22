@@ -15,7 +15,7 @@ public class PixelatePlayer : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		this.transform.position = player.transform.position - new Vector3(0,-0.4f,0.25f);
+		this.transform.position = player.transform.position - new Vector3(0,-0.6f,0.25f);
 		this.transform.LookAt(camera.transform.position);
 	}
 }
