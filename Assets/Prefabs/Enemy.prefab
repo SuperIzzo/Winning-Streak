@@ -16,7 +16,7 @@ GameObject:
   - 54: {fileID: 5400000}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4479f5bf7196084e9c19f38a9a415f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  continueBlur: {fileID: 100002, guid: 32071d9b0b4c3ad4ea60f021f281cf65, type: 2}
   chaseRadius: 15
   attackRadius: .800000012
   attackTimer: 1

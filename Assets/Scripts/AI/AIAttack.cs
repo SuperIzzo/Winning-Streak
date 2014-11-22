@@ -5,6 +5,11 @@ public class AIAttack : MonoBehaviour {
 
 	GameObject player;
 
+	GameObject continueText;
+	GameObject thisScoreText;
+	GameObject highScoreText;
+	public GameObject continueBlur;
+
 	//if the player is in this radius then the enemy will start testing if
 	//it should attack using AIStats::chaseChance
 	public float chaseRadius;
@@ -22,6 +27,8 @@ public class AIAttack : MonoBehaviour {
 	float angle;
 	Vector3 velocity;
 
+	static bool endGame = false;
+	float countDownTimer = 11;
 
 	//running speed for running after the player
 	public float speed = 0;
@@ -47,6 +54,17 @@ public class AIAttack : MonoBehaviour {
 	void Start () {
 		attackTime = attackTimer;
 		player = GameObject.FindGameObjectWithTag("Player");
+
+		continueText = GameObject.FindGameObjectWithTag("continueText");
+		thisScoreText = GameObject.FindGameObjectWithTag("thisScore");
+		highScoreText = GameObject.FindGameObjectWithTag("highScore");
+
+		continueBlur = GameObject.FindGameObjectWithTag("continueBlur");
+
+		continueText.GetComponent<GUIText>().enabled = false;
+		thisScoreText.GetComponent<GUIText>().enabled = false;
+		highScoreText.GetComponent<GUIText>().enabled = false;
+		continueBlur.GetComponent<MeshRenderer>().enabled = false;
 	}
 
 	void Update () 
@@ -96,20 +114,6 @@ public class AIAttack : MonoBehaviour {
 		}
 	}
 
-	IEnumerator RestartLevel()
-	{
-		float timer = 0;
-
-		while (timer < 1.5f)
-		{
-			timer += Time.deltaTime;
-
-			yield return null;
-		}
-
-		Application.LoadLevel(Application.loadedLevel);
-	}
-
 	void ChasePlayer()
 	{
 		offsetTimer += Time.deltaTime;
@@ -151,13 +155,101 @@ public class AIAttack : MonoBehaviour {
 	}
 
 	//will execute when the enemy is close enough to the player
+	//end of game logic here
 	void AttackPlayer()
 	{
 		//dive animation here
-		if(true) //change to collision hit
+		if(!endGame) //change to collision hit
 		{
 			player.GetComponentInChildren<GoRagdoll>().KillPlayer();
 			StartCoroutine("RestartLevel");
+		}
+	}
+
+	IEnumerator RestartLevel()
+	{
+		float timer = 0;
+		bool retry = false;
+		bool inEndScreen = true;
+
+		GameObject cam = GameObject.FindGameObjectWithTag("MainCamera");
+		float originalFOV = cam.camera.fieldOfView;
+
+		continueText.GetComponent<GUIText>().enabled = true;
+		thisScoreText.GetComponent<GUIText>().enabled = true;
+		highScoreText.GetComponent<GUIText>().enabled = true;
+
+		continueBlur.GetComponent<MeshRenderer>().enabled = true;
+
+		endGame = true;
+
+		continueBlur.GetComponent<MeshRenderer>().material.SetVector("_CellSize", new Vector4(0.0001f,0.0001f,0,0));
+
+		//scores
+		thisScoreText.GetComponent<GUIText>().text = ScoreManager.score.ToString();
+		highScoreText.GetComponent<GUIText>().text = PlayerPrefs.GetString("HighScore");
+
+		int thisScore = System.Int32.Parse(thisScoreText.GetComponent<GUIText>().text);
+		int highScore = System.Int32.Parse(highScoreText.GetComponent<GUIText>().text);
+
+		if(thisScore > highScore)
+		{
+			Debug.Log(thisScore + " is higher score than " + highScore);
+
+			//Debug.Log
+			highScoreText.GetComponent<GUIText>().text = thisScoreText.GetComponent<GUIText>().text;
+			PlayerPrefs.SetString("HighScore", highScoreText.GetComponent<GUIText>().text);
+		}
+
+		thisScoreText.GetComponent<GUIText>().text = "Your score: " + thisScoreText.GetComponent<GUIText>().text;
+		highScoreText.GetComponent<GUIText>().text = "Highscore: " + highScoreText.GetComponent<GUIText>().text;
+
+		ScoreManager.StopTimer();
+
+		while (timer < 10)
+		{
+			timer += Time.deltaTime;
+
+			if(timer > 5)
+			{
+				float toSet = (timer - 5) / 800;
+				continueBlur.GetComponent<MeshRenderer>().material.SetVector("_CellSize", new Vector4(toSet,toSet,0,0));
+			}
+
+			cam.camera.fieldOfView -= timer / 10;
+
+			player.GetComponent<PlayerController>().UpdateController();
+			if(player.GetComponent<PlayerController>().TestButton("A") || Input.GetKeyDown(KeyCode.E))
+			{
+				endGame = false;
+				timer = 12;
+			}
+
+			if(player.GetComponent<PlayerController>().TestButton("B") || Input.GetKeyDown(KeyCode.Escape))
+			{
+				endGame = true;
+				timer = 12;
+			}
+
+			continueText.GetComponent<GUIText>().text = "Continue?\n" +  (10 - (int)timer);
+
+			yield return null;
+		}
+
+		continueText.GetComponent<GUIText>().text = "Continue?\n" +  0;
+		cam.camera.fieldOfView = originalFOV;
+
+		ScoreManager.StartTimer();
+
+		if(!endGame)
+		{
+			continueText.GetComponent<GUIText>().enabled = false;
+			continueBlur.GetComponent<MeshRenderer>().enabled = false;
+			Application.LoadLevel(Application.loadedLevel);
+		}
+		else
+		{
+			Application.LoadLevel("menu");
 		}
 	}
 

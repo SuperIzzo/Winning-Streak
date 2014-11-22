@@ -6,6 +6,11 @@ TagManager:
   - weapon
   - hat
   - scarf
+  - continueText
+  - continueBlur
+  - enemy
+  - highScore
+  - thisScore
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

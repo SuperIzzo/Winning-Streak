@@ -696,6 +696,7 @@ GameObject:
   - 81: {fileID: 256427864}
   - 114: {fileID: 256427869}
   - 114: {fileID: 256427870}
+  - 82: {fileID: 256427871}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -790,7 +791,67 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d512bb223e20b254a92240291b2b5ff0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 1875335057}
+  toHats: {fileID: 8300000, guid: 3f40332d1d86778419ddf10057017abf, type: 3}
+  fromHats: {fileID: 8300000, guid: d11238e1eed8650448e65b00b70cc0bc, type: 3}
+--- !u!82 &256427871
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 256427863}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1 &297031393
 GameObject:
   m_ObjectHideFlags: 0
@@ -1143,7 +1204,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 487310783}
   m_LocalRotation: {x: 0, y: .0378042907, z: 0, w: .999285161}
-  m_LocalPosition: {x: -2.34842062, y: .476513743, z: -3.1866653}
+  m_LocalPosition: {x: -2.03548002, y: .476459384, z: -3.12470126}
   m_LocalScale: {x: .251383603, y: .251383573, z: .251383573}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2089,7 +2150,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 966631717}
   m_LocalRotation: {x: 0, y: -.0975836739, z: 0, w: .995227396}
-  m_LocalPosition: {x: -2.13885021, y: -1.2149905, z: -4.13130903}
+  m_LocalPosition: {x: -1.82590938, y: -1.21504486, z: -4.06934357}
   m_LocalScale: {x: .16034852, y: .160348535, z: .160348535}
   m_Children: []
   m_Father: {fileID: 0}

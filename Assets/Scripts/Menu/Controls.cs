@@ -6,14 +6,19 @@ public class Controls : MonoBehaviour
 
 	//public GameObject player;
 
+	public AudioClip toHats;
+	public AudioClip fromHats;
+	AudioSource sound;
+
 	int cameraSwing = 75;
 
 	bool inHatPicker = false;
 	bool transitioning = false;
 
 	// Use this for initialization
-	void Start () {
-		//player = GameObject.FindGameObjectWithTag("Player");
+	void Start ()
+	{
+		sound = this.GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -25,14 +30,14 @@ public class Controls : MonoBehaviour
 		{
 			if( x>0.1f && !inHatPicker )
 			{
-				Debug.Log("pressed dpad right");
+				sound.PlayOneShot(toHats,1);
 				inHatPicker = true;
 				transitioning = true;
 			}
 
 			if( x<-0.1f && inHatPicker )
 			{
-				Debug.Log("pressed dpad left");
+				sound.PlayOneShot(fromHats,1);
 				inHatPicker = false;
 				transitioning = true;
 			}
@@ -50,7 +55,6 @@ public class Controls : MonoBehaviour
 
 				if(this.transform.eulerAngles.y > 71)
 				{
-					Debug.Log("ended transition");
 					transitioning = false;
 				}
 			}

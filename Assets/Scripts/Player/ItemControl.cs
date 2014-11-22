@@ -35,7 +35,6 @@ public class ItemControl : MonoBehaviour {
 		scarfEquipped = false;
 
 		string hatToAdd = PlayerPrefs.GetString("ActiveHat");
-		Debug.Log (hatToAdd);
 
 		AddHat(GameObject.Find(hatToAdd));
 	}
