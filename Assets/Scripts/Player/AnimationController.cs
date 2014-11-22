@@ -37,7 +37,7 @@ public class AnimationController : MonoBehaviour {
 			animator.SetBool( "run", true );
 			break;
 		case "run_goofy":
-			animator.SetBool( "run_goofy", true );
+			animator.SetFloat( "run_goofy", 1 );
 			break;
 		case "wiggle":
 			animator.SetBool( "wiggle", true );
@@ -59,7 +59,7 @@ public class AnimationController : MonoBehaviour {
 			animator.SetBool( "run", false );
 			break;
 		case "run_goofy":
-			animator.SetBool( "run_goofy", false );
+			animator.SetFloat( "run_goofy", 0 );
 			break;
 		case "wiggle":
 			animator.SetBool( "wiggle", false );

@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Controls : MonoBehaviour {
+public class Controls : MonoBehaviour
+{
 
-	public GameObject player;
+	//public GameObject player;
 
 	int cameraSwing = 75;
 
@@ -12,24 +13,24 @@ public class Controls : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		player = GameObject.FindGameObjectWithTag("Player");
+		//player = GameObject.FindGameObjectWithTag("Player");
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		float x = Input.GetAxis("Horizontal");
 
-		player.GetComponent<PlayerController>().UpdateController();
 
 		if(!transitioning)
 		{
-			if((player.GetComponent<PlayerController>().TestButton("DPAD-RIGHT") || Input.GetKeyDown(KeyCode.D)) && !inHatPicker)
+			if( x>0.1f && !inHatPicker )
 			{
 				Debug.Log("pressed dpad right");
 				inHatPicker = true;
 				transitioning = true;
 			}
 
-			if((player.GetComponent<PlayerController>().TestButton("DPAD-LEFT") || Input.GetKeyDown(KeyCode.A)) && inHatPicker)
+			if( x<-0.1f && inHatPicker )
 			{
 				Debug.Log("pressed dpad left");
 				inHatPicker = false;
