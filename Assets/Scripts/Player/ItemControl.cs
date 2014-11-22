@@ -80,6 +80,8 @@ public class ItemControl : MonoBehaviour {
 
 			inThrowPowerup = true;
 			powerupBars.GetComponent<PowerupVisuals>().EnableLow();
+
+			this.GetComponentInChildren<AnimationController>().SetAnimationOn("charge_throw");
 		}
 
 		if(inThrowPowerup)
@@ -117,6 +119,7 @@ public class ItemControl : MonoBehaviour {
 				equippedWeapon.GetComponent<AssignSlot>().SetColliderOff();
 
 				powerupBars.GetComponent<PowerupVisuals>().Shutdown();
+				this.GetComponentInChildren<AnimationController>().SetAnimationOff("charge_throw");
 
 				weaponEquipped = false;
 

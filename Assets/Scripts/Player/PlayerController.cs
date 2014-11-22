@@ -21,6 +21,10 @@ public class PlayerController : MonoBehaviour {
 
 	public bool isConnected = false;
 
+	bool running = false;
+	bool dancing = false;
+	bool throwing = false;
+
 	public bool canMove = true;
 
 	public float dashInterval = 1;
@@ -108,18 +112,39 @@ public class PlayerController : MonoBehaviour {
 		}
 		else
 		{
+			if(TestLeftStick("X") != 0 || TestLeftStick("Y") != 0)
+			{
+				if(!running)
+					this.GetComponentInChildren<AnimationController>().SetAnimationOn("run");
+				else
+					this.GetComponentInChildren<AnimationController>().UpdateSpeed(1);
+			}
+
 			//left/down movement
 			if(TestLeftStick("X") != 0)
 			{
 				this.transform.position += new Vector3(TestLeftStick("X") * speed * Time.deltaTime,0,0);
+				running = true;
 			}
-			
+
 			//up/down movement
 			if(TestLeftStick("Y") != 0)
 			{
 				this.transform.position += new Vector3 (0,0,TestLeftStick("Y") * speed * Time.deltaTime);
+				running = true;
+			}
+
+			if(TestLeftStick("X") == 0 && TestLeftStick("Y") == 0)
+			{
+				if(running)
+				{
+					this.GetComponentInChildren<AnimationController>().SetAnimationOff("run");
+					this.GetComponentInChildren<AnimationController>().UpdateSpeed(1);
+					running = false;
+				}
 			}
 		}
+
 		
 		//player rotation towards direction
 		if(TestLeftStick("X") != 0 || TestLeftStick("Y") != 0)
