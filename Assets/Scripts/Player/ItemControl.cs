@@ -7,6 +7,8 @@ public class ItemControl : MonoBehaviour {
 	GameObject player;
 	public GameObject powerupBars;
 	public GameObject weaponSlot, hatSlot, scarfSlot;
+
+	public GameObject hatFollow;
 	
 	public List<GameObject> weaponList;
 	GameObject equippedWeapon;
@@ -116,6 +118,8 @@ public class ItemControl : MonoBehaviour {
 		if(hat == equippedHat)
 			return;
 
+
+
 		if(Application.loadedLevelName == "menu")
 		{
 			Debug.Log("saved hat");
@@ -132,7 +136,11 @@ public class ItemControl : MonoBehaviour {
 			hat.GetComponent<Rigidbody>().useGravity = false;
 
 			equippedHat = hat;
+
 			equippedHat.GetComponent<AssignSlot>().Equip(hatSlot);
+
+			if(Application.loadedLevelName == "main-2")
+				hatSlot.transform.position = hatFollow.transform.position - equippedHat.GetComponent<ItemStats>().hatSlotPos;
 			
 			hatEquipped = true;
 

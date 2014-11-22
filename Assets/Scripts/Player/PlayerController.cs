@@ -90,7 +90,6 @@ public class PlayerController : MonoBehaviour {
 	{
 		Quaternion targetRot = Quaternion.LookRotation( moveVector, Vector3.up );
 		Quaternion rot = this.transform.rotation;
-		
 
 		//smooth transitioning for rotation, also makes the rotation and movement more human like
 		this.transform.rotation = Quaternion.Lerp (this.transform.rotation,

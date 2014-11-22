@@ -18,7 +18,9 @@ public class EnemySpawner : MonoBehaviour {
 			                                  Random.Range(min.transform.position.y,max.transform.position.y),
 			                                  Random.Range(min.transform.position.z,max.transform.position.z));
 
-			Instantiate(enemyPrefab,randomPoint, new Quaternion(0,Random.Range(0,359),0,0));
+			GameObject go = (GameObject)Instantiate(enemyPrefab,randomPoint, new Quaternion(0,Random.Range(0,359),0,0));
+
+			go.GetComponent<AIAttack>().player = player;
 		}
 	}
 	

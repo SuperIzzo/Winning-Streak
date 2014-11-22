@@ -42,6 +42,9 @@ public class AssignSlot : MonoBehaviour {
 		slot = newSlot;
 		equipped = true;
 
+		this.rigidbody.isKinematic = true;
+
+
 		this.transform.position = slot.transform.position;
 		this.transform.rotation = slot.transform.rotation;
 		this.transform.parent = slot.transform;
@@ -49,6 +52,7 @@ public class AssignSlot : MonoBehaviour {
 
 	public void Unequip()
 	{
+		this.rigidbody.isKinematic = false;
 		this.transform.parent = null;
 		equipped = false;
 	}

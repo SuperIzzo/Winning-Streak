@@ -18,6 +18,7 @@ public class Controls : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
+		AIAttack.endGame = false;
 		sound = this.GetComponent<AudioSource>();
 	}
 	

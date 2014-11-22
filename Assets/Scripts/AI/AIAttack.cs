@@ -3,7 +3,7 @@ using System.Collections;
 
 public class AIAttack : MonoBehaviour {
 
-	GameObject player;
+	public GameObject player;
 
 	GameObject continueText;
 	GameObject thisScoreText;
@@ -27,7 +27,7 @@ public class AIAttack : MonoBehaviour {
 	float angle;
 	Vector3 velocity;
 
-	static bool endGame = false;
+	public static bool endGame = false;
 	float countDownTimer = 11;
 
 	//running speed for running after the player
@@ -53,7 +53,6 @@ public class AIAttack : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		attackTime = attackTimer;
-		player = GameObject.FindGameObjectWithTag("Player");
 
 		continueText = GameObject.FindGameObjectWithTag("continueText");
 		thisScoreText = GameObject.FindGameObjectWithTag("thisScore");
@@ -143,6 +142,7 @@ public class AIAttack : MonoBehaviour {
 
 		this.transform.position += velocity * speed * Time.deltaTime;
 
+
 		if(InAttackRange())
 		{
 			AttackPlayer ();
@@ -152,6 +152,21 @@ public class AIAttack : MonoBehaviour {
 
 			attackTime = attackTimer + recoveryTime;
 		}
+
+		RotateTowardsPlayer(velocity);
+	}
+
+	void RotateTowardsPlayer(Vector3 vel)
+	{
+		//rotate to player
+		Vector3 lookAt = player.transform.position;
+		this.transform.LookAt(lookAt);
+
+		//stop tilting
+		Quaternion rot = this.transform.rotation;
+		rot.eulerAngles = new Vector3(0,rot.eulerAngles.y, 0);
+
+		this.transform.rotation = rot;
 	}
 
 	//will execute when the enemy is close enough to the player
@@ -166,7 +181,12 @@ public class AIAttack : MonoBehaviour {
 		}
 	}
 
-	IEnumerator RestartLevel()
+	public void ManualRestart()
+	{
+		StartCoroutine("RestartLevel");
+	}
+
+	public IEnumerator RestartLevel()
 	{
 		float timer = 0;
 		bool retry = false;
@@ -236,19 +256,18 @@ public class AIAttack : MonoBehaviour {
 		}
 
 		continueText.GetComponent<GUIText>().text = "Continue?\n" +  0;
-		cam.camera.fieldOfView = originalFOV;
+		//cam.camera.fieldOfView = originalFOV;
 
 		ScoreManager.StartTimer();
 
 		if(!endGame)
 		{
-			continueText.GetComponent<GUIText>().enabled = false;
-			continueBlur.GetComponent<MeshRenderer>().enabled = false;
+			//continueText.GetComponent<GUIText>().enabled = false;
+			//continueBlur.GetComponent<MeshRenderer>().enabled = false;
 			Application.LoadLevel(Application.loadedLevel);
 		}
 		else
 		{
-			endGame = false;
 			Application.LoadLevel("menu");
 		}
 	}
