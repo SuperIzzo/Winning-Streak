@@ -179,7 +179,7 @@ public class AIAttack : MonoBehaviour {
 		thisScoreText.GetComponent<GUIText>().enabled = true;
 		highScoreText.GetComponent<GUIText>().enabled = true;
 
-		continueBlur.GetComponent<MeshRenderer>().enabled = true;
+		//continueBlur.GetComponent<MeshRenderer>().enabled = true;
 
 		endGame = true;
 
@@ -248,6 +248,7 @@ public class AIAttack : MonoBehaviour {
 		}
 		else
 		{
+			endGame = false;
 			Application.LoadLevel("menu");
 		}
 	}
