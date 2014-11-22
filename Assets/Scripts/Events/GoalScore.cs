@@ -18,6 +18,7 @@ public class GoalScore : MonoBehaviour {
 	{
 		if(other.name == "GameBall")
 		{
+			ScoreManager.AddScore(100);
 			Debug.Log("GOOOOOOOAL!");
 			//SoundManager.TriggerEvent("goal");
 		}
