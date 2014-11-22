@@ -18,16 +18,10 @@ public class PersistantManager : MonoBehaviour {
 	void Start()
 	{
 		//PlayerPrefs.DeleteAll();
-		for(int i = 0; i < 5; i++)
+		if(PlayerPrefs.GetString("HighScore") == null || PlayerPrefs.GetString("HighScore") == "")
 		{
-			if(PlayerPrefs.GetString("Score" + i) == "" ||
-			   PlayerPrefs.GetString("Score"  + i) == null)
-			{
-				Debug.Log("resetting");
-				PlayerPrefs.SetString("Score" + i, "0");
-			}
+			Debug.Log("resetting score");
+		    PlayerPrefs.SetString("HighScore", "0");
 		}
-
-
 	}
 }
