@@ -81,7 +81,7 @@ public class Commentator : MonoBehaviour
 			int newPriority = GetEventPriority( evt );
 			
 			// Lower priority events are ignored
-			if( newPriority < currentPriority )
+			if( newPriority <= currentPriority )
 				return false;
 		}
 		
