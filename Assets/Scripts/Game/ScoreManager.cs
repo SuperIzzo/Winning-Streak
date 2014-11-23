@@ -1,15 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ScoreManager : MonoBehaviour {
+public class ScoreManager : MonoBehaviour
+{
 
-	public static int score = 0;
+	public static float score
+	{
+		get{ return baseScore * multPoints; }
+	}
+
+	public static float baseScore = 0; 
+	public static float multPoints = 1;
 	static bool isActive = true;
 
 	float timer = 0;
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+	{
 	
 	}
 	
@@ -23,30 +31,37 @@ public class ScoreManager : MonoBehaviour {
 
 		if(timer > 0.1f)
 		{
-			score++;
+			baseScore++;
 			timer = 0;
 		}
 	}
 
 	void OnGUI()
 	{
-		GUI.Label(new Rect(10,10,200,50), "Score: " + score);
+		GUI.Label(new Rect(10,10,200,50), "Score: " + ((int)baseScore) + " x" + ((int)multPoints) );
 	}
 
-	public static void AddScore(int toAdd)
+	public static void AddScore(float toAdd)
 	{
-		score += toAdd;
+		baseScore += toAdd;
+	}
+	
+	public static void AddMultPoint( float multPts )
+	{
+		multPoints += multPts;
 	}
 
 	public static void StartTimer()
 	{
-		score = 0;
+		baseScore = 0;
+		multPoints = 0;
 		isActive = true;
 	}
 
 	public static void StopTimer()
 	{
-		score = 0;
+		baseScore = 0;
+		multPoints = 0;
 		isActive = false;
 	}
 }

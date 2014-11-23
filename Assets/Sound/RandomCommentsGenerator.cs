@@ -6,7 +6,7 @@ public class RandomCommentsGenerator : MonoBehaviour
 	public float minSilence = 10.0f;
 	public float maxSilence = 20.0f;
 
-	public float commentCountDown = 0;
+	public float silenceTime = 0;
 
 	Commentator commentator;
 
@@ -19,11 +19,9 @@ public class RandomCommentsGenerator : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		commentCountDown -= Time.unscaledDeltaTime;
-
-		if( commentCountDown < 0 )
+		if( Time.unscaledTime - commentator.timeSinceLastComment > silenceTime )
 		{
-			commentCountDown = Random.Range(minSilence, maxSilence);
+			silenceTime = Random.Range(minSilence, maxSilence);
 			commentator.Comment( CommentatorEvent.RANDOM );
 		}
 	}

@@ -59,7 +59,13 @@ public class ItemControl : MonoBehaviour {
 					{
 						equippedWeapon = wep;
 						equippedWeapon.GetComponent<AssignSlot>().Equip(weaponSlot);
-						
+
+						if( wep.gameObject.CompareTag("ball") )
+						{
+							Commentator commentator = Commentator.GetInstance();
+							commentator.Comment( CommentatorEvent.PICKED_BALL );
+						}
+
 						weaponEquipped = true;
 
 						return;

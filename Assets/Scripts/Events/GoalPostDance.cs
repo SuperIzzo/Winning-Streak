@@ -24,7 +24,7 @@ public class GoalPostDance : MonoBehaviour {
 
 				if(timer > scoreInterval)
 				{
-					ScoreManager.score++;
+					ScoreManager.AddScore(1);
 					timer = 0;
 				}
 

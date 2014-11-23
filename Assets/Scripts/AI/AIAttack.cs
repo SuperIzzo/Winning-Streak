@@ -56,6 +56,9 @@ public class AIAttack : MonoBehaviour {
 
 	public Animator animator;
 	public GameObject damager;
+
+	private Commentator commentator;
+
 	// Use this for initialization
 	void Start () {
 		Time.timeScale = 1;
@@ -84,6 +87,8 @@ public class AIAttack : MonoBehaviour {
 		Vector3 newPos = this.transform.position;
 		newPos.y = 0.6499841f;
 		this.transform.position = newPos;
+
+		commentator = Commentator.GetInstance();
 	}
 
 	void Update () 
@@ -254,8 +259,14 @@ public class AIAttack : MonoBehaviour {
 		if(!hitPlayer)
 		{
 			ScoreManager.AddScore(25);
+			ScoreManager.AddMultPoint(1);
 			soundManager.GetComponent<AudioMan>().PlayTackleDodge();
 			soundManager.GetComponent<AudioMan>().BuildHype(0.01f,10,0.1f);
+
+			if( commentator )
+			{
+				commentator.Comment( CommentatorEvent.DODGE_TACKLE );
+			}
 		}
 	}
 
