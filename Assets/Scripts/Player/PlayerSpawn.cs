@@ -11,7 +11,6 @@ public class PlayerSpawn : MonoBehaviour {
 	void Start () 
 	{
 		int count = spawnPoints.Count;
-
 		this.transform.position = spawnPoints[Random.Range(0,count)].transform.position;
 	}
 	

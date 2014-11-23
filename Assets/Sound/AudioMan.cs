@@ -16,6 +16,12 @@ public class AudioMan : MonoBehaviour
 
 	public List<AudioClip> effectSounds;
 
+	public List<AudioClip> tackleDodgeSounds;
+	float dodgeSpeechCooldown = 10;
+	float dodgeSpeechTimer = 5;
+
+	public List<AudioClip> randomSpeechSounds;
+
 	public List<AudioClip> changeHatSounds;
 	int lastHatSound;
 
@@ -61,7 +67,7 @@ public class AudioMan : MonoBehaviour
 		}
 		else minHype = 0.2f;
 
-
+		dodgeSpeechTimer += Time.deltaTime;
 
 		// Hype stuff, the crowd hype dies gradually
 		if(!buildingHype)
@@ -154,7 +160,24 @@ public class AudioMan : MonoBehaviour
 		int random = Random.Range(0, celebrateSounds.Count - 1);
 		AudioClip clip = celebrateSounds[ random ];
 		
+		CreateSound( clip, pan, vol ); 
+	}
+
+	public void PlayTackleDodge()
+	{
+		if(dodgeSpeechTimer < dodgeSpeechCooldown)
+			return;
+
+		BuildHype(0.02f, 15, 0.01f);
+		
+		float pan = 0.3f - Random.value * 0.6f;
+		float vol = Mathf.Min(1, Random.value * hype + 0.5f); 
+		int random = Random.Range(0, tackleDodgeSounds.Count - 1);
+		AudioClip clip = tackleDodgeSounds[ random ];
+		
 		CreateSound( clip, pan, vol );
+
+		dodgeSpeechTimer = 0;
 	}
 
 	public void BuildHype(float incre, float cnt, float inte)
@@ -173,6 +196,17 @@ public class AudioMan : MonoBehaviour
 		interval = inte;
 		
 		StartCoroutine("ChangeTheHype");
+	}
+
+	//used to raise and hold the hype to the maximum
+	public void KeepHypeUp()
+	{
+		hype += Time.deltaTime / 10;
+	}
+
+	public float GetHype()
+	{
+		return hype;
 	}
 
 	IEnumerator ChangeTheHype()

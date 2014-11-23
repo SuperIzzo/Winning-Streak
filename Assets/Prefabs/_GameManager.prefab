@@ -30,7 +30,7 @@ GameObject:
   - 82: {fileID: 8200000}
   m_Layer: 0
   m_Name: _AudioManager
-  m_TagString: Untagged
+  m_TagString: SoundManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -199,6 +199,15 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b1e666d38660a3042ac48f162da328ea, type: 3}
   - {fileID: 8300000, guid: b61990b246ac098489f187e7e915fa8d, type: 3}
   - {fileID: 8300000, guid: fad25ea1ce67d7d46a5d66beb8f24e55, type: 3}
+  tackleDodgeSounds:
+  - {fileID: 8300000, guid: 2ff5be31f6fcdf748a46b345d076f5a4, type: 3}
+  - {fileID: 8300000, guid: d6163395fa97e9f4cb1c529d59a2e5fa, type: 3}
+  - {fileID: 8300000, guid: 221884953336cec448532b1d72ea40e2, type: 3}
+  - {fileID: 8300000, guid: c4235a26be223d84d8151155b6aa5a93, type: 3}
+  - {fileID: 8300000, guid: 3c5bdf88884cfef4bb44bb4bf8aadc90, type: 3}
+  - {fileID: 8300000, guid: 7ba83979ada7ded419ac1a94a1c36e06, type: 3}
+  - {fileID: 8300000, guid: cfdfdb8c97cc750438442accd43a806d, type: 3}
+  randomSpeechSounds: []
   changeHatSounds:
   - {fileID: 8300000, guid: 07a315818f9d95146ac86a80506f3682, type: 3}
   - {fileID: 8300000, guid: 19688e6445f267e42a45c6e1d021cbfd, type: 3}

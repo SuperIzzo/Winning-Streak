@@ -7,7 +7,9 @@ public class GoalScore : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+
+		//if(soundManager == null)
+		soundManager = GameObject.FindGameObjectWithTag("SoundManager");
 	}
 	
 	// Update is called once per frame
@@ -22,8 +24,8 @@ public class GoalScore : MonoBehaviour {
 		{
 			ScoreManager.AddScore(100);
 
-			if(soundManager == null)
-				soundManager = GameObject.FindGameObjectWithTag("SoundManager");
+			//if(soundManager == null)
+			//	soundManager = GameObject.FindGameObjectWithTag("SoundManager");
 
 			Debug.Log("GOAL");
 			soundManager.GetComponent<AudioMan>().PlayCelebrate();

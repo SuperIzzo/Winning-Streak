@@ -4,6 +4,7 @@ using System.Collections;
 public class AIAttack : MonoBehaviour {
 
 	public GameObject player;
+	public GameObject soundManager;
 
 	GameObject continueText;
 	GameObject thisScoreText;
@@ -59,6 +60,8 @@ public class AIAttack : MonoBehaviour {
 		highScoreText = GameObject.FindGameObjectWithTag("highScore");
 
 		continueBlur = GameObject.FindGameObjectWithTag("continueBlur");
+
+		soundManager = GameObject.FindGameObjectWithTag("SoundManager");
 
 		continueText.GetComponent<GUIText>().enabled = false;
 		thisScoreText.GetComponent<GUIText>().enabled = false;
@@ -133,8 +136,14 @@ public class AIAttack : MonoBehaviour {
 			offsetTimer = 0;
 		}
 
-		angle = Mathf.Atan2(this.transform.position.x - (player.transform.position.x + offset.x),
-		                          this.transform.position.z - (player.transform.position.z + offset.z));
+//		if(Random.value < 0.001f)
+//		{
+//			Debug.Log ("Repath");
+//			offsetTimer = 5;
+//		}
+
+		angle = Mathf.Atan2(this.transform.position.x - (player.transform.position.x),// + offset.x),
+		                    this.transform.position.z - (player.transform.position.z));// + offset.z));
 
 		velocity = -new Vector3(Mathf.Sin (angle),
 		                               0,
@@ -176,8 +185,17 @@ public class AIAttack : MonoBehaviour {
 		//dive animation here
 		if(!endGame) //change to collision hit
 		{
-			player.GetComponentInChildren<GoRagdoll>().KillPlayer();
-			StartCoroutine("RestartLevel");
+			//for now just calculate a chance
+			if(Random.value < 0.6f) 
+			{
+				soundManager.GetComponent<AudioMan>().PlayEffect("TACKLE1",1);
+				player.GetComponentInChildren<GoRagdoll>().KillPlayer();
+				StartCoroutine("RestartLevel");
+			}
+			else
+			{
+				soundManager.GetComponent<AudioMan>().PlayTackleDodge();
+			}
 		}
 	}
 

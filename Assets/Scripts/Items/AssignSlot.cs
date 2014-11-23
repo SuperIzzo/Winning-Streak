@@ -62,9 +62,15 @@ public class AssignSlot : MonoBehaviour {
 
 	public void Unequip()
 	{
+		SetColliderOff();
+
 		slowTimer = 0;
 		this.rigidbody.isKinematic = false;
 		this.transform.parent = null;
+
+		this.rigidbody.AddForce(this.transform.up * 900);
+		this.rigidbody.AddTorque(new Vector3(1000,1000,1000));
+
 		equipped = false;
 	}
 
@@ -87,7 +93,7 @@ public class AssignSlot : MonoBehaviour {
 		if(GetComponent<CapsuleCollider>())
 			this.GetComponent<CapsuleCollider>().enabled = false;
 
-		while(timer < 0.15f)
+		while(timer < 0.015f)
 		{
 			timer += Time.deltaTime;
 			yield return null;

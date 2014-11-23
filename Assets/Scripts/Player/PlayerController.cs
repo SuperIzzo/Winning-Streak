@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour {
 	public bool physicsMovement = false;
 	public float goofiness = 1.0f;
 
+	public bool dancing = false;
 
 	public Animator animator;
 	public bool canMove = true;
@@ -56,10 +57,11 @@ public class PlayerController : MonoBehaviour {
 		{
 			// DO the WIGGLE
 			//   Game logic to add points etc
-
+			dancing = true;
 			// process no more input
 			return;
 		}
+		else dancing = false;
 
 		
 		float x = Input.GetAxis( "Horizontal" );	
