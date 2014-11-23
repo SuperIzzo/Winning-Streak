@@ -2068,6 +2068,10 @@ Prefab:
       propertyPath: soundManager
       value: 
       objectReference: {fileID: 1767002307}
+    - target: {fileID: 11400006, guid: d0e5186d01cbba441a60a8dec11d65d0, type: 2}
+      propertyPath: soundManager
+      value: 
+      objectReference: {fileID: 1767002307}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d0e5186d01cbba441a60a8dec11d65d0, type: 2}
   m_RootGameObject: {fileID: 1875335057}
@@ -2736,7 +2740,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 811288661}
   - 114: {fileID: 811288660}
-  - 114: {fileID: 811288659}
   - 114: {fileID: 811288658}
   m_Layer: 0
   m_Name: _GameManager
@@ -2755,18 +2758,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d483e1a934152a14c83cd57aa68b3301, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &811288659
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400002, guid: 24a8f5f493499fd4896414099f52b748,
-    type: 2}
-  m_PrefabInternal: {fileID: 1375418832}
-  m_GameObject: {fileID: 811288657}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60baa11312467dc4d83cf7db7691c7d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &811288660
@@ -3457,7 +3448,6 @@ MonoBehaviour:
   - {fileID: 1381311784}
   - {fileID: 1875335057}
   player: {fileID: 1875335057}
-  pixelateGO: {fileID: 0}
 --- !u!1 &1132299600
 GameObject:
   m_ObjectHideFlags: 0
@@ -4121,7 +4111,8 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11400002, guid: 24a8f5f493499fd4896414099f52b748, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 24a8f5f493499fd4896414099f52b748, type: 2}
   m_RootGameObject: {fileID: 811288657}
   m_IsPrefabParent: 0
@@ -6049,7 +6040,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerupBars: {fileID: 0}
-  soundManager: {fileID: 1767002307}
   weaponSlot: {fileID: 932405684}
   hatSlot: {fileID: 1071345065}
   scarfSlot: {fileID: 2102104808}
@@ -6125,6 +6115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73618a4dd1a01f54ab4e890e5fe7d9f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundManager: {fileID: 1767002307}
 --- !u!1 &1961883364
 GameObject:
   m_ObjectHideFlags: 0

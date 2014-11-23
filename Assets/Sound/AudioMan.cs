@@ -47,6 +47,8 @@ public class AudioMan : MonoBehaviour
 
 		lastHatSound = Random.Range(0, changeHatSounds.Count);
 	}
+
+	bool playedCredits = false;
 	
 	// Update is called once per frame
 	void Update ()
@@ -66,6 +68,12 @@ public class AudioMan : MonoBehaviour
 			minHype = 0.1f;
 		}
 		else minHype = 0.2f;
+
+		if(Application.loadedLevelName == "credits" && !playedCredits)
+		{
+			PlayCelebrate();
+			playedCredits = true;
+		}
 
 		dodgeSpeechTimer += Time.deltaTime;
 
@@ -226,17 +234,17 @@ public class AudioMan : MonoBehaviour
 		buildingHype = false;
 	}
 
-	void OnGUI()
-	{
-		if(GUI.Button(new Rect(100,100,200,50),"CHEER"))
-			PlayCelebrate();
-
-		if(GUI.Button(new Rect(100,160,200,50),"HYPE UP"))
-			BuildHype(0.01f, 20, 0.1f);
-
-		if(GUI.Button(new Rect(100,240,200,50),"HYPE DOWN"))
-			LowerHype(0.01f, 20, 0.1f);
-	}
+//	void OnGUI()
+//	{
+//		if(GUI.Button(new Rect(100,100,200,50),"CHEER"))
+//			PlayCelebrate();
+//
+//		if(GUI.Button(new Rect(100,160,200,50),"HYPE UP"))
+//			BuildHype(0.01f, 20, 0.1f);
+//
+//		if(GUI.Button(new Rect(100,240,200,50),"HYPE DOWN"))
+//			LowerHype(0.01f, 20, 0.1f);
+//	}
 
 
 	void CreateSound( AudioClip clip, float relPan, float relVolume )

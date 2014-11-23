@@ -5,7 +5,6 @@ using System.Collections.Generic;
 public class ItemControl : MonoBehaviour {
 
 	public GameObject powerupBars;
-	public GameObject soundManager;
 	public GameObject weaponSlot, hatSlot, scarfSlot;
 
 	public GameObject hatFollow;
@@ -46,6 +45,9 @@ public class ItemControl : MonoBehaviour {
 	
 	void Update () 
 	{
+		if(Application.loadedLevelName == "menu")
+			return;
+
 		//pick up
 		if( Input.GetButtonDown( "Grab" ))
 		{
@@ -117,7 +119,8 @@ public class ItemControl : MonoBehaviour {
 		if(hat == equippedHat)
 			return;
 
-		soundManager.GetComponent<AudioMan>().PlayChangeHat();
+
+
 
 		if(Application.loadedLevelName == "menu")
 		{

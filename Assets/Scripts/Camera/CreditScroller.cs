@@ -6,13 +6,20 @@ public class CreditScroller : MonoBehaviour {
 	public float scrollSpeed = 6;
 	void Start () 
 	{
+		GameObject go = GameObject.Find("_GameManager");
+		
+		if(go)
+		{
+			Destroy (go);
+		}
+
 		StartCoroutine("Scroll");
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-	
+
 	}
 
 	IEnumerator Scroll()
@@ -22,6 +29,11 @@ public class CreditScroller : MonoBehaviour {
 			Vector3 newPos = this.transform.position;
 			newPos.x += Time.deltaTime * scrollSpeed;
 
+			if(Input.anyKeyDown || Input.GetButton("Dash") || Input.GetButton("Grab") || Input.GetButton("Wiggle"))
+			{
+				Application.Quit ();
+			}
+				
 			if(this.transform.position.x > 29)
 				Application.LoadLevel("menu");
 
@@ -30,6 +42,6 @@ public class CreditScroller : MonoBehaviour {
 			yield return null;
 		}
 
-		Application.LoadLevel("menu");
+		Application.Quit ();
 	}
 }

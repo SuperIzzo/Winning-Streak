@@ -45,7 +45,7 @@ public class ArrowSelectOption : MonoBehaviour {
 			if(selection == 0)
 				Application.LoadLevel("main-2");
 			else if(selection == 1)
-				Application.Quit ();
+				Application.LoadLevel("credits");
 		}
 	}
 }
