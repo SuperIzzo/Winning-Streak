@@ -10667,12 +10667,178 @@ MonoBehaviour:
     commentEvent: 6
     clipQueue:
     - {fileID: 8300000, guid: 999aed0cf6078554dac2ed506557fe26, type: 3}
-  - name: 
-    commentEvent: 0
+  - name: Touchdown 1
+    commentEvent: 8
+    clipQueue:
+    - {fileID: 8300000, guid: 1ae961a4b73a61f469b3e8c0d85312a1, type: 3}
+  - name: Touchdown 2
+    commentEvent: 8
+    clipQueue:
+    - {fileID: 0}
+  - name: Touchdown 3
+    commentEvent: 8
+    clipQueue:
+    - {fileID: 8300000, guid: ae839e82e733f0341b3729db369ecb33, type: 3}
+    - {fileID: 0}
+  - name: Touchdown 4
+    commentEvent: 8
+    clipQueue:
+    - {fileID: 8300000, guid: 7562b18d985afbc4084cc72825595568, type: 3}
+    - {fileID: 0}
+  - name: Touchdown 5
+    commentEvent: 8
+    clipQueue:
+    - {fileID: 0}
+  - name: 1 Point 1
+    commentEvent: 9
+    clipQueue:
+    - {fileID: 8300000, guid: b3ef1f3d1ca4bf749ba47b34b5ce7d31, type: 3}
+    - {fileID: 0}
+  - name: 1 Point 2
+    commentEvent: 9
+    clipQueue:
+    - {fileID: 8300000, guid: 50b340c773170cb4086d24249a3d4ff8, type: 3}
+    - {fileID: 0}
+  - name: 1 Point 3
+    commentEvent: 9
+    clipQueue:
+    - {fileID: 8300000, guid: 91be8beb18432d048a3eee8862377626, type: 3}
+    - {fileID: 0}
+  - name: 1 Point 4
+    commentEvent: 9
+    clipQueue:
+    - {fileID: 8300000, guid: 5c1a291adb2c1fe4491fcb3774e94755, type: 3}
+  - name: 1 Point 5
+    commentEvent: 9
+    clipQueue:
+    - {fileID: 0}
+  - name: 2 Point 1
+    commentEvent: 10
+    clipQueue:
+    - {fileID: 8300000, guid: 52a8ccf00319c4f42ae37d53b06a4e18, type: 3}
+  - name: 2 Point 2
+    commentEvent: 10
+    clipQueue:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 02c85ceb569373549858ba8cabe5ddf7, type: 3}
+  - name: 2 Point 3
+    commentEvent: 10
+    clipQueue:
+    - {fileID: 8300000, guid: 1baaba49202e94f4c82bea0f85ea2a0b, type: 3}
+    - {fileID: 0}
+  - name: 2 Point 4
+    commentEvent: 10
+    clipQueue:
+    - {fileID: 0}
+  - name: 2 Point 5
+    commentEvent: 10
+    clipQueue:
+    - {fileID: 8300000, guid: 2784878c10ebdd14da2a2116c2693649, type: 3}
+    - {fileID: 0}
+  - name: 3 Points 1
+    commentEvent: 11
+    clipQueue:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 1c99f05ec1c0de746bde742f56c76137, type: 3}
+  - name: 3 Points 2
+    commentEvent: 11
+    clipQueue:
+    - {fileID: 8300000, guid: 5b4f7c1baa1c1fb40aed310f59041c78, type: 3}
+  - name: 3 Points 3
+    commentEvent: 11
+    clipQueue:
+    - {fileID: 8300000, guid: c76de07467174a1479f96058433db973, type: 3}
+    - {fileID: 0}
+  - name: 3 Points 4
+    commentEvent: 11
+    clipQueue:
+    - {fileID: 8300000, guid: 3e9f4c82c4f68354ebab3f52a86337ba, type: 3}
+    - {fileID: 0}
+  - name: 4 Points 1
+    commentEvent: 12
+    clipQueue:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 5d567b06ce430c74c8a4f5155a1d4c5b, type: 3}
+  - name: 4 Points 2
+    commentEvent: 12
+    clipQueue:
+    - {fileID: 8300000, guid: 636d427bd7aa4d94bb965bbc90a907f4, type: 3}
+    - {fileID: 0}
+    - {fileID: 8300000, guid: ae7a98cc5e3b18443b527ff74c7837c4, type: 3}
+  - name: 4 Points 3
+    commentEvent: 12
     clipQueue: []
-  - name: 
-    commentEvent: 0
-    clipQueue: []
+  - name: 4 Points 4
+    commentEvent: 12
+    clipQueue:
+    - {fileID: 8300000, guid: 7d30b3b2d5059d64f9451a631bb222fc, type: 3}
+  - name: 5 Points 1
+    commentEvent: 13
+    clipQueue:
+    - {fileID: 8300000, guid: 42619445c6cdee043b0a568900f27cb6, type: 3}
+  - name: 5 Points 2
+    commentEvent: 13
+    clipQueue:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: d7d5d70eee3e7d24197e5ced470320a1, type: 3}
+  - name: 5 Points 3
+    commentEvent: 13
+    clipQueue:
+    - {fileID: 8300000, guid: 6faf64c61d382b7439360edddfa3ce02, type: 3}
+  - name: 6 Points 1
+    commentEvent: 14
+    clipQueue:
+    - {fileID: 0}
+  - name: 6 Points 2
+    commentEvent: 14
+    clipQueue:
+    - {fileID: 0}
+  - name: 6 Points 3
+    commentEvent: 14
+    clipQueue:
+    - {fileID: 8300000, guid: 146a0efb5c4b67446af42cdcc4f8a58a, type: 3}
+    - {fileID: 0}
+  - name: 7 Points 1
+    commentEvent: 15
+    clipQueue:
+    - {fileID: 0}
+  - name: 7 Points 2
+    commentEvent: 15
+    clipQueue:
+    - {fileID: 8300000, guid: 4233158966a544b4d918e9e83b7d2d01, type: 3}
+  - name: 7 Points 3
+    commentEvent: 15
+    clipQueue:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: f382cbde8437843439062a192ac663da, type: 3}
+  - name: 8 Points 1
+    commentEvent: 16
+    clipQueue:
+    - {fileID: 0}
+  - name: 8 Points 2
+    commentEvent: 16
+    clipQueue:
+    - {fileID: 8300000, guid: cd1bd7441610fec48928029110231345, type: 3}
+  - name: 9 Points 1
+    commentEvent: 17
+    clipQueue:
+    - {fileID: 8300000, guid: c4a7a3d18ae20cf4d86b66ca27aaa3a3, type: 3}
+    - {fileID: 0}
+  - name: 9 Points 2
+    commentEvent: 17
+    clipQueue:
+    - {fileID: 0}
+  - name: 10 Points 1
+    commentEvent: 18
+    clipQueue:
+    - {fileID: 8300000, guid: 55be111e6c14f554abcacfa168051d9f, type: 3}
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 97ee3524b9deb914cbed43911af46752, type: 3}
+  - name: 10 Points 2
+    commentEvent: 18
+    clipQueue:
+    - {fileID: 8300000, guid: 391785186f12d924d9bc3e403e792975, type: 3}
+    - {fileID: 0}
   - name: 
     commentEvent: 0
     clipQueue: []
