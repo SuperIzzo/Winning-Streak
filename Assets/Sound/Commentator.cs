@@ -91,8 +91,12 @@ public class Commentator : MonoBehaviour
 		int i = start+1;
 	
 		// repeat until we've cycled them all
-		while( i!=start )
+		for( int j =0; j< commentQueues.Count; j++ )
 		{
+			// End condition
+			if( i==start );
+			   break;
+
 			// Wrap around if we have to
 			i = i % commentQueues.Count;
 
