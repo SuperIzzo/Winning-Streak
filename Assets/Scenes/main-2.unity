@@ -9360,6 +9360,14 @@ Prefab:
       propertyPath: m_Name
       value: _Commentator
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 8b3d53c97bd069a45be55849a1977c4f, type: 2}
+      propertyPath: commentQueues.Array.data[13].name
+      value: Dodge 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 8b3d53c97bd069a45be55849a1977c4f, type: 2}
+      propertyPath: commentQueues.Array.data[13].commentEvent
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8b3d53c97bd069a45be55849a1977c4f, type: 2}
   m_RootGameObject: {fileID: 2031765786}
@@ -10562,12 +10570,15 @@ MonoBehaviour:
     commentEvent: 3
     clipQueue:
     - {fileID: 8300000, guid: f09859e1655e0274bac018087f794ba6, type: 3}
-  - name: 
-    commentEvent: 0
-    clipQueue: []
-  - name: 
-    commentEvent: 0
-    clipQueue: []
+  - name: Dodge 4
+    commentEvent: 3
+    clipQueue:
+    - {fileID: 8300000, guid: 78e79bc4529b97849b8b72ae737e0b65, type: 3}
+  - name: Dodge 5
+    commentEvent: 3
+    clipQueue:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 51df8696e756a97448d36f73a4d35b48, type: 3}
   - name: 
     commentEvent: 0
     clipQueue: []
