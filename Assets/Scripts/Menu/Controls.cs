@@ -30,14 +30,14 @@ public class Controls : MonoBehaviour
 
 		if(!transitioning)
 		{
-			if( x>0.5f && !inHatPicker )
+			if( x>0.2f && !inHatPicker )
 			{
 				sound.PlayOneShot(toHats,0.5f);
 				inHatPicker = true;
 				transitioning = true;
 			}
 
-			if( x<-0.5f && inHatPicker )
+			if( x<-0.2f && inHatPicker )
 			{
 				sound.PlayOneShot(fromHats,0.5f);
 				inHatPicker = false;
