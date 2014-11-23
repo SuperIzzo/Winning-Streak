@@ -19,7 +19,7 @@ public class RandomCommentsGenerator : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		commentCountDown -= Time.unscaledTime;
+		commentCountDown -= Time.unscaledDeltaTime;
 
 		if( commentCountDown < 0 )
 		{
