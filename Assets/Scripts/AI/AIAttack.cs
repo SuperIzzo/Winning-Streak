@@ -67,7 +67,13 @@ public class AIAttack : MonoBehaviour {
 		thisScoreText.GetComponent<GUIText>().enabled = false;
 		highScoreText.GetComponent<GUIText>().enabled = false;
 		continueBlur.GetComponent<MeshRenderer>().enabled = false;
+
+
+		Vector3 newPos = this.transform.position;
+		newPos.y = 0.6557948f;
+		this.transform.position = newPos;
 	}
+
 
 	void Update () 
 	{

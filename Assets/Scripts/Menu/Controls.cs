@@ -13,7 +13,7 @@ public class Controls : MonoBehaviour
 
 	int cameraSwing = 75;
 
-	bool inHatPicker = false;
+	public static bool inHatPicker = false;
 	bool transitioning = false;
 
 	// Use this for initialization
@@ -30,14 +30,14 @@ public class Controls : MonoBehaviour
 
 		if(!transitioning)
 		{
-			if( x>0.1f && !inHatPicker )
+			if( x>0.5f && !inHatPicker )
 			{
 				sound.PlayOneShot(toHats,0.5f);
 				inHatPicker = true;
 				transitioning = true;
 			}
 
-			if( x<-0.1f && inHatPicker )
+			if( x<-0.5f && inHatPicker )
 			{
 				sound.PlayOneShot(fromHats,0.5f);
 				inHatPicker = false;
