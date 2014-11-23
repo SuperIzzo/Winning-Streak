@@ -95,8 +95,12 @@ public class Commentator : MonoBehaviour
 			if( currentQueue != null && clipIndex < currentQueue.clipQueue.Count-1 )
 			{
 				clipIndex++;
-				audio.clip = currentQueue.clipQueue[ clipIndex ];
-				audio.Play();
+				AudioClip clip = currentQueue.clipQueue[ clipIndex ];
+				if( clip )
+				{
+					audio.clip = clip;
+					audio.Play();
+				}
 			}
 		}
 	}
