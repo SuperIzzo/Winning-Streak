@@ -10,4 +10,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/main-2.unity
   - enabled: 1
-    path: Assets/Scenes/scoreboard.unity
+    path: Assets/Scenes/credits.unity
