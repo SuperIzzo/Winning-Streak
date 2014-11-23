@@ -37,6 +37,7 @@ public class GoalPostDance : MonoBehaviour {
 					}
 				}
 
+				//soundManager.GetComponent<DialogueManager>().PlaySpeech("PLAYER_DANCE");
 				soundManager.GetComponent<AudioMan>().KeepHypeUp();
 			}
 		}

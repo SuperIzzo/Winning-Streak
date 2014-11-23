@@ -212,6 +212,7 @@ public class AIAttack : MonoBehaviour {
 			}
 			else
 			{
+				//soundManager.GetComponent<DialogueManager>().PlaySpeech("PLAYER_DODGE");
 				soundManager.GetComponent<AudioMan>().PlayTackleDodge();
 				soundManager.GetComponent<AudioMan>().BuildHype(0.01f,10,0.1f);
 			}
