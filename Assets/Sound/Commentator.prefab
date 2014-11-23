@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 400000}
   - 114: {fileID: 11400000}
   - 114: {fileID: 11400002}
+  - 82: {fileID: 8200000}
   m_Layer: 0
   m_Name: Commentator
   m_TagString: Untagged
@@ -29,6 +30,64 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!82 &8200000
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -80,23 +139,36 @@ MonoBehaviour:
     commentEvent: 2
     clipQueue:
     - {fileID: 8300000, guid: cf9001c8b6aaa6b4e9a514db28a26ea6, type: 3}
+    - {fileID: 0}
   - name: Pick-up Ball 2
     commentEvent: 2
     clipQueue:
     - {fileID: 8300000, guid: 27b4e4e385f04a947b6e90d8561c566c, type: 3}
+  - name: Pick-up Ball 3
+    commentEvent: 2
+    clipQueue:
+    - {fileID: 0}
+  - name: Pick-up Ball 4
+    commentEvent: 2
+    clipQueue:
+    - {fileID: 0}
   - name: Pick-up Ball 5
     commentEvent: 2
     clipQueue:
     - {fileID: 8300000, guid: c6cac4fd83b326c4a9d943cae38070ed, type: 3}
-  - name: 
-    commentEvent: 0
-    clipQueue: []
-  - name: 
-    commentEvent: 0
-    clipQueue: []
-  - name: 
-    commentEvent: 0
-    clipQueue: []
+  - name: Dodge 1
+    commentEvent: 3
+    clipQueue:
+    - {fileID: 8300000, guid: 704d288c94bb14a448bc3d0e91f4a7c2, type: 3}
+    - {fileID: 0}
+  - name: Dodge 2
+    commentEvent: 3
+    clipQueue:
+    - {fileID: 0}
+  - name: Dodge 3
+    commentEvent: 3
+    clipQueue:
+    - {fileID: 8300000, guid: f09859e1655e0274bac018087f794ba6, type: 3}
   - name: 
     commentEvent: 0
     clipQueue: []
