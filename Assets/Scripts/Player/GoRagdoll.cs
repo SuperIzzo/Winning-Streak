@@ -10,6 +10,9 @@ public class GoRagdoll : MonoBehaviour {
 
 	public void KillPlayer()
 	{
+		//if(this.tag == "Player")
+			Time.timeScale = 0.2f;
+
 		this.GetComponent<Animator>().enabled = false;
 
 		if( player )
