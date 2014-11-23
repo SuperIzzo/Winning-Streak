@@ -67,8 +67,12 @@ public class Commentator : MonoBehaviour
 		{
 		case CommentatorEvent.RANDOM:
 			return 0;
-		default:
+		case CommentatorEvent.GAME_START:
 			return 1;
+		case CommentatorEvent.GAME_OVER:
+			return 10;
+		default:
+			return 2;
 		}
 	}
 	
@@ -81,7 +85,7 @@ public class Commentator : MonoBehaviour
 			int newPriority = GetEventPriority( evt );
 			
 			// Lower priority events are ignored
-			if( newPriority < currentPriority )
+			if( newPriority <= currentPriority )
 				return false;
 		}
 		
@@ -106,7 +110,7 @@ public class Commentator : MonoBehaviour
 			   && commentQueue.clipQueue !=null
 			   && commentQueue.clipQueue.Count>0 )
 			{
-				Debug.Log( "Commenting: " + commentQueue.name );
+				//Debug.Log( "Commenting: " + commentQueue.name );
 				return PlayeQueue( commentQueue );
 			}
 			
@@ -156,6 +160,10 @@ public class Commentator : MonoBehaviour
 				}
 				
 				clipIndex++;
+			}
+			else
+			{
+				currentQueue = null;
 			}
 		}
 	}

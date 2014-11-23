@@ -7,7 +7,7 @@ public class MousePicker : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		StartGameCommenter.announced = false;
 	}
 	
 	// Update is called once per frame
