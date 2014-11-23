@@ -41,15 +41,15 @@ public class Commentator : MonoBehaviour
 {
 	// Public / data
 	public List<CommentatorQueue> commentQueues;
-
+	
 	// Internal / state
 	static Commentator instance;
 	CommentatorQueue currentQueue;
 	int clipIndex = 0;
-
+	
 	public float timeSinceLastComment;
-
-
+	
+	
 	// Returns a single instance for this component
 	public static Commentator GetInstance()
 	{
@@ -57,7 +57,7 @@ public class Commentator : MonoBehaviour
 		{
 			instance = GameObject.FindObjectOfType<Commentator>();
 		}
-
+		
 		return instance;
 	}
 	
@@ -71,7 +71,7 @@ public class Commentator : MonoBehaviour
 			return 1;
 		}
 	}
-
+	
 	// Public interface
 	public bool Comment( CommentatorEvent evt )
 	{
@@ -79,59 +79,63 @@ public class Commentator : MonoBehaviour
 		{
 			int currentPriority = GetEventPriority( currentQueue.commentEvent );
 			int newPriority = GetEventPriority( evt );
-
+			
 			// Lower priority events are ignored
 			if( newPriority < currentPriority )
 				return false;
 		}
-
+		
 		// Pick a random comment which matches the event
 		int start = Random.Range(0, commentQueues.Count );
 		int step  = Random.Range(1, commentQueues.Count-1);
 		int i = start+1;
-	
+		
 		// repeat until we've cycled them all
-		while( i!=start )
+		for( int j=0; j<commentQueues.Count; j++ )
 		{
+			// End condition
+			if( i==start )
+				break;
+			
 			// Wrap around if we have to
 			i = i % commentQueues.Count;
-
+			
 			CommentatorQueue commentQueue = commentQueues[i];
 			if( commentQueue !=null
-			    && commentQueue.commentEvent == evt 
-			    && commentQueue.clipQueue !=null
-			    && commentQueue.clipQueue.Count>0 )
+			   && commentQueue.commentEvent == evt 
+			   && commentQueue.clipQueue !=null
+			   && commentQueue.clipQueue.Count>0 )
 			{
 				Debug.Log( "Commenting: " + commentQueue.name );
 				return PlayeQueue( commentQueue );
 			}
-
+			
 			// to the next comment
 			i += step;
 		}
-
+		
 		return false;
 	}
-
-
+	
+	
 	// Sets the current queue
 	private bool PlayeQueue( CommentatorQueue queue )
 	{
 		clipIndex = 0;
 		currentQueue = queue;
-
+		
 		// Stop the current commentating event
 		audio.Stop();
-
+		
 		return true;
 	}
-
+	
 	// Start the commentators
 	void Start()
 	{
 		timeSinceLastComment = Time.unscaledTime;
 	}
-
+	
 	// Updates the Commentator
 	void Update()
 	{
@@ -142,15 +146,15 @@ public class Commentator : MonoBehaviour
 			if( currentQueue != null && clipIndex < currentQueue.clipQueue.Count-1 )
 			{
 				AudioClip clip = currentQueue.clipQueue[ clipIndex ];
-
+				
 				if( clip )
 				{
 					audio.clip = clip;
 					audio.Play();
-
+					
 					timeSinceLastComment = Time.unscaledTime;
 				}
-
+				
 				clipIndex++;
 			}
 		}

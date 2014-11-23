@@ -7,6 +7,9 @@ public class GoRagdoll : MonoBehaviour {
 	public List<GameObject> ragdollParts;
 	public GameObject player;
 
+	public GameObject helmet;
+	public string thisIsA;
+
 	public Animator animator;
 
 	void Start()
@@ -26,6 +29,9 @@ public class GoRagdoll : MonoBehaviour {
 		{
 			player.GetComponent<PlayerController>().canMove = false;
 		}
+
+		if(thisIsA == "enemy" && helmet)
+			helmet.GetComponentInChildren<DropHelmet>().Drop();
 		
 		foreach(GameObject go in ragdollParts)
 		{

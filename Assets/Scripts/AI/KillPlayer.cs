@@ -20,7 +20,8 @@ public class KillPlayer : MonoBehaviour {
 		if(other.tag == "Player")
 		{
 			//ragdoll this enemy
-			helmet.GetComponentInChildren<DropHelmet>().Drop();
+			if(helmet)
+				helmet.GetComponentInChildren<DropHelmet>().Drop();
 			thisGO.GetComponent<AIAttack>().KillThePlayer();
 			//DisableColliders();
 		}

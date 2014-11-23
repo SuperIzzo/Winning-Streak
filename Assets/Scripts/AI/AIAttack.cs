@@ -332,7 +332,7 @@ public class AIAttack : MonoBehaviour {
 
 		ScoreManager.StopTimer();
 
-		while (timer < 20)
+		while (timer < 10)
 		{
 			timer += Time.deltaTime;
 

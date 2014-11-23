@@ -439,6 +439,7 @@ GameObject:
   - 114: {fileID: 11400020}
   - 114: {fileID: 11400018}
   - 114: {fileID: 11400022}
+  - 114: {fileID: 11400026}
   m_Layer: 0
   m_Name: default
   m_TagString: Untagged
@@ -1139,6 +1140,8 @@ MonoBehaviour:
   - {fileID: 100004}
   - {fileID: 100000}
   player: {fileID: 0}
+  helmet: {fileID: 100050}
+  thisIsA: enemy
   animator: {fileID: 9500000}
 --- !u!114 &11400010
 MonoBehaviour:
@@ -1240,6 +1243,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thisGO: {fileID: 100000}
   helmet: {fileID: 100050}
+--- !u!114 &11400026
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dac2cac012dc954aa6f031678a2cf2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 6
+  hatSlotPos: {x: 0, y: 0, z: 0}
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1

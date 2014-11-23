@@ -54,6 +54,14 @@ public class AssignSlot : MonoBehaviour {
 
 		this.rigidbody.isKinematic = true;
 
+		if(GetComponent<BoxCollider>())
+			this.GetComponent<BoxCollider>().enabled = false;
+		
+		if(GetComponent<MeshCollider>())
+			this.GetComponent<MeshCollider>().enabled = false;
+		
+		if(GetComponent<CapsuleCollider>())
+			this.GetComponent<CapsuleCollider>().enabled = false;
 
 		this.transform.position = slot.transform.position;
 		this.transform.rotation = slot.transform.rotation;

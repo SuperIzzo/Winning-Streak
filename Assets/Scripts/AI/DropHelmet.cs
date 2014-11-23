@@ -17,13 +17,21 @@ public class DropHelmet : MonoBehaviour {
 
 	public void Drop()
 	{
-		Destroy (gameObject);
-		return;
-		Debug.Log ("dropped");
-		this.rigidbody.isKinematic = false;
-		this.transform.parent = null;
-		player.GetComponent<ItemControl>().weaponList.Add(gameObject);
-		Destroy (this.GetComponent<DropHelmet>());
-
+//		if(Random.value < 0.1f)
+//		{
+//			Debug.Log ("dropped");
+//			this.rigidbody.isKinematic = false;
+//			this.transform.parent = null;
+//			player.GetComponent<ItemControl>().weaponList.Add(gameObject);
+//			//Destroy (this.GetComponent<DropHelmet>());
+//		}
+//		else 
+//		{
+			player.GetComponent<ItemControl>().weaponList.Add(gameObject);
+			this.rigidbody.isKinematic = false;
+			this.transform.parent = null;
+			//Destroy (gameObject);
+			return;
+//		}
 	}
 }
