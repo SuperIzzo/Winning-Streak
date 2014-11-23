@@ -23,6 +23,7 @@ public class AIAttack : MonoBehaviour {
 	bool doChase  = false;
 	bool isAttacking = false;
 	bool playerDead = false;
+	bool hitPlayer = false;
 
 	//following variables
 	float angle;
@@ -202,34 +203,19 @@ public class AIAttack : MonoBehaviour {
 		animator.SetBool ( "tackle", true );
 		StartCoroutine("DiveForward");
 		isAttacking = true;
-
-		if(!endGame) //change to collision hit
-		{
-//			//for now just calculate a chance
-//			if() 
-//			{
-//				soundManager.GetComponent<AudioMan>().PlayEffect("TACKLE1",1);
-//				soundManager.GetComponent<AudioMan>().PlayTackled();
-//				player.GetComponentInChildren<GoRagdoll>().KillPlayer();
-//				StartCoroutine("RestartLevel");
-//			}
-//			else
-//			{
-//				//soundManager.GetComponent<DialogueManager>().PlaySpeech("PLAYER_DODGE");
-//				ScoreManager.AddScore(25);
-//				soundManager.GetComponent<AudioMan>().PlayTackleDodge();
-//				soundManager.GetComponent<AudioMan>().BuildHype(0.01f,10,0.1f);
-//			}
-		}
 	}
 
 	public void KillThePlayer()
 	{
-		soundManager.GetComponent<AudioMan>().PlayEffect("TACKLE1",1);
-		soundManager.GetComponent<AudioMan>().PlayTackled();
-		player.GetComponentInChildren<GoRagdoll>().KillPlayer();
-		StartCoroutine("RestartLevel");
-
+		if(!endGame)
+		{
+			endGame = true;
+			hitPlayer = true;
+			soundManager.GetComponent<AudioMan>().PlayEffect("TACKLE1",1);
+			soundManager.GetComponent<AudioMan>().PlayTackled();
+			player.GetComponentInChildren<GoRagdoll>().KillPlayer();
+			StartCoroutine("RestartLevel");
+		}
 	}
 
 	public void ManualRestart()
@@ -247,6 +233,36 @@ public class AIAttack : MonoBehaviour {
 		{
 			this.transform.position += vel * Time.deltaTime * 6;
 			timer += Time.deltaTime;
+			yield return null;
+		}
+
+		MissedTackle();
+	}
+
+	public void MissedTackle()
+	{
+		//soundManager.GetComponent<DialogueManager>().PlaySpeech("PLAYER_DODGE");
+		if(!hitPlayer)
+		{
+			ScoreManager.AddScore(25);
+			soundManager.GetComponent<AudioMan>().PlayTackleDodge();
+			soundManager.GetComponent<AudioMan>().BuildHype(0.01f,10,0.1f);
+		}
+	}
+
+	public void ForceChase()
+	{
+		StartCoroutine("ForcePlayerChase");
+	}
+
+	IEnumerator ForcePlayerChase()
+	{
+		float timer = 0;
+
+		while(timer < 10)
+		{
+			doChase = true;
+
 			yield return null;
 		}
 	}

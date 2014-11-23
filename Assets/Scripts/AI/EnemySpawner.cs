@@ -3,14 +3,19 @@ using System.Collections;
 
 public class EnemySpawner : MonoBehaviour {
 	//ball spawner too
+	public GameObject spawnPlace;
 
 	public GameObject player;
 	public GameObject ball;
 	public GameObject enemyPrefab;
-	public int spawnAmount = 0;
-
 	public GameObject min, max;
 
+	public int spawnAmount = 0;
+
+	public float addNewPlayerTime = 5;
+	public int addAmount = 1;
+	float addPlayerTimer = 0;
+	
 	// Use this for initialization
 	void Start () 
 	{
@@ -38,7 +43,23 @@ public class EnemySpawner : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	
+	void Update () 
+	{
+		addPlayerTimer += Time.deltaTime;
+
+		if(addPlayerTimer > addNewPlayerTime)
+		{
+			Debug.Log("Enemy spawned");
+			GameObject go = (GameObject)Instantiate(enemyPrefab,spawnPlace.transform.position, Quaternion.identity);
+			go.GetComponent<AIAttack>().player = player;
+			go.GetComponent<AIAttack>().ForceChase();
+
+			addPlayerTimer = 0;
+		}
 	}
 }
+
+
+
+
+

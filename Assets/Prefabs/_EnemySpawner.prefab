@@ -95,12 +95,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2daf06b6112fc241b39af30ef4eb44d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 100000, guid: 27ea92ec5628075439c7d872de48df5e, type: 2}
+  spawnPlace: {fileID: 0}
+  player: {fileID: 0}
   ball: {fileID: 100000, guid: 49a87785aadb97042b7c0f23a6da6533, type: 2}
   enemyPrefab: {fileID: 100000, guid: 27ea92ec5628075439c7d872de48df5e, type: 2}
-  spawnAmount: 22
   min: {fileID: 100004}
   max: {fileID: 100002}
+  spawnAmount: 22
+  addNewPlayerTime: 5
+  addAmount: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
