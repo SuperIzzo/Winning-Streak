@@ -19,7 +19,8 @@ public class GoRagdoll : MonoBehaviour {
 
 	public void KillPlayer()
 	{
-		animator.enabled = false;
+		if( animator )
+			animator.enabled = false;
 
 		if( player )
 		{

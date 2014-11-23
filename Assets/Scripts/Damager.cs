@@ -4,6 +4,7 @@ using System.Collections;
 public class Damager : MonoBehaviour
 {
 	public Damageable ignore;
+	public bool isAwarding = true;
 
 
 	void Update()
