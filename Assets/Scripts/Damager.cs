@@ -5,23 +5,34 @@ public class Damager : MonoBehaviour
 {
 	public Damageable ignore;
 
+
+	void Update()
+	{
+	}
+
 	void OnTriggerEnter( Collider collider )
 	{
-		Damageable damageable = collider.GetComponent<Damageable>();
-
-		if( damageable && !damageable.Equals( ignore ) )
+		if( enabled )
 		{
-			damageable.Damage( this );
+			Damageable damageable = collider.GetComponent<Damageable>();
+
+			if( damageable && !damageable.Equals( ignore ) )
+			{
+				damageable.Damage( this );
+			}
 		}
 	}
 
 	void OnCollisionEnter( Collision collider )
 	{
-		Damageable damageable = collider.collider.GetComponent<Damageable>();
-		
-		if( damageable && !damageable.Equals( ignore ) )
+		if( enabled )
 		{
-			damageable.Damage( this );
+			Damageable damageable = collider.collider.GetComponent<Damageable>();
+			
+			if( damageable && !damageable.Equals( ignore ) )
+			{
+				damageable.Damage( this );
+			}
 		}
 	}
 }
