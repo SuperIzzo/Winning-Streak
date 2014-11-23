@@ -4,6 +4,7 @@ using System.Collections;
 public class KillPlayer : MonoBehaviour {
 
 	public GameObject thisGO;
+	public GameObject helmet;
 
 	// Use this for initialization
 	void Start () {
@@ -18,8 +19,10 @@ public class KillPlayer : MonoBehaviour {
 	{
 		if(other.tag == "Player")
 		{
+			//ragdoll this enemy
+			helmet.GetComponentInChildren<DropHelmet>().Drop();
 			thisGO.GetComponent<AIAttack>().KillThePlayer();
-			DisableColliders();
+			//DisableColliders();
 		}
 	}
 

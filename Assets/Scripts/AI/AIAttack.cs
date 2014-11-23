@@ -256,7 +256,7 @@ public class AIAttack : MonoBehaviour {
 	public void MissedTackle()
 	{
 		//soundManager.GetComponent<DialogueManager>().PlaySpeech("PLAYER_DODGE");
-		if(!hitPlayer)
+		if(!hitPlayer && !endGame)
 		{
 			// Points
 			ScoreManager.AddScore(25);
@@ -332,7 +332,7 @@ public class AIAttack : MonoBehaviour {
 
 		ScoreManager.StopTimer();
 
-		while (timer < 10)
+		while (timer < 20)
 		{
 			timer += Time.deltaTime;
 
