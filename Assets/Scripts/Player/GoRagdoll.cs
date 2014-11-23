@@ -11,7 +11,7 @@ public class GoRagdoll : MonoBehaviour {
 
 	void Start()
 	{
-		if( !animator )
+		if(this.GetComponent<Animator>())
 		{
 			animator = this.GetComponent<Animator>();  
 		}
