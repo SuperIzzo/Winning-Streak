@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour {
 
 	public float dashInterval = 1;
 	float dashTimer = 0;
+	float danceTimer = 0;
+	bool announcedDancing = false;
 
 	void Start () 
 	{
@@ -58,18 +60,32 @@ public class PlayerController : MonoBehaviour {
 
 	void ProcessInput()
 	{
-		bool wiggling = Input.GetButton( "Wiggle" );
-		animator.SetBool( "wiggle", wiggling );
+		dancing = Input.GetButton( "Wiggle" );
+		animator.SetBool( "wiggle", dancing );
 
-		if( wiggling )
+		if( dancing )
 		{
-			// DO the WIGGLE
-			//   Game logic to add points etc
-			dancing = true;
-			// process no more input
-			return;
+			danceTimer += Time.deltaTime;
+
+			if( danceTimer > 1.0f && !announcedDancing )
+			{
+				announcedDancing = true;
+				// DO the WIGGLE
+				//   Game logic to add points etc
+				Commentator commentator = Commentator.GetInstance();
+
+				if( commentator )
+				{
+					commentator.Comment( CommentatorEvent.WIGGLE );
+				}
+				//comme
+			}
 		}
-		else dancing = false;
+		else
+		{
+			announcedDancing = false;
+			danceTimer = 0;
+		}
 
 		
 		float x = Input.GetAxis( "Horizontal" );	

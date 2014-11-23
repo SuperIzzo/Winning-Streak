@@ -14,6 +14,16 @@ public enum CommentatorEvent
 	HIT_PLAYER,
 	WIGGLE,
 	TOUCH_DOWN,
+	PTS_1,
+	PTS_2,
+	PTS_3,
+	PTS_4,
+	PTS_5,
+	PTS_6,
+	PTS_7,
+	PTS_8,
+	PTS_9,
+	PTS_10
 }
 
 
