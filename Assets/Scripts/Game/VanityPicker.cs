@@ -25,7 +25,11 @@ public class VanityPicker : MonoBehaviour {
 			{
 				if(hit.collider.tag == "hat")
 				{
-					soundManager.GetComponent<AudioMan>().PlayChangeHat();
+					if(hit.collider.name == "jseHat")
+						soundManager.GetComponent<AudioMan>().PlayJSEHat();
+					else
+						soundManager.GetComponent<AudioMan>().PlayChangeHat();
+
 					this.GetComponent<ItemControl>().AddHat(hit.collider.gameObject);
 				}
 				

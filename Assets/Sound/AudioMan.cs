@@ -24,6 +24,7 @@ public class AudioMan : MonoBehaviour
 	public List<AudioClip> randomSpeechSounds;
 
 	public List<AudioClip> changeHatSounds;
+	public AudioClip jseHat;
 	int lastHatSound;
 
 	public List<AudioClip> commentatorSpeechSounds;
@@ -178,6 +179,16 @@ public class AudioMan : MonoBehaviour
 		lastHatSound = random;
 
 		AudioClip clip = changeHatSounds[ random ];
+		
+		CreateSound( clip, pan, vol );
+	}
+
+	public void PlayJSEHat()
+	{
+		float pan = 0.3f - Random.value * 0.6f;
+		float vol = 1; 
+		
+		AudioClip clip = jseHat;
 		
 		CreateSound( clip, pan, vol );
 	}

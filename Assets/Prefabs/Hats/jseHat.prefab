@@ -10,12 +10,13 @@ GameObject:
   - 4: {fileID: 400000}
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
+  - 95: {fileID: 9500000}
+  - 114: {fileID: 11400002}
+  - 114: {fileID: 11400000}
   - 54: {fileID: 5400000}
   - 65: {fileID: 6500000}
-  - 114: {fileID: 11400000}
-  - 114: {fileID: 11400002}
   m_Layer: 0
-  m_Name: hat 4
+  m_Name: jseHat
   m_TagString: hat
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,9 +28,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_LocalRotation: {x: 0, y: .999551356, z: 0, w: -.0299536809}
-  m_LocalPosition: {x: 1.18693709, y: -1.81022155, z: -9.11320591}
-  m_LocalScale: {x: .690452576, y: .690452576, z: .690452576}
+  m_LocalRotation: {x: -.67171967, y: .326758355, z: .454650611, w: .485092282}
+  m_LocalPosition: {x: 1.26842391, y: -1.7731874, z: -9.68693733}
+  m_LocalScale: {x: 59.8940697, y: 59.8941078, z: 59.8941193}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -45,7 +46,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: e91dc3ca3b42db44a8f392207a0251fc, type: 2}
+  - {fileID: 2100000, guid: 07f4d54b322d33441abc5463b778e2f1, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -59,7 +60,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_Mesh: {fileID: 4300000, guid: 01467a8bc3303cb46906183a67ed2795, type: 3}
+  m_Mesh: {fileID: 4300000, guid: c4f93d12e15889f4b8ca297751be228d, type: 3}
 --- !u!54 &5400000
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -67,11 +68,11 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   serializedVersion: 2
-  m_Mass: 2
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: .0500000007
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -85,8 +86,23 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: .193577662, y: .211083829, z: .142240897}
-  m_Center: {x: -.0348239057, y: .140403837, z: .0738007799}
+  m_Size: {x: .00165883533, y: .00232470827, z: .001574483}
+  m_Center: {x: 2.42842361e-07, y: .000279649394, z: .000319312821}
+--- !u!95 &9500000
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: c4f93d12e15889f4b8ca297751be228d, type: 3}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -111,8 +127,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 1
-  hatSlotPos: {x: -.0232585501, y: -.00456185592, z: -.0168082509}
-  hatSlotRot: {x: 0, y: 0, z: 0}
+  hatSlotPos: {x: -.001156518, y: .0252807606, z: -.0356370211}
+  hatSlotRot: {x: -71.588707, y: 200, z: 179.616302}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

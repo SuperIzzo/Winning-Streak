@@ -24,7 +24,7 @@ public class MousePicker : MonoBehaviour {
 					Application.LoadLevel("main-2");
 
 				if(hit.collider.name == "exit")
-					Application.Quit();
+					Application.LoadLevel("credits");
 
 			}
 		}
