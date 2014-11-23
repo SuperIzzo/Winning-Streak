@@ -30,6 +30,8 @@ public class AIAttack : MonoBehaviour {
 	Vector3 velocity;
 
 	public static bool endGame = false;
+	public static bool instance = false;
+	public static bool instanceDisable = false;
 	float countDownTimer = 11;
 
 	//running speed for running after the player
@@ -69,10 +71,15 @@ public class AIAttack : MonoBehaviour {
 
 		soundManager = GameObject.FindGameObjectWithTag("SoundManager");
 
-		continueText.GetComponent<GUIText>().enabled = false;
-		thisScoreText.GetComponent<GUIText>().enabled = false;
-		highScoreText.GetComponent<GUIText>().enabled = false;
-		continueBlur.GetComponent<MeshRenderer>().enabled = false;
+		if(!instanceDisable)
+		{
+			continueText.GetComponent<GUIText>().enabled = false;
+			thisScoreText.GetComponent<GUIText>().enabled = false;
+			highScoreText.GetComponent<GUIText>().enabled = false;
+			continueBlur.GetComponent<MeshRenderer>().enabled = false;
+
+			instanceDisable = true;
+		}
 
 		Vector3 newPos = this.transform.position;
 		newPos.y = 0.6499841f;
@@ -269,6 +276,9 @@ public class AIAttack : MonoBehaviour {
 
 	public IEnumerator RestartLevel()
 	{
+		if(!instance)
+			instance = true;
+
 		float timer = 0;
 		bool retry = false;
 		bool inEndScreen = true;
@@ -337,6 +347,8 @@ public class AIAttack : MonoBehaviour {
 		}
 
 		continueText.GetComponent<GUIText>().text = "Continue?\n" +  0;
+		instance = false;
+		instanceDisable = false;
 		//cam.camera.fieldOfView = originalFOV;
 
 		ScoreManager.StartTimer();
