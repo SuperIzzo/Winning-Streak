@@ -20,7 +20,7 @@ public class GoalScore : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
 	{
-		if(other.name == "GameBall")
+		if(other.tag == "weapon")
 		{
 			ScoreManager.AddScore(100);
 
