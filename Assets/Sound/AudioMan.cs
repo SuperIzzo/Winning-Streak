@@ -42,7 +42,7 @@ public class AudioMan : MonoBehaviour
 	void Start () 
 	{
 		audio.clip = ambience;
-		//audio.loop = true;
+		audio.loop = true;
 		audio.Play();
 
 		lastHatSound = Random.Range(0, changeHatSounds.Count);
