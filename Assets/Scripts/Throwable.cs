@@ -27,7 +27,7 @@ public class Throwable : MonoBehaviour
 	}
 
 
-	void Throw()
+	public void Throw()
 	{
 		damager.enabled = true;
 	}
