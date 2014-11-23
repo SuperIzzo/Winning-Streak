@@ -51,6 +51,8 @@ public class AIAttack : MonoBehaviour {
 	float offsetTimer = 0;
 
 
+	public Animator animator;
+
 	// Use this for initialization
 	void Start () {
 		attackTime = attackTimer;
@@ -67,16 +69,17 @@ public class AIAttack : MonoBehaviour {
 		thisScoreText.GetComponent<GUIText>().enabled = false;
 		highScoreText.GetComponent<GUIText>().enabled = false;
 		continueBlur.GetComponent<MeshRenderer>().enabled = false;
-
-
-		Vector3 newPos = this.transform.position;
-		newPos.y = 0.6557948f;
-		this.transform.position = newPos;
 	}
-
 
 	void Update () 
 	{
+		// HACK: If we're attacking, don't do ANYTHING
+		if( isAttacking )
+		{
+			return;
+		}
+
+
 		if(playerDead)
 		{
 			this.rigidbody.Sleep();
@@ -163,7 +166,7 @@ public class AIAttack : MonoBehaviour {
 			AttackPlayer ();
 
 			doChase = false;
-			isAttacking = false;
+			isAttacking = true;
 
 			attackTime = attackTimer + recoveryTime;
 		}
@@ -189,6 +192,9 @@ public class AIAttack : MonoBehaviour {
 	void AttackPlayer()
 	{
 		//dive animation here
+		animator.SetBool ( "tackle", true );
+		isAttacking = true;
+
 		if(!endGame) //change to collision hit
 		{
 			//for now just calculate a chance
