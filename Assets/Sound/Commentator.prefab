@@ -447,6 +447,67 @@ MonoBehaviour:
     clipQueue:
     - {fileID: 8300000, guid: 391785186f12d924d9bc3e403e792975, type: 3}
     - {fileID: 0}
+  - name: Pick-up Ball E1
+    commentEvent: 2
+    clipQueue:
+    - {fileID: 8300000, guid: 2b7d1eeed7e5b3f4cb42547c9b8875df, type: 3}
+  - name: Pick-up Ball E2
+    commentEvent: 2
+    clipQueue:
+    - {fileID: 8300000, guid: 61c5875846124a048bb1d32d15c4aa99, type: 3}
+  - name: Pick-up Ball E3
+    commentEvent: 2
+    clipQueue:
+    - {fileID: 8300000, guid: 6b90d4cad9ff5dc4fa729b89288ea9fd, type: 3}
+  - name: Pick-up Ball E4
+    commentEvent: 2
+    clipQueue:
+    - {fileID: 8300000, guid: a28acbde7e10ad94194922b70c28f709, type: 3}
+  - name: Random E1
+    commentEvent: 1
+    clipQueue:
+    - {fileID: 8300000, guid: f1f1414b06af5284f9a9d9b7d16b2a89, type: 3}
+  - name: Random E2
+    commentEvent: 1
+    clipQueue:
+    - {fileID: 8300000, guid: d4b6e817f7bf5944f83e28a5dfced98f, type: 3}
+  - name: Random E3
+    commentEvent: 1
+    clipQueue:
+    - {fileID: 8300000, guid: 6b90d4cad9ff5dc4fa729b89288ea9fd, type: 3}
+    - {fileID: 0}
+    - {fileID: 8300000, guid: a6b40dcc4a748e44784b684e7e7c288f, type: 3}
+  - name: Random E4
+    commentEvent: 1
+    clipQueue:
+    - {fileID: 8300000, guid: 489ae0f006b9d1849aae45098d691c65, type: 3}
+  - name: Random E5
+    commentEvent: 1
+    clipQueue:
+    - {fileID: 8300000, guid: c2de21ea2ba05aa428536707cf9b29d7, type: 3}
+  - name: Scored Goal 1
+    commentEvent: 19
+    clipQueue:
+    - {fileID: 8300000, guid: 8eb7f524483c4bf4e9831a266dcc1c61, type: 3}
+  - name: Scored Goal 2
+    commentEvent: 19
+    clipQueue:
+    - {fileID: 8300000, guid: cc810005ac2fe8a4f8d9af5f5734f485, type: 3}
+  - name: Scored Goal 3
+    commentEvent: 19
+    clipQueue:
+    - {fileID: 8300000, guid: c9d459a638ac3d341a1a94957b09fb40, type: 3}
+  - name: Scored Goal 4
+    commentEvent: 19
+    clipQueue:
+    - {fileID: 8300000, guid: 150d4fd924e52e4408b686bfe6de842e, type: 3}
+  - name: Scored Goal 5
+    commentEvent: 19
+    clipQueue:
+    - {fileID: 8300000, guid: 60e47c6bd089c4e4a9dd43862004d5f9, type: 3}
+  - name: 
+    commentEvent: 0
+    clipQueue: []
   - name: 
     commentEvent: 0
     clipQueue: []
@@ -464,7 +525,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minSilence: 10
   maxSilence: 20
-  silenceTime: 0
+  silenceTime: 15
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
