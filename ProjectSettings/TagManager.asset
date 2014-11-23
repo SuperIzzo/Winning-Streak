@@ -3,7 +3,7 @@
 --- !u!78 &1
 TagManager:
   tags:
-  - weapon
+  - ball
   - hat
   - scarf
   - continueText
@@ -15,6 +15,8 @@ TagManager:
   - soundCollision
   - SoundManager
   - field
+  - 
+  - weapon
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
