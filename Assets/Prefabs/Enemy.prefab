@@ -363,6 +363,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400046}
   - 95: {fileID: 9500000}
+  - 114: {fileID: 11400008}
   m_Layer: 0
   m_Name: Rugby Player-Low Poly
   m_TagString: Untagged
@@ -377,7 +378,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.09367764, y: .655794799, z: -5.0375042}
+  m_LocalPosition: {x: .229820386, y: .98835206, z: 3.86936903}
   m_LocalScale: {x: .216673017, y: .684502602, z: .222462431}
   m_Children:
   - {fileID: 400046}
@@ -744,6 +745,7 @@ MonoBehaviour:
   chaseChance: 70
   recoveryTime: 2
   giveUpChance: 25
+  animator: {fileID: 9500000}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -779,6 +781,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 9500000}
   goofiness: 0
+--- !u!114 &11400008
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0e106e9315bef842816c294c0ab1d73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ragdollParts:
+  - {fileID: 100038}
+  - {fileID: 100036}
+  - {fileID: 100034}
+  - {fileID: 100032}
+  - {fileID: 100030}
+  - {fileID: 100024}
+  - {fileID: 100022}
+  - {fileID: 100020}
+  - {fileID: 100018}
+  - {fileID: 100016}
+  - {fileID: 100014}
+  - {fileID: 100012}
+  - {fileID: 100010}
+  - {fileID: 100008}
+  - {fileID: 100006}
+  - {fileID: 100004}
+  - {fileID: 100002}
+  - {fileID: 100028}
+  - {fileID: 100026}
+  player: {fileID: 0}
 --- !u!136 &13600000
 CapsuleCollider:
   m_ObjectHideFlags: 1
