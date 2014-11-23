@@ -22,7 +22,9 @@ public class GoRagdoll : MonoBehaviour {
 		animator.enabled = false;
 
 		if( player )
+		{
 			player.GetComponent<PlayerController>().canMove = false;
+		}
 		
 		foreach(GameObject go in ragdollParts)
 		{

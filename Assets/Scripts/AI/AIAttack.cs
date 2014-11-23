@@ -208,6 +208,7 @@ public class AIAttack : MonoBehaviour {
 			if(Random.value < 0.6f) 
 			{
 				soundManager.GetComponent<AudioMan>().PlayEffect("TACKLE1",1);
+				soundManager.GetComponent<AudioMan>().PlayTackled();
 				player.GetComponentInChildren<GoRagdoll>().KillPlayer();
 				StartCoroutine("RestartLevel");
 			}
