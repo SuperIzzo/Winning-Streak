@@ -25,6 +25,8 @@ public class AudioMan : MonoBehaviour
 	public List<AudioClip> changeHatSounds;
 	int lastHatSound;
 
+	public List<AudioClip> commentatorSpeechSounds;
+
 	public float hype;
 	public float hypeDecay = 0.01f;
 	public float minHype = 0.2f;
@@ -135,6 +137,26 @@ public class AudioMan : MonoBehaviour
 				AudioClip clip = effectSounds[i];
 				CreateSound( clip, pan, vol );
 
+				return;
+			}
+		}
+	}
+
+	public void PlaySpeech(string effect)
+	{
+		
+		float pan = 0.3f - Random.value * 0.6f;
+		float vol = 1; 
+		
+		int random = 0;
+		
+		for(int i = 0; i < commentatorSpeechSounds.Count; i++)
+		{
+			if(commentatorSpeechSounds[i].name == effect)
+			{
+				AudioClip clip = commentatorSpeechSounds[i];
+				CreateSound( clip, pan, vol );
+				
 				return;
 			}
 		}

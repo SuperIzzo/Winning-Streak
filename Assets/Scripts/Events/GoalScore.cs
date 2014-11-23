@@ -29,6 +29,7 @@ public class GoalScore : MonoBehaviour {
 
 			Debug.Log("GOAL");
 			soundManager.GetComponent<AudioMan>().PlayCelebrate();
+			//soundManager.GetComponent<AudioMan>().PlaySpeech("PLAYER_GOAL");
 		}
 	}
 }
