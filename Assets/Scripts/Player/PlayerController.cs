@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour {
 	public bool physicsMovement = false;
 	public float goofiness = 1.0f;
 
+	bool slowmo = false;
+
 	public bool dancing = false;
 
 	public Animator animator;
@@ -37,6 +39,13 @@ public class PlayerController : MonoBehaviour {
 
 	void Update () 
 	{
+		if(Input.GetButtonDown ("slowmo"))
+		{
+			slowmo = !slowmo;
+		}
+		
+		if(slowmo) Time.timeScale = 0.2f; else Time.timeScale = 1;
+
 		if(!canMove)
 			return;
 
@@ -51,7 +60,6 @@ public class PlayerController : MonoBehaviour {
 	{
 		bool wiggling = Input.GetButton( "Wiggle" );
 		animator.SetBool( "wiggle", wiggling );
-
 
 		if( wiggling )
 		{

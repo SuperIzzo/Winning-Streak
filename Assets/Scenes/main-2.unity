@@ -1887,6 +1887,7 @@ MonoBehaviour:
   - {fileID: 1726224095}
   - {fileID: 1662795176}
   player: {fileID: 1662795176}
+  animator: {fileID: 0}
 --- !u!1001 &467643290
 Prefab:
   m_ObjectHideFlags: 0
@@ -3362,6 +3363,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a0ec58d5bfe0d394d897b5e7350c61d0, type: 3}
   - {fileID: 8300000, guid: ad32b77713a578c408a51088153a4193, type: 3}
   - {fileID: 8300000, guid: ef07e27b9f35a1447b7505c393e236bc, type: 3}
+  commentatorSpeechSounds: []
   hype: 0
   hypeDecay: 9.99999975e-05
   minHype: .200000003

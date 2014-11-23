@@ -55,6 +55,7 @@ public class AIAttack : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		Time.timeScale = 1;
 		attackTime = attackTimer;
 
 		player = GameObject.FindGameObjectWithTag("Player");
@@ -213,6 +214,7 @@ public class AIAttack : MonoBehaviour {
 			else
 			{
 				//soundManager.GetComponent<DialogueManager>().PlaySpeech("PLAYER_DODGE");
+				ScoreManager.AddScore(25);
 				soundManager.GetComponent<AudioMan>().PlayTackleDodge();
 				soundManager.GetComponent<AudioMan>().BuildHype(0.01f,10,0.1f);
 			}

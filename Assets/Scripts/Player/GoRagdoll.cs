@@ -26,6 +26,7 @@ public class GoRagdoll : MonoBehaviour {
 		
 		foreach(GameObject go in ragdollParts)
 		{
+			if(go.GetComponent<Rigidbody>())
 			go.GetComponent<Rigidbody>().isKinematic = false;
 		}
 	}
