@@ -964,7 +964,7 @@ MonoBehaviour:
   chaseRadius: 15
   attackRadius: 1.20000005
   attackTimer: 1
-  speed: 4.75
+  speed: 4.80000019
   chaseChance: 70
   recoveryTime: 2
   giveUpChance: 25

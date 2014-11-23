@@ -3595,7 +3595,18 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 3c5bdf88884cfef4bb44bb4bf8aadc90, type: 3}
   - {fileID: 8300000, guid: 7ba83979ada7ded419ac1a94a1c36e06, type: 3}
   - {fileID: 8300000, guid: cfdfdb8c97cc750438442accd43a806d, type: 3}
-  randomSpeechSounds: []
+  randomSpeechSounds:
+  - {fileID: 8300000, guid: 364b3f40c7c470d41bd2b7b6b1a8104c, type: 3}
+  - {fileID: 8300000, guid: 2a8d3694bcd59dc428dc7485d1bd0464, type: 3}
+  - {fileID: 8300000, guid: f5b0f96677a0d054e96016205e2aca07, type: 3}
+  - {fileID: 8300000, guid: 9e4f7fc72bf18ca4b81c2ba5eb4a6efe, type: 3}
+  - {fileID: 8300000, guid: 0257de2a9dcf73147a3da4c11381d52c, type: 3}
+  - {fileID: 8300000, guid: 3e622eda6a7fe21449dcbea2c8115627, type: 3}
+  - {fileID: 8300000, guid: a1ea6cbcca26b7b448f69e6f3e524968, type: 3}
+  - {fileID: 8300000, guid: a52c6c2dd7499e2419298aa94ae76c8d, type: 3}
+  - {fileID: 8300000, guid: 886ff96f161777641b248f4852ad1595, type: 3}
+  - {fileID: 8300000, guid: d6f44a8fdd74ecc45b887cba7eac605e, type: 3}
+  - {fileID: 8300000, guid: 3f3d59bf08cb986479b6d051e0c1f893, type: 3}
   changeHatSounds:
   - {fileID: 8300000, guid: 07a315818f9d95146ac86a80506f3682, type: 3}
   - {fileID: 8300000, guid: 19688e6445f267e42a45c6e1d021cbfd, type: 3}
@@ -8889,6 +8900,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11400006, guid: 24a8f5f493499fd4896414099f52b748, type: 2}
+      propertyPath: randomSpeechSounds.Array.size
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 24a8f5f493499fd4896414099f52b748, type: 2}
       propertyPath: m_LocalPosition.x
       value: .0635979176
@@ -8921,6 +8936,50 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 11400006, guid: 24a8f5f493499fd4896414099f52b748, type: 2}
+      propertyPath: randomSpeechSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 364b3f40c7c470d41bd2b7b6b1a8104c, type: 3}
+    - target: {fileID: 11400006, guid: 24a8f5f493499fd4896414099f52b748, type: 2}
+      propertyPath: randomSpeechSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 2a8d3694bcd59dc428dc7485d1bd0464, type: 3}
+    - target: {fileID: 11400006, guid: 24a8f5f493499fd4896414099f52b748, type: 2}
+      propertyPath: randomSpeechSounds.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: f5b0f96677a0d054e96016205e2aca07, type: 3}
+    - target: {fileID: 11400006, guid: 24a8f5f493499fd4896414099f52b748, type: 2}
+      propertyPath: randomSpeechSounds.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 9e4f7fc72bf18ca4b81c2ba5eb4a6efe, type: 3}
+    - target: {fileID: 11400006, guid: 24a8f5f493499fd4896414099f52b748, type: 2}
+      propertyPath: randomSpeechSounds.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: 0257de2a9dcf73147a3da4c11381d52c, type: 3}
+    - target: {fileID: 11400006, guid: 24a8f5f493499fd4896414099f52b748, type: 2}
+      propertyPath: randomSpeechSounds.Array.data[5]
+      value: 
+      objectReference: {fileID: 8300000, guid: 3e622eda6a7fe21449dcbea2c8115627, type: 3}
+    - target: {fileID: 11400006, guid: 24a8f5f493499fd4896414099f52b748, type: 2}
+      propertyPath: randomSpeechSounds.Array.data[6]
+      value: 
+      objectReference: {fileID: 8300000, guid: a1ea6cbcca26b7b448f69e6f3e524968, type: 3}
+    - target: {fileID: 11400006, guid: 24a8f5f493499fd4896414099f52b748, type: 2}
+      propertyPath: randomSpeechSounds.Array.data[7]
+      value: 
+      objectReference: {fileID: 8300000, guid: a52c6c2dd7499e2419298aa94ae76c8d, type: 3}
+    - target: {fileID: 11400006, guid: 24a8f5f493499fd4896414099f52b748, type: 2}
+      propertyPath: randomSpeechSounds.Array.data[8]
+      value: 
+      objectReference: {fileID: 8300000, guid: 886ff96f161777641b248f4852ad1595, type: 3}
+    - target: {fileID: 11400006, guid: 24a8f5f493499fd4896414099f52b748, type: 2}
+      propertyPath: randomSpeechSounds.Array.data[9]
+      value: 
+      objectReference: {fileID: 8300000, guid: d6f44a8fdd74ecc45b887cba7eac605e, type: 3}
+    - target: {fileID: 11400006, guid: 24a8f5f493499fd4896414099f52b748, type: 2}
+      propertyPath: randomSpeechSounds.Array.data[10]
+      value: 
+      objectReference: {fileID: 8300000, guid: 3f3d59bf08cb986479b6d051e0c1f893, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 24a8f5f493499fd4896414099f52b748, type: 2}
   m_RootGameObject: {fileID: 782427565}

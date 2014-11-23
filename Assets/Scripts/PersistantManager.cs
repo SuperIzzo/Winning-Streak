@@ -7,6 +7,7 @@ public class PersistantManager : MonoBehaviour {
 	public static PersistantManager PM;
 	void Awake()
 	{
+		//PlayerPrefs.DeleteAll();
 		if(!PM)
 		{
 			PM = this;
