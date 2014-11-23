@@ -200,31 +200,55 @@ public class AIAttack : MonoBehaviour {
 	{
 		//dive animation here
 		animator.SetBool ( "tackle", true );
+		StartCoroutine("DiveForward");
 		isAttacking = true;
 
 		if(!endGame) //change to collision hit
 		{
-			//for now just calculate a chance
-			if(Random.value < 0.6f) 
-			{
-				soundManager.GetComponent<AudioMan>().PlayEffect("TACKLE1",1);
-				soundManager.GetComponent<AudioMan>().PlayTackled();
-				player.GetComponentInChildren<GoRagdoll>().KillPlayer();
-				StartCoroutine("RestartLevel");
-			}
-			else
-			{
-				//soundManager.GetComponent<DialogueManager>().PlaySpeech("PLAYER_DODGE");
-				ScoreManager.AddScore(25);
-				soundManager.GetComponent<AudioMan>().PlayTackleDodge();
-				soundManager.GetComponent<AudioMan>().BuildHype(0.01f,10,0.1f);
-			}
+//			//for now just calculate a chance
+//			if() 
+//			{
+//				soundManager.GetComponent<AudioMan>().PlayEffect("TACKLE1",1);
+//				soundManager.GetComponent<AudioMan>().PlayTackled();
+//				player.GetComponentInChildren<GoRagdoll>().KillPlayer();
+//				StartCoroutine("RestartLevel");
+//			}
+//			else
+//			{
+//				//soundManager.GetComponent<DialogueManager>().PlaySpeech("PLAYER_DODGE");
+//				ScoreManager.AddScore(25);
+//				soundManager.GetComponent<AudioMan>().PlayTackleDodge();
+//				soundManager.GetComponent<AudioMan>().BuildHype(0.01f,10,0.1f);
+//			}
 		}
+	}
+
+	public void KillThePlayer()
+	{
+		soundManager.GetComponent<AudioMan>().PlayEffect("TACKLE1",1);
+		soundManager.GetComponent<AudioMan>().PlayTackled();
+		player.GetComponentInChildren<GoRagdoll>().KillPlayer();
+		StartCoroutine("RestartLevel");
+
 	}
 
 	public void ManualRestart()
 	{
 		StartCoroutine("RestartLevel");
+	}
+
+	IEnumerator DiveForward()
+	{
+
+		Vector3 vel = this.transform.forward;
+		float timer = 0;
+
+		while(timer < 0.3f)
+		{
+			this.transform.position += vel * Time.deltaTime * 6;
+			timer += Time.deltaTime;
+			yield return null;
+		}
 	}
 
 	public IEnumerator RestartLevel()
