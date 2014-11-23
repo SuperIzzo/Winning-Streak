@@ -13,6 +13,7 @@ public class AudioMan : MonoBehaviour
 
 	public List<AudioClip> celebrateSounds;
 	public List<AudioClip> whistleSounds;
+	public List<AudioClip> tackledSounds;
 
 	public List<AudioClip> effectSounds;
 
@@ -208,6 +209,18 @@ public class AudioMan : MonoBehaviour
 		CreateSound( clip, pan, vol );
 
 		dodgeSpeechTimer = 0;
+	}
+
+	public void PlayTackled()
+	{
+		BuildHype(0.02f, 15, 0.01f);
+		
+		float pan = 0.3f - Random.value * 0.6f;
+		float vol = Mathf.Min(1, Random.value * hype + 0.5f); 
+		int random = Random.Range(0, tackledSounds.Count - 1);
+		AudioClip clip = tackledSounds[ random ];
+		
+		CreateSound( clip, pan, vol );
 	}
 
 	public void BuildHype(float incre, float cnt, float inte)
