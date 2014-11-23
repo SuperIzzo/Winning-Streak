@@ -13,7 +13,7 @@ public class ArrowSelectOption : MonoBehaviour {
 
 	void Update () 
 	{
-		if(Controls.inHatPicker)
+		if(Controls.selection != 0)
 			return;
 
 		float x = Input.GetAxis("Horizontal");
