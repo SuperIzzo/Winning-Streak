@@ -20,9 +20,9 @@ public class KillPlayerZone : MonoBehaviour {
 	
 	}
 
-	void OnCollisionEnter()
+	void OnTriggerEnter(Collider other)
 	{
-		if(!end)
+		if(!end && other.tag == "Player")
 		{
 			player.GetComponentInChildren<GoRagdoll>().KillPlayer();
 			restart.GetComponent<AIAttack>().ManualRestart();

@@ -12,6 +12,8 @@ public class GoRagdoll : MonoBehaviour {
 
 	public Animator animator;
 
+	bool sleep = false;
+
 	void Start()
 	{
 		if(this.GetComponent<Animator>())
@@ -20,8 +22,32 @@ public class GoRagdoll : MonoBehaviour {
 		}
 	}
 
+	IEnumerator StartSleep()
+	{
+		float timer = 0;
+
+		while(timer < 3)
+		{
+			timer += Time.deltaTime;
+
+			yield return null;
+
+		}
+
+		foreach(GameObject go in ragdollParts)
+		{
+			if(go.GetComponent<Rigidbody>())
+			{
+				go.GetComponent<Rigidbody>().Sleep();
+				go.GetComponent<Rigidbody>().isKinematic = true;
+			}
+		}
+		
+	}
+
 	public void KillPlayer()
 	{
+		StartCoroutine("StartSleep");
 		if( animator )
 			animator.enabled = false;
 

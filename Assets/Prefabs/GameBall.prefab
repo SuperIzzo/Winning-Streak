@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dac2cac012dc954aa6f031678a2cf2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weight: .850000024
+  weight: 1.5
   hatSlotPos: {x: 0, y: 0, z: 0}
 --- !u!114 &11400004
 MonoBehaviour:
@@ -128,6 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ignore: {fileID: 0}
+  isAwarding: 1
 --- !u!114 &11400008
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -25,6 +25,9 @@ public class AIAttack : MonoBehaviour {
 	bool playerDead = false;
 	bool hitPlayer = false;
 
+	bool dead = false;
+	float deadTimer = 0;
+
 	//following variables
 	float angle;
 	Vector3 velocity;
@@ -93,6 +96,17 @@ public class AIAttack : MonoBehaviour {
 
 	void Update () 
 	{
+//		if(dead)
+//		{
+//			deadTimer += Time.deltaTime;
+//
+//			if(deadTimer > 3)
+//			{
+//				this.rigidbody.Sleep();
+//				//dead = false;
+//			}
+//		}
+
 		// HACK: If we're attacking, don't do ANYTHING
 		if( isAttacking )
 		{
@@ -250,6 +264,9 @@ public class AIAttack : MonoBehaviour {
 			yield return null;
 		}
 
+		dead = true;
+		this.GetComponent<BoxCollider>().enabled = false;
+		this.GetComponent<CapsuleCollider>().enabled = false;
 		MissedTackle();
 	}
 

@@ -104,8 +104,8 @@ public class ItemControl : MonoBehaviour {
 			{
 				equippedWeapon.GetComponent<AssignSlot>().Unequip();
 				
-				equippedWeapon.rigidbody.AddForce(this.transform.forward * throwForce / equippedWeapon.GetComponent<ItemStats>().weight);
-				equippedWeapon.rigidbody.AddForce((this.transform.up * throwForce / equippedWeapon.GetComponent<ItemStats>().weight) * powerupTimer);
+				equippedWeapon.rigidbody.AddForce(this.transform.forward * throwForce * 2 / equippedWeapon.GetComponent<ItemStats>().weight);
+				equippedWeapon.rigidbody.AddForce((this.transform.up * throwForce / equippedWeapon.GetComponent<ItemStats>().weight / 2) * powerupTimer);
 				equippedWeapon.GetComponent<AssignSlot>().SetColliderOff();
 
 				Throwable throwable = equippedWeapon.GetComponent<Throwable>();

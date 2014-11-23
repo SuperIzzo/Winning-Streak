@@ -23,7 +23,7 @@ public class KillPlayer : MonoBehaviour {
 			if(helmet)
 				helmet.GetComponentInChildren<DropHelmet>().Drop();
 			thisGO.GetComponent<AIAttack>().KillThePlayer();
-			//DisableColliders();
+			DisableColliders();
 		}
 	}
 

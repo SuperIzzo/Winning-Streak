@@ -15,6 +15,11 @@ public class EnemySpawner : MonoBehaviour {
 	public float addNewPlayerTime = 5;
 	public int addAmount = 1;
 	float addPlayerTimer = 0;
+
+	public float speedupTimeInterval = 2;
+	public float speedupIncrement = 0.1f;
+	float speedTimer = 0;
+
 	
 	// Use this for initialization
 	void Start () 
@@ -46,15 +51,24 @@ public class EnemySpawner : MonoBehaviour {
 	void Update () 
 	{
 		addPlayerTimer += Time.deltaTime;
+		speedTimer += Time.deltaTime;
 
 		if(addPlayerTimer > addNewPlayerTime)
 		{
-			Debug.Log("Enemy spawned");
 			GameObject go = (GameObject)Instantiate(enemyPrefab,spawnPlace.transform.position, Quaternion.identity);
 			go.GetComponent<AIAttack>().player = player;
 			go.GetComponent<AIAttack>().ForceChase();
 
 			addPlayerTimer = 0;
+		}
+
+		if(speedTimer > speedupTimeInterval)
+		{
+			if(addNewPlayerTime > 0)
+			{
+				addNewPlayerTime -= speedupIncrement;
+			}
+			speedTimer = 0;
 		}
 	}
 }

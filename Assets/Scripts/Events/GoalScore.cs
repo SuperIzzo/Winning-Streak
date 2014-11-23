@@ -4,6 +4,7 @@ using System.Collections;
 public class GoalScore : MonoBehaviour {
 
 	public GameObject soundManager;
+	public GameObject commentator;
 
 	// Use this for initialization
 	void Start () {
@@ -18,10 +19,10 @@ public class GoalScore : MonoBehaviour {
 		
 	}
 
-	void OnTriggerEnter(Collider other)
+	void OnTriggerEnter()
 	{
-		if(other.tag == "weapon")
-		{
+//		if(other.tag == "weapon")
+//		{
 			ScoreManager.AddScore(100);
 
 			//if(soundManager == null)
@@ -29,7 +30,7 @@ public class GoalScore : MonoBehaviour {
 
 			Debug.Log("GOAL");
 			soundManager.GetComponent<AudioMan>().PlayCelebrate();
-			//soundManager.GetComponent<AudioMan>().PlaySpeech("PLAYER_GOAL");
-		}
+			//commentator.GetComponent<Commentator>().Comment( CommentatorEvent. );
+		//
 	}
 }
