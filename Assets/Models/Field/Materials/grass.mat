@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: grass
-  m_Shader: {fileID: 7, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: 78ab2eb87d17a5b4e898e47c7df33c23, type: 3}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
   m_SavedProperties:
@@ -17,7 +17,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: 58ced6ef628ae234cafd178754ebb8cb, type: 3}
+          m_Texture: {fileID: 2800000, guid: 91d96ce18081ca1429f787b178d0dd72, type: 3}
           m_Scale: {x: 180, y: 180}
           m_Offset: {x: 0, y: 0}
       data:
@@ -55,11 +55,86 @@ Material:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Overlay
+        second:
+          m_Texture: {fileID: 2800000, guid: bca4b194b9a5bb14c91f12239e028156, type: 3}
+          m_Scale: {x: 5, y: 5}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Diffuse
+        second:
+          m_Texture: {fileID: 2800000, guid: 4f5c5951c8db6b04eb5743ceec05eefc, type: 3}
+          m_Scale: {x: 50, y: 50}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Normal
+        second:
+          m_Texture: {fileID: 2800000, guid: e5dcda5f628d71b439e2b19622adb6df, type: 3}
+          m_Scale: {x: 50, y: 50}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Cubemap
+        second:
+          m_Texture: {fileID: 8900000, guid: 094733bf8b07ab540bbe256825e6b23b, type: 2}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Diffuse_copy
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _2
+        second:
+          m_Texture: {fileID: 2800000, guid: 975354e450aa9464baba00c70c5d1b5d, type: 3}
+          m_Scale: {x: 40, y: 40}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _node_155
+        second:
+          m_Texture: {fileID: 8900000, guid: f466cf7415226e046b096197eb7341aa, type: 2}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _node_141
+        second:
+          m_Texture: {fileID: 2800000, guid: bca4b194b9a5bb14c91f12239e028156, type: 3}
+          m_Scale: {x: 6, y: 6}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _node_222
+        second:
+          m_Texture: {fileID: 8900000, guid: 094733bf8b07ab540bbe256825e6b23b, type: 2}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
           name: _Shininess
         second: .5
+      data:
+        first:
+          name: _Gloss
+        second: .178571433
+      data:
+        first:
+          name: _Specular
+        second: .267857134
+      data:
+        first:
+          name: _OverlayPower
+        second: .267857164
     m_Colors:
       data:
         first:

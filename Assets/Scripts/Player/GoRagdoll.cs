@@ -11,7 +11,7 @@ public class GoRagdoll : MonoBehaviour {
 
 	void Start()
 	{
-		if( !animator )
+		if(this.GetComponent<Animator>())
 		{
 			animator = this.GetComponent<Animator>();  
 		}
@@ -19,6 +19,7 @@ public class GoRagdoll : MonoBehaviour {
 
 	public void KillPlayer()
 	{
+		if(this.GetComponent<Animator>())
 		animator.enabled = false;
 
 		if( player )
