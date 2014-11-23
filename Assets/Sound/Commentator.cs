@@ -8,7 +8,12 @@ public enum CommentatorEvent
 	NONE = 0,
 	RANDOM,
 	PICKED_BALL,
-	DODGE_TACKLE
+	DODGE_TACKLE,
+	GAME_START,
+	GAME_OVER,
+	HIT_PLAYER,
+	WIGGLE,
+	TOUCH_DOWN,
 }
 
 

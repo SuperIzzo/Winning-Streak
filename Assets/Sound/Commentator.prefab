@@ -25,7 +25,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -25.8876038, y: .312810451, z: -1.76715672}
+  m_LocalPosition: {x: -25.8876038, y: 9.55766487, z: -1.7671566}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -178,6 +178,102 @@ MonoBehaviour:
     clipQueue:
     - {fileID: 0}
     - {fileID: 8300000, guid: 51df8696e756a97448d36f73a4d35b48, type: 3}
+  - name: Wiggle 1
+    commentEvent: 7
+    clipQueue:
+    - {fileID: 8300000, guid: 5c5f5e2050019dc4d9cea0c749de7453, type: 3}
+    - {fileID: 0}
+  - name: Wiggle 2
+    commentEvent: 7
+    clipQueue:
+    - {fileID: 0}
+  - name: Wiggle 3
+    commentEvent: 7
+    clipQueue:
+    - {fileID: 8300000, guid: 343e9633ad438d1478f2b2dbecaa09a4, type: 3}
+  - name: Wiggle 4
+    commentEvent: 7
+    clipQueue:
+    - {fileID: 0}
+  - name: Wiggle 5
+    commentEvent: 7
+    clipQueue:
+    - {fileID: 8300000, guid: 6747ce34c763dd5418827cbb8994a39e, type: 3}
+    - {fileID: 0}
+  - name: Game Starts 1
+    commentEvent: 4
+    clipQueue:
+    - {fileID: 8300000, guid: 4e4a04a749df98d45be4042e727890b5, type: 3}
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 6a4c0dc7bdd5bc743ae439dbb17a50ee, type: 3}
+    - {fileID: 0}
+    - {fileID: 8300000, guid: b558be7ad730f314c9cc59ae98345316, type: 3}
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 7d3cd85ff03a0f24a8f42ffcea4b4218, type: 3}
+    - {fileID: 0}
+  - name: Game Starts 2
+    commentEvent: 0
+    clipQueue:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 961129a1f66b68645a055a877dabe1da, type: 3}
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 4184b269d2c42574ba7f3bf36269289e, type: 3}
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 9030b55b52480e44ca85933fd4b3a3d8, type: 3}
+  - name: Game Starts 3
+    commentEvent: 4
+    clipQueue:
+    - {fileID: 8300000, guid: b051a8f56bf84a440aa52fa4520cedce, type: 3}
+    - {fileID: 0}
+    - {fileID: 8300000, guid: a99fba412f2281f4d8af4e561bbc8644, type: 3}
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 0c99dcabd58836940b4ed7d26247e028, type: 3}
+    - {fileID: 0}
+  - name: Game End 1
+    commentEvent: 5
+    clipQueue:
+    - {fileID: 8300000, guid: 6bb7a2a7bf14e6c4ba36eb73a8924c1a, type: 3}
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 0024b08be7b764d49b31f2ed31705bd0, type: 3}
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 2f8151ab0abf00d4ab7448d2fba40de9, type: 3}
+    - {fileID: 0}
+  - name: Game End 2
+    commentEvent: 5
+    clipQueue:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 9b926d32129990643bc63e2af1872c49, type: 3}
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 2de7e950df013e54da94f63a7cdb07be, type: 3}
+  - name: Game End 3
+    commentEvent: 5
+    clipQueue:
+    - {fileID: 8300000, guid: a264da2e2b8e31741a20fab42c7b4598, type: 3}
+    - {fileID: 0}
+    - {fileID: 8300000, guid: bb27813bbcc1729498b16e365d370753, type: 3}
+    - {fileID: 0}
+  - name: Player Hit 1
+    commentEvent: 6
+    clipQueue:
+    - {fileID: 0}
+  - name: Player Hit 2
+    commentEvent: 6
+    clipQueue:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: fd0202ec42dd41344baf7267f05076ba, type: 3}
+  - name: Player Hit 3
+    commentEvent: 6
+    clipQueue:
+    - {fileID: 0}
+  - name: Player Hit 4
+    commentEvent: 6
+    clipQueue:
+    - {fileID: 8300000, guid: 4285917c2232b964c9e91a16f7fad7d2, type: 3}
+    - {fileID: 0}
+  - name: Player Hit 5
+    commentEvent: 6
+    clipQueue:
+    - {fileID: 8300000, guid: 999aed0cf6078554dac2ed506557fe26, type: 3}
   - name: 
     commentEvent: 0
     clipQueue: []
@@ -187,33 +283,7 @@ MonoBehaviour:
   - name: 
     commentEvent: 0
     clipQueue: []
-  - name: 
-    commentEvent: 0
-    clipQueue: []
-  - name: 
-    commentEvent: 0
-    clipQueue: []
-  - name: 
-    commentEvent: 0
-    clipQueue: []
-  - name: 
-    commentEvent: 0
-    clipQueue: []
-  - name: 
-    commentEvent: 0
-    clipQueue: []
-  - name: 
-    commentEvent: 0
-    clipQueue: []
-  - name: 
-    commentEvent: 0
-    clipQueue: []
-  - name: 
-    commentEvent: 0
-    clipQueue: []
-  - name: 
-    commentEvent: 0
-    clipQueue: []
+  timeSinceLastComment: 0
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -227,7 +297,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minSilence: 10
   maxSilence: 20
-  commentCountDown: 15
+  silenceTime: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
