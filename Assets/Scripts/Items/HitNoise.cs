@@ -35,7 +35,8 @@ public class HitNoise : MonoBehaviour {
 			if(Vector3.Distance(this.transform.position,player.transform.position) < 30)
 			{
 				float volume = Vector3.Distance(this.transform.position, player.transform.position) / 10;
-				volume /= (volume * volume); 
+				volume /= (volume * volume);
+				volume *= 0.7; // <- too loud for a distant object
 
 				if(soundManager == null)
 					soundManager = GameObject.FindGameObjectWithTag("SoundManager");

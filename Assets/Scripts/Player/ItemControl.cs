@@ -60,6 +60,9 @@ public class ItemControl : MonoBehaviour {
 						equippedWeapon = wep;
 						equippedWeapon.GetComponent<AssignSlot>().Equip(weaponSlot);
 
+						ScoreManager.AddMultPoint(1);
+
+						// Commentate the successful aquisition of a ball
 						if( wep.gameObject.CompareTag("ball") )
 						{
 							Commentator commentator = Commentator.GetInstance();

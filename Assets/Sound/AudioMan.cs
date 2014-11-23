@@ -202,7 +202,7 @@ public class AudioMan : MonoBehaviour
 		BuildHype(0.02f, 15, 0.01f);
 		
 		float pan = 0.3f - Random.value * 0.6f;
-		float vol = Mathf.Min(1, Random.value * hype + 0.5f); 
+		float vol = 0.5f; 
 		int random = Random.Range(0, tackleDodgeSounds.Count - 1);
 		AudioClip clip = tackleDodgeSounds[ random ];
 		
