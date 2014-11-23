@@ -9,7 +9,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 400000}
   - 114: {fileID: 11400004}
-  - 114: {fileID: 11400002}
   - 114: {fileID: 11400000}
   m_Layer: 0
   m_Name: _GameManager
@@ -129,22 +128,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d483e1a934152a14c83cd57aa68b3301, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11400002
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60baa11312467dc4d83cf7db7691c7d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  soundPlayer: {fileID: 0}
-  menuMusic: {fileID: 0}
-  gameMusic: {fileID: 0}
-  soundEffects: []
-  commentatorDialogue: []
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -228,6 +211,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a0ec58d5bfe0d394d897b5e7350c61d0, type: 3}
   - {fileID: 8300000, guid: ad32b77713a578c408a51088153a4193, type: 3}
   - {fileID: 8300000, guid: ef07e27b9f35a1447b7505c393e236bc, type: 3}
+  jseHat: {fileID: 8300000, guid: 7a9dfc1cb833a2f4ab302a7e10e92fef, type: 3}
   commentatorSpeechSounds: []
   hype: 0
   hypeDecay: 9.99999975e-05

@@ -28,7 +28,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: .999551356, z: 0, w: -.0299536809}
-  m_LocalPosition: {x: 3.29242206, y: -1.81314194, z: -9.06796837}
+  m_LocalPosition: {x: 1.11889923, y: -1.81890845, z: -8.59184742}
   m_LocalScale: {x: .690452576, y: .690452576, z: .690452576}
   m_Children: []
   m_Father: {fileID: 0}
@@ -85,8 +85,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: .193577647, y: .230742782, z: .142240897}
-  m_Center: {x: -.0348240957, y: .130574465, z: .0738013312}
+  m_Size: {x: .193577662, y: .210506484, z: .142240897}
+  m_Center: {x: -.0348239467, y: .140692502, z: .0738014653}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -111,7 +111,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 1
-  hatSlotPos: {x: .0129847517, y: -.00508390414, z: -.0649224296}
+  hatSlotPos: {x: -.0232585501, y: -.00456185592, z: -.0168082509}
+  hatSlotRot: {x: 0, y: 0, z: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

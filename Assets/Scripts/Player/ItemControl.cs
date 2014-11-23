@@ -114,7 +114,6 @@ public class ItemControl : MonoBehaviour {
 					throwable.Throw();
 				}
 
-
 				powerupBars.GetComponent<PowerupVisuals>().Shutdown();
 				
 				weaponEquipped = false;
@@ -135,9 +134,6 @@ public class ItemControl : MonoBehaviour {
 		if(hat == equippedHat)
 			return;
 
-
-
-
 		if(Application.loadedLevelName == "menu")
 		{
 			Debug.Log("saved hat");
@@ -153,11 +149,20 @@ public class ItemControl : MonoBehaviour {
 
 			equippedHat = hat;
 
-			equippedHat.GetComponent<AssignSlot>().Equip(hatSlot);
+
 
 			if(Application.loadedLevelName == "main-2")
-				hatSlot.transform.position = hatFollow.transform.position - equippedHat.GetComponent<ItemStats>().hatSlotPos;
-			
+				hatSlot.transform.position = hatFollow.transform.position + equippedHat.GetComponent<ItemStats>().hatSlotPos;
+			else 
+				hatSlot.transform.position = hatSlot.transform.position + equippedHat.GetComponent<ItemStats>().hatSlotPos;
+				
+			equippedHat.GetComponent<AssignSlot>().Equip(hatSlot);
+
+			Quaternion rot = Quaternion.identity;
+			rot.eulerAngles += equippedHat.GetComponent<ItemStats>().hatSlotRot;
+
+				hatSlot.transform.rotation = rot;
+
 			hatEquipped = true;
 
 			return;
