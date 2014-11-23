@@ -11,11 +11,26 @@ public class GoRagdoll : MonoBehaviour {
 	public void KillPlayer()
 	{
 		this.GetComponent<Animator>().enabled = false;
-		player.GetComponent<PlayerController>().canMove = false;
+
+		if( player )
+			player.GetComponent<PlayerController>().canMove = false;
 		
 		foreach(GameObject go in ragdollParts)
 		{
 			go.GetComponent<Rigidbody>().isKinematic = false;
+		}
+	}
+
+	public void RevivePlayer()
+	{
+		this.GetComponent<Animator>().enabled = true;
+		
+		if( player )
+			player.GetComponent<PlayerController>().canMove = true;
+		
+		foreach(GameObject go in ragdollParts)
+		{
+			go.GetComponent<Rigidbody>().isKinematic = true;
 		}
 	}
 }
