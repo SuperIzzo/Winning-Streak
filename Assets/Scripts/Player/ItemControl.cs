@@ -98,7 +98,14 @@ public class ItemControl : MonoBehaviour {
 				equippedWeapon.rigidbody.AddForce(this.transform.forward * throwForce / equippedWeapon.GetComponent<ItemStats>().weight);
 				equippedWeapon.rigidbody.AddForce((this.transform.up * throwForce / 3) * powerupTimer);
 				equippedWeapon.GetComponent<AssignSlot>().SetColliderOff();
-				
+
+				Throwable throwable = equippedWeapon.GetComponent<Throwable>();
+				if( throwable )
+				{
+					throwable.Throw();
+				}
+
+
 				powerupBars.GetComponent<PowerupVisuals>().Shutdown();
 				
 				weaponEquipped = false;

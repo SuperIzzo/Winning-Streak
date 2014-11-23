@@ -55,7 +55,7 @@ public class AIAttack : MonoBehaviour {
 
 
 	public Animator animator;
-
+	public GameObject damager;
 	// Use this for initialization
 	void Start () {
 		Time.timeScale = 1;
@@ -209,6 +209,8 @@ public class AIAttack : MonoBehaviour {
 		//dive animation here
 		animator.SetBool ( "tackle", true );
 		StartCoroutine("DiveForward");
+
+		damager.SetActive(true);
 		isAttacking = true;
 	}
 
