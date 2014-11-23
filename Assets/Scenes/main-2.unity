@@ -7581,6 +7581,7 @@ MonoBehaviour:
   chaseChance: 0
   recoveryTime: 9999
   giveUpChance: 100
+  animator: {fileID: 0}
 --- !u!23 &1571061041
 Renderer:
   m_ObjectHideFlags: 0
@@ -7857,6 +7858,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73618a4dd1a01f54ab4e890e5fe7d9f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundManager: {fileID: 100002, guid: 24a8f5f493499fd4896414099f52b748, type: 2}
 --- !u!114 &1662795181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7870,7 +7872,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerupBars: {fileID: 142292944}
-  soundManager: {fileID: 692975950}
   weaponSlot: {fileID: 800794346}
   hatSlot: {fileID: 1954599665}
   scarfSlot: {fileID: 258151653}

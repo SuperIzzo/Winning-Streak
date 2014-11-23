@@ -57,6 +57,8 @@ public class AIAttack : MonoBehaviour {
 	void Start () {
 		attackTime = attackTimer;
 
+		player = GameObject.FindGameObjectWithTag("Player");
+
 		continueText = GameObject.FindGameObjectWithTag("continueText");
 		thisScoreText = GameObject.FindGameObjectWithTag("thisScore");
 		highScoreText = GameObject.FindGameObjectWithTag("highScore");
@@ -69,6 +71,10 @@ public class AIAttack : MonoBehaviour {
 		thisScoreText.GetComponent<GUIText>().enabled = false;
 		highScoreText.GetComponent<GUIText>().enabled = false;
 		continueBlur.GetComponent<MeshRenderer>().enabled = false;
+
+		Vector3 newPos = this.transform.position;
+		newPos.y = 0.6499841f;
+		this.transform.position = newPos;
 	}
 
 	void Update () 
