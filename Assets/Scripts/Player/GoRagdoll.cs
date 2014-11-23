@@ -22,8 +22,8 @@ public class GoRagdoll : MonoBehaviour {
 
 	public void KillPlayer()
 	{
-		if(this.GetComponent<Animator>())
-		animator.enabled = false;
+		if( animator )
+			animator.enabled = false;
 
 		if( player )
 		{

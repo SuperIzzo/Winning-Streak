@@ -67,6 +67,9 @@ public class PlayerController : MonoBehaviour {
 		{
 			danceTimer += Time.deltaTime;
 
+			// 1 point per second!
+			ScoreManager.AddMultPoint( Time.deltaTime );
+
 			if( danceTimer > 1.0f && !announcedDancing )
 			{
 				announcedDancing = true;
