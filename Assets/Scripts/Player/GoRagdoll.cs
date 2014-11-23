@@ -6,11 +6,20 @@ public class GoRagdoll : MonoBehaviour {
 
 	public List<GameObject> ragdollParts;
 	public GameObject player;
-	
+
+	public Animator animator;
+
+	void Start()
+	{
+		if( !animator )
+		{
+			animator = this.GetComponent<Animator>();  
+		}
+	}
 
 	public void KillPlayer()
 	{
-		this.GetComponent<Animator>().enabled = false;
+		animator.enabled = false;
 
 		if( player )
 			player.GetComponent<PlayerController>().canMove = false;
@@ -23,7 +32,7 @@ public class GoRagdoll : MonoBehaviour {
 
 	public void RevivePlayer()
 	{
-		this.GetComponent<Animator>().enabled = true;
+		animator.enabled = true;
 		
 		if( player )
 			player.GetComponent<PlayerController>().canMove = true;
