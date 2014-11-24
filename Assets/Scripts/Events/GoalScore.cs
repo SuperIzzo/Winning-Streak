@@ -19,25 +19,29 @@ public class GoalScore : MonoBehaviour {
 		
 	}
 
-	void OnTriggerEnter()
+	void OnTriggerEnter(Collider other)
 	{
-//		if(other.tag == "weapon")
-//		{
+		if(other.tag == "ball")
+		{
 		ScoreManager.AddScore(100);
 		ScoreManager.AddMultPoint(5);
 
-		Commentator commentator = Commentator.GetInstance();
-		if( commentator )
-		{
-			commentator.Comment( CommentatorEvent.SCORED_GOAL );
-		}
+//		Commentator commentator = Commentator.GetInstance();
+//		if( commentator )
+//		{
+//			commentator.Comment( CommentatorEvent.SCORED_GOAL );
+//		}
 
 		//if(soundManager == null)
 		//	soundManager = GameObject.FindGameObjectWithTag("SoundManager");
 
 		Debug.Log("GOAL");
 		soundManager.GetComponent<AudioMan>().PlayCelebrate();
+		soundManager.GetComponent<AudioMan>().PlayGoalSpeech();
 		//commentator.GetComponent<Commentator>().Comment( CommentatorEvent. );
+		}
 	//
 	}
+
 }
+
