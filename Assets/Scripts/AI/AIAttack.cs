@@ -237,6 +237,11 @@ public class AIAttack : MonoBehaviour {
 	{
 		if(!endGame)
 		{
+			Commentator commentator = Commentator.GetInstance();
+
+			if( commentator )
+				commentator.Comment( CommentatorEvent.GAME_OVER );
+
 			endGame = true;
 			hitPlayer = true;
 			soundManager.GetComponent<AudioMan>().PlayEffect("TACKLE1",1);
