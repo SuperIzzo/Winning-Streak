@@ -285,7 +285,7 @@ public class AIAttack : MonoBehaviour {
 		{
 			// Points
 			ScoreManager.AddScore(25);
-			ScoreManager.AddMultPoint(1);
+			ScoreManager.AddMultPoint(0.5f);
 
 			soundManager.GetComponent<AudioMan>().PlayTackleDodge();
 			soundManager.GetComponent<AudioMan>().BuildHype(0.01f,10,0.1f);
