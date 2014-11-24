@@ -118,6 +118,7 @@ public class ScoreManager : MonoBehaviour
 	public static void AddMultPoint( float multPts )
 	{
 		accumulatedMult += multPts;
+		accumulationTimer = 0;
 	}
 
 	public static void StartTimer()
