@@ -7,7 +7,7 @@ public class Throwable : MonoBehaviour
 	int framesTillDisabled = 0;
 
 	
-	public bool isThrown { get; private set };
+	public bool isThrown { get; private set; }
 
 
 	void Start()
