@@ -6,6 +6,9 @@ public class Throwable : MonoBehaviour
 	public Damager damager;
 	int framesTillDisabled = 0;
 
+	
+	public bool isThrown { get; private set; }
+
 
 	void Start()
 	{
@@ -29,6 +32,7 @@ public class Throwable : MonoBehaviour
 
 	public void Throw()
 	{
+		isThrown = true;
 		damager.enabled = true;
 	}
 
@@ -40,6 +44,7 @@ public class Throwable : MonoBehaviour
 
 			if( framesTillDisabled<=0 )
 			{
+				isThrown = false;
 				damager.enabled = false;
 			}
 		}

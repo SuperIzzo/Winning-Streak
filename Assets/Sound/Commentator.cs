@@ -84,6 +84,8 @@ public class Commentator : MonoBehaviour
 			return 0;
 		case CommentatorEvent.GAME_START:
 			return 1;
+		case CommentatorEvent.SCORED_GOAL:
+			return 3;
 		case CommentatorEvent.GAME_OVER:
 			return 10;
 		default:
