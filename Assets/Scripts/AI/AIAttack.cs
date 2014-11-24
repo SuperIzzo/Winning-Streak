@@ -25,6 +25,7 @@ public class AIAttack : MonoBehaviour {
 	bool playerDead = false;
 	bool hitPlayer = false;
 
+
 	bool dead = false;
 	float deadTimer = 0;
 
@@ -327,7 +328,7 @@ public class AIAttack : MonoBehaviour {
 		float originalFOV = cam.camera.fieldOfView;
 
 
-		//continueBlur.GetComponent<MeshRenderer>().enabled = true;
+		//
 
 		endGame = true;
 
@@ -366,15 +367,9 @@ public class AIAttack : MonoBehaviour {
 		thisScoreText.GetComponent<GUIText>().enabled = true;
 		highScoreText.GetComponent<GUIText>().enabled = true;
 
-		while (timer < 10)
+		while (timer < 15)
 		{
 			timer += Time.deltaTime;
-
-			if(timer > 5)
-			{
-				float toSet = (timer - 5) / 800;
-				continueBlur.GetComponent<MeshRenderer>().material.SetVector("_CellSize", new Vector4(toSet,toSet,0,0));
-			}
 
 			cam.camera.fieldOfView -= timer / 10;
 
@@ -390,7 +385,7 @@ public class AIAttack : MonoBehaviour {
 				timer = 12;
 			}
 
-			continueText.GetComponent<GUIText>().text = "Continue?\n" +  (10 - (int)timer);
+			continueText.GetComponent<GUIText>().text = "Continue?\n" +  (15 - (int)timer);
 
 			yield return null;
 		}

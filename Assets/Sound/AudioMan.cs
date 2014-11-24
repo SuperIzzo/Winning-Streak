@@ -27,7 +27,7 @@ public class AudioMan : MonoBehaviour
 	public AudioClip jseHat;
 	int lastHatSound;
 
-	public List<AudioClip> commentatorSpeechSounds;
+	public List<AudioClip> goalSpeechSounds;
 
 	public float hype;
 	public float hypeDecay = 0.01f;
@@ -144,25 +144,6 @@ public class AudioMan : MonoBehaviour
 		}
 	}
 
-	public void PlaySpeech(string effect)
-	{
-		
-		float pan = 0.3f - Random.value * 0.6f;
-		float vol = 1; 
-		
-		int random = 0;
-		
-		for(int i = 0; i < commentatorSpeechSounds.Count; i++)
-		{
-			if(commentatorSpeechSounds[i].name == effect)
-			{
-				AudioClip clip = commentatorSpeechSounds[i];
-				CreateSound( clip, pan, vol );
-				
-				return;
-			}
-		}
-	}
 
 	public void PlayChangeHat()
 	{
@@ -201,6 +182,18 @@ public class AudioMan : MonoBehaviour
 		float vol = Mathf.Min(1, Random.value * hype + 0.5f); 
 		int random = Random.Range(0, celebrateSounds.Count - 1);
 		AudioClip clip = celebrateSounds[ random ];
+		
+		CreateSound( clip, pan, vol ); 
+	}
+
+	public void PlayGoalSpeech()
+	{
+		BuildHype(0.02f, 30, 0.03f);
+		
+		float pan = 0.3f - Random.value * 0.6f;
+		float vol = Mathf.Min(1, Random.value * hype + 0.5f); 
+		int random = Random.Range(0, goalSpeechSounds.Count - 1);
+		AudioClip clip = goalSpeechSounds[ random ];
 		
 		CreateSound( clip, pan, vol ); 
 	}

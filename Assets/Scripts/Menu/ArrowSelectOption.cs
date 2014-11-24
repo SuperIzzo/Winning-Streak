@@ -6,6 +6,10 @@ public class ArrowSelectOption : MonoBehaviour {
 	public Vector3 playPoint, exitPoint;
 	int selection = 0;
 
+	public GameObject play;
+
+	bool startedMatch = false;
+
 	void Start () 
 	{
 		this.transform.position = playPoint;
@@ -40,12 +44,42 @@ public class ArrowSelectOption : MonoBehaviour {
 				selection = 0;
 		}
 
-		if(Input.GetButtonDown("Dash"))
+		if(Input.GetButtonDown("Dash") && !startedMatch)
 		{
 			if(selection == 0)
-				Application.LoadLevel("main-2");
+			{
+				StartGameCommenter.announced = false;
+				startedMatch = true;
+				StartCoroutine("StartMatch");
+			}
 			else if(selection == 1)
 				Application.LoadLevel("credits");
 		}
 	}
+
+	IEnumerator StartMatch()
+	{
+		float timer = 0;
+
+		while (timer < 18)
+		{
+			timer += Time.deltaTime;
+
+			play.GetComponent<TextMesh>().text = "" +  (18 - (int)timer);
+
+			if(Input.GetButtonDown("Dash"))
+				timer = 18;
+
+			yield return null;
+		}
+
+		Application.LoadLevel("main-2");
+	}
+
 }
+
+
+
+
+
+

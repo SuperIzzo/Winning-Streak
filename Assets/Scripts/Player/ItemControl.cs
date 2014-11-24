@@ -149,7 +149,16 @@ public class ItemControl : MonoBehaviour {
 
 			equippedHat = hat;
 
+			if(equippedHat.name == "jseHat")
+			{
+				hatSlot.transform.position = new Vector3(-0.001532465f, 0.003497288f, -0.03810024f);
+				Quaternion rot1 = hatSlot.transform.rotation;
+				rot1.eulerAngles = new Vector3(275.2638f,343.5084f,197.6758f);
+				hatSlot.transform.rotation = rot1;
+				hatEquipped = true;
 
+				return;
+			}
 
 			if(Application.loadedLevelName == "main-2")
 				hatSlot.transform.position = hatFollow.transform.position + equippedHat.GetComponent<ItemStats>().hatSlotPos;

@@ -3,7 +3,8 @@ using System.Collections;
 
 public class StartGameCommenter : MonoBehaviour
 {
-	public static bool announced = false;
+	public static bool announced = true;
+
 
 	int frametimer;
 

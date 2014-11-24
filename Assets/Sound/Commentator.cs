@@ -40,6 +40,20 @@ public class CommentatorQueue
 
 public class Commentator : MonoBehaviour
 {
+	public static Commentator PM;
+	void Awake()
+	{
+		//PlayerPrefs.DeleteAll();
+		if(!PM)
+		{
+			PM = this;
+			DontDestroyOnLoad(gameObject);
+		}
+		else Destroy(gameObject);
+	}
+
+
+
 	// Public / data
 	public List<CommentatorQueue> commentQueues;
 	
@@ -80,6 +94,7 @@ public class Commentator : MonoBehaviour
 	// Public interface
 	public bool Comment( CommentatorEvent evt )
 	{
+		Debug.Log ("Event: " + evt);
 		if( currentQueue!=null )
 		{
 			int currentPriority = GetEventPriority( currentQueue.commentEvent );
