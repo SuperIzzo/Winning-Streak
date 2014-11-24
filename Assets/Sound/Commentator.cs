@@ -23,7 +23,8 @@ public enum CommentatorEvent
 	PTS_7,
 	PTS_8,
 	PTS_9,
-	PTS_10
+	PTS_10,
+	SCORED_GOAL
 }
 
 
