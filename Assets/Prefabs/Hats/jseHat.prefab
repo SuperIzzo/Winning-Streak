@@ -28,8 +28,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_LocalRotation: {x: -.67171967, y: .326758355, z: .454650611, w: .485092282}
-  m_LocalPosition: {x: 1.26842391, y: -1.7731874, z: -9.68693733}
+  m_LocalRotation: {x: -.658581853, y: .338733464, z: .445800185, w: .502784014}
+  m_LocalPosition: {x: 1.26776159, y: -1.77433515, z: -9.68720245}
   m_LocalScale: {x: 59.8940697, y: 59.8941078, z: 59.8941193}
   m_Children: []
   m_Father: {fileID: 0}
@@ -127,8 +127,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 1
-  hatSlotPos: {x: -.001156518, y: .0252807606, z: -.0356370211}
-  hatSlotRot: {x: -71.588707, y: 200, z: 179.616302}
+  hatSlotPos: {x: -.0304549411, y: .0252807606, z: -.0421177112}
+  hatSlotRot: {x: 277, y: 141, z: 193.5}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
