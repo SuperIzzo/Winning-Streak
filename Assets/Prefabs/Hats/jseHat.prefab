@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 1
-  hatSlotPos: {x: -.0304549411, y: .0252807606, z: -.0421177112}
+  hatSlotPos: {x: -.0304238293, y: .0170562603, z: -.0680410936}
   hatSlotRot: {x: 277, y: 141, z: 193.5}
 --- !u!1001 &100100000
 Prefab:
