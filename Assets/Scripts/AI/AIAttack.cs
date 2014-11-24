@@ -376,14 +376,9 @@ public class AIAttack : MonoBehaviour {
 			if(Input.GetButtonDown( "Dash" ))
 			{
 				endGame = false;
-				timer = 12;
+				timer = 16;
 			}
-
-			if(Input.GetButtonDown( "Grab" ))
-			{
-				endGame = true;
-				timer = 12;
-			}
+		
 
 			continueText.GetComponent<GUIText>().text = "Continue?\n" +  (15 - (int)timer);
 

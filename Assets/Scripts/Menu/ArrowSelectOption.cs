@@ -67,7 +67,7 @@ public class ArrowSelectOption : MonoBehaviour {
 
 			play.GetComponent<TextMesh>().text = "" +  (18 - (int)timer);
 
-			if(Input.GetButtonDown("Dash"))
+			if(Input.GetButtonDown("Dash") && timer > 2.5f)
 				timer = 18;
 
 			yield return null;

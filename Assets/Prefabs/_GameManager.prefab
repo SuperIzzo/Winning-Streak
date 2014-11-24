@@ -212,7 +212,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ad32b77713a578c408a51088153a4193, type: 3}
   - {fileID: 8300000, guid: ef07e27b9f35a1447b7505c393e236bc, type: 3}
   jseHat: {fileID: 8300000, guid: 7a9dfc1cb833a2f4ab302a7e10e92fef, type: 3}
-  commentatorSpeechSounds: []
+  goalSpeechSounds:
+  - {fileID: 8300000, guid: 8eb7f524483c4bf4e9831a266dcc1c61, type: 3}
+  - {fileID: 8300000, guid: cc810005ac2fe8a4f8d9af5f5734f485, type: 3}
+  - {fileID: 8300000, guid: c9d459a638ac3d341a1a94957b09fb40, type: 3}
+  - {fileID: 8300000, guid: 150d4fd924e52e4408b686bfe6de842e, type: 3}
+  - {fileID: 8300000, guid: 60e47c6bd089c4e4a9dd43862004d5f9, type: 3}
   hype: 0
   hypeDecay: 9.99999975e-05
   minHype: .200000003

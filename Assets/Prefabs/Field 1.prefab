@@ -87,13 +87,14 @@ GameObject:
   - 33: {fileID: 3300006}
   - 64: {fileID: 6400000}
   - 23: {fileID: 2300006}
+  - 65: {fileID: 6500006}
   m_Layer: 0
   m_Name: grass
   m_TagString: soundCollision
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &100010
 GameObject:
   m_ObjectHideFlags: 0
@@ -128,7 +129,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &100014
 GameObject:
   m_ObjectHideFlags: 0
@@ -388,7 +389,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100008}
   m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: 0, y: -.00999998674, z: -0}
+  m_LocalPosition: {x: 0, y: -.166073546, z: -0}
   m_LocalScale: {x: 283.708618, y: 188.539291, z: 91.1577148}
   m_Children: []
   m_Father: {fileID: 400016}
@@ -437,7 +438,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100016}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: -4.37113883e-08}
-  m_LocalPosition: {x: 0, y: .319523215, z: 0}
+  m_LocalPosition: {x: 38.560833, y: -3.20105505, z: 10.6585712}
   m_LocalScale: {x: .671241939, y: .671241581, z: .671241581}
   m_Children:
   - {fileID: 400012}
@@ -569,9 +570,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100036}
-  m_LocalRotation: {x: 0, y: -1, z: 0, w: -4.37113883e-08}
-  m_LocalPosition: {x: 0, y: .0043128999, z: 0}
-  m_LocalScale: {x: 1.48977578, y: 1.48977661, z: 1.48977661}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.24206865e-13, y: 0, z: 1.42076169e-06}
+  m_LocalScale: {x: .998149693, y: .998150289, z: .998150289}
   m_Children: []
   m_Father: {fileID: 400016}
   m_RootOrder: 7
@@ -926,7 +927,7 @@ MeshCollider:
   m_GameObject: {fileID: 100008}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_SmoothSphereCollisions: 0
   m_Convex: 0
@@ -1006,6 +1007,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &6500006
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100008}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.00000048, y: 1.00000036, z: 4.93115522e-07}
+  m_Center: {x: -1.49011612e-08, y: 7.4505806e-09, z: 3.7252903e-09}
 --- !u!95 &9500000
 Animator:
   serializedVersion: 3

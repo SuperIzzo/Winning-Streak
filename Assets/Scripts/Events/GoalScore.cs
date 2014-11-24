@@ -23,24 +23,17 @@ public class GoalScore : MonoBehaviour {
 	{
 		if(other.tag == "ball")
 		{
-		ScoreManager.AddScore(100);
-		ScoreManager.AddMultPoint(5);
+			if(other.GetComponent<ItemStats>().scoredWith)
+				return;
+			ScoreManager.AddScore(100);
+			ScoreManager.AddMultPoint(5);
 
-//		Commentator commentator = Commentator.GetInstance();
-//		if( commentator )
-//		{
-//			commentator.Comment( CommentatorEvent.SCORED_GOAL );
-//		}
+			other.GetComponent<ItemStats>().scoredWith = true;
 
-		//if(soundManager == null)
-		//	soundManager = GameObject.FindGameObjectWithTag("SoundManager");
-
-		Debug.Log("GOAL");
-		soundManager.GetComponent<AudioMan>().PlayCelebrate();
-		soundManager.GetComponent<AudioMan>().PlayGoalSpeech();
-		//commentator.GetComponent<Commentator>().Comment( CommentatorEvent. );
+			Debug.Log("GOAL");
+			soundManager.GetComponent<AudioMan>().PlayCelebrate();
+			soundManager.GetComponent<AudioMan>().PlayGoalSpeech();
 		}
-	//
 	}
 
 }
