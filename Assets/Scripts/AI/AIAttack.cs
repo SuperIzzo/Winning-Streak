@@ -88,7 +88,10 @@ public class AIAttack : MonoBehaviour {
 		}
 
 		Vector3 newPos = this.transform.position;
-		newPos.y = 0.6499841f;
+
+		if(this.name != "Mascot")
+			newPos.y = 0.6499841f;
+
 		this.transform.position = newPos;
 
 		commentator = Commentator.GetInstance();
@@ -323,9 +326,6 @@ public class AIAttack : MonoBehaviour {
 		GameObject cam = GameObject.FindGameObjectWithTag("MainCamera");
 		float originalFOV = cam.camera.fieldOfView;
 
-		continueText.GetComponent<GUIText>().enabled = true;
-		thisScoreText.GetComponent<GUIText>().enabled = true;
-		highScoreText.GetComponent<GUIText>().enabled = true;
 
 		//continueBlur.GetComponent<MeshRenderer>().enabled = true;
 
@@ -336,7 +336,7 @@ public class AIAttack : MonoBehaviour {
 		//scores
 		thisScoreText.GetComponent<GUIText>().text = ScoreManager.score.ToString();
 		highScoreText.GetComponent<GUIText>().text = PlayerPrefs.GetString("HighScore");
-
+	
 		int thisScore = System.Int32.Parse(thisScoreText.GetComponent<GUIText>().text);
 		int highScore = System.Int32.Parse(highScoreText.GetComponent<GUIText>().text);
 
@@ -352,7 +352,19 @@ public class AIAttack : MonoBehaviour {
 		thisScoreText.GetComponent<GUIText>().text = "Your score: " + thisScoreText.GetComponent<GUIText>().text;
 		highScoreText.GetComponent<GUIText>().text = "Highscore: " + highScoreText.GetComponent<GUIText>().text;
 
+		float waitTimer = 0;
 		ScoreManager.StopTimer();
+		
+		while(waitTimer < 2)
+		{
+			cam.camera.fieldOfView -= timer / 20;
+			waitTimer += Time.deltaTime;
+			yield return null;
+		}
+
+		continueText.GetComponent<GUIText>().enabled = true;
+		thisScoreText.GetComponent<GUIText>().enabled = true;
+		highScoreText.GetComponent<GUIText>().enabled = true;
 
 		while (timer < 10)
 		{

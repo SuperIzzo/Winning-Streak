@@ -4,9 +4,9 @@ using System.Collections;
 public class ScoreManager : MonoBehaviour
 {
 
-	public static float score
+	public static int score
 	{
-		get{ return baseScore * multPoints; }
+		get{ return (int)(baseScore * multPoints); }
 	}
 
 	public static float baseScore = 0; 
