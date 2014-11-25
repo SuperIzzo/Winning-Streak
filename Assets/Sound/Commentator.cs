@@ -165,7 +165,7 @@ public class Commentator : MonoBehaviour
 		// the next line in the script (if any left)
 		if( !audio.isPlaying )
 		{
-			if( currentQueue != null && clipIndex < currentQueue.clipQueue.Count-1 )
+			if( currentQueue != null && clipIndex < currentQueue.clipQueue.Count )
 			{
 				AudioClip clip = currentQueue.clipQueue[ clipIndex ];
 				
