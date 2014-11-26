@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿#define DEBUG_COMMENTS
+
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -85,7 +87,9 @@ public class Commentator : MonoBehaviour
 	// Public interface
 	public bool Comment( CommentatorEvent evt )
 	{
-		Debug.Log ("Event: " + evt);
+		#if DEBUG_COMMENTS
+		Debug.Log("Commentating Event: " + evt);
+		#endif
 		if( currentQueue!=null )
 		{
 			int currentPriority = GetEventPriority( currentQueue.commentEvent );
@@ -117,7 +121,9 @@ public class Commentator : MonoBehaviour
 			   && commentQueue.clipQueue !=null
 			   && commentQueue.clipQueue.Count>0 )
 			{
-				//Debug.Log( "Commenting: " + commentQueue.name );
+				#if DEBUG_COMMENTS
+				Debug.Log( "Commenting: " + commentQueue.name );
+				#endif
 				return PlayeQueue( commentQueue );
 			}
 			

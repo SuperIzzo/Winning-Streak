@@ -121,17 +121,23 @@ public class ScoreManager : MonoBehaviour
 		accumulationTimer = 0;
 	}
 
-	public static void StartTimer()
+	private static void ResetScore()
 	{
 		baseScore = 0;
 		multPoints = 0;
+		multToAnnounce = 0;
+		accumulatedMult = 0;
+	}
+
+	public static void StartTimer()
+	{
+		ResetScore();
 		isActive = true;
 	}
 
 	public static void StopTimer()
 	{
-		baseScore = 0;
-		multPoints = 0;
+		ResetScore();
 		isActive = false;
 	}
 }
