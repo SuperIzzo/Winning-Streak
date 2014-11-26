@@ -3372,12 +3372,12 @@ Transform:
   m_PrefabParentObject: {fileID: 400036, guid: fb13ef095891b13478565d96da360a02, type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 464017314}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: -4.37113883e-08}
-  m_LocalPosition: {x: -0, y: .050982371, z: -0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.24206865e-13, y: 0, z: 1.42076169e-06}
+  m_LocalScale: {x: 1.20299995, y: 1.20299995, z: 1.20299995}
   m_Children: []
-  m_Father: {fileID: 1306719989}
-  m_RootOrder: 3
+  m_Father: {fileID: 1509050884}
+  m_RootOrder: 7
 --- !u!1001 &467643290
 Prefab:
   m_ObjectHideFlags: 0
@@ -4100,7 +4100,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 35b05425ba8b3564cad8ae583b85a065, type: 2}
+  - {fileID: 2100000, guid: cd81cac2d892ce449ae60c630f09ce82, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -9545,7 +9545,7 @@ Transform:
   m_LocalScale: {x: 1.48977578, y: 1.48977661, z: 1.48977661}
   m_Children: []
   m_Father: {fileID: 1509050884}
-  m_RootOrder: 7
+  m_RootOrder: 8
 --- !u!136 &1193919519
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -9572,7 +9572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6096f6a5b1f5eeb48a0994e4c907d541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundManager: {fileID: 692975950}
+  soundManager: {fileID: 0}
   scoreInterval: .00999999978
 --- !u!1 &1201961888
 GameObject:
@@ -10466,7 +10466,6 @@ Transform:
   - {fileID: 1558628707}
   - {fileID: 130932966}
   - {fileID: 1546424695}
-  - {fileID: 464017317}
   m_Father: {fileID: 1509050884}
   m_RootOrder: 5
 --- !u!1 &1310679585
@@ -10920,7 +10919,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1343549980}
   m_LocalRotation: {x: 0, y: -1, z: 0, w: -4.37113883e-08}
-  m_LocalPosition: {x: 0, y: -.0603655875, z: -0}
+  m_LocalPosition: {x: 0, y: -.47601822, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2113927747}
@@ -12138,6 +12137,7 @@ Transform:
   - {fileID: 1295789121}
   - {fileID: 1306719989}
   - {fileID: 1631685526}
+  - {fileID: 464017317}
   - {fileID: 1193919518}
   - {fileID: 2092676736}
   m_Father: {fileID: 0}
@@ -15143,7 +15143,7 @@ Transform:
   m_GameObject: {fileID: 1916745172}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: .0599999987, z: 0}
-  m_LocalScale: {x: 1.20299995, y: 1.20299995, z: 1.20299995}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1440693337}
   - {fileID: 2043527862}
@@ -15162,7 +15162,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 4ab5308a208a23c41a428e554dafbb63, type: 2}
+  - {fileID: 2100000, guid: f2c161c438b73c049b615bf72c36c032, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -17158,7 +17158,7 @@ Transform:
   m_LocalScale: {x: 1.48977578, y: 1.48977661, z: 1.48977661}
   m_Children: []
   m_Father: {fileID: 1509050884}
-  m_RootOrder: 8
+  m_RootOrder: 9
 --- !u!114 &2092676737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17171,7 +17171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6096f6a5b1f5eeb48a0994e4c907d541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundManager: {fileID: 692975950}
+  soundManager: {fileID: 0}
   scoreInterval: .00999999978
 --- !u!136 &2092676738
 CapsuleCollider:
@@ -17241,7 +17241,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2113927746}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -.0808312148, z: 0}
+  m_LocalPosition: {x: 0, y: .173391342, z: 0}
   m_LocalScale: {x: 1.20299995, y: 1.20299995, z: 1.20299995}
   m_Children: []
   m_Father: {fileID: 1343549981}
@@ -17259,7 +17259,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 4ab5308a208a23c41a428e554dafbb63, type: 2}
+  - {fileID: 2100000, guid: 6ae6f3b0012d6894aa57d1e8f261a2c4, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
