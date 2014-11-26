@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour {
 		if( !dancing )
 		{
 			ProcessMovement();
-			PricessDashing()
+			PricessDashing();
 		}
 	}
 
