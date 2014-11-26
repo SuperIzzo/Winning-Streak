@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour {
 				announcedDancing = true;
 				// DO the WIGGLE
 				//   Game logic to add points etc
-				Commentator commentator = Commentator.GetInstance();
+				Commentator commentator = Commentator.instance;
 
 				if( commentator )
 				{
@@ -83,6 +83,11 @@ public class PlayerController : MonoBehaviour {
 				}
 				//comme
 			}
+
+			// Process no further input
+			// If they player is wiggling he cannot move or 
+			// do anything else
+			return;
 		}
 		else
 		{

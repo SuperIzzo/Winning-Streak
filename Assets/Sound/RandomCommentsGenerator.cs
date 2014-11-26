@@ -13,7 +13,7 @@ public class RandomCommentsGenerator : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		commentator = Commentator.GetInstance();
+		commentator = Commentator.instance;
 	}
 	
 	// Update is called once per frame

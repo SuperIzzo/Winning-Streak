@@ -66,7 +66,7 @@ public class ScoreManager : MonoBehaviour
 	{
 		if( multToAnnounce >=1 )
 		{
-			Commentator commentator = Commentator.GetInstance();
+			Commentator commentator = Commentator.instance;
 
 			if( commentator )
 			{

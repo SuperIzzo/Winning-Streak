@@ -11,7 +11,7 @@ public class TouchdownEvent : MonoBehaviour
 			Throwable throwable = col.GetComponent<Throwable>();
 			if( throwable!=null && throwable.isThrown )
 			{
-				Commentator commentator = Commentator.GetInstance();
+				Commentator commentator = Commentator.instance;
 
 				if( commentator )
 				{

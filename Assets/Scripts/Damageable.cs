@@ -17,7 +17,7 @@ public class Damageable : MonoBehaviour
 		if( awardable && damager.isAwarding )
 		{
 			ScoreManager.AddMultPoint( 3 );
-			Commentator commentator = Commentator.GetInstance();
+			Commentator commentator = Commentator.instance;
 
 			if( commentator )
 			{
