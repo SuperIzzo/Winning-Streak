@@ -60,53 +60,64 @@ public class PlayerController : MonoBehaviour {
 
 	void ProcessInput()
 	{
+		ProcessWiggle();
+
+		// Don't move or dash if we're wiggling
+		if( !dancing )
+		{
+			ProcessMovement();
+			PricessDashing()
+		}
+	}
+
+
+	// Process wiggle input and logic
+	void ProcessWiggle()
+	{
+		// Izzo: Ideally input should be handled in a separately from game logic
+		// 		 I'll leave it as it is for the time being
 		dancing = Input.GetButton( "Wiggle" );
 		animator.SetBool( "wiggle", dancing );
-
+		
 		if( dancing )
 		{
 			danceTimer += Time.deltaTime;
-
+			
 			// 1 point per second!
 			ScoreManager.AddMultPoint( Time.deltaTime );
-
+			
 			if( danceTimer > 1.0f && !announcedDancing )
 			{
 				announcedDancing = true;
-				// DO the WIGGLE
-				//   Game logic to add points etc
 				Commentator commentator = Commentator.instance;
-
+				
 				if( commentator )
 				{
 					commentator.Comment( CommentatorEvent.WIGGLE );
 				}
-				//comme
 			}
-
-			// Process no further input
-			// If they player is wiggling he cannot move or 
-			// do anything else
-			return;
 		}
 		else
 		{
 			announcedDancing = false;
 			danceTimer = 0;
 		}
+	}
 
-		
+	// Process movement input and logic
+	void ProcessMovement()
+	{
 		float x = Input.GetAxis( "Horizontal" );	
 		float y = Input.GetAxis( "Vertical" );
 		
 		Vector2 controlVector = new Vector2(x,y);
-
-
+		
+		
 		if( controlVector.magnitude> 0 )
 		{
 			Vector3 moveVec = new Vector3( controlVector.x, 0, controlVector.y );
 			moveVec *= speed * Time.deltaTime;
-
+			
 			//player movement
 			if(physicsMovement)
 			{
@@ -120,11 +131,14 @@ public class PlayerController : MonoBehaviour {
 				}
 				transform.position = transform.position + moveVec;
 			}
-
+			
 			//player rotation towards direction
 			RotatePlayer( moveVec );
 		}
+	}
 
+	void PricessDashing()
+	{
 		if(dashTimer < 0)
 		{
 			if( Input.GetButtonDown("Dash") )
@@ -132,8 +146,9 @@ public class PlayerController : MonoBehaviour {
 				Dash();
 				dashTimer = dashInterval;
 			}
-		} 
+		}
 	}
+
 
 	void RotatePlayer( Vector3 moveVector )
 	{
