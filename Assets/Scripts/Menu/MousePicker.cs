@@ -32,8 +32,7 @@ public class MousePicker : MonoBehaviour {
 				if(hit.collider.name == "play")
 				{
 					StartGameCommenter.announced = false;
-					startedMatch = true;
-					StartCoroutine("StartMatch");
+					Application.LoadLevel("main-2");
 				}
 
 				if(hit.collider.name == "exit")
@@ -41,24 +40,5 @@ public class MousePicker : MonoBehaviour {
 
 			}
 		}
-	}
-
-	IEnumerator StartMatch()
-	{
-		float timer = 0;
-		
-		while (timer < 18)
-		{
-			timer += Time.deltaTime;
-			
-			play.GetComponent<TextMesh>().text = "" +  (18 - (int)timer);
-
-			if(Input.GetButtonDown("Dash") && timer > 2.5f)
-				timer = 18;
-			
-			yield return null;
-		}
-		
-		Application.LoadLevel("main-2");
 	}
 }
