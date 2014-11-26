@@ -3,7 +3,7 @@ using System.Collections;
 
 public class StartGameCommenter : MonoBehaviour
 {
-	public static bool announced = true;
+	public static bool announced = false;
 
 
 	int frametimer;
@@ -23,11 +23,10 @@ public class StartGameCommenter : MonoBehaviour
 
 			if( frametimer<=0 )
 			{
-				announced = true;
 				Commentator commentator = Commentator.GetInstance();
 
 				if( commentator )
-					commentator.Comment( CommentatorEvent.GAME_START );
+					announced = commentator.Comment( CommentatorEvent.GAME_START );
 			}
 		}
 	}

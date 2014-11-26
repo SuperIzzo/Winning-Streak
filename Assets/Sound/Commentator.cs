@@ -83,7 +83,7 @@ public class Commentator : MonoBehaviour
 		case CommentatorEvent.RANDOM:
 			return 0;
 		case CommentatorEvent.GAME_START:
-			return 1;
+			return 3;
 		case CommentatorEvent.SCORED_GOAL:
 			return 3;
 		case CommentatorEvent.GAME_OVER:
