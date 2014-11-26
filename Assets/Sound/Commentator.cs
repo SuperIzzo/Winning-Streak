@@ -40,38 +40,27 @@ public class CommentatorQueue
 
 public class Commentator : MonoBehaviour
 {
-	public static Commentator PM;
-	void Awake()
-	{
-		//PlayerPrefs.DeleteAll();
-		if(!PM)
-		{
-			PM = this;
-			DontDestroyOnLoad(gameObject);
-		}
-		else Destroy(gameObject);
-	}
-
-
-
 	// Public / data
 	public List<CommentatorQueue> commentQueues;
-	
+
+	// Public properties
+	public float timeSinceLastComment {get; private set;}
+	public static Commentator instance {get; private set;}
+
 	// Internal / state
-	static Commentator instance;
 	CommentatorQueue currentQueue;
 	int clipIndex = 0;
 	
-	public float timeSinceLastComment;
-	
 	
 	// Returns a single instance for this component
-	public static Commentator GetInstance()
+	public Commentator Awake()
 	{
 		if( !instance )
 		{
 			instance = GameObject.FindObjectOfType<Commentator>();
+			DontDestroyOnLoad(gameObject);
 		}
+		else Destroy(gameObject);
 		
 		return instance;
 	}

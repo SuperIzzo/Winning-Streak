@@ -65,7 +65,7 @@ public class ItemControl : MonoBehaviour {
 						// Commentate the successful aquisition of a ball
 						if( wep.gameObject.CompareTag("ball") )
 						{
-							Commentator commentator = Commentator.GetInstance();
+							Commentator commentator = Commentator.instance;
 							commentator.Comment( CommentatorEvent.PICKED_BALL );
 						}
 

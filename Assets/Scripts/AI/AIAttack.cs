@@ -95,7 +95,7 @@ public class AIAttack : MonoBehaviour {
 
 		this.transform.position = newPos;
 
-		commentator = Commentator.GetInstance();
+		commentator = Commentator.instance;
 	}
 
 	void Update () 
@@ -241,7 +241,7 @@ public class AIAttack : MonoBehaviour {
 	{
 		if(!endGame)
 		{
-			Commentator commentator = Commentator.GetInstance();
+			Commentator commentator = Commentator.instance;
 
 			if( commentator )
 				commentator.Comment( CommentatorEvent.GAME_OVER );
