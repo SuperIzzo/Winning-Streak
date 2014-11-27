@@ -88,7 +88,7 @@ Material:
       data:
         first:
           name: _DetailDiffuseStrength
-        second: 1
+        second: .857142866
       data:
         first:
           name: _DetailNormalStrength
@@ -96,7 +96,7 @@ Material:
       data:
         first:
           name: _OverallRoughness
-        second: .142857149
+        second: .232142866
     m_Colors:
       data:
         first:
