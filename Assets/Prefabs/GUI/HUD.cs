@@ -26,7 +26,8 @@ public class HUD : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		scoreText.text = "SCORE: " + ScoreManager.baseScore +"\tx" + ScoreManager.multPoints;
+		scoreText.text = "SCORE: " + Mathf.FloorToInt(ScoreManager.baseScore) +
+						 "\tx" + Mathf.FloorToInt(ScoreManager.multPoints);
 
 		float timeSinceStart = Time.time - startTime;
 		int seconds = Mathf.FloorToInt(timeSinceStart) % 60;
