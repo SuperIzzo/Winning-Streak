@@ -1,0 +1,553 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &100000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400000}
+  - 114: {fileID: 11400000}
+  - 114: {fileID: 11400002}
+  - 82: {fileID: 8200000}
+  - 114: {fileID: 11400004}
+  m_Layer: 0
+  m_Name: Commentator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &400000
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -25.8876038, y: 9.55766487, z: -1.7671566}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!82 &8200000
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3498ec47f8bc9e46821e2ab2b8b873e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  commentQueues:
+  - name: Random 1
+    commentEvent: 1
+    clipQueue:
+    - {fileID: 8300000, guid: 153eadb003087da41a04be21a5509775, type: 3}
+    - {fileID: 8300000, guid: 94a404ebbb530e04f99ef20a07300430, type: 3}
+    - {fileID: 8300000, guid: 1f08584a2f02b6f4e8b668451ae02afb, type: 3}
+  - name: Random 2
+    commentEvent: 1
+    clipQueue:
+    - {fileID: 8300000, guid: cefb4578a3e211d4f917504a5341ad57, type: 3}
+    - {fileID: 8300000, guid: 9d24d965758d9694fb3875319d8f5760, type: 3}
+    - {fileID: 8300000, guid: 5c3f2299a44e9e34f858751dee8118d9, type: 3}
+    - {fileID: 8300000, guid: 177f1406c249af344ad2cf0da567f587, type: 3}
+    - {fileID: 8300000, guid: 87394aaab563570478aee3f861ff1882, type: 3}
+    - {fileID: 8300000, guid: 4e5c7fd2636a29c428d4411924d64de5, type: 3}
+  - name: Random 3
+    commentEvent: 1
+    clipQueue:
+    - {fileID: 8300000, guid: 78a086a0db10fab46b86b55592cbb309, type: 3}
+    - {fileID: 8300000, guid: cae0d07893075a34ea40783e1d40b5a0, type: 3}
+    - {fileID: 8300000, guid: f77514298089588418781f4676ee55cf, type: 3}
+  - name: Random 4
+    commentEvent: 1
+    clipQueue:
+    - {fileID: 8300000, guid: 4f867976535080d459f6584fdbfc140f, type: 3}
+    - {fileID: 8300000, guid: 03bd255a8ed69f54292e33010f81782a, type: 3}
+    - {fileID: 8300000, guid: 0a66f7781eb686c48a1df0499c3bc142, type: 3}
+    - {fileID: 8300000, guid: d95c60876448c474fa33af66bfb4362c, type: 3}
+    - {fileID: 8300000, guid: 1e6fbd923ec2e9240beecd6dab2899ce, type: 3}
+  - name: Random 5
+    commentEvent: 1
+    clipQueue:
+    - {fileID: 8300000, guid: 231ddd462ae18ee45bc134f884ebd550, type: 3}
+    - {fileID: 8300000, guid: 0ef2e4081292aff48955c840a23fa136, type: 3}
+    - {fileID: 8300000, guid: 65a14be5f94f1584083e022c0dfafab7, type: 3}
+  - name: Pick-up Ball 1
+    commentEvent: 2
+    clipQueue:
+    - {fileID: 8300000, guid: cf9001c8b6aaa6b4e9a514db28a26ea6, type: 3}
+    - {fileID: 8300000, guid: 2e3eefb3fb10f2a4896782f24cfc7ec6, type: 3}
+  - name: Pick-up Ball 2
+    commentEvent: 2
+    clipQueue:
+    - {fileID: 8300000, guid: 27b4e4e385f04a947b6e90d8561c566c, type: 3}
+  - name: Pick-up Ball 3
+    commentEvent: 2
+    clipQueue:
+    - {fileID: 8300000, guid: 53aafdaf97579474c9e532090ef93ef1, type: 3}
+  - name: Pick-up Ball 4
+    commentEvent: 2
+    clipQueue:
+    - {fileID: 8300000, guid: c933b82355779384b806e0f740e725fb, type: 3}
+  - name: Pick-up Ball 5
+    commentEvent: 2
+    clipQueue:
+    - {fileID: 8300000, guid: 792297b4b6dd401428abdea686b00d6b, type: 3}
+    - {fileID: 8300000, guid: c6cac4fd83b326c4a9d943cae38070ed, type: 3}
+    - {fileID: 8300000, guid: 7d620dd7f0de5bd448c13c4a0059fe2b, type: 3}
+  - name: Dodge 1
+    commentEvent: 3
+    clipQueue:
+    - {fileID: 8300000, guid: 704d288c94bb14a448bc3d0e91f4a7c2, type: 3}
+    - {fileID: 8300000, guid: 4e237301910e3f341be5a8cdea04b2de, type: 3}
+  - name: Dodge 2
+    commentEvent: 3
+    clipQueue:
+    - {fileID: 8300000, guid: 7ece92de53eba764aad743af56c66b6f, type: 3}
+  - name: Dodge 3
+    commentEvent: 3
+    clipQueue:
+    - {fileID: 8300000, guid: f09859e1655e0274bac018087f794ba6, type: 3}
+  - name: Dodge 4
+    commentEvent: 3
+    clipQueue:
+    - {fileID: 8300000, guid: 78e79bc4529b97849b8b72ae737e0b65, type: 3}
+  - name: Dodge 5
+    commentEvent: 3
+    clipQueue:
+    - {fileID: 8300000, guid: ed60083cee7518040a4e1ebb9cb41e81, type: 3}
+    - {fileID: 8300000, guid: 51df8696e756a97448d36f73a4d35b48, type: 3}
+  - name: Wiggle 1
+    commentEvent: 7
+    clipQueue:
+    - {fileID: 8300000, guid: 5c5f5e2050019dc4d9cea0c749de7453, type: 3}
+    - {fileID: 8300000, guid: 6fe23ed41cd412548914468b3e890bd1, type: 3}
+  - name: Wiggle 2
+    commentEvent: 7
+    clipQueue:
+    - {fileID: 8300000, guid: d3af0891d40ac2a40a78dddbc53c2f92, type: 3}
+  - name: Wiggle 3
+    commentEvent: 7
+    clipQueue:
+    - {fileID: 8300000, guid: 343e9633ad438d1478f2b2dbecaa09a4, type: 3}
+  - name: Wiggle 4
+    commentEvent: 7
+    clipQueue:
+    - {fileID: 8300000, guid: a7a452cf538e24040ae8e72eac9449ab, type: 3}
+  - name: Wiggle 5
+    commentEvent: 7
+    clipQueue:
+    - {fileID: 8300000, guid: 6747ce34c763dd5418827cbb8994a39e, type: 3}
+    - {fileID: 8300000, guid: 056a442830a55b44397aefcb0a2b6001, type: 3}
+  - name: Game Starts 1
+    commentEvent: 4
+    clipQueue:
+    - {fileID: 8300000, guid: 4e4a04a749df98d45be4042e727890b5, type: 3}
+    - {fileID: 8300000, guid: 1191f60d65147864aba4657eaab991b4, type: 3}
+    - {fileID: 8300000, guid: 6a4c0dc7bdd5bc743ae439dbb17a50ee, type: 3}
+    - {fileID: 8300000, guid: 6aae2bb2305703e4eb6903a3755880cd, type: 3}
+    - {fileID: 8300000, guid: b558be7ad730f314c9cc59ae98345316, type: 3}
+    - {fileID: 8300000, guid: 841f8f4a8c43b944190721aaaacb0b73, type: 3}
+    - {fileID: 8300000, guid: 7d3cd85ff03a0f24a8f42ffcea4b4218, type: 3}
+    - {fileID: 8300000, guid: 164fb012b5d35cb418a8c2b5ede5ead1, type: 3}
+  - name: Game Starts 2
+    commentEvent: 0
+    clipQueue:
+    - {fileID: 8300000, guid: 85666873be3fd904298e8e7729bade6b, type: 3}
+    - {fileID: 8300000, guid: 961129a1f66b68645a055a877dabe1da, type: 3}
+    - {fileID: 8300000, guid: 691b1a25b55beec4589accf87866f561, type: 3}
+    - {fileID: 8300000, guid: 4184b269d2c42574ba7f3bf36269289e, type: 3}
+    - {fileID: 8300000, guid: b8ffd9ecff4911e4f97acf314651bfe3, type: 3}
+    - {fileID: 8300000, guid: 9030b55b52480e44ca85933fd4b3a3d8, type: 3}
+  - name: Game Starts 3
+    commentEvent: 4
+    clipQueue:
+    - {fileID: 8300000, guid: b051a8f56bf84a440aa52fa4520cedce, type: 3}
+    - {fileID: 8300000, guid: b1fcb0226ace2574f99808c1e5bb4f44, type: 3}
+    - {fileID: 8300000, guid: a99fba412f2281f4d8af4e561bbc8644, type: 3}
+    - {fileID: 8300000, guid: 5e746afa69e2ae54c88cc278cbd287a1, type: 3}
+    - {fileID: 8300000, guid: 0c99dcabd58836940b4ed7d26247e028, type: 3}
+    - {fileID: 8300000, guid: bb7c0bfccfa44834eadfec98b4e13ae1, type: 3}
+  - name: Game End 1
+    commentEvent: 5
+    clipQueue:
+    - {fileID: 8300000, guid: 6bb7a2a7bf14e6c4ba36eb73a8924c1a, type: 3}
+    - {fileID: 8300000, guid: 5165457473baf914cb5ddcdbfdab3161, type: 3}
+    - {fileID: 8300000, guid: 0024b08be7b764d49b31f2ed31705bd0, type: 3}
+    - {fileID: 8300000, guid: 3b4119a536242f440afa10edda9baefa, type: 3}
+    - {fileID: 8300000, guid: 2f8151ab0abf00d4ab7448d2fba40de9, type: 3}
+    - {fileID: 8300000, guid: ea29677cc1aecc94c94307029a123042, type: 3}
+  - name: Game End 2
+    commentEvent: 5
+    clipQueue:
+    - {fileID: 8300000, guid: 9032e1828ffe07244a081b532e655203, type: 3}
+    - {fileID: 8300000, guid: 9b926d32129990643bc63e2af1872c49, type: 3}
+    - {fileID: 8300000, guid: 7d1f1bb42518ce94982c2415a0ee1537, type: 3}
+    - {fileID: 8300000, guid: 2de7e950df013e54da94f63a7cdb07be, type: 3}
+  - name: Game End 3
+    commentEvent: 5
+    clipQueue:
+    - {fileID: 8300000, guid: a264da2e2b8e31741a20fab42c7b4598, type: 3}
+    - {fileID: 8300000, guid: 1f62540cd8c33ef4a94ac6b1f8930915, type: 3}
+    - {fileID: 8300000, guid: bb27813bbcc1729498b16e365d370753, type: 3}
+    - {fileID: 8300000, guid: 72784fbeddf5d864482e53339874442a, type: 3}
+  - name: Player Hit 1
+    commentEvent: 6
+    clipQueue:
+    - {fileID: 8300000, guid: 1ff309b2e2b4a964abbdec089d902f77, type: 3}
+  - name: Player Hit 2
+    commentEvent: 6
+    clipQueue:
+    - {fileID: 8300000, guid: b24b3da6509fd1f408fec042316029d0, type: 3}
+    - {fileID: 8300000, guid: fd0202ec42dd41344baf7267f05076ba, type: 3}
+  - name: Player Hit 3
+    commentEvent: 6
+    clipQueue:
+    - {fileID: 8300000, guid: 37963ebf153a44144b4d4ce3e4b7daf0, type: 3}
+  - name: Player Hit 4
+    commentEvent: 6
+    clipQueue:
+    - {fileID: 8300000, guid: 4285917c2232b964c9e91a16f7fad7d2, type: 3}
+    - {fileID: 8300000, guid: 0be28e6777661ed429cdcb502c3dcb2c, type: 3}
+  - name: Player Hit 5
+    commentEvent: 6
+    clipQueue:
+    - {fileID: 8300000, guid: 999aed0cf6078554dac2ed506557fe26, type: 3}
+  - name: Touchdown 1
+    commentEvent: 8
+    clipQueue:
+    - {fileID: 8300000, guid: 1ae961a4b73a61f469b3e8c0d85312a1, type: 3}
+  - name: Touchdown 2
+    commentEvent: 8
+    clipQueue:
+    - {fileID: 8300000, guid: 6dd585275fba79e45955b86246cee7ab, type: 3}
+  - name: Touchdown 3
+    commentEvent: 8
+    clipQueue:
+    - {fileID: 8300000, guid: ae839e82e733f0341b3729db369ecb33, type: 3}
+    - {fileID: 8300000, guid: 4cf298fb842b84b46bb13ba589e136b4, type: 3}
+  - name: Touchdown 4
+    commentEvent: 8
+    clipQueue:
+    - {fileID: 8300000, guid: 7562b18d985afbc4084cc72825595568, type: 3}
+    - {fileID: 8300000, guid: a949a87c6212c12449ab6bbb37240429, type: 3}
+  - name: Touchdown 5
+    commentEvent: 8
+    clipQueue:
+    - {fileID: 8300000, guid: 9d59c42f3ee7eb244894056c68d92fec, type: 3}
+  - name: 1 Point 1
+    commentEvent: 9
+    clipQueue:
+    - {fileID: 8300000, guid: b3ef1f3d1ca4bf749ba47b34b5ce7d31, type: 3}
+    - {fileID: 8300000, guid: ea7268a683543894b9fa6dbb70255760, type: 3}
+  - name: 1 Point 2
+    commentEvent: 9
+    clipQueue:
+    - {fileID: 8300000, guid: 50b340c773170cb4086d24249a3d4ff8, type: 3}
+    - {fileID: 8300000, guid: c4a5611184d6c9847a556d69ad93fffe, type: 3}
+  - name: 1 Point 3
+    commentEvent: 9
+    clipQueue:
+    - {fileID: 8300000, guid: 91be8beb18432d048a3eee8862377626, type: 3}
+    - {fileID: 8300000, guid: 570f12e001cf8cc4298f1412864fdba0, type: 3}
+  - name: 1 Point 4
+    commentEvent: 9
+    clipQueue:
+    - {fileID: 8300000, guid: 5c1a291adb2c1fe4491fcb3774e94755, type: 3}
+  - name: 1 Point 5
+    commentEvent: 9
+    clipQueue:
+    - {fileID: 8300000, guid: ba30c8e92dd507b44a403ed6af224f52, type: 3}
+  - name: 2 Point 1
+    commentEvent: 10
+    clipQueue:
+    - {fileID: 8300000, guid: 52a8ccf00319c4f42ae37d53b06a4e18, type: 3}
+  - name: 2 Point 2
+    commentEvent: 10
+    clipQueue:
+    - {fileID: 8300000, guid: 00383095f3f9f114cb42d01d714601b5, type: 3}
+    - {fileID: 8300000, guid: 02c85ceb569373549858ba8cabe5ddf7, type: 3}
+  - name: 2 Point 3
+    commentEvent: 10
+    clipQueue:
+    - {fileID: 8300000, guid: 1baaba49202e94f4c82bea0f85ea2a0b, type: 3}
+    - {fileID: 8300000, guid: 35a6dfe797a1ad3458ccad302ff2e592, type: 3}
+  - name: 2 Point 4
+    commentEvent: 10
+    clipQueue:
+    - {fileID: 8300000, guid: 001162d853c344d44acccabd22531561, type: 3}
+  - name: 2 Point 5
+    commentEvent: 10
+    clipQueue:
+    - {fileID: 8300000, guid: 2784878c10ebdd14da2a2116c2693649, type: 3}
+    - {fileID: 8300000, guid: 8ca22771bb710b048a69a16450b04f89, type: 3}
+  - name: 3 Points 1
+    commentEvent: 11
+    clipQueue:
+    - {fileID: 8300000, guid: 7fee3f1670bd03c4b9af22119c733e68, type: 3}
+    - {fileID: 8300000, guid: 1c99f05ec1c0de746bde742f56c76137, type: 3}
+  - name: 3 Points 2
+    commentEvent: 11
+    clipQueue:
+    - {fileID: 8300000, guid: 5b4f7c1baa1c1fb40aed310f59041c78, type: 3}
+  - name: 3 Points 3
+    commentEvent: 11
+    clipQueue:
+    - {fileID: 8300000, guid: c76de07467174a1479f96058433db973, type: 3}
+    - {fileID: 8300000, guid: c58e2bb7d1d219848854d9f060cf2dc5, type: 3}
+  - name: 3 Points 4
+    commentEvent: 11
+    clipQueue:
+    - {fileID: 8300000, guid: 3e9f4c82c4f68354ebab3f52a86337ba, type: 3}
+    - {fileID: 8300000, guid: 725cb8cccd60dbe4e8b54e2ae960a849, type: 3}
+  - name: 4 Points 1
+    commentEvent: 12
+    clipQueue:
+    - {fileID: 8300000, guid: 7c24c071ff595934dbb44749aa61262a, type: 3}
+    - {fileID: 8300000, guid: 5d567b06ce430c74c8a4f5155a1d4c5b, type: 3}
+  - name: 4 Points 2
+    commentEvent: 12
+    clipQueue:
+    - {fileID: 8300000, guid: 636d427bd7aa4d94bb965bbc90a907f4, type: 3}
+    - {fileID: 8300000, guid: 1dee450a9befe5e4eb6aaed3f45e9e8d, type: 3}
+    - {fileID: 8300000, guid: ae7a98cc5e3b18443b527ff74c7837c4, type: 3}
+  - name: 4 Points 3
+    commentEvent: 12
+    clipQueue:
+    - {fileID: 8300000, guid: 1c3a5364b6abd7c45a17f5d82032d56d, type: 3}
+  - name: 4 Points 4
+    commentEvent: 12
+    clipQueue:
+    - {fileID: 8300000, guid: 7d30b3b2d5059d64f9451a631bb222fc, type: 3}
+  - name: 5 Points 1
+    commentEvent: 13
+    clipQueue:
+    - {fileID: 8300000, guid: 42619445c6cdee043b0a568900f27cb6, type: 3}
+  - name: 5 Points 2
+    commentEvent: 13
+    clipQueue:
+    - {fileID: 8300000, guid: 9db53ac527e78ab4bb03ce9b34e3cbbe, type: 3}
+    - {fileID: 8300000, guid: d7d5d70eee3e7d24197e5ced470320a1, type: 3}
+  - name: 5 Points 3
+    commentEvent: 13
+    clipQueue:
+    - {fileID: 8300000, guid: 6faf64c61d382b7439360edddfa3ce02, type: 3}
+  - name: 6 Points 1
+    commentEvent: 14
+    clipQueue:
+    - {fileID: 8300000, guid: 45bf845154e4c45419ead9924ae11138, type: 3}
+  - name: 6 Points 2
+    commentEvent: 14
+    clipQueue:
+    - {fileID: 8300000, guid: a3121c0d9857fee4eb48504f50f4724e, type: 3}
+  - name: 6 Points 3
+    commentEvent: 14
+    clipQueue:
+    - {fileID: 8300000, guid: 146a0efb5c4b67446af42cdcc4f8a58a, type: 3}
+    - {fileID: 8300000, guid: 6357b514e9ee1594e94fbe35cdf84d3f, type: 3}
+  - name: 7 Points 1
+    commentEvent: 15
+    clipQueue:
+    - {fileID: 8300000, guid: 17933b81ace970c4fa1698f0f406b974, type: 3}
+  - name: 7 Points 2
+    commentEvent: 15
+    clipQueue:
+    - {fileID: 8300000, guid: 4233158966a544b4d918e9e83b7d2d01, type: 3}
+  - name: 7 Points 3
+    commentEvent: 15
+    clipQueue:
+    - {fileID: 8300000, guid: f3baa4212e19e4b488bd7e8e407127c9, type: 3}
+    - {fileID: 8300000, guid: f382cbde8437843439062a192ac663da, type: 3}
+  - name: 8 Points 1
+    commentEvent: 16
+    clipQueue:
+    - {fileID: 8300000, guid: ead1e3211ce81b543a5b0f001b99969c, type: 3}
+  - name: 8 Points 2
+    commentEvent: 16
+    clipQueue:
+    - {fileID: 8300000, guid: cd1bd7441610fec48928029110231345, type: 3}
+  - name: 9 Points 1
+    commentEvent: 17
+    clipQueue:
+    - {fileID: 8300000, guid: c4a7a3d18ae20cf4d86b66ca27aaa3a3, type: 3}
+    - {fileID: 8300000, guid: 998c077e2ece97b4a90a310e887407fc, type: 3}
+  - name: 9 Points 2
+    commentEvent: 17
+    clipQueue:
+    - {fileID: 8300000, guid: 99c56f4bb935dda4a848c2338aea5766, type: 3}
+  - name: 10 Points 1
+    commentEvent: 18
+    clipQueue:
+    - {fileID: 8300000, guid: 55be111e6c14f554abcacfa168051d9f, type: 3}
+    - {fileID: 8300000, guid: f34ea3abb2272e443ab80f7f87fabd47, type: 3}
+    - {fileID: 8300000, guid: 97ee3524b9deb914cbed43911af46752, type: 3}
+  - name: 10 Points 2
+    commentEvent: 18
+    clipQueue:
+    - {fileID: 8300000, guid: 391785186f12d924d9bc3e403e792975, type: 3}
+    - {fileID: 8300000, guid: a60683dbeb4195f47aa60122d366ceac, type: 3}
+  - name: Pick-up Ball E1
+    commentEvent: 2
+    clipQueue:
+    - {fileID: 8300000, guid: 2b7d1eeed7e5b3f4cb42547c9b8875df, type: 3}
+  - name: Pick-up Ball E2
+    commentEvent: 2
+    clipQueue:
+    - {fileID: 8300000, guid: 61c5875846124a048bb1d32d15c4aa99, type: 3}
+  - name: Pick-up Ball E3
+    commentEvent: 2
+    clipQueue:
+    - {fileID: 8300000, guid: 6b90d4cad9ff5dc4fa729b89288ea9fd, type: 3}
+  - name: Pick-up Ball E4
+    commentEvent: 2
+    clipQueue:
+    - {fileID: 8300000, guid: a28acbde7e10ad94194922b70c28f709, type: 3}
+  - name: Random E1
+    commentEvent: 1
+    clipQueue:
+    - {fileID: 8300000, guid: f1f1414b06af5284f9a9d9b7d16b2a89, type: 3}
+  - name: Random E2
+    commentEvent: 1
+    clipQueue:
+    - {fileID: 8300000, guid: d4b6e817f7bf5944f83e28a5dfced98f, type: 3}
+  - name: Random E3
+    commentEvent: 1
+    clipQueue:
+    - {fileID: 8300000, guid: 6b90d4cad9ff5dc4fa729b89288ea9fd, type: 3}
+    - {fileID: 0}
+    - {fileID: 8300000, guid: a6b40dcc4a748e44784b684e7e7c288f, type: 3}
+  - name: Random E4
+    commentEvent: 1
+    clipQueue:
+    - {fileID: 8300000, guid: 489ae0f006b9d1849aae45098d691c65, type: 3}
+  - name: Random E5
+    commentEvent: 1
+    clipQueue:
+    - {fileID: 8300000, guid: c2de21ea2ba05aa428536707cf9b29d7, type: 3}
+  - name: Scored Goal 1
+    commentEvent: 19
+    clipQueue:
+    - {fileID: 8300000, guid: 8eb7f524483c4bf4e9831a266dcc1c61, type: 3}
+  - name: Scored Goal 2
+    commentEvent: 19
+    clipQueue:
+    - {fileID: 8300000, guid: cc810005ac2fe8a4f8d9af5f5734f485, type: 3}
+  - name: Scored Goal 3
+    commentEvent: 19
+    clipQueue:
+    - {fileID: 8300000, guid: c9d459a638ac3d341a1a94957b09fb40, type: 3}
+  - name: Scored Goal 4
+    commentEvent: 19
+    clipQueue:
+    - {fileID: 8300000, guid: 150d4fd924e52e4408b686bfe6de842e, type: 3}
+  - name: Scored Goal 5
+    commentEvent: 19
+    clipQueue:
+    - {fileID: 8300000, guid: 60e47c6bd089c4e4a9dd43862004d5f9, type: 3}
+  - name: 
+    commentEvent: 0
+    clipQueue: []
+  - name: 
+    commentEvent: 0
+    clipQueue: []
+--- !u!114 &11400002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f1fa9d78919ed14ea464497e98e7eda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minSilence: 10
+  maxSilence: 20
+  silenceTime: 15
+--- !u!114 &11400004
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8039f5b6965ea684b82b1ab6241fd997, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 100000}
+  m_IsPrefabParent: 1
+  m_IsExploded: 1
