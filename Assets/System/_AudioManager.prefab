@@ -60,6 +60,15 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2492cbdc5f140f647885a5cec0f27665, type: 3}
   - {fileID: 8300000, guid: 727291ee718ac1442b8e44ea91cdfcf2, type: 3}
   - {fileID: 8300000, guid: 067acd9fc8ba3b344836dcdd598f48b7, type: 3}
+  celebrateSounds: []
+  whistleSounds: []
+  tackledSounds: []
+  effectSounds: []
+  tackleDodgeSounds: []
+  randomSpeechSounds: []
+  changeHatSounds: []
+  jseHat: {fileID: 0}
+  goalSpeechSounds: []
   hype: 0
   hypeDecay: .00999999978
   minHype: .200000003

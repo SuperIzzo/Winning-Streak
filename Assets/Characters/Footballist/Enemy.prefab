@@ -1248,6 +1248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 2.70000005
+  scoredWith: 0
   hatSlotPos: {x: 0, y: 0, z: 0}
   hatSlotRot: {x: 0, y: 0, z: 0}
 --- !u!114 &11400030
