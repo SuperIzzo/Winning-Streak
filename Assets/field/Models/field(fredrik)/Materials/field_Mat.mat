@@ -69,7 +69,7 @@ Material:
         first:
           name: _DetailBumpMap
         second:
-          m_Texture: {fileID: 2800000, guid: 1dbf794db52ce9e4684e8498b1d4ad0e, type: 3}
+          m_Texture: {fileID: 2800000, guid: 3ad1b3d865cc8154f8ab4a8bc74da938, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -80,23 +80,23 @@ Material:
       data:
         first:
           name: _DetailTilingX
-        second: 20
+        second: 30
       data:
         first:
           name: _DetailTilingY
-        second: 20
+        second: 30
       data:
         first:
           name: _DetailDiffuseStrength
-        second: 1
+        second: .857142866
       data:
         first:
           name: _DetailNormalStrength
-        second: .5
+        second: .25
       data:
         first:
           name: _OverallRoughness
-        second: .142857149
+        second: .232142866
     m_Colors:
       data:
         first:
