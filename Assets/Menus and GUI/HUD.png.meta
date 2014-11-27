@@ -6,6 +6,13 @@ TextureImporter:
     21300002: Button
     21300004: Button Hover
     21300006: Frame
+    21300008: BackGround
+    21300010: Button_0ver
+    21300012: 'Button '
+    21300014: Button_Press
+    21300016: Title
+    21300018: Sparkle
+    21300020: BG_element
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -25,10 +32,10 @@ TextureImporter:
   grayScaleToAlpha: 0
   generateCubemap: 0
   seamlessCubemap: 0
-  textureFormat: -1
-  maxTextureSize: 1024
+  textureFormat: -3
+  maxTextureSize: 512
   textureSettings:
-    filterMode: 2
+    filterMode: 1
     aniso: 16
     mipBias: -1
     wrapMode: 1
@@ -41,51 +48,61 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: .5, y: .5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 200
   alphaIsTransparency: 1
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: Title_Bar
+    - name: BackGround
       rect:
         serializedVersion: 2
-        x: 40
-        y: 416
-        width: 433
-        height: 95
+        x: 0
+        y: 408
+        width: 230
+        height: 104
       alignment: 0
       pivot: {x: .5, y: .5}
-      border: {x: 32, y: 16, z: 32, w: 16}
-    - name: Button
+      border: {x: 20, y: 20, z: 20, w: 20}
+    - name: Button_0ver
       rect:
         serializedVersion: 2
-        x: 40
-        y: 312
-        width: 433
-        height: 102
+        x: 0
+        y: 304
+        width: 230
+        height: 104
       alignment: 0
       pivot: {x: .5, y: .5}
-      border: {x: 27, y: 14, z: 27, w: 13}
-    - name: Button Hover
+      border: {x: 20, y: 20, z: 20, w: 20}
+    - name: 'Button '
       rect:
         serializedVersion: 2
-        x: 40
-        y: 206
-        width: 433
-        height: 102
+        x: 0
+        y: 200
+        width: 230
+        height: 104
       alignment: 0
       pivot: {x: .5, y: .5}
-      border: {x: 26, y: 15, z: 27, w: 13}
-    - name: Frame
+      border: {x: 20, y: 20, z: 20, w: 20}
+    - name: Button_Press
       rect:
         serializedVersion: 2
-        x: 10
-        y: 6
-        width: 493
-        height: 196
+        x: 0
+        y: 96
+        width: 230
+        height: 104
       alignment: 0
       pivot: {x: .5, y: .5}
-      border: {x: 15, y: 16, z: 16, w: 14}
+      border: {x: 20, y: 20, z: 20, w: 20}
+    - name: Title
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 408
+        width: 230
+        height: 104
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 26, y: 20, z: 26, w: 20}
   spritePackingTag: 
   userData: 
