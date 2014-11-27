@@ -8,7 +8,7 @@ AnimatorController:
   m_Name: HUD
   serializedVersion: 2
   m_AnimatorParameters:
-  - m_Name: Visible
+  - m_Name: visible
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -39,7 +39,7 @@ Transition:
   m_TransitionOffset: 0
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Visible
+    m_ConditionEvent: visible
     m_EventTreshold: 0
     m_ExitTime: .25
   m_Atomic: 1
@@ -59,7 +59,7 @@ Transition:
   m_TransitionOffset: 0
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: Visible
+    m_ConditionEvent: visible
     m_EventTreshold: 0
     m_ExitTime: .25
   m_Atomic: 1
@@ -111,13 +111,13 @@ StateMachine:
   m_ChildStateMachinePosition: []
   m_OrderedTransitions:
     data:
-      first: {fileID: 110265403}
-      second:
-      - {fileID: 110100000}
-    data:
       first: {fileID: 110200000}
       second:
       - {fileID: 110139769}
+    data:
+      first: {fileID: 110265403}
+      second:
+      - {fileID: 110100000}
   m_MotionSetCount: 1
-  m_AnyStatePosition: {x: 180, y: 120, z: 0}
+  m_AnyStatePosition: {x: 156, y: 132, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
