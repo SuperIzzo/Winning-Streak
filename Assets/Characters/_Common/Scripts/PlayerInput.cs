@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[AddComponentMenu("Character/Player Input")]
 [RequireComponent( typeof(BaseCharacterController) )]
 public class PlayerInput : MonoBehaviour
 {

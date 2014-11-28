@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[AddComponentMenu("Character/BaseCharacterController")]
+[AddComponentMenu("Character/Base Character Controller")]
 public class BaseCharacterController : MonoBehaviour
 {
 	private static readonly float MIN_TURN_VECTOR_MAGNITUDE = 0.1f;
