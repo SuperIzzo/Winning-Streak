@@ -1,0 +1,175 @@
+﻿using UnityEngine;
+using System.Collections;
+
+[AddComponentMenu("Character/BaseCharacterController")]
+public class BaseCharacterController : MonoBehaviour
+{
+	private static readonly float MIN_TURN_VECTOR_MAGNITUDE = 0.1f;
+
+	// Public settings / properties
+	public float	movementSpeed	= 5.0f;
+	public float	turningSpeed	= 6.0f;
+	public float	dashBoost		= 3.0f;
+	public float 	dashDuration	= 1.0f;
+	public float	dashCooldown	= 5.0f;
+
+	public bool		isDancing		 {get{return _isDancing;} set{Dance(value);} }
+	public bool		isDashing		 {get{return _isDashing;} set{if(value) Dash();} }
+	public bool		isTackling		 {get{return _isTackling;} set{Tackle(value);} }
+	public Vector2	relativeVelocity {get; private set;}
+	public Vector3	lookDirection 	 {get; private set;}
+	
+	// Private state
+	private bool	_isDancing;
+	private bool	_isDashing;
+	private bool	_isTackling;
+	private float	_dashCooldownTimer;
+	private float	_dashDurationTimer;
+
+
+	//--------------------------------------------------------------
+	/// <summary> Move in the specified direction with the set
+	/// relative speed. </summary>
+	/// <param name="dir"> relative normalized velocity </param>
+	//--------------------------------------
+	public void Move( Vector2 vel, bool turn=true )
+	{
+		this.relativeVelocity = vel;
+		if( turn )
+		{
+			Turn( vel );
+		}
+	}
+
+	//--------------------------------------------------------------
+	/// <summary> Turn in the specified direction. </summary>
+	/// <param name="dir">The look direction.</param>
+	//--------------------------------------
+	public void Turn( Vector2 dir )
+	{
+		if( dir.magnitude >= MIN_TURN_VECTOR_MAGNITUDE )
+		{
+			lookDirection = new Vector3( dir.x, 0, dir.y );
+			lookDirection.Normalize();
+		}
+	}
+	
+	//--------------------------------------------------------------
+	/// <summary> Sets the dancing state for the charater </summary>
+	/// <param name="dance">dancing state</param>
+	//--------------------------------------
+	public void Dance( bool dance = true )
+	{
+		if( !_isTackling )
+		{
+			_isDancing = dance;
+
+			if( dance )
+			{
+				CancelDash();
+			}
+		}
+	}
+
+	//--------------------------------------------------------------
+	/// <summary> Sets dashing state for the charater </summary>
+	//--------------------------------------
+	public void Dash()
+	{
+		if( !_isDashing && _dashCooldownTimer <= 0 )
+		{
+			_isDashing = true;
+			_dashDurationTimer = dashDuration;
+			_dashCooldownTimer = dashCooldown;
+		}
+	}
+	
+	//--------------------------------------------------------------
+	/// <summary> Cancels the dashing state </summary>
+	//--------------------------------------
+	private void CancelDash()
+	{
+		_isDashing = false;
+		_dashDurationTimer = 0;
+	}
+	
+	//--------------------------------------------------------------
+	/// <summary> Sets the tackling state for the charater </summary>
+	/// <param name="tackle">tackling state</param>
+	//--------------------------------------
+	private void Tackle( bool tackle )
+	{
+		if( !_isDancing )
+		{
+			_isTackling = tackle;
+		}
+	}
+
+	//--------------------------------------------------------------
+	/// <summary> Update this instance. </summary>
+	//--------------------------------------
+	private void Update ()
+	{
+		ProcessDashing();
+
+		if( !isDancing && !isTackling )
+		{
+			ProcessMovement();
+			ProcessTurning();
+		}
+	}
+
+	//--------------------------------------------------------------
+	/// <summary> Processes the movement. </summary>
+	//--------------------------------------
+	private void ProcessMovement()
+	{
+		// Normal movement
+		Vector3 moveVel = new Vector3( relativeVelocity.x, 0, relativeVelocity.y );
+				moveVel *= movementSpeed * Time.deltaTime;
+
+		// Dashing
+		Vector3 dashVel = Vector3.zero; 
+		if( isDashing )
+		{
+			dashVel = lookDirection;
+			dashVel *= dashBoost * Time.deltaTime;
+		}
+
+		// Final result
+		transform.position = transform.position + moveVel + dashVel;
+	}
+
+	//--------------------------------------------------------------
+	/// <summary> Processes the turning. </summary>
+	//--------------------------------------
+	private void ProcessTurning()
+	{
+		Quaternion targetRot = Quaternion.LookRotation( lookDirection, Vector3.up );
+		Quaternion rot = transform.rotation;
+		
+		//smooth transitioning for rotation, also makes the rotation and movement more human like
+		transform.rotation = Quaternion.Slerp( transform.rotation,	targetRot, 
+		                                       Time.deltaTime * turningSpeed );
+	}
+
+	//--------------------------------------------------------------
+	/// <summary> Processes the dashing. </summary>
+	//--------------------------------------
+	private void ProcessDashing()
+	{
+		// Cooldown
+		if( _dashCooldownTimer> 0 )
+			_dashCooldownTimer -= Time.deltaTime;
+
+		// Duration
+		if( _dashDurationTimer> 0 )
+		{
+			_dashDurationTimer -= Time.deltaTime;
+			if( _dashDurationTimer<=0 )
+			{
+				CancelDash();
+			}
+		}
+	}
+}
