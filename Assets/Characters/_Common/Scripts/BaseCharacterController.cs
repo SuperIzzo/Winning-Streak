@@ -12,20 +12,47 @@ public class BaseCharacterController : MonoBehaviour
 	public float	dashBoost		= 3.0f;
 	public float 	dashDuration	= 1.0f;
 	public float	dashCooldown	= 5.0f;
+	public float	grabRadius		= 1.0f;
+	public float 	maxChargeTime	= 3.0f;
+	public float 	throwPower		= 20.0f;
 
+	public Transform propSlot;
+
+	public bool		isKnockedDown	 {get; set;}
 	public bool		isDancing		 {get{return _isDancing;} set{Dance(value);} }
 	public bool		isDashing		 {get{return _isDashing;} set{if(value) Dash();} }
 	public bool		isTackling		 {get{return _isTackling;} set{Tackle(value);} }
+	public bool		isCharging		 {get{return _isCharging;} set{if(value) ChargeThrow(); else Throw();} }
 	public Vector2	relativeVelocity {get; private set;}
 	public Vector3	lookDirection 	 {get; private set;}
-	
+
+	public GameObject heldObject	 {get; private set;}
+
 	// Private state
 	private bool	_isDancing;
 	private bool	_isDashing;
 	private bool	_isTackling;
+	private bool	_isCharging;
 	private float	_dashCooldownTimer;
 	private float	_dashDurationTimer;
+	private float	_chargeTimer;
 
+
+	//--------------------------------------------------------------
+	/// <summary> Knocks down the character. </summary>
+	//--------------------------------------
+	public void KnockDown()
+	{
+		isKnockedDown = true;
+	}
+
+	//--------------------------------------------------------------
+	/// <summary> Revives a knocked down character. </summary>
+	//--------------------------------------
+	public void Revive()
+	{
+		isKnockedDown = false;
+	}
 
 	//--------------------------------------------------------------
 	/// <summary> Move in the specified direction with the set
@@ -60,7 +87,7 @@ public class BaseCharacterController : MonoBehaviour
 	//--------------------------------------
 	public void Dance( bool dance = true )
 	{
-		if( !_isTackling )
+		if( !isKnockedDown && !_isTackling )
 		{
 			_isDancing = dance;
 
@@ -76,7 +103,7 @@ public class BaseCharacterController : MonoBehaviour
 	//--------------------------------------
 	public void Dash()
 	{
-		if( !_isDashing && _dashCooldownTimer <= 0 )
+		if( !isKnockedDown && !_isDashing && _dashCooldownTimer <= 0 )
 		{
 			_isDashing = true;
 			_dashDurationTimer = dashDuration;
@@ -97,11 +124,95 @@ public class BaseCharacterController : MonoBehaviour
 	/// <summary> Sets the tackling state for the charater </summary>
 	/// <param name="tackle">tackling state</param>
 	//--------------------------------------
-	private void Tackle( bool tackle )
+	public void Tackle( bool tackle )
 	{
-		if( !_isDancing )
+		if( isKnockedDown && !_isDancing )
 		{
 			_isTackling = tackle;
+		}
+	}
+
+	//--------------------------------------------------------------
+	/// <summary> Grabs the nearest pickable object </summary>
+	//--------------------------------------
+	public void Grab()
+	{
+		if( !heldObject && !isDancing && !isTackling )
+		{
+			GameObject		closestProp = null;
+			ThrowableObject throwable = null;
+			float 			minDistance = Mathf.Infinity; 
+
+			// 1. Get all objects within a radius
+			Collider[] envProps = Physics.OverlapSphere(transform.position, grabRadius);
+
+			// 2. Pick the closest one
+			foreach( Collider prop in envProps )
+			{
+				throwable = prop.GetComponent<ThrowableObject>();
+				// TODO: Add "Usable" items here the same way
+				//		 a game object has to be either throwable or usable
+				//		 (or both) to be grabbed and later thrown/used.
+
+				if( throwable )
+				{
+					Vector3 distance = prop.transform.position - transform.position;
+					if( distance.magnitude < minDistance )
+					{
+						minDistance = distance.magnitude;
+						closestProp = prop.gameObject;
+					}
+				}
+			}
+
+			// 3. Profit (link together and announce the grabbing)
+			if( closestProp )
+			{
+				heldObject = closestProp;
+				throwable = closestProp.GetComponent<ThrowableObject>();
+
+				if( throwable )
+				{
+					throwable.OnGrabbed( this, propSlot );
+				}
+			}
+
+		}
+	}
+
+	//--------------------------------------------------------------
+	/// <summary> Charges a throw the object the character is holdign </summary>
+	//--------------------------------------
+	public void ChargeThrow()
+	{
+		if( heldObject && !isDancing && !isTackling && !_isCharging )
+		{
+			_isCharging  = true;
+			_chargeTimer = maxChargeTime;
+		}
+	}
+
+	//--------------------------------------------------------------
+	/// <summary> Throws the object the character is holding </summary>
+	//--------------------------------------
+	public void Throw()
+	{
+		if( heldObject && _isCharging )
+		{
+			ThrowableObject throwable = heldObject.GetComponent<ThrowableObject>();
+			if( throwable )
+			{
+				float 	charge = 1 - (_chargeTimer/maxChargeTime);
+				Vector3 throwForce = lookDirection + Vector3.up/2.0f;
+				throwForce.Normalize();
+				throwForce *= charge * throwPower;
+
+				throwable.OnThrown( this, throwForce );
+			}
+
+			_isCharging = false;
+			_chargeTimer = 0.0f;
+			heldObject = null;
 		}
 	}
 
@@ -110,12 +221,16 @@ public class BaseCharacterController : MonoBehaviour
 	//--------------------------------------
 	private void Update ()
 	{
-		ProcessDashing();
-
-		if( !isDancing && !isTackling )
+		if( !isKnockedDown )
 		{
-			ProcessMovement();
-			ProcessTurning();
+			ProcessDashing();
+			ProcessThrowing();
+
+			if( !isDancing && !isTackling )
+			{
+				ProcessMovement();
+				ProcessTurning();
+			}
 		}
 	}
 
@@ -169,6 +284,22 @@ public class BaseCharacterController : MonoBehaviour
 			if( _dashDurationTimer<=0 )
 			{
 				CancelDash();
+			}
+		}
+	}
+
+	//--------------------------------------------------------------
+	/// <summary> Processes the throwing and charging. </summary>
+	//--------------------------------------
+	private void ProcessThrowing()
+	{
+		// Charge timer
+		if( _chargeTimer > 0 )
+		{
+			_chargeTimer -= Time.deltaTime;
+			if( _chargeTimer<=0 )
+			{
+				Throw();
 			}
 		}
 	}

@@ -29,9 +29,10 @@ public class PlayerInput : MonoBehaviour
 		float y = Input.GetAxis("Vertical");
 		Vector2 controlVector = new Vector2(x,y);
 
-		bool dancing		= Input.GetButton( "Wiggle" );
-		bool dashDown		= Input.GetButtonDown( "Dash" );
-
+		bool dancing		= Input.GetButton(     "Wiggle" );
+		bool dashDown		= Input.GetButtonDown( "Dash"	);
+		bool grabDown		= Input.GetButtonDown( "Grab" 	);
+		bool grabUp			= Input.GetButtonUp(   "Grab" 	);
 
 		// By default axes are separate and map to a unit square
 		// However we want the speed along the diagonals to be the same
@@ -54,6 +55,23 @@ public class PlayerInput : MonoBehaviour
 
 		if( dashDown )
 			controller.Dash();
+
+		if( grabDown )
+		{
+			if( controller.heldObject )
+			{
+				controller.ChargeThrow();
+			}
+			else
+			{
+				controller.Grab();
+			}
+		}
+
+		if( grabUp && controller.isCharging )
+		{
+			controller.Throw();
+		}
 
 	}
 }

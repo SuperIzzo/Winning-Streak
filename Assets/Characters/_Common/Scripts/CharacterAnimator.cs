@@ -15,6 +15,7 @@ public class CharacterAnimator : MonoBehaviour
 	public float goofiness;
 	public BaseCharacterController characterController;
 	public Animator animator;
+	public Ragdoll	ragdoll;
 
 	// Update is called once per frame
 	void Update ()
@@ -22,10 +23,16 @@ public class CharacterAnimator : MonoBehaviour
 		float 	speed		= characterController.relativeVelocity.magnitude;
 		bool  	dancing		= characterController.isDancing;
 		bool	tackling	= characterController.isTackling;
+		bool	charging	= characterController.isCharging;
+		bool	knockedDown	= characterController.isKnockedDown;
 
 		animator.SetFloat(	"speed",		speed		);
 		animator.SetFloat(	"goofiness",	goofiness	);
 		animator.SetBool(	"wiggle", 		dancing		);
 		animator.SetBool(	"tackle",		tackling	);
+		animator.SetBool(	"charge_throw",	charging	);
+
+		// racdoll activates when the character is knocked down
+		ragdoll.activated = knockedDown;
 	}
 }
