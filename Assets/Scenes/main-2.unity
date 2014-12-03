@@ -7222,7 +7222,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 745397842}
   m_GameObject: {fileID: 575198770}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b0923359e9e352a4b9b11c7b7161ad67, type: 3}
   m_Name: 
@@ -9431,7 +9431,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400002, guid: 32071d9b0b4c3ad4ea60f021f281cf65, type: 2}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400004, guid: 32071d9b0b4c3ad4ea60f021f281cf65, type: 2}
@@ -13828,15 +13828,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29d78461560b94fbba29123ade3720a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Lux_HDR_Scale: 2
+  Lux_HDR_Scale: 5
   isLinear: 0
   LuxLighting: 0
   Lux_IBL_DiffuseExposure: 1
   Lux_IBL_SpecularExposure: 1
   diffuseCube: {fileID: 8900000, guid: 4b8bf7fc61f016243adae868ad613bbd, type: 2}
-  diffuseIsHDR: 0
+  diffuseIsHDR: 1
   specularCube: {fileID: 8900000, guid: 760edcb41e539154ca6b69b62e814fea, type: 2}
-  specularIsHDR: 0
+  specularIsHDR: 1
 --- !u!4 &1130977544
 Transform:
   m_ObjectHideFlags: 0
@@ -15706,11 +15706,11 @@ Prefab:
       objectReference: {fileID: 8900000, guid: 4b8bf7fc61f016243adae868ad613bbd, type: 2}
     - target: {fileID: 11400000, guid: 3959a8515c527594ba7cac9f905bb316, type: 2}
       propertyPath: diffuseIsHDR
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 3959a8515c527594ba7cac9f905bb316, type: 2}
       propertyPath: specularIsHDR
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3959a8515c527594ba7cac9f905bb316, type: 2}
       propertyPath: m_LocalRotation.x
@@ -15750,7 +15750,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 3959a8515c527594ba7cac9f905bb316, type: 2}
       propertyPath: Lux_HDR_Scale
-      value: 2
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 3959a8515c527594ba7cac9f905bb316, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 3959a8515c527594ba7cac9f905bb316, type: 2}
+      propertyPath: isLinear
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 10800000, guid: 3959a8515c527594ba7cac9f905bb316, type: 2}
+      propertyPath: m_CookieSize
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3959a8515c527594ba7cac9f905bb316, type: 2}

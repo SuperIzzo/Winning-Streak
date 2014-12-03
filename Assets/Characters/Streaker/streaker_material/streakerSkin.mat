@@ -7,11 +7,11 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: streakerSkin
-  m_Shader: {fileID: 4800000, guid: f3b97c3313bc240d58efe6bec1071bbe, type: 3}
+  m_Shader: {fileID: 4800000, guid: 3e67811d3df8f40968ea8e8bc3780701, type: 3}
   m_ShaderKeywords:
   - DIFFCUBE_ON
   - SPECCUBE_ON
-  - LUX_AO_ON
+  - LUX_AO_OFF
   m_CustomRenderQueue: -1
   m_SavedProperties:
     serializedVersion: 2
@@ -41,7 +41,7 @@ Material:
         first:
           name: _SpecTex
         second:
-          m_Texture: {fileID: 2800000, guid: 593df7e401fe29a42a0b54e55a7a7272, type: 3}
+          m_Texture: {fileID: 2800000, guid: 5162dc7a82f62ab478fccdfd5af4bd64, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -62,7 +62,7 @@ Material:
         first:
           name: _AO
         second:
-          m_Texture: {fileID: 2800000, guid: baa70db597bf7ab4795b776f1777e158, type: 3}
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -83,7 +83,7 @@ Material:
         first:
           name: _BRDFTex
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: a4dcae70599c740c0ab5375e387cfcf0, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -98,11 +98,11 @@ Material:
       data:
         first:
           name: _CurvatureScale
-        second: .0199999996
+        second: .0500000007
       data:
         first:
           name: _BumpBias
-        second: 1.5
+        second: -.899999976
     m_Colors:
       data:
         first:

@@ -32,6 +32,13 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
+          name: _Detail
+        second:
+          m_Texture: {fileID: 2800000, guid: a4c3b457966d2954ea4e94537b117d8b, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
           name: _SpecTex
         second:
           m_Texture: {fileID: 2800000, guid: 8c81885f056ff0a47b7c6324a17b9b60, type: 3}
@@ -60,13 +67,6 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _Detail
-        second:
-          m_Texture: {fileID: 2800000, guid: a4c3b457966d2954ea4e94537b117d8b, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
           name: _DetailBumpMap
         second:
           m_Texture: {fileID: 2800000, guid: 3ad1b3d865cc8154f8ab4a8bc74da938, type: 3}
@@ -88,15 +88,15 @@ Material:
       data:
         first:
           name: _DetailDiffuseStrength
-        second: .857142866
+        second: .589285731
       data:
         first:
           name: _DetailNormalStrength
-        second: .25
+        second: .517857134
       data:
         first:
           name: _OverallRoughness
-        second: .232142866
+        second: .339285731
     m_Colors:
       data:
         first:
