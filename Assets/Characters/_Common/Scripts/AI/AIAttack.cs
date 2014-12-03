@@ -254,14 +254,7 @@ public class AIAttack : MonoBehaviour {
 			BaseCharacterController character = player.GetComponentInChildren<BaseCharacterController>();
 			if( character )
 				character.KnockDown();
-
-			StartCoroutine("RestartLevel");
 		}
-	}
-
-	public void ManualRestart()
-	{
-		StartCoroutine("RestartLevel");
 	}
 
 	IEnumerator DiveForward()
@@ -318,95 +311,7 @@ public class AIAttack : MonoBehaviour {
 			yield return null;
 		}
 	}
-
-	public IEnumerator RestartLevel()
-	{
-		if(!instance)
-			instance = true;
-
-		float timer = 0;
-		bool retry = false;
-		bool inEndScreen = true;
-
-		GameObject cam = GameObject.FindGameObjectWithTag("MainCamera");
-		float originalFOV = cam.camera.fieldOfView;
-
-
-		//
-
-		endGame = true;
-
-		continueBlur.GetComponent<MeshRenderer>().material.SetVector("_CellSize", new Vector4(0.0001f,0.0001f,0,0));
-
-		//scores
-		thisScoreText.GetComponent<GUIText>().text = ScoreManager.score.ToString();
-		highScoreText.GetComponent<GUIText>().text = PlayerPrefs.GetString("HighScore");
 	
-		int thisScore = System.Int32.Parse(thisScoreText.GetComponent<GUIText>().text);
-		int highScore = System.Int32.Parse(highScoreText.GetComponent<GUIText>().text);
-
-		if(thisScore > highScore)
-		{
-			Debug.Log(thisScore + " is higher score than " + highScore);
-
-			//Debug.Log
-			highScoreText.GetComponent<GUIText>().text = thisScoreText.GetComponent<GUIText>().text;
-			PlayerPrefs.SetString("HighScore", highScoreText.GetComponent<GUIText>().text);
-		}
-
-		thisScoreText.GetComponent<GUIText>().text = "Your score: " + thisScoreText.GetComponent<GUIText>().text;
-		highScoreText.GetComponent<GUIText>().text = "Highscore: " + highScoreText.GetComponent<GUIText>().text;
-
-		float waitTimer = 0;
-		ScoreManager.StopTimer();
-		
-		while(waitTimer < 2)
-		{
-			cam.camera.fieldOfView -= timer / 20;
-			waitTimer += Time.deltaTime;
-			yield return null;
-		}
-
-		continueText.GetComponent<GUIText>().enabled = true;
-		thisScoreText.GetComponent<GUIText>().enabled = true;
-		highScoreText.GetComponent<GUIText>().enabled = true;
-
-		while (timer < 15)
-		{
-			timer += Time.deltaTime;
-
-			cam.camera.fieldOfView -= timer / 10;
-
-			if(Input.GetButtonDown( "Dash" ))
-			{
-				endGame = false;
-				timer = 16;
-			}
-		
-
-			continueText.GetComponent<GUIText>().text = "Continue?\n" +  (15 - (int)timer);
-
-			yield return null;
-		}
-
-		continueText.GetComponent<GUIText>().text = "Continue?\n" +  0;
-		instance = false;
-		instanceDisable = false;
-		//cam.camera.fieldOfView = originalFOV;
-
-		ScoreManager.StartTimer();
-
-		if(!endGame)
-		{
-			//continueText.GetComponent<GUIText>().enabled = false;
-			//continueBlur.GetComponent<MeshRenderer>().enabled = false;
-			Application.LoadLevel(Application.loadedLevel);
-		}
-		else
-		{
-			Application.LoadLevel("menu");
-		}
-	}
 
 	//calculate if the player is in range of the enemy
 	bool InRange()
