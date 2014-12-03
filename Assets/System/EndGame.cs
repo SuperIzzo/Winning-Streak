@@ -7,6 +7,8 @@ public class EndGame : MonoBehaviour
 	public GUIWindow endGameDialogue;
 	public GUIWindow hud;
 
+	private float endGameDialogCountdown = 0.0f;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -16,10 +18,18 @@ public class EndGame : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		if( player.isKnockedDown )
+		if( endGameDialogCountdown> 0 )
+		{
+			endGameDialogCountdown -= Time.deltaTime;
+			if( endGameDialogCountdown<=0 )
+			{
+				endGameDialogue.Show();
+			}
+		} else if( player.isKnockedDown )
 		{
 			hud.Hide();
-			endGameDialogue.Show();
+			endGameDialogCountdown = 2.0f;
+			//endGameDialogue.Show();
 		}
 	}
 }
