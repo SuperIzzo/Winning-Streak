@@ -250,7 +250,11 @@ public class AIAttack : MonoBehaviour {
 			hitPlayer = true;
 			soundManager.GetComponent<AudioMan>().PlayEffect("TACKLE1",1);
 			soundManager.GetComponent<AudioMan>().PlayTackled();
-			player.GetComponentInChildren<GoRagdoll>().KillPlayer();
+
+			BaseCharacterController character = player.GetComponentInChildren<BaseCharacterController>();
+			if( character )
+				character.KnockDown();
+
 			StartCoroutine("RestartLevel");
 		}
 	}
