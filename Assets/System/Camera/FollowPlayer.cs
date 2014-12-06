@@ -54,6 +54,16 @@ public class FollowPlayer : MonoBehaviour {
 			dofMultiplier += Time.unscaledDeltaTime/2;
 		}
 
+		if( Input.GetKey( KeyCode.Insert ) )
+		{
+			followSpeed += Time.unscaledDeltaTime*2;
+		}
+
+		if( Input.GetKey( KeyCode.Delete ) )
+		{
+			followSpeed -= Time.unscaledDeltaTime*2;
+		}
+
 		//this.transform.LookAt(Vector3.Lerp(lastLookAt,lookAtNow,Time.deltaTime));
 
 		Quaternion targetRot = Quaternion.LookRotation(player.transform.position - this.transform.position);
