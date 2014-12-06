@@ -1,7 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class FollowPlayer : MonoBehaviour {
+public class FollowPlayer : MonoBehaviour
+{
+
+	public enum CameraMode 
+	{
+		FOLLOW,
+		FLY
+	}
 
 	public GameObject player;
 
@@ -16,6 +23,10 @@ public class FollowPlayer : MonoBehaviour {
 	public float followSpeed = 6;
 	public float dofMultiplier = 1;
 
+	public CameraMode cameraMode = CameraMode.FOLLOW;
+	public bool moveCamera = true;
+	public MonoBehaviour mouseLook = null;
+
 	void Start () 
 	{
 		
@@ -23,6 +34,33 @@ public class FollowPlayer : MonoBehaviour {
 
 	void Update () 
 	{
+		if( Input.GetKeyDown(KeyCode.V) )
+		{
+			moveCamera = !moveCamera;
+		}
+
+		if( Input.GetKeyDown(KeyCode.B) )
+		{
+			if( cameraMode == CameraMode.FOLLOW )
+				cameraMode = CameraMode.FLY;
+			else
+			{
+				cameraMode = CameraMode.FOLLOW;
+				positionOffset = transform.position - player.transform.position;
+			}
+		}
+
+		if( mouseLook )
+		{
+			mouseLook.enabled = (cameraMode == CameraMode.FLY && moveCamera);
+		}
+
+		if( cameraMode != CameraMode.FOLLOW || !moveCamera)
+		{
+			return;
+		}
+
+
 		lookTimer += Time.deltaTime;
 
 		if(lookTimer > 1)
@@ -70,7 +108,9 @@ public class FollowPlayer : MonoBehaviour {
 		this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRot, Time.unscaledDeltaTime);
 
 		//side to side tracking
-		Vector3 newPos = new Vector3(player.transform.position.x,positionOffset.y,positionOffset.z);
+		Vector3 newPos = new Vector3(player.transform.position.x + positionOffset.x,
+		                             player.transform.position.y + positionOffset.y,
+		                             player.transform.position.z + positionOffset.z);
 		this.transform.position = Vector3.Lerp(this.transform.position,newPos,Time.unscaledDeltaTime * followSpeed);
 
 		//fov tracking
