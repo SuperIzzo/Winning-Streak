@@ -14,6 +14,7 @@ public class FollowPlayer : MonoBehaviour {
 	float lookTimer = 0;
 
 	public float followSpeed = 6;
+	public float dofMultiplier = 1;
 
 	void Start () 
 	{
@@ -33,6 +34,26 @@ public class FollowPlayer : MonoBehaviour {
 			lookTimer =0;
 		}
 
+		if( Input.GetKey(KeyCode.PageUp) )
+		{
+			positionOffset.z += Time.unscaledDeltaTime * 2;
+		}
+
+		if( Input.GetKey(KeyCode.PageDown ) )
+		{
+			positionOffset.z -= Time.unscaledDeltaTime * 2;
+		}
+
+		if( Input.GetKey(KeyCode.Home) )
+		{
+			dofMultiplier -= Time.unscaledDeltaTime/2;
+		}
+		
+		if( Input.GetKey(KeyCode.End ) )
+		{
+			dofMultiplier += Time.unscaledDeltaTime/2;
+		}
+
 		//this.transform.LookAt(Vector3.Lerp(lastLookAt,lookAtNow,Time.deltaTime));
 
 		Quaternion targetRot = Quaternion.LookRotation(player.transform.position - this.transform.position);
@@ -46,7 +67,7 @@ public class FollowPlayer : MonoBehaviour {
 		Vector3 invertedCamera = new Vector3(this.transform.position.x, this.transform.position.y,
 		                                     -this.transform.position.z - 10);
 
-		this.camera.fieldOfView = Vector3.Distance(player.transform.position,invertedCamera);
+		this.camera.fieldOfView = Vector3.Distance(player.transform.position,invertedCamera) * dofMultiplier;
 
 
 	}
