@@ -67,11 +67,11 @@ public class FollowPlayer : MonoBehaviour {
 		//this.transform.LookAt(Vector3.Lerp(lastLookAt,lookAtNow,Time.deltaTime));
 
 		Quaternion targetRot = Quaternion.LookRotation(player.transform.position - this.transform.position);
-		this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRot, Time.deltaTime);
+		this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRot, Time.unscaledDeltaTime);
 
 		//side to side tracking
 		Vector3 newPos = new Vector3(player.transform.position.x,positionOffset.y,positionOffset.z);
-		this.transform.position = Vector3.Lerp(this.transform.position,newPos,Time.deltaTime * followSpeed);
+		this.transform.position = Vector3.Lerp(this.transform.position,newPos,Time.unscaledDeltaTime * followSpeed);
 
 		//fov tracking
 		Vector3 invertedCamera = new Vector3(this.transform.position.x, this.transform.position.y,
