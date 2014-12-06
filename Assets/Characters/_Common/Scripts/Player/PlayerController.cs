@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour {
 	public float goofiness = 1.0f;
 
 	bool slowmo = false;
+	bool pause = false;
 
 	public bool dancing = false;
 
@@ -45,8 +46,23 @@ public class PlayerController : MonoBehaviour {
 		{
 			slowmo = !slowmo;
 		}
-		
-		if(slowmo) Time.timeScale = 0.2f; else Time.timeScale = 1;
+
+		if( Input.GetKeyDown( KeyCode.N ) )
+		{
+			pause = !pause;
+		}
+
+		if( pause ) 
+		{
+			Time.timeScale = 0;
+		}
+		else
+		{
+			if(slowmo) 
+				Time.timeScale = 0.2f; 
+			else 
+				Time.timeScale = 1;
+		}
 
 		if(!canMove)
 			return;
