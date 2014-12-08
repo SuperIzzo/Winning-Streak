@@ -43,7 +43,7 @@ public class EnemySpawner : MonoBehaviour {
 
 			GameObject b = (GameObject)Instantiate(ball,randomPoint, new Quaternion(0,Random.Range(0,359),0,0));
 
-			player.GetComponent<ItemControl>().weaponList.Add(b);
+			//player.GetComponent<ItemControl>().weaponList.Add(b);
 		}
 	}
 	

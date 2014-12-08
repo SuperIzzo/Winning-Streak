@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 453d61f89a9446745b9778d76ca26e93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  windowAnimator: {fileID: 9500000}
   startupShowTime: 5
   scoreText: {fileID: 11400006}
   timeText: {fileID: 11400004}

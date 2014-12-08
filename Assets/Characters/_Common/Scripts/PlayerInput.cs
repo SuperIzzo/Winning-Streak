@@ -5,6 +5,7 @@ using System.Collections;
 [RequireComponent( typeof(BaseCharacterController) )]
 public class PlayerInput : MonoBehaviour
 {
+	public SloMoManager	slowMo;
 	private BaseCharacterController controller;
 	private static readonly float AXES_DEADZONE = 0.1f;
 
@@ -33,6 +34,9 @@ public class PlayerInput : MonoBehaviour
 		bool dashDown		= Input.GetButtonDown( "Dash"	);
 		bool grabDown		= Input.GetButtonDown( "Grab" 	);
 		bool grabUp			= Input.GetButtonUp(   "Grab" 	);
+	
+		bool slowMoDown		= Input.GetButtonDown(   "SlowMo" 	);
+		bool slowMoUp		= Input.GetButtonUp(     "SlowMo" 	);
 
 		// By default axes are separate and map to a unit square
 		// However we want the speed along the diagonals to be the same
@@ -73,5 +77,16 @@ public class PlayerInput : MonoBehaviour
 			controller.Throw();
 		}
 
+		if( slowMo )
+		{
+			bool slow = slowMo.isSlowed;
+
+			if( slowMoDown )
+				slow = !slow;
+
+			slow |= controller.isKnockedDown;
+
+			slowMo.isSlowed = slow;
+		}
 	}
 }

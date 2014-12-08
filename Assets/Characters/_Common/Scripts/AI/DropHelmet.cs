@@ -27,8 +27,8 @@ public class DropHelmet : MonoBehaviour {
 //		}
 //		else 
 //		{
-			if(player)
-				player.GetComponent<ItemControl>().weaponList.Add(gameObject);
+//			if(player)
+//				player.GetComponent<ItemControl>().weaponList.Add(gameObject);
 
 			this.rigidbody.isKinematic = false;
 			this.transform.parent = null;
