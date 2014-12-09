@@ -80,11 +80,6 @@ public class AIAttack : MonoBehaviour {
 
 		if(!instanceDisable)
 		{
-			continueText.GetComponent<GUIText>().enabled = false;
-			thisScoreText.GetComponent<GUIText>().enabled = false;
-			highScoreText.GetComponent<GUIText>().enabled = false;
-			continueBlur.GetComponent<MeshRenderer>().enabled = false;
-
 			instanceDisable = true;
 		}
 
