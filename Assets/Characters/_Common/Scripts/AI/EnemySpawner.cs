@@ -56,8 +56,6 @@ public class EnemySpawner : MonoBehaviour {
 		if(addPlayerTimer > addNewPlayerTime)
 		{
 			GameObject go = (GameObject)Instantiate(enemyPrefab,spawnPlace.transform.position, Quaternion.identity);
-			go.GetComponent<AIAttack>().player = player;
-			go.GetComponent<AIAttack>().ForceChase();
 
 			addPlayerTimer = 0;
 		}
