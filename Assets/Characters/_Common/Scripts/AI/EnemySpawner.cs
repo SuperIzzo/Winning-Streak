@@ -32,7 +32,7 @@ public class EnemySpawner : MonoBehaviour {
 
 			GameObject go = (GameObject)Instantiate(enemyPrefab,randomPoint, new Quaternion(0,Random.Range(0,359),0,0));
 
-			go.GetComponent<AIAttack>().player = player;
+			//go.GetComponent<AIAttack>().player = player;
 		}
 
 		for(int i = 0; i < spawnAmount; i++)
