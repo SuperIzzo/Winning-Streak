@@ -22,6 +22,7 @@ public class AIController : MonoBehaviour
 	// State
 	AIStates state;
 	Transform target;
+	Vector3 roamingDirection;
 
 
 	// Use this for initialization
@@ -29,6 +30,7 @@ public class AIController : MonoBehaviour
 	{
 		controller = GetComponent<BaseCharacterController>();
 		faction = GetComponent<Faction>();
+		state = AIStates.STANDING;
 	}
 	
 	// Update is called once per frame
@@ -58,7 +60,17 @@ public class AIController : MonoBehaviour
 		// if player or opponent around - chase
 		// if ally around, follow
 
-		if( Random.value > 0.01 )		// Don't do this every frame... just once in a while
+		// Occasionally start roaming about
+		if( Random.value > 0.1f )
+		{		
+			roamingDirection = new Vector3( Random.value - 0.5f, 0, Random.value-0.5f );
+			roamingDirection.Normalize();
+		}
+
+		if( roamingDirection.magnitude > 0 )
+			controller.Move( roamingDirection * 0.5f );
+
+		if( Random.value > 0.01f )		// Don't do this every frame... just once in a while
 		{
 			BaseCharacterController enemy = DetectEnemy();
 			if( enemy )
@@ -71,10 +83,9 @@ public class AIController : MonoBehaviour
 
 	void RoamingState()
 	{
-		// if player or opponent around - chase
-		// if ally around, follow
-		
+
 	}
+
 
 	void ChasingState()
 	{
