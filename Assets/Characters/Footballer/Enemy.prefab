@@ -398,6 +398,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400046}
   - 95: {fileID: 9500000}
+  - 114: {fileID: 11400006}
   - 114: {fileID: 11400008}
   m_Layer: 0
   m_Name: Rugby Player-Low Poly
@@ -1097,6 +1098,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alertRadius: 5
   chaseOffDistance: 10
+  redirectionRate: .00999999978
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1129,6 +1131,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   faction: 1
+--- !u!114 &11400006
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22120a4ab48eeb34a8e1debf934d3a25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 9500000}
+  parts:
+  - {fileID: 5400022}
+  - {fileID: 5400010}
+  - {fileID: 5400006}
+  - {fileID: 5400012}
+  - {fileID: 5400002}
+  - {fileID: 5400026}
+  - {fileID: 5400008}
+  - {fileID: 5400004}
+  - {fileID: 5400020}
+  - {fileID: 5400016}
+  - {fileID: 5400018}
+  - {fileID: 5400014}
 --- !u!114 &11400008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1137,26 +1164,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 100046}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0e106e9315bef842816c294c0ab1d73, type: 3}
+  m_Script: {fileID: 11500000, guid: c49450cdecc1e8c4782a124417434f57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ragdollParts:
-  - {fileID: 100038}
-  - {fileID: 100030}
-  - {fileID: 100028}
-  - {fileID: 100024}
-  - {fileID: 100022}
-  - {fileID: 100018}
-  - {fileID: 100016}
-  - {fileID: 100012}
-  - {fileID: 100010}
-  - {fileID: 100006}
-  - {fileID: 100004}
-  - {fileID: 100000}
-  player: {fileID: 0}
-  helmet: {fileID: 100052}
-  thisIsA: enemy
+  goofiness: 0
+  characterController: {fileID: 11400002}
   animator: {fileID: 9500000}
+  ragdoll: {fileID: 11400006}
 --- !u!114 &11400010
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1194,7 +1208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d740974e0a6696a4e833abc77439a86b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ragdoll: {fileID: 11400008}
+  ragdoll: {fileID: 0}
   awardable: 1
 --- !u!114 &11400016
 MonoBehaviour:
