@@ -14,6 +14,7 @@ public class AIController : MonoBehaviour
 
 	public float alertRadius = 5.0f;
 	public float chaseOffDistance = 10.0f; 
+	public float redirectionRate = 0.01f;
 
 	// Internal links
 	BaseCharacterController controller;
@@ -22,7 +23,7 @@ public class AIController : MonoBehaviour
 	// State
 	AIStates state;
 	Transform target;
-	Vector3 roamingDirection;
+	Vector2 roamingDirection;
 
 
 	// Use this for initialization
@@ -61,16 +62,16 @@ public class AIController : MonoBehaviour
 		// if ally around, follow
 
 		// Occasionally start roaming about
-		if( Random.value > 0.1f )
+		if( Random.value < redirectionRate )
 		{		
-			roamingDirection = new Vector3( Random.value - 0.5f, 0, Random.value-0.5f );
+			roamingDirection = new Vector2( Random.value-0.5f, Random.value-0.5f );
 			roamingDirection.Normalize();
 		}
 
 		if( roamingDirection.magnitude > 0 )
 			controller.Move( roamingDirection * 0.5f );
 
-		if( Random.value > 0.01f )		// Don't do this every frame... just once in a while
+		if( Random.value < 0.1f )		// Don't do this every frame... just once in a while
 		{
 			BaseCharacterController enemy = DetectEnemy();
 			if( enemy )
@@ -93,7 +94,7 @@ public class AIController : MonoBehaviour
 		// if close enough clinch and tackle
 		if( target!=null )
 		{
-			Vector3 direction = target.position = transform.position;
+			Vector3 direction = target.position - transform.position;
 			float distance = direction.magnitude;
 			direction.Normalize();
 
