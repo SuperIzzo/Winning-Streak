@@ -260,12 +260,15 @@ public class BaseCharacterController : MonoBehaviour
 	//--------------------------------------
 	private void ProcessTurning()
 	{
-		Quaternion targetRot = Quaternion.LookRotation( lookDirection, Vector3.up );
-		Quaternion rot = transform.rotation;
-		
-		//smooth transitioning for rotation, also makes the rotation and movement more human like
-		transform.rotation = Quaternion.Slerp( transform.rotation,	targetRot, 
-		                                       Time.deltaTime * turningSpeed );
+		if( lookDirection.magnitude > 0 )
+		{
+			Quaternion targetRot = Quaternion.LookRotation( lookDirection, Vector3.up );
+			Quaternion rot = transform.rotation;
+			
+			//smooth transitioning for rotation, also makes the rotation and movement more human like
+			transform.rotation = Quaternion.Slerp( transform.rotation,	targetRot, 
+			                                       Time.deltaTime * turningSpeed );
+		}
 	}
 
 	//--------------------------------------------------------------
