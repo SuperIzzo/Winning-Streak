@@ -126,7 +126,7 @@ public class BaseCharacterController : MonoBehaviour
 	//--------------------------------------
 	public void Tackle( bool tackle )
 	{
-		if( isKnockedDown && !_isDancing )
+		if( !isKnockedDown && !_isDancing )
 		{
 			_isTackling = tackle;
 		}
