@@ -1099,6 +1099,7 @@ MonoBehaviour:
   alertRadius: 10
   chaseOffDistance: 40
   redirectionRate: .00999999978
+  tackleRange: 1
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
