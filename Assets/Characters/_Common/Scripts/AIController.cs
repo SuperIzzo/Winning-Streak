@@ -95,10 +95,10 @@ public class AIController : MonoBehaviour
 		if( target!=null )
 		{
 			Vector3 direction = target.position - transform.position;
-			float distance = direction.magnitude;
-			direction.Normalize();
-
-			controller.Move( direction );
+			Vector2 direction2D = new Vector2( direction.x, direction.z ); 
+			float distance = direction2D.magnitude;
+			direction2D.Normalize();
+			controller.Move( direction2D );
 
 			if( distance > chaseOffDistance )
 				state = AIStates.STANDING;
