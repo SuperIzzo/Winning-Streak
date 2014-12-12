@@ -15,6 +15,7 @@ public class AIController : MonoBehaviour
 	public float alertRadius = 5.0f;
 	public float chaseOffDistance = 10.0f; 
 	public float redirectionRate = 0.01f;
+	public float tackleRange	= 2.0f;
 
 	// Internal links
 	BaseCharacterController controller;
@@ -102,6 +103,9 @@ public class AIController : MonoBehaviour
 
 			if( distance > chaseOffDistance )
 				state = AIStates.STANDING;
+
+			if( distance < tackleRange )
+				controller.Tackle( true );
 		}
 	}
 
