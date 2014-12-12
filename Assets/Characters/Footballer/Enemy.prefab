@@ -1096,8 +1096,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7c7e7917dd17b3468cc266f18759b41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alertRadius: 5
-  chaseOffDistance: 10
+  alertRadius: 10
+  chaseOffDistance: 40
   redirectionRate: .00999999978
 --- !u!114 &11400002
 MonoBehaviour:
@@ -1110,7 +1110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d640f6a39be6544f8a5829237f81110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 4.80000019
+  movementSpeed: 4.4000001
   turningSpeed: 6
   dashBoost: 3
   dashDuration: 1
