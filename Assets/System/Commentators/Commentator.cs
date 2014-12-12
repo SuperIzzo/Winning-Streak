@@ -1,4 +1,4 @@
-﻿#define DEBUG_COMMENTS
+﻿//#define DEBUG_COMMENTS
 
 using UnityEngine;
 using System.Collections;
