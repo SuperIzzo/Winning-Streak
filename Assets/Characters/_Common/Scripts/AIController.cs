@@ -118,7 +118,8 @@ public class AIController : MonoBehaviour
 		//			If this AI detects an enemy change state to "CHASING" setting the new target to be the enemy
 
 		// 			If the follow ally target gets out of range change to "STANDING"
-		Debug.LogError("Not Implemented");
+
+		throw new System.NotImplementedException ();
 	}
 
 
@@ -144,7 +145,7 @@ public class AIController : MonoBehaviour
 		//			and try to keep an actual formation (this is a bonus feature)
 
 
-		Debug.LogError("Not Implemented");
+		throw new System.NotImplementedException();
 	}
 
 
