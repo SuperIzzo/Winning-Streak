@@ -9,7 +9,6 @@ public class AIController : MonoBehaviour
 		CHASING,		// to tackle
 		FOLLOWING,		// an ally
 		STANDING,
-		ROAMING,
 	}
 
 	public float alertRadius = 5.0f;
@@ -43,9 +42,6 @@ public class AIController : MonoBehaviour
 		case AIStates.STANDING:
 			StandingState();
 			break;
-		case AIStates.ROAMING:
-			RoamingState();
-			break;
 		case AIStates.CHASING:
 			ChasingState();
 			break;
@@ -53,6 +49,8 @@ public class AIController : MonoBehaviour
 			FollowingState();
 			break;
 		}
+
+		KeepFormation();
 	}
 
 
@@ -81,10 +79,6 @@ public class AIController : MonoBehaviour
 				state = AIStates.CHASING;
 			}
 		}
-	}
-
-	void RoamingState()
-	{
 
 	}
 
@@ -109,8 +103,48 @@ public class AIController : MonoBehaviour
 		}
 	}
 
+	//--------------------------------------------------------------
+	/// <summary> Follow an ally unit. </summary>
+	/// <description> The AI follows the ally 'target' while still looking for enemies.
+	/// </description>
+	//--------------------------------------
 	void FollowingState()
 	{
+		// TODO: 1. For starters, implement as simply following a target (by trying to get to it's transform)
+		//		 	For the purpose rewrite DetectEnemy so that it works for both enemies and allies (based on an argument)
+		//			See ChasingState()
+
+		//			Do DetectEnemy 
+		//			If this AI detects an enemy change state to "CHASING" setting the new target to be the enemy
+
+		// 			If the follow ally target gets out of range change to "STANDING"
+		Debug.LogError("Not Implemented");
+	}
+
+
+	//--------------------------------------------------------------
+	/// <summary> Keeps formation. </summary>
+	/// <description> The AI considers nearby ally units and the enemy and keeps its formation
+	/// relative to those units.
+	/// </description>
+	//--------------------------------------
+	void KeepFormation()
+	{
+		// TODO: 2. The AI scans for nearby units and tries to stay a certain distance away from them
+
+		//			For the purpose, ideally, you'll need to add 3D vector to keep track of the movement from
+		//			all functions (e.g. aiControlVector) so that you can make a relative change to that
+		//			and at the end of update do controller.Move( aiControlVector );
+
+		//			Alternatively adjust the controller.relativeVelocity by a small factor (based on distance) 
+		//			to make this unity avoid going into the units
+		//			NOTE: You'll have to remove the "private" from "private set"
+
+		//			This function can be improved to make the AI look like a professional football player
+		//			and try to keep an actual formation (this is a bonus feature)
+
+
+		Debug.LogError("Not Implemented");
 	}
 
 
