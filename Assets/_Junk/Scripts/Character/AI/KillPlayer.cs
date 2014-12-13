@@ -22,7 +22,7 @@ public class KillPlayer : MonoBehaviour {
 			//ragdoll this enemy
 			if(helmet)
 				helmet.GetComponentInChildren<DropHelmet>().Drop();
-			thisGO.GetComponent<AIAttack>().KillThePlayer();
+			//thisGO.GetComponent<AIAttack>().KillThePlayer();
 			DisableColliders();
 		}
 	}
