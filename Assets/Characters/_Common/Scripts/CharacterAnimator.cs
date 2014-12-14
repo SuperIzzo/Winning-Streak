@@ -32,7 +32,7 @@ public class CharacterAnimator : MonoBehaviour
 		animator.SetBool(	"tackle",		tackling	);
 		animator.SetBool(	"charge_throw",	charging	);
 
-		// racdoll activates when the character is knocked down
+		// ragdoll activates when the character is knocked down
 		ragdoll.activated = knockedDown;
 	}
 }

@@ -3,53 +3,32 @@ using System.Collections;
 
 public class KillPlayer : MonoBehaviour {
 
-	public GameObject thisGO;
-	public GameObject helmet;
+    float hitTime = 0.1f;
+    float hitForce = 0.15f;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 	void OnTriggerEnter(Collider other)
 	{
-		if(other.tag == "Player")
+		if(other.tag == "PlayerMesh")
 		{
-			//ragdoll this enemy
-			if(helmet)
-				helmet.GetComponentInChildren<DropHelmet>().Drop();
-			thisGO.GetComponent<AIAttack>().KillThePlayer();
-			DisableColliders();
+            if (!ReferenceManager.GetPlayer().GetComponent<BaseCharacterController>().isKnockedDown)
+            {
+                StartCoroutine("HitPlayer");
+                ReferenceManager.GetPlayer().GetComponent<BaseCharacterController>().isKnockedDown = true;
+            }
 		}
 	}
 
-	void EnableColliders()
-	{
-		if(GetComponent<BoxCollider>())
-		{
-			GetComponent<BoxCollider>().enabled = true;
-		}
-		
-		if(GetComponent<CapsuleCollider>())
-		{
-			GetComponent<CapsuleCollider>().enabled = true;
-		}
-	}
+    IEnumerator HitPlayer()
+    {
+        float timer = 0;
+        Vector3 direction = this.transform.forward;
 
-	void DisableColliders()
-	{
-		if(GetComponent<BoxCollider>())
-		{
-			GetComponent<BoxCollider>().enabled = false;
-		}
+        while (timer < hitTime)
+        {
+            timer += Time.deltaTime;
+            ReferenceManager.GetPlayer().transform.position += direction * hitForce;
 
-		if(GetComponent<CapsuleCollider>())
-		{
-			GetComponent<CapsuleCollider>().enabled = false;
-		}
-	}
+            yield return null;
+        }
+    }
 }

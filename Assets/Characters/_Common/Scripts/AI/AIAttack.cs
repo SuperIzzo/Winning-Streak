@@ -234,6 +234,7 @@ public class AIAttack : MonoBehaviour {
 
 	public void KillThePlayer()
 	{
+        Debug.Log("Killingthe player");
 		if(!endGame)
 		{
 			Commentator commentator = Commentator.instance;

@@ -17,6 +17,7 @@ TagManager:
   - field
   - 
   - weapon
+  - PlayerMesh
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
@@ -26,7 +27,7 @@ TagManager:
   Builtin Layer 5: UI
   Builtin Layer 6: 
   Builtin Layer 7: 
-  User Layer 8: 
+  User Layer 8: Ignore Collision
   User Layer 9: 
   User Layer 10: 
   User Layer 11: 

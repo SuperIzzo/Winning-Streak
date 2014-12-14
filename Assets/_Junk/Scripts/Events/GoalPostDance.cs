@@ -3,22 +3,23 @@ using System.Collections;
 
 public class GoalPostDance : MonoBehaviour {
 
-	public GameObject soundManager;
+	private GameObject SoundManager;
 
 	public float scoreInterval;
 
 	float timer = 0;
 
-	void Start()
+	void Update()
 	{
-		soundManager = GameObject.FindGameObjectWithTag("SoundManager");
+        if (!SoundManager)
+            SoundManager = ReferenceManager.GetSoundManager();
 	}
 
 	void OnTriggerStay(Collider other)
 	{
 		if(other.tag == "Player")
 		{
-			if(other.GetComponent<PlayerController>().dancing)
+			if(other.GetComponent<BaseCharacterController>().isDancing)
 			{
 				timer += Time.deltaTime;
 
@@ -29,17 +30,17 @@ public class GoalPostDance : MonoBehaviour {
 					timer = 0;
 				}
 
-				if(soundManager.GetComponent<AudioMan>().GetHype() > 0.8f)
+                if (SoundManager.GetComponent<AudioMan>().GetHype() > 0.8f)
 				{
 					if(Random.value < 0.01f)
 					{
-						soundManager.GetComponent<AudioMan>().PlayCelebrate();
+                        SoundManager.GetComponent<AudioMan>().PlayCelebrate();
 						Debug.Log ("celebrate called");
 					}
 				}
 
 				//soundManager.GetComponent<DialogueManager>().PlaySpeech("PLAYER_DANCE");
-				soundManager.GetComponent<AudioMan>().KeepHypeUp();
+                SoundManager.GetComponent<AudioMan>().KeepHypeUp();
 			}
 		}
 	}

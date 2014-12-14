@@ -31,8 +31,6 @@ public class EnemySpawner : MonoBehaviour {
 			                                  Random.Range(min.transform.position.z,max.transform.position.z));
 
 			GameObject go = (GameObject)Instantiate(enemyPrefab,randomPoint, new Quaternion(0,Random.Range(0,359),0,0));
-
-			//go.GetComponent<AIAttack>().player = player;
 		}
 
 		for(int i = 0; i < spawnAmount; i++)
@@ -42,8 +40,6 @@ public class EnemySpawner : MonoBehaviour {
 			                                  Random.Range(min.transform.position.z,max.transform.position.z));
 
 			GameObject b = (GameObject)Instantiate(ball,randomPoint, new Quaternion(0,Random.Range(0,359),0,0));
-
-			//player.GetComponent<ItemControl>().weaponList.Add(b);
 		}
 	}
 	

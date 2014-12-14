@@ -3,7 +3,7 @@ using System.Collections;
 
 public class EndGame : MonoBehaviour
 {
-	public BaseCharacterController player;
+	private BaseCharacterController player;
 	public GUIWindow endGameDialogue;
 	public GUIWindow hud;
 
@@ -18,18 +18,26 @@ public class EndGame : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		if( endGameDialogCountdown> 0 )
-		{
-			endGameDialogCountdown -= Time.deltaTime;
-			if( endGameDialogCountdown<=0 )
-			{
-				endGameDialogue.Show();
-			}
-		} else if( player.isKnockedDown )
-		{
-			hud.Hide();
-			endGameDialogCountdown = 2.0f;
-			//endGameDialogue.Show();
-		}
+        if (player)
+        {
+            if (endGameDialogCountdown > 0)
+            {
+                endGameDialogCountdown -= Time.deltaTime;
+                if (endGameDialogCountdown <= 0)
+                {
+                    endGameDialogue.Show();
+                }
+            }
+            else if (player.isKnockedDown)
+            {
+                hud.Hide();
+                endGameDialogCountdown = 2.0f;
+                //endGameDialogue.Show();
+            }
+        }
+        else
+        {
+            player = ReferenceManager.GetPlayer().GetComponent<BaseCharacterController>();
+        }
 	}
 }

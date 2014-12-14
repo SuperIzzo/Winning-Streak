@@ -17,6 +17,13 @@ public class AIController : MonoBehaviour
 	public float redirectionRate = 0.01f;
 	public float tackleRange	= 2.0f;
 
+    public float tackleSpeed = 1;
+    public float tackleDuration = 0.5f;
+
+    //Can only tackle once, stops the Coroutine from being played multiple times
+    private bool tackled = false;
+
+
 	// Internal links
 	BaseCharacterController controller;
 	Faction faction;
@@ -104,8 +111,16 @@ public class AIController : MonoBehaviour
 			if( distance > chaseOffDistance )
 				state = AIStates.STANDING;
 
-			if( distance < tackleRange )
-				controller.Tackle( true );
+            if (distance < tackleRange)
+            {
+                controller.Tackle(true);
+
+                if (!tackled)
+                {
+                    StartCoroutine("Dive");
+                    tackled = true;
+                }
+            }
 		}
 	}
 
@@ -138,4 +153,17 @@ public class AIController : MonoBehaviour
 
 		return null;
 	}
+
+    IEnumerator Dive()
+    {
+        float timer = 0;
+
+        while (timer < tackleDuration)
+        {
+            timer += Time.deltaTime;
+            this.transform.position += transform.forward * tackleSpeed;
+
+            yield return null;
+        }
+    }
 }

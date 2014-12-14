@@ -34,8 +34,18 @@ public class Ragdoll : MonoBehaviour
 
 		foreach(Rigidbody part in parts)
 		{
-			if( part )
-				part.isKinematic = false;
+            if (part)
+            {
+                part.isKinematic = false;
+
+                //stops the infamous helicopter arms 
+                if (part.name == "lShldr" || part.name == "rShldr" || part.name == "lForeArm" || part.name == "rForeArm")
+                {
+                    part.freezeRotation = true;
+                }
+
+                
+            }
 		}
 	}
 	
@@ -48,7 +58,10 @@ public class Ragdoll : MonoBehaviour
 		foreach(Rigidbody part in parts)
 		{
 			if( part )
+            {
 				part.isKinematic = true;
+                part.freezeRotation = false;
+            }
 		}
 	}
 }
