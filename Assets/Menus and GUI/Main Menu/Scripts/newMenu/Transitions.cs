@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class Transitions : MonoBehaviour {
 
+    public GameObject Jumbotron;
+
     public List<GameObject> mainMenuObjects = new List<GameObject>();
     public List<GameObject> customiseObjects = new List<GameObject>();
     public List<GameObject> scoreObjects = new List<GameObject>();
@@ -53,6 +55,7 @@ public class Transitions : MonoBehaviour {
 
     public void ToCustomisation()
     {
+        Debug.Log("In ToCust");
         if (!inTransistion)
         {
             for (int i = 0; i < mainMenuObjects.Count; i++)
@@ -87,43 +90,36 @@ public class Transitions : MonoBehaviour {
     {
         inTransistion = true;
 
-        while (inTransistion)
+        float increment = Jumbotron.transform.rotation.eulerAngles.y < 0 ? 2 : -2;
+
+        float countDown = 90;
+
+        Quaternion rot = Jumbotron.transform.rotation;
+
+        //coming from customisation
+        if (increment == -2)
         {
-            for (int i = 0; i < mainMenuObjects.Count; i++)
+            while (countDown > 0)
             {
-                if (mainMenuObjects[i].name != "MM_AcceptButton")
-                mainMenuObjects[i].transform.position = Vector3.Lerp(mainMenuObjects[i].transform.position,
-                                                                     mainMenuOriginalPositions[i],
-                                                                     Time.deltaTime * speed);
-            }
+                rot.eulerAngles += new Vector3(0, increment, 0);
+                countDown += increment;
+                Jumbotron.transform.rotation = rot;
 
-            for (int i = 0; i < customiseObjects.Count; i++)
-            {
-                customiseObjects[i].transform.position = Vector3.Lerp(customiseObjects[i].transform.position,
-                                                                      customiseOriginalPositions[i],
-                                                                      Time.deltaTime * speed);
-            }
-
-            for (int i = 0; i < scoreObjects.Count; i++)
-            {
-                scoreObjects[i].transform.position = Vector3.Lerp(scoreObjects[i].transform.position,
-                                                                  scoreOriginalPositions[i],
-                                                                  Time.deltaTime * speed);
-            }
-
-            inTransistion = mainMenuObjects[0].transform.localPosition.x > 1 ||
-                            mainMenuObjects[0].transform.localPosition.x < -1 ? true : false;
-
-            yield return null;
-        }
-
-        for (int i = 0; i < mainMenuObjects.Count; i++)
-        {
-            if (mainMenuObjects[i].name == "MM_AcceptButton")
-            {
-                mainMenuObjects[i].SetActive(true);
+                yield return null;
             }
         }
+        else //coming from scoreboard
+        {
+
+        }
+
+        //for (int i = 0; i < mainMenuObjects.Count; i++)
+        //{
+        //    if (mainMenuObjects[i].name == "MM_AcceptButton")
+        //    {
+        //        mainMenuObjects[i].SetActive(true);
+        //    }
+        //}
 
         this.GetComponent<MenuControls>().SetMenu(1);
         inTransistion = false;
@@ -131,37 +127,53 @@ public class Transitions : MonoBehaviour {
 
     IEnumerator TransistionToCustomisation()
     {
+        Debug.Log("In ToCust IEnum");
         inTransistion = true;
         this.GetComponent<MenuControls>().SetMenu(2);
 
-        while (inTransistion)
+        float increment = 2;
+
+        float countDown = 90;
+
+        Quaternion rot = Jumbotron.transform.rotation;
+
+        while (countDown > 0)
         {
-            for (int i = 0; i < mainMenuObjects.Count; i++)
-            {
-                mainMenuObjects[i].transform.position = Vector3.Lerp(mainMenuObjects[i].transform.position,
-                                                                     mainMenuOriginalPositions[i] - new Vector3(offset, 0, 0),
-                                                                     Time.deltaTime * speed);
-            }
+            
+            rot.eulerAngles += new Vector3(0, increment, 0);
+            Debug.Log(rot.eulerAngles);
+            countDown -= increment;
+            Jumbotron.transform.rotation = rot;
+            //Quaternion.Slerp(Jumbotron.transform.rotation, rot, increment);
 
-            for (int i = 0; i < customiseObjects.Count; i++)
-            {
-                customiseObjects[i].transform.position = Vector3.Lerp(customiseObjects[i].transform.position,
-                                                                      customiseOriginalPositions[i] - new Vector3(offset, 0, 0),
-                                                                      Time.deltaTime * speed);
-            }
+            //for (int i = 0; i < mainMenuObjects.Count; i++)
+            //{
+            //    mainMenuObjects[i].transform.position = Vector3.Lerp(mainMenuObjects[i].transform.position,
+            //                                                         mainMenuOriginalPositions[i] - new Vector3(offset, 0, 0),
+            //                                                         Time.deltaTime * speed);
+            //}
 
-            for (int i = 0; i < scoreObjects.Count; i++)
-            {
-                scoreObjects[i].transform.position = Vector3.Lerp(scoreObjects[i].transform.position,
-                                                                  scoreOriginalPositions[i] - new Vector3(offset, 0, 0),
-                                                                  Time.deltaTime * speed);
-            }
+            //for (int i = 0; i < customiseObjects.Count; i++)
+            //{
+            //    customiseObjects[i].transform.position = Vector3.Lerp(customiseObjects[i].transform.position,
+            //                                                          customiseOriginalPositions[i] - new Vector3(offset, 0, 0),
+            //                                                          Time.deltaTime * speed);
+            //}
+
+            //for (int i = 0; i < scoreObjects.Count; i++)
+            //{
+            //    scoreObjects[i].transform.position = Vector3.Lerp(scoreObjects[i].transform.position,
+            //                                                      scoreOriginalPositions[i] - new Vector3(offset, 0, 0),
+            //                                                      Time.deltaTime * speed);
+            //}
 
 
-            inTransistion = customiseObjects[0].transform.localPosition.x > 1 ? true : false;
+            //inTransistion = customiseObjects[0].transform.localPosition.x > 1 ? true : false;
 
             yield return null;
         }
+
+        Debug.Log("Done ToCust IEnum");
 
         inTransistion = false;
     }
