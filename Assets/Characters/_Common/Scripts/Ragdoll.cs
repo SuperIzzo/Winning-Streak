@@ -53,8 +53,8 @@ public class Ragdoll : MonoBehaviour
 	void DeactivateRagdoll () 
 	{
 		if( animator )
-			animator.enabled = false;
-		
+			animator.enabled = true;
+
 		foreach(Rigidbody part in parts)
 		{
 			if( part )

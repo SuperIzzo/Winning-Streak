@@ -21,6 +21,9 @@ public class DamageableCharacter : Damageable
 	//--------------------------------------
 	public override void OnDamage( Damager damager )
 	{
+        if(!controller)
+            controller = GetComponent<BaseCharacterController>();
+
 		controller.isKnockedDown = true;
 	}
 }

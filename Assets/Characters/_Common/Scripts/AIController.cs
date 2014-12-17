@@ -19,6 +19,9 @@ public class AIController : MonoBehaviour
     public float tackleSpeed = 1;
     public float tackleDuration = 0.5f;
 
+    //Time for the downed AI to slowly fade into the floor before being deleted
+    public float fadeTime = 10;
+
     //Can only tackle once, stops the Coroutine from being played multiple times
     private bool tackled = false;
 
@@ -77,15 +80,15 @@ public class AIController : MonoBehaviour
 		if( roamingDirection.magnitude > 0 )
 			controller.Move( roamingDirection * 0.5f );
 
-		if( Random.value < 0.1f )		// Don't do this every frame... just once in a while
-		{
-			BaseCharacterController enemy = DetectEnemy();
-			if( enemy )
-			{
-				target = enemy.transform;
-				state = AIStates.CHASING;
-			}
-		}
+        if (Random.value < 0.01f)
+        {
+            BaseCharacterController enemy = DetectEnemy();
+            if (enemy)
+            {
+                target = enemy.transform;
+                state = AIStates.CHASING;
+            }
+        }
 
 	}
 
@@ -112,7 +115,6 @@ public class AIController : MonoBehaviour
                 if (!tackled)
                 {
                     StartCoroutine("Dive");
-                    tackled = true;
                 }
             }
 		}
@@ -134,7 +136,7 @@ public class AIController : MonoBehaviour
 
 		// 			If the follow ally target gets out of range change to "STANDING"
 
-		throw new System.NotImplementedException ();
+		//throw new System.NotImplementedException ();
 	}
 
 
@@ -160,7 +162,7 @@ public class AIController : MonoBehaviour
 		//			and try to keep an actual formation (this is a bonus feature)
 
 
-		throw new System.NotImplementedException();
+		//throw new System.NotImplementedException();
 	}
 
 
@@ -173,8 +175,12 @@ public class AIController : MonoBehaviour
 			// If it is a different object
 			if( collider.transform != transform )
 			{
+                
 				Faction otherFaction = collider.GetComponent<Faction>();
 				BaseCharacterController otherController = collider.GetComponent<BaseCharacterController>();
+
+                if (!collider.GetComponent<BaseCharacterController>())
+                    continue;
 
 				if( faction && faction.IsAlly(otherFaction) )
 				   continue; // Skip this iteration, we ignore allies
@@ -192,13 +198,29 @@ public class AIController : MonoBehaviour
     IEnumerator Dive()
     {
         float timer = 0;
+        tackled = true;
 
         while (timer < tackleDuration)
         {
-            timer += Time.deltaTime;
-            this.transform.position += transform.forward * tackleSpeed;
+            timer += Time.unscaledDeltaTime;
+            this.transform.position += transform.forward * (tackleSpeed * Time.unscaledDeltaTime);
 
             yield return null;
         }
+
+        StartCoroutine("Death");
+    }
+
+    IEnumerator Death()
+    {
+        float timer = 0;
+
+        while (timer < fadeTime)
+        {
+            timer += Time.unscaledDeltaTime;
+            yield return null;
+        }
+
+        Destroy(gameObject);
     }
 }

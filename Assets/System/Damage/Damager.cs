@@ -26,7 +26,11 @@ public class Damager : MonoBehaviour
 	/// <param name="gameObject"> the game object to be damaged </param>
 	//--------------------------------------
 	void DamageTest( GameObject gameObject )
-	{			
+	{
+        //if there is little movement on the y axis, don't damage
+        if (this.rigidbody.velocity.y < 1)
+            return;
+
 		Damageable damageabble = gameObject.GetComponent<Damageable>();
 
 		if( damageabble )
@@ -38,6 +42,6 @@ public class Damager : MonoBehaviour
 		//			non-moving objects should not be causing damage
 		//			(unless we want the players to trip over them)
 
-		throw new System.NotImplementedException();
+		//throw new System.NotImplementedException();
 	}
 }

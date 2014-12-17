@@ -4,7 +4,7 @@ using System.Collections;
 // TODO: Inerit from Grabbable and move logic common to both throwable and usable to there
 public class ThrowableObject : MonoBehaviour
 {
-	public float knockOutPower = 1.0f;
+	public float knockOutPower = 5.0f;
 	private Transform slot;
 	private BaseCharacterController thrower;
 
@@ -42,32 +42,52 @@ public class ThrowableObject : MonoBehaviour
 	public void OnThrown( BaseCharacterController character, Vector3 force )
 	{
 		//Debug.Break();
-		
-		if( collider )
-			collider.enabled = true;
+        
+
+        //StartCoroutine("ProcessThrow");
+        if (collider)
+            collider.enabled = true;
 
 		if( rigidbody )
 		{
 			rigidbody.isKinematic = false;
-			rigidbody.AddForce( force, ForceMode.Impulse );
+			rigidbody.AddForce( new Vector3(0,100,0) /*, ForceMode.Impulse */ );
 		}
 
-		// Unlink
-		transform.SetParent( null, true );
-		slot = null;
+        // Unlink
+        transform.SetParent(null, true);
+        slot = null;
 	}
 
 	void OnCollisionEnter( Collision collision )
 	{
+        return;
+
 		BaseCharacterController character =  collision.collider.GetComponent<BaseCharacterController>();
 		if( character && character!=thrower )
 		{
-			Debug.Log( "Relative vel: " + collision.relativeVelocity.magnitude );
 			if( collision.relativeVelocity.magnitude > knockOutPower 
 			   	&& rigidbody.velocity.magnitude		 > knockOutPower)
 			{
+                Debug.Log("Relative vel: " + collision.relativeVelocity.magnitude);
 				character.KnockDown();
 			}
 		}
 	}
+
+    IEnumerator ProcessThrow()
+    {
+        float timer = 0;
+
+        while (timer < 0.4f)
+        {
+            timer += Time.unscaledDeltaTime;
+
+            yield return null;
+        }
+
+        if (collider)
+            collider.enabled = true;
+
+    }
 }
