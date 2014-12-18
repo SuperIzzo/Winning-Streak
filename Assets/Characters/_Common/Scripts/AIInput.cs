@@ -12,7 +12,7 @@ using System.Collections;
 /// </description>
 //--------------------------------------
 [RequireComponent(typeof(BaseCharacterController))]
-public class AIController : MonoBehaviour 
+public class AIInput : MonoBehaviour 
 {
 	private enum AIStates
 	{
