@@ -1,6 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+//--------------------------------------------------------------
+/// <summary> AI character controller. </summary>
+/// <description> AIController is a decision taking component that
+/// manipulates a <see cref="BaseCharacterController"/>. It worrks analogous
+/// to an input device (such as <see cref="PlayerInput"/>) with the only
+/// difference being that it generates the input signals based on some logic.
+/// Note: AICharacterController does not and cannot modify the game state,
+/// that task is reserved for the BaseCharacterController component.
+/// </description>
+//--------------------------------------
 [RequireComponent(typeof(BaseCharacterController))]
 public class AIController : MonoBehaviour 
 {
@@ -36,15 +46,19 @@ public class AIController : MonoBehaviour
 	Vector2 roamingDirection;
 
 
-	// Use this for initialization
+	//--------------------------------------------------------------
+	/// <summary> Use this for initialization. </summary>
+	//--------------------------------------
 	void Start () 
 	{
 		controller = GetComponent<BaseCharacterController>();
 		faction = GetComponent<Faction>();
 		state = AIStates.STANDING;
 	}
-	
-	// Update is called once per frame
+
+	//--------------------------------------------------------------
+	/// <summary> Update is called once per frame. </summary>
+	//--------------------------------------
 	void Update () 
 	{
 		switch( state )
@@ -63,7 +77,9 @@ public class AIController : MonoBehaviour
 		KeepFormation();
 	}
 
-
+	//--------------------------------------------------------------
+	/// <summary> The state of unawareness </summary>
+	//--------------------------------------
 	void StandingState()
 	{
 		// TODO
@@ -92,7 +108,9 @@ public class AIController : MonoBehaviour
 
 	}
 
-
+	//--------------------------------------------------------------
+	/// <summary> State of chasing an enemy. </summary>
+	//--------------------------------------
 	void ChasingState()
 	{
 		// chase until too far away
@@ -165,7 +183,10 @@ public class AIController : MonoBehaviour
 		//throw new System.NotImplementedException();
 	}
 
-
+	//--------------------------------------------------------------
+	/// <summary> Detects the enemy. </summary>
+	/// <returns>The enemy.</returns>
+	//--------------------------------------
 	BaseCharacterController DetectEnemy()
 	{
 		Collider[] colliders = Physics.OverlapSphere( transform.position, alertRadius );
@@ -197,6 +218,8 @@ public class AIController : MonoBehaviour
 
     IEnumerator Dive()
     {
+		// UNGODLY HACK: Not only does this directly control the character animation, 
+		//               but it also does it by directly modifying the game state
         float timer = 0;
         tackled = true;
 
