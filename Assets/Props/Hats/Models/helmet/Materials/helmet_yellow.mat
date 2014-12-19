@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: helmet_yellow
-  m_Shader: {fileID: 4800000, guid: 441c5e7206ecc45518ee78a02f436185, type: 3}
+  m_Shader: {fileID: 4800000, guid: 0e8973720d2db4e89bf93b6adfbf4e7b, type: 3}
   m_ShaderKeywords:
   - DIFFCUBE_ON
   - SPECCUBE_ON
