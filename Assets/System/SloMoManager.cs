@@ -13,13 +13,23 @@ public class SloMoManager : MonoBehaviour
 
 	public void SlowMo()
 	{
+        if (!followCamera)
+        {
+            followCamera = ReferenceManager.GetCamera().GetComponent<FollowTarget>();
+        }
+
 		_isSlowed = true;
-		followCamera.ZoomIn();
+		//followCamera.ZoomIn();
 		Time.timeScale = 0.2f;
 	}
 
 	public void NormalMo()
 	{
+        if (!followCamera)
+        {
+            followCamera = ReferenceManager.GetCamera().GetComponent<FollowTarget>();
+        }
+
 		_isSlowed = false;
 		followCamera.ZoomReset();
 		Time.timeScale = 1f;

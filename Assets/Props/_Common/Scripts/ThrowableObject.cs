@@ -1,20 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+//--------------------------------------------------------------
+/// <summary> A base class for all throwable objects. </summary>
 // TODO: Inerit from Grabbable and move logic common to both throwable and usable to there
+//--------------------------------------
 public class ThrowableObject : MonoBehaviour
 {
-	public float knockOutPower = 1.0f;
+	// Public properties
+	public float knockOutPower = 5.0f;
+
+	// Priavate references
 	private Transform slot;
 	private BaseCharacterController thrower;
 
-	// Use this for initialization
-	void Start ()
-	{
-	
-	}
-	
-	// Update is called once per frame
+
+	//--------------------------------------------------------------
+	/// <summary> Update is called once per frame </summary>
+	//--------------------------------------
 	void Update ()
 	{
 		if( slot && transform.parent )
@@ -22,7 +25,12 @@ public class ThrowableObject : MonoBehaviour
 			transform.localPosition = Vector3.Lerp( transform.localPosition, Vector3.zero, 0.2f );
 		}
 	}
-	
+
+	//--------------------------------------------------------------
+	/// <summary> Called when the throwable is grabbed. </summary>
+	/// <param name="character">The grabbing character.</param>
+	/// <param name="propSlot">The slot for the prop.</param>
+	//--------------------------------------
 	public void OnGrabbed( BaseCharacterController character, Transform propSlot )
 	{
 		thrower = character;
@@ -39,33 +47,42 @@ public class ThrowableObject : MonoBehaviour
 		transform.SetParent( slot, true );
 	}
 
+	//--------------------------------------------------------------
+	/// <summary> Called when the prop is thrown. </summary>
+	/// <param name="character">The throwing character.</param>
+	/// <param name="force">The force at which the object is thrown.</param>
+	//--------------------------------------
 	public void OnThrown( BaseCharacterController character, Vector3 force )
 	{
-		//Debug.Break();
-		
-		if( collider )
-			collider.enabled = true;
+        if (collider)
+            collider.enabled = true;
 
 		if( rigidbody )
 		{
 			rigidbody.isKinematic = false;
-			rigidbody.AddForce( force, ForceMode.Impulse );
+			rigidbody.AddForce( new Vector3(0,100,0) /*, ForceMode.Impulse */ );
 		}
 
-		// Unlink
-		transform.SetParent( null, true );
-		slot = null;
+        // Unlink, note we keep it in world space
+        transform.SetParent(null, true);
+        slot = null;
 	}
 
+	//--------------------------------------------------------------
+	/// <summary> Raises the collision enter event. </summary>
+	/// <param name="collision">Collision data.</param>
+	//--------------------------------------
 	void OnCollisionEnter( Collision collision )
 	{
+        return; // HACK: why?
+
 		BaseCharacterController character =  collision.collider.GetComponent<BaseCharacterController>();
 		if( character && character!=thrower )
 		{
-			Debug.Log( "Relative vel: " + collision.relativeVelocity.magnitude );
 			if( collision.relativeVelocity.magnitude > knockOutPower 
 			   	&& rigidbody.velocity.magnitude		 > knockOutPower)
 			{
+                Debug.Log("Relative vel: " + collision.relativeVelocity.magnitude);
 				character.KnockDown();
 			}
 		}

@@ -1,8 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+//--------------------------------------------------------------
+/// <summary> AI character controller. </summary>
+/// <description> AIController is a decision taking component that
+/// manipulates a <see cref="BaseCharacterController"/>. It worrks analogous
+/// to an input device (such as <see cref="PlayerInput"/>) with the only
+/// difference being that it generates the input signals based on some logic.
+/// Note: AICharacterController does not and cannot modify the game state,
+/// that task is reserved for the BaseCharacterController component.
+/// </description>
+//--------------------------------------
 [RequireComponent(typeof(BaseCharacterController))]
-public class AIController : MonoBehaviour 
+public class AIInput : MonoBehaviour 
 {
 	private enum AIStates
 	{
@@ -19,6 +29,9 @@ public class AIController : MonoBehaviour
     public float tackleSpeed = 1;
     public float tackleDuration = 0.5f;
 
+    //Time for the downed AI to slowly fade into the floor before being deleted
+    public float fadeTime = 10;
+
     //Can only tackle once, stops the Coroutine from being played multiple times
     private bool tackled = false;
 
@@ -33,15 +46,19 @@ public class AIController : MonoBehaviour
 	Vector2 roamingDirection;
 
 
-	// Use this for initialization
+	//--------------------------------------------------------------
+	/// <summary> Use this for initialization. </summary>
+	//--------------------------------------
 	void Start () 
 	{
 		controller = GetComponent<BaseCharacterController>();
 		faction = GetComponent<Faction>();
 		state = AIStates.STANDING;
 	}
-	
-	// Update is called once per frame
+
+	//--------------------------------------------------------------
+	/// <summary> Update is called once per frame. </summary>
+	//--------------------------------------
 	void Update () 
 	{
 		switch( state )
@@ -60,7 +77,9 @@ public class AIController : MonoBehaviour
 		KeepFormation();
 	}
 
-
+	//--------------------------------------------------------------
+	/// <summary> The state of unawareness </summary>
+	//--------------------------------------
 	void StandingState()
 	{
 		// TODO
@@ -77,19 +96,21 @@ public class AIController : MonoBehaviour
 		if( roamingDirection.magnitude > 0 )
 			controller.Move( roamingDirection * 0.5f );
 
-		if( Random.value < 0.1f )		// Don't do this every frame... just once in a while
-		{
-			BaseCharacterController enemy = DetectEnemy();
-			if( enemy )
-			{
-				target = enemy.transform;
-				state = AIStates.CHASING;
-			}
-		}
+        if (Random.value < 0.01f)
+        {
+            BaseCharacterController enemy = DetectEnemy();
+            if (enemy)
+            {
+                target = enemy.transform;
+                state = AIStates.CHASING;
+            }
+        }
 
 	}
 
-
+	//--------------------------------------------------------------
+	/// <summary> State of chasing an enemy. </summary>
+	//--------------------------------------
 	void ChasingState()
 	{
 		// chase until too far away
@@ -112,7 +133,6 @@ public class AIController : MonoBehaviour
                 if (!tackled)
                 {
                     StartCoroutine("Dive");
-                    tackled = true;
                 }
             }
 		}
@@ -134,7 +154,7 @@ public class AIController : MonoBehaviour
 
 		// 			If the follow ally target gets out of range change to "STANDING"
 
-		throw new System.NotImplementedException ();
+		//throw new System.NotImplementedException ();
 	}
 
 
@@ -160,10 +180,13 @@ public class AIController : MonoBehaviour
 		//			and try to keep an actual formation (this is a bonus feature)
 
 
-		throw new System.NotImplementedException();
+		//throw new System.NotImplementedException();
 	}
 
-
+	//--------------------------------------------------------------
+	/// <summary> Detects the enemy. </summary>
+	/// <returns>The enemy.</returns>
+	//--------------------------------------
 	BaseCharacterController DetectEnemy()
 	{
 		Collider[] colliders = Physics.OverlapSphere( transform.position, alertRadius );
@@ -173,8 +196,12 @@ public class AIController : MonoBehaviour
 			// If it is a different object
 			if( collider.transform != transform )
 			{
+                
 				Faction otherFaction = collider.GetComponent<Faction>();
 				BaseCharacterController otherController = collider.GetComponent<BaseCharacterController>();
+
+                if (!collider.GetComponent<BaseCharacterController>())
+                    continue;
 
 				if( faction && faction.IsAlly(otherFaction) )
 				   continue; // Skip this iteration, we ignore allies
@@ -191,14 +218,32 @@ public class AIController : MonoBehaviour
 
     IEnumerator Dive()
     {
+		// UNGODLY HACK: Not only does this directly control the character animation, 
+		//               but it also does it by directly modifying the game state
         float timer = 0;
+        tackled = true;
 
         while (timer < tackleDuration)
         {
-            timer += Time.deltaTime;
-            this.transform.position += transform.forward * tackleSpeed;
+            timer += Time.unscaledDeltaTime;
+            this.transform.position += transform.forward * (tackleSpeed * Time.unscaledDeltaTime);
 
             yield return null;
         }
+
+        StartCoroutine("Death");
+    }
+
+    IEnumerator Death()
+    {
+        float timer = 0;
+
+        while (timer < fadeTime)
+        {
+            timer += Time.unscaledDeltaTime;
+            yield return null;
+        }
+
+        Destroy(gameObject);
     }
 }

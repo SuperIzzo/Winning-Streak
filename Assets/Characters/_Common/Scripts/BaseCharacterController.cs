@@ -203,11 +203,11 @@ public class BaseCharacterController : MonoBehaviour
 			if( throwable )
 			{
 				float 	charge = 1 - (_chargeTimer/maxChargeTime);
-				Vector3 throwForce = lookDirection + Vector3.up/2.0f;
+                Vector3 throwForce = lookDirection +Vector3.up / 2.0f;
 				throwForce.Normalize();
 				throwForce *= charge * throwPower;
 
-				throwable.OnThrown( this, throwForce );
+                throwable.OnThrown(this, throwForce);
 			}
 
 			_isCharging = false;
