@@ -3,11 +3,10 @@ using System.Collections;
 
 public class KillPlayerZone : MonoBehaviour
 {
-	void OnTriggerEnter(Collider other)
+	void OnCollisionEnter(Collision col)
 	{
-		if(other.tag == "Player")
-		{
-			other.GetComponent<BaseCharacterController>().KnockDown();
-		}
+        if(col.gameObject.GetComponentInParent<BaseCharacterController>())
+            col.gameObject.GetComponentInParent<BaseCharacterController>().KnockDown();
+	
 	}
 }

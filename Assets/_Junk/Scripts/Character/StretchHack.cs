@@ -11,7 +11,7 @@ public class StretchHack : MonoBehaviour
     private List<Vector3> positionList = new List<Vector3>();
 
     private float hackTimer = 0;
-    private float hackDuration = 1.5f;
+    public float hackDuration = 1.5f;
 
     void Start()
     {
@@ -33,6 +33,7 @@ public class StretchHack : MonoBehaviour
             for (int i = 0; i < limbList.Count; i++)
             {
                 limbList[i].transform.localPosition = positionList[i];
+                //limbList[i].rigidbody.Sleep();
             }
         }
     }

@@ -4,11 +4,11 @@ using System.Collections.Generic;
 
 public class NeighbourAvoidence : MonoBehaviour {
 
-	List<Vector3> neighboursToAvoid = new List<Vector3>();
+    Transform[] children;
 
 	// Use this for initialization
 	void Start () {
-	
+        children = GetComponentsInChildren<Transform>();
 	}
 	
 	// Update is called once per frame
@@ -18,8 +18,12 @@ public class NeighbourAvoidence : MonoBehaviour {
 
 	void OnTriggerStay(Collider other)
 	{
-		if(other.tag == "enemy")
+        if (other.transform == this.transform)
+            return;
+
+		if(other.gameObject.tag == "enemy")
 		{
+            Debug.Log("Avoiding");
 			float angle = Mathf.Atan2(this.transform.position.x - (other.transform.position.x),// + offset.x),
 			                          this.transform.position.z - (other.transform.position.z));// + offset.z));
 			
@@ -28,7 +32,7 @@ public class NeighbourAvoidence : MonoBehaviour {
 			                        Mathf.Cos (angle));
 			
 			this.transform.position = Vector3.Lerp(this.transform.position, 
-			                                       this.transform.position + velocity, Time.deltaTime / 3);
+			                                       this.transform.position + velocity, Time.deltaTime / 6);
 		}
 	}
 }

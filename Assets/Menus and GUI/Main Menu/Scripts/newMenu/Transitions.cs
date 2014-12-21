@@ -25,17 +25,17 @@ public class Transitions : MonoBehaviour {
     {
         foreach (GameObject go in mainMenuObjects)
         {
-            mainMenuOriginalPositions.Add(go.transform.position);
+            //mainMenuOriginalPositions.Add(go.transform.position);
         }
 
         foreach (GameObject go in customiseObjects)
         {
-            customiseOriginalPositions.Add(go.transform.position);
+            //customiseOriginalPositions.Add(go.transform.position);
         }
 
         foreach (GameObject go in scoreObjects)
         {
-            scoreOriginalPositions.Add(go.transform.position);
+           // scoreOriginalPositions.Add(go.transform.position);
         }
 	
 	}
