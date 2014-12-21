@@ -105,23 +105,23 @@ public class MenuControls : MonoBehaviour {
                 }
             }
 
-            if (ExitSave.activeSelf)
-                ExitSave.SetActive(false);
+            //if (ExitSave.activeSelf)
+            //    ExitSave.SetActive(false);
 
-            if (ExitDiscard.activeSelf)
-                ExitDiscard.SetActive(false);
+            //if (ExitDiscard.activeSelf)
+            //    ExitDiscard.SetActive(false);
 
-            if (UpDownIcon.activeSelf)
-                UpDownIcon.SetActive(false);
+            //if (UpDownIcon.activeSelf)
+            //    UpDownIcon.SetActive(false);
 
-            if (LeftRightIcon.activeSelf)
-                LeftRightIcon.SetActive(false);
+            //if (LeftRightIcon.activeSelf)
+            //    LeftRightIcon.SetActive(false);
 
-            if (gamePadArrow1.activeSelf)
-                gamePadArrow1.SetActive(false);
+            //if (gamePadArrow1.activeSelf)
+            //    gamePadArrow1.SetActive(false);
 
-            if (gamePadArrow2.activeSelf)
-                gamePadArrow2.SetActive(false);
+            //if (gamePadArrow2.activeSelf)
+            //    gamePadArrow2.SetActive(false);
             
 
             return;

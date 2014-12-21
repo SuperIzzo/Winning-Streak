@@ -3,6 +3,9 @@ using System.Collections;
 
 public class KillPlayer : MonoBehaviour {
 
+    /* Rework this in the future, so hacky atm
+     */
+
     float hitTime = 0.1f;
     float hitForce = 0.03f;
 
@@ -45,7 +48,7 @@ public class KillPlayer : MonoBehaviour {
         float timer = 0;
 
         //Small pause before activating slowmotion
-        while (timer < 0.01f)
+        while (timer < 0.04f)
         {
             timer += Time.unscaledDeltaTime;
             yield return null;

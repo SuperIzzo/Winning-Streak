@@ -32,8 +32,8 @@ public class AIInput : MonoBehaviour
     //Time for the downed AI to slowly fade into the floor before being deleted
     public float fadeTime = 10;
 
-    //Can only tackle once, stops the Coroutine from being played multiple times
-    private bool tackled = false;
+    //Can only die once, stops the Coroutine from being played multiple times
+    private bool fadeOut = false;
 
 
 	// Internal links
@@ -74,7 +74,16 @@ public class AIInput : MonoBehaviour
 			break;
 		}
 
-		KeepFormation();
+        if (controller.isKnockedDown)
+        {
+            if (!fadeOut)
+            {
+                StartCoroutine("Death");
+                fadeOut = true;
+            }
+        }
+
+        KeepFormation();
 	}
 
 	//--------------------------------------------------------------
@@ -105,7 +114,6 @@ public class AIInput : MonoBehaviour
                 state = AIStates.CHASING;
             }
         }
-
 	}
 
 	//--------------------------------------------------------------
@@ -130,12 +138,16 @@ public class AIInput : MonoBehaviour
 
             if (distance < tackleRange)
             {
-                controller.Tackle(true);
-
-                if (!tackled)
+                if (!fadeOut && !controller.isTackling)
                 {
                     StartCoroutine("Dive");
+                    StartCoroutine("Death");
+                    fadeOut = true;
                 }
+
+                controller.Tackle(true);
+
+                
             }
 		}
 	}
@@ -222,8 +234,10 @@ public class AIInput : MonoBehaviour
     {
 		// UNGODLY HACK: Not only does this directly control the character animation, 
 		//               but it also does it by directly modifying the game state
+        
         float timer = 0;
-        tackled = true;
+
+        Debug.Log("Diving");
 
         while (timer < tackleDuration)
         {
@@ -232,13 +246,13 @@ public class AIInput : MonoBehaviour
 
             yield return null;
         }
-
-        StartCoroutine("Death");
     }
 
     IEnumerator Death()
     {
         float timer = 0;
+
+        Debug.Log("Start death");
 
         while (timer < fadeTime)
         {
