@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 //--------------------------------------------------------------
 /// <summary> AI character controller. </summary>
@@ -21,6 +22,15 @@ public class AIInput : MonoBehaviour
 		STANDING,
 	}
 
+
+    public bool enableAvoidance = true;
+    public float avoidRange = 5;
+
+    //Avoidance FPS
+    public float avoidUpdate = 5;
+    private float avoidanceTimer = 0;
+    private Vector3 avoidanceForce;
+
 	public float alertRadius = 5.0f;
 	public float chaseOffDistance = 10.0f; 
 	public float redirectionRate = 0.01f;
@@ -29,11 +39,14 @@ public class AIInput : MonoBehaviour
     public float tackleSpeed = 1;
     public float tackleDuration = 0.5f;
 
-    //Time for the downed AI to slowly fade into the floor before being deleted
+    //Time for the downed AI to last until deleted
     public float fadeTime = 10;
 
     //Can only die once, stops the Coroutine from being played multiple times
     private bool fadeOut = false;
+
+    //List to store all enemies for neighbour avoidance
+    private static List<GameObject> EnemyList = new List<GameObject>();
 
 
 	// Internal links
@@ -54,6 +67,8 @@ public class AIInput : MonoBehaviour
 		controller = GetComponent<BaseCharacterController>();
 		faction = GetComponent<Faction>();
 		state = AIStates.STANDING;
+
+        EnemyList.Add(this.gameObject);
 	}
 
 	//--------------------------------------------------------------
@@ -129,7 +144,7 @@ public class AIInput : MonoBehaviour
 			Vector2 direction2D = new Vector2( direction.x, direction.z ); 
 			float distance = direction2D.magnitude;
 			direction2D.Normalize();
-			controller.Move( direction2D );
+			//controller.Move( direction2D );
 
 			if( distance > chaseOffDistance )
 				state = AIStates.STANDING;
@@ -144,8 +159,49 @@ public class AIInput : MonoBehaviour
                 }
 
                 controller.Tackle(true);
+            }
 
-                
+            //neighbour avoidance
+            if (enableAvoidance)
+            {
+                avoidanceTimer += Time.unscaledDeltaTime;
+
+                //We need another controller function to add force onto the new velocity instead of completely erasing it
+                //controller.Move( direction2D + new Vector2(avoidanceForce.x,avoidanceForce.z), false);
+
+                //Update amount depenpant
+                if (avoidanceTimer > 60 / avoidUpdate)
+                {
+                    return;
+
+                    for(int i = 0; i < EnemyList.Count; i++)
+                    {
+                        if (EnemyList[i])
+                        {
+                            if (EnemyList[i] != this.gameObject)
+                            {
+                                if (Vector3.Distance(EnemyList[i].transform.position, this.transform.position) < avoidRange)
+                                {
+                                    float angle = Mathf.Atan2(this.transform.position.x - (EnemyList[i].transform.position.x),
+                                      this.transform.position.z - (EnemyList[i].transform.position.z));
+
+                                    avoidanceForce = new Vector3(Mathf.Sin(angle),
+                                                            0,
+                                                            Mathf.Cos(angle));
+
+                                    
+                                }
+                            }
+                        }
+                        else if (!EnemyList[i])
+                        {
+                            EnemyList.Remove(EnemyList[i]);
+                            i--;
+                        }
+                    }
+
+                    avoidanceTimer = 0;
+                }
             }
 		}
 	}
