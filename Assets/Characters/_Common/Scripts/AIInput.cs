@@ -19,7 +19,7 @@ public class AIInput : MonoBehaviour
 	{
 		CHASING,		// to tackle
 		FOLLOWING,		// an ally
-		STANDING,
+		UNAWARE,		// or... the state of being completely useless
 	}
 
 
@@ -66,7 +66,7 @@ public class AIInput : MonoBehaviour
 	{
 		controller = GetComponent<BaseCharacterController>();
 		faction = GetComponent<Faction>();
-		state = AIStates.STANDING;
+		state = AIStates.UNAWARE;
 
         EnemyList.Add(this.gameObject);
 	}
@@ -78,8 +78,8 @@ public class AIInput : MonoBehaviour
 	{
 		switch( state )
 		{
-		case AIStates.STANDING:
-			StandingState();
+		case AIStates.UNAWARE:
+			UnawareState();
 			break;
 		case AIStates.CHASING:
 			ChasingState();
@@ -104,7 +104,7 @@ public class AIInput : MonoBehaviour
 	//--------------------------------------------------------------
 	/// <summary> The state of unawareness </summary>
 	//--------------------------------------
-	void StandingState()
+	void UnawareState()
 	{
 		// TODO
 		// if player or opponent around - chase
@@ -147,7 +147,9 @@ public class AIInput : MonoBehaviour
 			//controller.Move( direction2D );
 
 			if( distance > chaseOffDistance )
-				state = AIStates.STANDING;
+			{
+				state = AIStates.UNAWARE;
+			}
 
             if (distance < tackleRange)
             {
