@@ -144,7 +144,7 @@ public class AIInput : MonoBehaviour
 			Vector2 direction2D = new Vector2( direction.x, direction.z ); 
 			float distance = direction2D.magnitude;
 			direction2D.Normalize();
-			//controller.Move( direction2D );
+			controller.Move( direction2D );
 
 			if( distance > chaseOffDistance )
 			{
