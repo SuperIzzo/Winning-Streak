@@ -1266,7 +1266,7 @@ MonoBehaviour:
   dashCooldown: 5
   grabRadius: 1
   maxChargeTime: 1
-  throwPower: 5
+  throwPower: 20
   propSlot: {fileID: 400026}
 --- !u!114 &11400004
 MonoBehaviour:
