@@ -60,7 +60,7 @@ public class ThrowableObject : MonoBehaviour
 		if( rigidbody )
 		{
 			rigidbody.isKinematic = false;
-			rigidbody.AddForce( new Vector3(0,100,0) /*, ForceMode.Impulse */ );
+			rigidbody.AddForce( force , ForceMode.Impulse );
 		}
 
         // Unlink, note we keep it in world space
