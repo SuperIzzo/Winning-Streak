@@ -21,15 +21,8 @@ public class AIInput : MonoBehaviour
 		FOLLOWING,		// an ally
 		UNAWARE,		// or... the state of being completely useless
 	}
-
-
-    public bool enableAvoidance = true;
+	
     public float avoidRange = 5;
-
-    //Avoidance FPS
-    public float avoidUpdate = 5;
-    private float avoidanceTimer = 0;
-    private Vector3 avoidanceForce;
 
 	public float alertRadius = 5.0f;
 	public float chaseOffDistance = 10.0f; 
@@ -38,15 +31,6 @@ public class AIInput : MonoBehaviour
 
     public float tackleSpeed = 1;
     public float tackleDuration = 0.5f;
-
-    //Time for the downed AI to last until deleted
-    public float fadeTime = 10;
-
-    //Can only die once, stops the Coroutine from being played multiple times
-    private bool fadeOut = false;
-
-    //List to store all enemies for neighbour avoidance
-    private static List<GameObject> EnemyList = new List<GameObject>();
 
 
 	// Internal links
@@ -67,8 +51,6 @@ public class AIInput : MonoBehaviour
 		controller = GetComponent<BaseCharacterController>();
 		faction = GetComponent<Faction>();
 		state = AIStates.UNAWARE;
-
-        EnemyList.Add(this.gameObject);
 	}
 
 	//--------------------------------------------------------------
@@ -88,15 +70,6 @@ public class AIInput : MonoBehaviour
 			FollowingState();
 			break;
 		}
-
-        if (controller.isKnockedDown)
-        {
-            if (!fadeOut)
-            {
-                StartCoroutine("Death");
-                fadeOut = true;
-            }
-        }
 
         KeepFormation();
 	}
@@ -120,7 +93,7 @@ public class AIInput : MonoBehaviour
 		if( roamingDirection.magnitude > 0 )
 			controller.Move( roamingDirection * 0.5f );
 
-        if (Random.value < 0.01f)
+        if (Random.value < 0.05f)
         {
             BaseCharacterController enemy = DetectEnemy();
             if (enemy)
@@ -153,57 +126,7 @@ public class AIInput : MonoBehaviour
 
             if (distance < tackleRange)
             {
-                if (!fadeOut && !controller.isTackling)
-                {
-                    StartCoroutine("Dive");
-                    StartCoroutine("Death");
-                    fadeOut = true;
-                }
-
                 controller.Tackle(true);
-            }
-
-            //neighbour avoidance
-            if (enableAvoidance)
-            {
-                avoidanceTimer += Time.unscaledDeltaTime;
-
-                //We need another controller function to add force onto the new velocity instead of completely erasing it
-                //controller.Move( direction2D + new Vector2(avoidanceForce.x,avoidanceForce.z), false);
-
-                //Update amount depenpant
-                if (avoidanceTimer > 60 / avoidUpdate)
-                {
-                    return;
-
-                    for(int i = 0; i < EnemyList.Count; i++)
-                    {
-                        if (EnemyList[i])
-                        {
-                            if (EnemyList[i] != this.gameObject)
-                            {
-                                if (Vector3.Distance(EnemyList[i].transform.position, this.transform.position) < avoidRange)
-                                {
-                                    float angle = Mathf.Atan2(this.transform.position.x - (EnemyList[i].transform.position.x),
-                                      this.transform.position.z - (EnemyList[i].transform.position.z));
-
-                                    avoidanceForce = new Vector3(Mathf.Sin(angle),
-                                                            0,
-                                                            Mathf.Cos(angle));
-
-                                    
-                                }
-                            }
-                        }
-                        else if (!EnemyList[i])
-                        {
-                            EnemyList.Remove(EnemyList[i]);
-                            i--;
-                        }
-                    }
-
-                    avoidanceTimer = 0;
-                }
             }
 		}
 	}
@@ -249,6 +172,9 @@ public class AIInput : MonoBehaviour
 		//			This function can be improved to make the AI look like a professional football player
 		//			and try to keep an actual formation (this is a bonus feature)
 
+		
+		//We need another controller function to add force onto the new velocity instead of completely erasing it
+		//controller.Move( direction2D + new Vector2(avoidanceForce.x,avoidanceForce.z), false);
 
 		//throw new System.NotImplementedException();
 	}
@@ -285,37 +211,4 @@ public class AIInput : MonoBehaviour
 
 		return null;
 	}
-
-    IEnumerator Dive()
-    {
-		// UNGODLY HACK: Not only does this directly control the character animation, 
-		//               but it also does it by directly modifying the game state
-        
-        float timer = 0;
-
-        Debug.Log("Diving");
-
-        while (timer < tackleDuration)
-        {
-            timer += Time.unscaledDeltaTime;
-            this.transform.position += transform.forward * (tackleSpeed * Time.unscaledDeltaTime);
-
-            yield return null;
-        }
-    }
-
-    IEnumerator Death()
-    {
-        float timer = 0;
-
-        Debug.Log("Start death");
-
-        while (timer < fadeTime)
-        {
-            timer += Time.unscaledDeltaTime;
-            yield return null;
-        }
-
-        Destroy(gameObject);
-    }
 }

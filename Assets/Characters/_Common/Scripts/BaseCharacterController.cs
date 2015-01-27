@@ -15,13 +15,15 @@ public class BaseCharacterController : MonoBehaviour
 	public float	grabRadius		= 1.0f;
 	public float 	maxChargeTime	= 3.0f;
 	public float 	throwPower		= 20.0f;
+	public float	tackleDuration	= 0.3f;
+	public float	tackleSpeed		= 4.0f;
 
 	public Transform propSlot;
 
 	public bool		isKnockedDown	 {get; set;}
 	public bool		isDancing		 {get{return _isDancing;} set{Dance(value);} }
 	public bool		isDashing		 {get{return _isDashing;} set{if(value) Dash();} }
-	public bool		isTackling		 {get{return _isTackling;} set{Tackle(value);} }
+	public bool		isTackling		 {get{return _tackleTimer>0;} set{Tackle(value);} }
 	public bool		isCharging		 {get{return _isCharging;} set{if(value) ChargeThrow(); else Throw();} }
 	public Vector2	relativeVelocity {get; private set;}
 	public Vector3	lookDirection 	 {get; private set;}
@@ -31,11 +33,11 @@ public class BaseCharacterController : MonoBehaviour
 	// Private state
 	private bool	_isDancing;
 	private bool	_isDashing;
-	private bool	_isTackling;
 	private bool	_isCharging;
 	private float	_dashCooldownTimer;
 	private float	_dashDurationTimer;
 	private float	_chargeTimer;
+	private float	_tackleTimer;
 
 
 	//--------------------------------------------------------------
@@ -87,7 +89,7 @@ public class BaseCharacterController : MonoBehaviour
 	//--------------------------------------
 	public void Dance( bool dance = true )
 	{
-		if( !isKnockedDown && !_isTackling )
+		if( !isKnockedDown && !isTackling )
 		{
 			_isDancing = dance;
 
@@ -126,9 +128,9 @@ public class BaseCharacterController : MonoBehaviour
 	//--------------------------------------
 	public void Tackle( bool tackle )
 	{
-		if( !isKnockedDown && !_isDancing )
+		if( !isKnockedDown && !_isDancing && !isTackling )
 		{
-			_isTackling = tackle;
+			_tackleTimer = tackleDuration;
 		}
 	}
 
@@ -225,6 +227,7 @@ public class BaseCharacterController : MonoBehaviour
 		{
 			ProcessDashing();
 			ProcessThrowing();
+			ProcessTackling();
 
 			if( !isDancing && !isTackling )
 			{
@@ -303,6 +306,24 @@ public class BaseCharacterController : MonoBehaviour
 			if( _chargeTimer<=0 )
 			{
 				Throw();
+			}
+		}
+	}
+
+	//--------------------------------------------------------------
+	/// <summary> Processes the throwing and charging. </summary>
+	//--------------------------------------
+	private void ProcessTackling()
+	{
+		if( _tackleTimer > 0 )
+		{
+			_tackleTimer -= Time.deltaTime;
+			transform.position += transform.forward * (tackleSpeed * Time.deltaTime);
+
+			// Knock down this character at the end of the tackle
+			if( _tackleTimer <=0 )
+			{
+				KnockDown();
 			}
 		}
 	}
