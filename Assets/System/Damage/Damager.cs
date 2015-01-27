@@ -9,7 +9,7 @@ public class Damager : MonoBehaviour
 	//--------------------------------------
 	void OnTriggerEnter( Collider collider )
 	{
-		DamageTest( collider.gameObject );
+		CollisionDamage( collider.gameObject );
 	}
 
 	//--------------------------------------------------------------
@@ -18,30 +18,32 @@ public class Damager : MonoBehaviour
 	//--------------------------------------
 	void OnCollisionEnter( Collision collision )
 	{
-		DamageTest( collision.collider.gameObject );
+		CollisionDamage( collision.collider.gameObject );
+	}
+	
+	//--------------------------------------------------------------
+	/// <summary> Collisions callback to apply some damage </summary>
+	/// <param name="otherObject">Other object.</param>
+	//--------------------------------------
+	public virtual void CollisionDamage( GameObject otherObject )
+	{
+		Damageable damageable = otherObject.GetComponent<Damageable>();
+
+		if( damageable )
+		{
+			if( DamageTest(damageable) )
+			{
+				damageable.OnDamage( this );
+			}
+		}
 	}
 
 	//--------------------------------------------------------------
 	/// <summary> Does damage calculations and calls back on the damagees. </summary>
 	/// <param name="gameObject"> the game object to be damaged </param>
 	//--------------------------------------
-	void DamageTest( GameObject gameObject )
+	public virtual bool DamageTest( Damageable gameObject )
 	{
-        //if there is little movement on the y axis, don't damage
-        if (this.rigidbody.velocity.y < 1)
-            return;
-
-		Damageable damageabble = gameObject.GetComponent<Damageable>();
-
-		if( damageabble )
-			damageabble.OnDamage( this );
-
-		// TODO: 	This is a barebones implementation
-		//			in order to make this work properly for flying objects
-		//			the speed and the mass have to be taken into consideration,
-		//			non-moving objects should not be causing damage
-		//			(unless we want the players to trip over them)
-
-		//throw new System.NotImplementedException();
+		return true;
 	}
 }
