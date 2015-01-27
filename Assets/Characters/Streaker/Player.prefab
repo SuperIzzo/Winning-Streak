@@ -526,7 +526,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 44.1553612, y: .304558992, z: 6.73297501}
+  m_LocalPosition: {x: 11.0827093, y: .304558992, z: -7.10300827}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400002}
@@ -1267,6 +1267,8 @@ MonoBehaviour:
   grabRadius: 1
   maxChargeTime: 1
   throwPower: 20
+  tackleDuration: .300000012
+  tackleSpeed: 4
   propSlot: {fileID: 400026}
 --- !u!114 &11400004
 MonoBehaviour:
@@ -1292,6 +1294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdc9a247eb43edd409ab87cd2e2c19e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _camera: {fileID: 0}
 --- !u!114 &11400008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1805,7 +1808,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 1.15840635e-06, y: .216629103, z: 2.28414493e-07}
+  m_ConnectedAnchor: {x: 2.09761154e-07, y: .216628999, z: 2.19367351e-07}
   m_SwingAxis: {x: 0, y: 0, z: -1}
   m_LowTwistLimit:
     limit: -80
@@ -1840,7 +1843,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -1.15840635e-06, y: .216629103, z: 2.28414493e-07}
+  m_ConnectedAnchor: {x: -2.09761154e-07, y: .216628999, z: 2.19367351e-07}
   m_SwingAxis: {x: 0, y: 0, z: -1}
   m_LowTwistLimit:
     limit: -80
@@ -1875,7 +1878,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: .065700531, y: -.00434697466, z: -.00744120125}
+  m_ConnectedAnchor: {x: .0657024384, y: -.00434697466, z: -.00744120125}
   m_SwingAxis: {x: 0, y: 0, z: -1}
   m_LowTwistLimit:
     limit: -20
@@ -1910,7 +1913,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -.065700531, y: -.00434697466, z: -.00744120125}
+  m_ConnectedAnchor: {x: -.0657024384, y: -.00434697466, z: -.00744120125}
   m_SwingAxis: {x: 0, y: 0, z: -1}
   m_LowTwistLimit:
     limit: -20
