@@ -37,7 +37,7 @@ public class EndGame : MonoBehaviour
         }
         else
         {
-            player = ReferenceManager.GetPlayer().GetComponent<BaseCharacterController>();
+			player = Player.characterController;
         }
 	}
 }

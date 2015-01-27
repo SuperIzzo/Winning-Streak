@@ -4,14 +4,11 @@ using System.Collections;
 public class PowerupVisuals : MonoBehaviour {
 
 	public GameObject lowBar, midBar, highBar;
-	private GameObject player;
 
 	void Update()
 	{
-        if (player)
-            this.transform.position = player.transform.position + new Vector3(0, 1.15f, -0.5f);
-        else
-            player = ReferenceManager.GetPlayer();
+		Vector3 playerPos = Player.transform.position; 
+		this.transform.position = playerPos + new Vector3(0, 1.15f, -0.5f);
 	}
 
 	public void EnableLow()

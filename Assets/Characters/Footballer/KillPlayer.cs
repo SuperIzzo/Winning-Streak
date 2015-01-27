@@ -20,11 +20,12 @@ public class KillPlayer : MonoBehaviour {
 	{
 		if(other.tag == "PlayerMesh")
 		{
-            if (!ReferenceManager.GetPlayer().GetComponent<BaseCharacterController>().isKnockedDown)
+			BaseCharacterController controller = Player.characterController;
+			if (!controller.isKnockedDown)
             {
                 StartCoroutine("HitPlayer");
-                StartCoroutine("SlowMotionDeath");
-                ReferenceManager.GetPlayer().GetComponent<BaseCharacterController>().isKnockedDown = true;
+                //StartCoroutine("SlowMotionDeath");
+				controller.isKnockedDown = true;
             }
 		}
 	}
@@ -37,7 +38,8 @@ public class KillPlayer : MonoBehaviour {
         while (timer < hitTime)
         {
             timer += Time.deltaTime;
-            ReferenceManager.GetPlayer().transform.position += direction * hitForce;
+			GameObject player = Player.gameObject;
+			player.transform.position += direction * hitForce;
 
             yield return null;
         }
@@ -54,7 +56,7 @@ public class KillPlayer : MonoBehaviour {
             yield return null;
         }
 
-        ReferenceManager.GetCamera().GetComponent<SloMoManager>().SlowMo();
+        GameSystem.slowMotion.SlowMo();
         timer = 0;
 
         while (timer < 2)
@@ -63,6 +65,6 @@ public class KillPlayer : MonoBehaviour {
             yield return null;
         }
 
-        ReferenceManager.GetCamera().GetComponent<SloMoManager>().NormalMo();
+		GameSystem.slowMotion.NormalMo();
     }
 }

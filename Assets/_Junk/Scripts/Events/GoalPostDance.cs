@@ -1,23 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GoalPostDance : MonoBehaviour {
-
-	private GameObject SoundManager;
-
+public class GoalPostDance : MonoBehaviour
+{
 	public float scoreInterval;
-
 	float timer = 0;
-
-	void Update()
-	{
-        if (!SoundManager)
-            SoundManager = ReferenceManager.GetSoundManager();
-	}
 
 	void OnTriggerStay(Collider other)
 	{
-		if(other.tag == "Player")
+		if( other.CompareTag(Tags.player) )
 		{
 			if(other.GetComponent<BaseCharacterController>().isDancing)
 			{
@@ -30,17 +21,17 @@ public class GoalPostDance : MonoBehaviour {
 					timer = 0;
 				}
 
-                if (SoundManager.GetComponent<AudioMan>().GetHype() > 0.8f)
+				if( GameSystem.audio )
 				{
-					if(Random.value < 0.01f)
+					if( GameSystem.audio.GetHype() > 0.8f && Random.value < 0.01f)
 					{
-                        SoundManager.GetComponent<AudioMan>().PlayCelebrate();
+						GameSystem.audio.PlayCelebrate();
 						Debug.Log ("celebrate called");
 					}
-				}
 
-				//soundManager.GetComponent<DialogueManager>().PlaySpeech("PLAYER_DANCE");
-                SoundManager.GetComponent<AudioMan>().KeepHypeUp();
+					//soundManager.GetComponent<DialogueManager>().PlaySpeech("PLAYER_DANCE");
+					GameSystem.audio.KeepHypeUp();
+				}
 			}
 		}
 	}

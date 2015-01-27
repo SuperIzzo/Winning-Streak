@@ -45,7 +45,7 @@ public class FollowTarget : MonoBehaviour
         }
         else
         {
-            target = ReferenceManager.GetPlayer().transform;
+			target = Player.transform;
         }
 	}
 
