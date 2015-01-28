@@ -3,36 +3,26 @@ using System.Collections;
 
 public class GoalScore : MonoBehaviour {
 
-	public GameObject soundManager;
-	public GameObject commentator;
+	private AudioMan soundManager;
 
 	// Use this for initialization
-	void Start () {
-
-		//if(soundManager == null)
-		soundManager = GameObject.FindGameObjectWithTag("SoundManager");
-	}
-	
-	// Update is called once per frame
-	void Update () 
+	void Start ()
 	{
-		
+		soundManager = GameSystem.audio;
 	}
 
 	void OnTriggerEnter(Collider other)
 	{
 		if(other.tag == "ball")
 		{
-			if(other.GetComponent<ItemStats>().scoredWith)
-				return;
 			ScoreManager.AddScore(100);
 			ScoreManager.AddMultPoint(5);
 
-			other.GetComponent<ItemStats>().scoredWith = true;
+			// TODO: Scored with
 
 			Debug.Log("GOAL");
-			soundManager.GetComponent<AudioMan>().PlayCelebrate();
-			soundManager.GetComponent<AudioMan>().PlayGoalSpeech();
+			soundManager.PlayCelebrate();
+			soundManager.PlayGoalSpeech();
 		}
 	}
 
