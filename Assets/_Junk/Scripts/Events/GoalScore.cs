@@ -13,7 +13,7 @@ public class GoalScore : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
 	{
-		if(other.tag == "ball")
+		if( other.CompareTag(Tags.ball) )
 		{
 			ScoreManager.AddScore(100);
 			ScoreManager.AddMultPoint(5);
