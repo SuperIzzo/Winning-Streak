@@ -6,9 +6,9 @@ public class TouchdownEvent : MonoBehaviour
 
 	void OnTriggerEnter(Collider col)
 	{
-		if( col.gameObject.CompareTag( "ball" ) )
+		if( col.gameObject.CompareTag( Tags.ball ) )
 		{
-			Throwable throwable = col.GetComponent<Throwable>();
+			ThrowableObject throwable = col.GetComponent<ThrowableObject>();
 			if( throwable!=null && throwable.isThrown )
 			{
 				Commentator commentator = Commentator.instance;

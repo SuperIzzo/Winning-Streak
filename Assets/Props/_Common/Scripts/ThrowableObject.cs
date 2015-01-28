@@ -9,6 +9,7 @@ public class ThrowableObject : MonoBehaviour
 {
 	// Public properties
 	public float knockOutPower = 5.0f;
+	public bool  isThrown = false;
 
 	// Priavate references
 	private Transform slot;
@@ -66,6 +67,7 @@ public class ThrowableObject : MonoBehaviour
         // Unlink, note we keep it in world space
         transform.SetParent(null, true);
         slot = null;
+		isThrown = true;
 	}
 
 	//--------------------------------------------------------------
@@ -74,6 +76,7 @@ public class ThrowableObject : MonoBehaviour
 	//--------------------------------------
 	void OnCollisionEnter( Collision collision )
 	{
+		isThrown = false;
         return; // HACK: why?
 
 		BaseCharacterController character =  collision.collider.GetComponent<BaseCharacterController>();
