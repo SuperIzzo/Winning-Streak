@@ -34,6 +34,9 @@ public class EndGame : MonoBehaviour
                 endGameDialogCountdown = 2.0f;
                 //endGameDialogue.Show();
 				ScoreManager score = GameSystem.score;
+				Commentator commentator = GameSystem.commentator;
+
+				commentator.Comment( CommentatorEvent.GAME_OVER );
 				score.StopTimer();
             }
         }
