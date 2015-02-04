@@ -16,8 +16,8 @@ public class GoalPostDance : MonoBehaviour
 
 				if(timer > scoreInterval)
 				{
-					ScoreManager.AddScore(1);
-					ScoreManager.AddMultPoint(0.1f);
+					GameSystem.score.AddScore(1);
+					GameSystem.score.AddMultPoint(0.1f);
 					timer = 0;
 				}
 

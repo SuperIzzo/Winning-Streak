@@ -13,7 +13,7 @@ public class RandomCommentsGenerator : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		commentator = Commentator.instance;
+		commentator = GameSystem.commentator;
 	}
 	
 	// Update is called once per frame

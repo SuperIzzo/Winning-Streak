@@ -100,12 +100,12 @@ public class PlayerController : MonoBehaviour {
 			danceTimer += Time.deltaTime;
 			
 			// 1 point per second!
-			ScoreManager.AddMultPoint( Time.deltaTime );
+			GameSystem.score.AddMultPoint( Time.deltaTime );
 			
 			if( danceTimer > 1.0f && !announcedDancing )
 			{
 				announcedDancing = true;
-				Commentator commentator = Commentator.instance;
+				Commentator commentator = GameSystem.commentator;
 				
 				if( commentator )
 				{

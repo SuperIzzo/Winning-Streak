@@ -1,16 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+//--------------------------------------------------------------
+/// <summary> Score manager. Deals with scores and stuff. </summary>
+//--------------------------------------
 public class ScoreManager : MonoBehaviour
 {
+	public float baseScore = 0; 
+	public float multPoints = 1;
+	public float totalScore{ get{ return (int)(baseScore * multPoints); } }
+	public float timePlayed = 0;
 
-	public static int score
-	{
-		get{ return (int)(baseScore * multPoints); }
-	}
-
-	public static float baseScore = 0; 
-	public static float multPoints = 1;
 	static bool isActive = true;
 
 	static float maxAccumulationTime = 5;
@@ -20,19 +20,13 @@ public class ScoreManager : MonoBehaviour
 	static float multToAnnounce = 0;
 
 	float timer = 0;
-
-	// Use this for initialization
-	void Start ()
-	{
-	
-	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
+		// TODO: Hacky!
 		if(Application.loadedLevelName != "main-2" || !isActive)
 			return;
-
 
 		accumulationTimer += Time.deltaTime;
 		if( accumulationTimer > maxAccumulationTime )
@@ -43,10 +37,9 @@ public class ScoreManager : MonoBehaviour
 			accumulatedMult = 0;
 		}
 
-
 		AttemptComment();
 
-
+		timePlayed += Time.deltaTime;
 		timer += Time.deltaTime;
 
 		if(timer > 0.1f)
@@ -66,7 +59,7 @@ public class ScoreManager : MonoBehaviour
 	{
 		if( multToAnnounce >=1 )
 		{
-			Commentator commentator = Commentator.instance;
+			Commentator commentator = GameSystem.commentator;
 
 			if( commentator )
 			{
@@ -110,34 +103,41 @@ public class ScoreManager : MonoBehaviour
 		GUI.Label(new Rect(10,10,200,50), "Score: " + ((int)baseScore) + " x" + ((int)multPoints) );
 	}
 
-	public static void AddScore(float toAdd)
+	public void AddScore(float toAdd)
 	{
+		if( !isActive )
+			return;
+
 		baseScore += toAdd;
 	}
 	
-	public static void AddMultPoint( float multPts )
+	public void AddMultPoint( float multPts )
 	{
+		if( !isActive )
+			return;
+
 		accumulatedMult += multPts;
 		accumulationTimer = 0;
 	}
 
-	private static void ResetScore()
+	private void ResetScore()
 	{
 		baseScore = 0;
-		multPoints = 0;
+		multPoints = 1;
 		multToAnnounce = 0;
 		accumulatedMult = 0;
+
+		timePlayed = 0;
 	}
 
-	public static void StartTimer()
+	public void StartTimer()
 	{
 		ResetScore();
 		isActive = true;
 	}
 
-	public static void StopTimer()
+	public void StopTimer()
 	{
-		ResetScore();
 		isActive = false;
 	}
 }

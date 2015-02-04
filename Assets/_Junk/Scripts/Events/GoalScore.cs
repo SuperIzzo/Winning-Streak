@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GoalScore : MonoBehaviour {
-
+public class GoalScore : MonoBehaviour
+{
 	private AudioMan soundManager;
 
 	// Use this for initialization
@@ -15,8 +15,8 @@ public class GoalScore : MonoBehaviour {
 	{
 		if( other.CompareTag(Tags.ball) )
 		{
-			ScoreManager.AddScore(100);
-			ScoreManager.AddMultPoint(5);
+			GameSystem.score.AddScore(100);
+			GameSystem.score.AddMultPoint(5);
 
 			// TODO: Scored with
 

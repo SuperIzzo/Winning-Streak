@@ -20,8 +20,10 @@ public class HUD : GUIWindow
 	// Update is called once per frame
 	void Update ()
 	{
-		scoreText.text = "SCORE: " + Mathf.FloorToInt(ScoreManager.baseScore) +
-						 "\tx" + Mathf.FloorToInt(ScoreManager.multPoints);
+		ScoreManager score = GameSystem.score;
+
+		scoreText.text = "SCORE: " + Mathf.FloorToInt(score.baseScore) +
+							 "\tx" + Mathf.FloorToInt(score.multPoints);
 
 		float timeSinceStart = Time.time - startTime;
 		int seconds = Mathf.FloorToInt(timeSinceStart) % 60;

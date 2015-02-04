@@ -11,12 +11,12 @@ public class TouchdownEvent : MonoBehaviour
 			ThrowableObject throwable = col.GetComponent<ThrowableObject>();
 			if( throwable!=null && throwable.isThrown )
 			{
-				Commentator commentator = Commentator.instance;
+				Commentator commentator = GameSystem.commentator;
 
 				if( commentator )
 				{
-					ScoreManager.AddScore(100);
-					ScoreManager.AddMultPoint( 2 );
+					GameSystem.score.AddScore(100);
+					GameSystem.score.AddMultPoint( 2 );
 					commentator.Comment( CommentatorEvent.TOUCH_DOWN );
 				}
 			}

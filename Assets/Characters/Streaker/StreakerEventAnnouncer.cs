@@ -15,7 +15,7 @@ public class StreakerEventAnnouncer : MonoBehaviour
 	void Start ()
 	{
 		controller = GetComponent<BaseCharacterController>();
-		commentator = Commentator.instance;
+		commentator = GameSystem.commentator;
 	}
 	
 	// Update is called once per frame

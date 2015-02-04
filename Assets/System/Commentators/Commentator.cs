@@ -47,25 +47,10 @@ public class Commentator : MonoBehaviour
 
 	// Public properties
 	public float timeSinceLastComment {get; private set;}
-	public static Commentator instance {get; private set;}
 
 	// Internal / state
 	CommentatorQueue currentQueue;
 	int clipIndex = 0;
-	
-	
-	// Returns a single instance for this component
-	public Commentator Awake()
-	{
-		if( !instance )
-		{
-			instance = GameObject.FindObjectOfType<Commentator>();
-			DontDestroyOnLoad(gameObject);
-		}
-		else Destroy(gameObject);
-		
-		return instance;
-	}
 	
 	public static int GetEventPriority( CommentatorEvent ev )
 	{
