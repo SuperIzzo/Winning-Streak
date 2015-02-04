@@ -104,8 +104,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400014}
-  - 114: {fileID: 11400016}
   - 114: {fileID: 11400014}
+  - 114: {fileID: 11443766}
   m_Layer: 0
   m_Name: _GameManager
   m_TagString: Untagged
@@ -575,17 +575,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d483e1a934152a14c83cd57aa68b3301, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11400016
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82327e26620d5f54b8a2a2ee8c756fd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  baseScore: 0
+  multPoints: 1
 --- !u!114 &11400018
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1011,6 +1002,17 @@ MonoBehaviour:
   - name: 
     commentEvent: 0
     clipQueue: []
+--- !u!114 &11443766
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18de514ff4f6b4a4bbfb871eb5c85e13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
