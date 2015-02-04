@@ -33,6 +33,8 @@ public class EndGame : MonoBehaviour
                 hud.Hide();
                 endGameDialogCountdown = 2.0f;
                 //endGameDialogue.Show();
+				ScoreManager score = GameSystem.score;
+				score.StopTimer();
             }
         }
         else
