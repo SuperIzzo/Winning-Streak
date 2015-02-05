@@ -20,7 +20,12 @@ public class ScoreManager : MonoBehaviour
 	static float multToAnnounce = 0;
 
 	float timer = 0;
-	
+
+	void Start()
+	{
+		StartTimer();
+	}
+
 	// Update is called once per frame
 	void Update () 
 	{
