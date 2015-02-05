@@ -17,7 +17,8 @@ public class BaseCharacterController : MonoBehaviour
 	public float 	throwPower		= 20.0f;
 	public float	tackleDuration	= 0.3f;
 	public float	tackleSpeed		= 4.0f;
-	public float	reviveCooldown	= 10.0f;
+	public float	reviveTimeMin	= 10.0f;
+	public float	reviveTimeMax	= 15.0f;
 
 	public Transform propSlot;
 
@@ -49,7 +50,7 @@ public class BaseCharacterController : MonoBehaviour
 	{
 		if( !isKnockedDown )
 		{
-			_reviveTimer = reviveCooldown;
+			_reviveTimer = Random.Range(reviveTimeMin, reviveTimeMax);
 			isKnockedDown = true;
 		}
 	}
