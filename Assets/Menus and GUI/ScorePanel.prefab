@@ -822,7 +822,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: .5
-  m_Text: 'Score:'
+  m_Text: 'Base score:'
 --- !u!114 &11400034
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -970,6 +970,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   windowAnimator: {fileID: 9500000}
+  timePlayed: {fileID: 11400040}
+  score: {fileID: 11400030}
+  multiplier: {fileID: 11400028}
+  total: {fileID: 11400022}
+  best: {fileID: 11400020}
 --- !u!114 &11400048
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -981,7 +986,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50e2aad9dc4e13f458c40f7029d3097a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   endGameDialogue: {fileID: 11400046}
   hud: {fileID: 0}
 --- !u!114 &11400050
