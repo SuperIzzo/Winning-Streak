@@ -17,6 +17,7 @@ public class BaseCharacterController : MonoBehaviour
 	public float 	throwPower		= 20.0f;
 	public float	tackleDuration	= 0.3f;
 	public float	tackleSpeed		= 4.0f;
+	public float	reviveCooldown	= 10.0f;
 
 	public Transform propSlot;
 
@@ -38,6 +39,7 @@ public class BaseCharacterController : MonoBehaviour
 	private float	_dashDurationTimer;
 	private float	_chargeTimer;
 	private float	_tackleTimer;
+	private float	_reviveTimer;
 
 
 	//--------------------------------------------------------------
@@ -45,7 +47,11 @@ public class BaseCharacterController : MonoBehaviour
 	//--------------------------------------
 	public void KnockDown()
 	{
-		isKnockedDown = true;
+		if( !isKnockedDown )
+		{
+			_reviveTimer = reviveCooldown;
+			isKnockedDown = true;
+		}
 	}
 
 	//--------------------------------------------------------------
@@ -53,7 +59,11 @@ public class BaseCharacterController : MonoBehaviour
 	//--------------------------------------
 	public void Revive()
 	{
-		isKnockedDown = false;
+		if( isKnockedDown )
+		{
+			_reviveTimer = -1;
+			isKnockedDown = false;
+		}
 	}
 
 	//--------------------------------------------------------------
@@ -235,6 +245,10 @@ public class BaseCharacterController : MonoBehaviour
 				ProcessTurning();
 			}
 		}
+		else
+		{
+			ProcessRevival();
+		}
 	}
 
 	//--------------------------------------------------------------
@@ -323,6 +337,23 @@ public class BaseCharacterController : MonoBehaviour
 			if( _tackleTimer <=0 )
 			{
 				KnockDown();
+			}
+		}
+	}
+
+
+	//--------------------------------------------------------------
+	/// <summary> Processes the revival of a knocked down character. </summary>
+	//--------------------------------------
+	private void ProcessRevival()
+	{
+		if( _reviveTimer > 0 )
+		{
+			_reviveTimer -= Time.deltaTime;
+
+			if( _reviveTimer<=0 )
+			{
+				Revive();
 			}
 		}
 	}
