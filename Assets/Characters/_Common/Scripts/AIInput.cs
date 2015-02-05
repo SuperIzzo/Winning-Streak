@@ -28,11 +28,7 @@ public class AIInput : MonoBehaviour
 	public float chaseOffDistance = 10.0f; 
 	public float redirectionRate = 0.01f;
 	public float tackleRange	= 2.0f;
-
-    public float tackleSpeed = 1;
-    public float tackleDuration = 0.5f;
-
-
+	
 	// Internal links
 	BaseCharacterController controller;
 	Faction faction;
