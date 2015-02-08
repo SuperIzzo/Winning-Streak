@@ -1,22 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &100000
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 400000}
-  - 136: {fileID: 13600000}
-  - 114: {fileID: 11400000}
-  m_Layer: 0
-  m_Name: Damager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &100002
 GameObject:
   m_ObjectHideFlags: 1
@@ -395,7 +378,6 @@ GameObject:
   - 136: {fileID: 13600002}
   - 114: {fileID: 11400006}
   - 114: {fileID: 11400004}
-  - 114: {fileID: 11400002}
   m_Layer: 0
   m_Name: Mascot
   m_TagString: enemy
@@ -413,6 +395,7 @@ GameObject:
   - 4: {fileID: 400048}
   - 95: {fileID: 9500000}
   - 114: {fileID: 11400012}
+  - 114: {fileID: 11423692}
   m_Layer: 0
   m_Name: Mascot
   m_TagString: Untagged
@@ -420,18 +403,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &400000
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: .881118953, z: 0}
-  m_LocalScale: {x: 1.36750257, y: 1.1283536, z: 1.36750197}
-  m_Children: []
-  m_Father: {fileID: 400022}
-  m_RootOrder: 0
 --- !u!4 &400002
 Transform:
   m_ObjectHideFlags: 1
@@ -566,10 +537,9 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100046}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.2405624, y: .288060814, z: 6.78175879}
+  m_LocalPosition: {x: 7.87204075, y: .319522858, z: -3.57351565}
   m_LocalScale: {x: .216673017, y: .684502602, z: .222462431}
   m_Children:
-  - {fileID: 400000}
   - {fileID: 400048}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -743,7 +713,7 @@ Transform:
   - {fileID: 400018}
   - {fileID: 400016}
   m_Father: {fileID: 400022}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!54 &5400000
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -975,32 +945,6 @@ Animator:
   m_ApplyRootMotion: 0
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 391fa375a0c9646449b74355e11a265c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ignore: {fileID: 11400002}
-  isAwarding: 0
---- !u!114 &11400002
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100046}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d740974e0a6696a4e833abc77439a86b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ragdoll: {fileID: 11400012}
-  awardable: 1
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1009,11 +953,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 100046}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6a58a9f2370a4147b21ef89a9357630, type: 3}
+  m_Script: {fileID: 11500000, guid: d246c407429a1bd41aab5ecba0a8e776, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 9500000}
-  goofiness: 0
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1022,9 +964,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 100046}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41f772bf406515f48b925c9de4d0b29d, type: 3}
+  m_Script: {fileID: 11500000, guid: ec50b64eeb31adc4f999098aa06f5918, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  faction: 1
 --- !u!114 &11400008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1033,9 +976,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 100046}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 385c46d9edd7c9548867b59fb88489ad, type: 3}
+  m_Script: {fileID: 11500000, guid: c7c7e7917dd17b3468cc266f18759b41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  avoidRange: 5
+  alertRadius: 20
+  chaseOffDistance: 50
+  redirectionRate: .00999999978
+  chaseGiveUpRate: 9.99999975e-05
+  tackleRange: .400000006
 --- !u!114 &11400010
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1044,21 +993,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 100046}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4479f5bf7196084e9c19f38a9a415f7, type: 3}
+  m_Script: {fileID: 11500000, guid: 5d640f6a39be6544f8a5829237f81110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 100000, guid: 8227b5d1cf5a28e4fba24496699f0f2b, type: 2}
-  soundManager: {fileID: 0}
-  continueBlur: {fileID: 100002, guid: 32071d9b0b4c3ad4ea60f021f281cf65, type: 2}
-  chaseRadius: 15
-  attackRadius: .800000012
-  attackTimer: 1
-  speed: 2.5
-  chaseChance: 70
-  recoveryTime: 2
-  giveUpChance: 5
-  animator: {fileID: 9500000}
-  damager: {fileID: 100000}
+  movementSpeed: 3
+  turningSpeed: 6
+  dashBoost: 3
+  dashDuration: 1
+  dashCooldown: 5
+  grabRadius: 1
+  maxChargeTime: 3
+  throwPower: 20
+  tackleDuration: .300000012
+  tackleSpeed: 4
+  reviveTimeMin: 10
+  reviveTimeMax: 15
+  propSlot: {fileID: 0}
 --- !u!114 &11400012
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1067,25 +1017,37 @@ MonoBehaviour:
   m_GameObject: {fileID: 100048}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0e106e9315bef842816c294c0ab1d73, type: 3}
+  m_Script: {fileID: 11500000, guid: c49450cdecc1e8c4782a124417434f57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ragdollParts:
-  - {fileID: 100032}
-  - {fileID: 100030}
-  - {fileID: 100020}
-  - {fileID: 100016}
-  - {fileID: 100034}
-  - {fileID: 100014}
-  - {fileID: 100004}
-  - {fileID: 100018}
-  - {fileID: 100022}
-  - {fileID: 100002}
-  - {fileID: 100006}
-  player: {fileID: 0}
-  helmet: {fileID: 0}
-  thisIsA: enemy
+  goofiness: 0
+  characterController: {fileID: 11400010}
   animator: {fileID: 9500000}
+  ragdoll: {fileID: 11423692}
+--- !u!114 &11423692
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22120a4ab48eeb34a8e1debf934d3a25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 9500000}
+  parts:
+  - {fileID: 5400022}
+  - {fileID: 5400010}
+  - {fileID: 5400006}
+  - {fileID: 5400012}
+  - {fileID: 5400002}
+  - {fileID: 5400008}
+  - {fileID: 5400004}
+  - {fileID: 5400020}
+  - {fileID: 5400016}
+  - {fileID: 5400018}
+  - {fileID: 5400014}
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -1098,19 +1060,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: .0427326299
   m_Center: {x: 0, y: .0427326299, z: 0}
---- !u!136 &13600000
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: .5
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &13600002
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -1533,7 +1482,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -7.23605993e-08, y: .183840021, z: 6.18209199e-08}
+  m_ConnectedAnchor: {x: -7.61453833e-08, y: .183839992, z: 7.59478311e-08}
   m_SwingAxis: {x: 0, y: -1, z: 0}
   m_LowTwistLimit:
     limit: -80
