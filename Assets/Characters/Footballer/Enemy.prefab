@@ -1081,11 +1081,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   avoidRange: 15
   alertRadius: 14
-  chaseOffDistance: 45
-  redirectionRate: .00999999978
-  tackleRange: 1
-  tackleSpeed: 4
-  tackleDuration: .300000012
+  chaseOffDistance: 40
+  redirectionRate: .0199999996
+  tackleRange: 1.20000005
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
