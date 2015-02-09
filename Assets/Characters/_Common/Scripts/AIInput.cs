@@ -27,6 +27,7 @@ public class AIInput : MonoBehaviour
 	public float alertRadius = 5.0f;
 	public float chaseOffDistance = 10.0f; 
 	public float redirectionRate = 0.01f;
+	public float chaseGiveUpRate = 0.0001f;
 	public float tackleRange	= 2.0f;
 	
 	// Internal links
@@ -89,13 +90,13 @@ public class AIInput : MonoBehaviour
 		if( roamingDirection.magnitude > 0 )
 			controller.Move( roamingDirection * 0.5f );
 
-        if (Random.value < 0.05f)
+        if( Random.value < 0.05f )
         {
             BaseCharacterController enemy = DetectEnemy();
-            if (enemy)
+            if( enemy )
             {
-                target = enemy.transform;
-                state = AIStates.CHASING;
+				target = enemy.transform;
+				state = AIStates.CHASING;
             }
         }
 	}
@@ -115,15 +116,15 @@ public class AIInput : MonoBehaviour
 			direction2D.Normalize();
 			controller.Move( direction2D );
 
-			if( distance > chaseOffDistance )
+			if( distance>chaseOffDistance || chaseGiveUpRate>Random.value )
 			{
 				state = AIStates.UNAWARE;
 			}
 
-            if (distance < tackleRange)
-            {
-                controller.Tackle(true);
-            }
+			if( distance < tackleRange )
+			{
+				controller.Tackle(true);
+			}
 		}
 	}
 
