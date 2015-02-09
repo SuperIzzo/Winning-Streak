@@ -15,7 +15,7 @@ using System.Collections.Generic;
 [RequireComponent(typeof(BaseCharacterController))]
 public class AIInput : MonoBehaviour 
 {
-	private enum AIStates
+	public enum AIStates
 	{
 		CHASING,		// to tackle
 		FOLLOWING,		// an ally
@@ -34,9 +34,9 @@ public class AIInput : MonoBehaviour
 	Faction faction;
 
 	// State
-	AIStates state;
-	Transform target;
-	Vector2 roamingDirection;
+	public AIStates		state {get; private set;}
+	public Transform 	target{get; private set;}
+	public Vector2		roamingDirection{get; private set;}
 
 
 	//--------------------------------------------------------------
