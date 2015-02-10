@@ -40,12 +40,8 @@ public class FootballerEventAnnouncer : MonoBehaviour
 
 		if( !player.isKnockedDown )
 		{
-			score.AddMultPoint( 0.3f );
-
-			if( announcementChance > Random.value )
-			{
-				commentator.Comment( CommentatorEvent.DODGE_TACKLE );
-			}
+			var scoringEvent = GameSystem.scoringEvent;
+			scoringEvent.Fire( ScoringEvent.DODGE_TACKLE );
 		}
 	}
 }

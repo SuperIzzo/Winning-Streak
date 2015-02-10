@@ -5,52 +5,37 @@ using System.Collections;
 public class StreakerEventAnnouncer : MonoBehaviour
 {
 	BaseCharacterController controller;
-	Commentator commentator;
+	ScoringEventManager 	scoringEvent;
 
 	bool	pickedBallEvent 	= false;
-	float	dancingNoticeTime	= 1.0f;
-	float 	dancingCooldown		= 1.0f;
+	bool	isDancingEvent		= false;
 
 	// Use this for initialization
 	void Start ()
 	{
 		controller = GetComponent<BaseCharacterController>();
-		commentator = GameSystem.commentator;
+		scoringEvent = GameSystem.scoringEvent;
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-		if( commentator )
+		if( scoringEvent && controller )
 		{
-			if( controller )
+			// Ball grab scoring
+			if( controller.heldObject!=null ^ pickedBallEvent )
 			{
-				if( controller.heldObject!=null && !pickedBallEvent )
-				{
-					pickedBallEvent = true;
-					commentator.Comment( CommentatorEvent.PICKED_BALL );
-				}
-				else if( controller.heldObject==null )
-				{
-					pickedBallEvent = false;
-				}
+				pickedBallEvent = !pickedBallEvent;
 
-				if( controller.isDancing && dancingCooldown>0 )
-				{
-					dancingCooldown -=Time.deltaTime;
-					if( dancingCooldown <=0 )
-					{
-						bool commented = commentator.Comment( CommentatorEvent.WIGGLE );
+				if( pickedBallEvent )
+					scoringEvent.Fire( ScoringEvent.PICKED_BALL );
+			}
 
-						// try again next frame
-						if( !commented )
-							dancingCooldown = 0.01f;
-					}
-				}
-				else if( !controller.isDancing )
-				{
-					dancingCooldown = dancingNoticeTime;
-				}
+			// Dance scoring
+			if( controller.isDancing ^ isDancingEvent)
+			{
+				isDancingEvent = !isDancingEvent;
+				scoringEvent.Fire( ScoringEvent.WIGGLE, isDancingEvent );
 			}
 		}
 	}
