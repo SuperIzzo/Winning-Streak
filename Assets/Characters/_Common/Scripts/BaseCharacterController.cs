@@ -22,7 +22,7 @@ public class BaseCharacterController : MonoBehaviour
 
 	public Transform propSlot;
 
-	public bool		isKnockedDown	 {get; set;}
+	public bool		isKnockedDown	 {get{return _isKnockedDown;} set{if(value) KnockDown(); else Revive();} }
 	public bool		isDancing		 {get{return _isDancing;} set{Dance(value);} }
 	public bool		isDashing		 {get{return _isDashing;} set{if(value) Dash();} }
 	public bool		isTackling		 {get{return _tackleTimer>0;} set{Tackle(value);} }
@@ -33,6 +33,7 @@ public class BaseCharacterController : MonoBehaviour
 	public GameObject heldObject	 {get; private set;}
 
 	// Private state
+	private bool	_isKnockedDown;
 	private bool	_isDancing;
 	private bool	_isDashing;
 	private bool	_isCharging;
@@ -48,10 +49,11 @@ public class BaseCharacterController : MonoBehaviour
 	//--------------------------------------
 	public void KnockDown()
 	{
-		if( !isKnockedDown )
+		if( !_isKnockedDown )
 		{
+			_tackleTimer = 0.0f;
 			_reviveTimer = Random.Range(reviveTimeMin, reviveTimeMax);
-			isKnockedDown = true;
+			_isKnockedDown = true;
 		}
 	}
 
@@ -60,10 +62,10 @@ public class BaseCharacterController : MonoBehaviour
 	//--------------------------------------
 	public void Revive()
 	{
-		if( isKnockedDown )
+		if( _isKnockedDown )
 		{
 			_reviveTimer = -1;
-			isKnockedDown = false;
+			_isKnockedDown = false;
 		}
 	}
 
