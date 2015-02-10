@@ -74,6 +74,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400014}
   - 114: {fileID: 11400014}
+  - 114: {fileID: 11472594}
   - 114: {fileID: 11443766}
   m_Layer: 0
   m_Name: _GameManager
@@ -1010,6 +1011,58 @@ MonoBehaviour:
   spawnLimit: 1
   spawnAreas:
   - {fileID: 484436}
+--- !u!114 &11472594
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a9dde025453cd04ea72743e630d0031, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoresList:
+  - description: Dodge Tackle
+    scoringEvent: 2
+    ignition: 0
+    baseScore: 0
+    multPoints: .300000012
+    comment:
+      comment: 3
+      chance: .100000001
+      delay: 0
+      mustBeOn: 0
+  - description: Pick-up Ball
+    scoringEvent: 1
+    ignition: 0
+    baseScore: 0
+    multPoints: 0
+    comment:
+      comment: 2
+      chance: .699999988
+      delay: 0
+      mustBeOn: 0
+  - description: Wiggle
+    scoringEvent: 4
+    ignition: 1
+    baseScore: 10
+    multPoints: 1
+    comment:
+      comment: 7
+      chance: 1
+      delay: 3
+      mustBeOn: 1
+  - description: 
+    scoringEvent: 0
+    ignition: 0
+    baseScore: 0
+    multPoints: 0
+    comment:
+      comment: 0
+      chance: 1
+      delay: 0
+      mustBeOn: 0
 --- !u!114 &11484436
 MonoBehaviour:
   m_ObjectHideFlags: 1
