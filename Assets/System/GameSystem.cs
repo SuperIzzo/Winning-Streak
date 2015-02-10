@@ -3,14 +3,19 @@ using System.Collections;
 
 public class GameSystem
 {
-	// Internal variables
-	private static SloMoManager 	_slowMotion;
-	private static ScoreManager 	_score;
-	private static SocialManager	_social;
-	private static Commentator  	_commentator;
-	private static AudioMan			_audio;
+	#region		Internal variables
+	private static SloMoManager 		_slowMotion;
+	private static ScoreManager 		_score;
+	private static ScoringEventManager	_scoringEvent;
+	private static SocialManager		_social;
+	private static Commentator  		_commentator;
+	private static AudioMan				_audio;
+	#endregion
+
 
 	// Globally accessible readonly properties
+	#region Public properties
+
 	public static SloMoManager slowMotion
 	{
 		get
@@ -34,6 +39,19 @@ public class GameSystem
 			}
 
 			return _score;
+		}
+	}
+
+	public static ScoringEventManager scoringEvent
+	{
+		get 
+		{
+			if( !_scoringEvent )
+			{
+				_scoringEvent = GameObject.FindObjectOfType<ScoringEventManager>();
+			}
+			
+			return _scoringEvent;
 		}
 	}
 
@@ -75,4 +93,5 @@ public class GameSystem
 			return _audio;
 		}
 	}
+	#endregion
 }
