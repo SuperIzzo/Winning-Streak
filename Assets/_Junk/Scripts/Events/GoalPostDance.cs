@@ -21,6 +21,7 @@ public class GoalPostDance : MonoBehaviour
 					timer = 0;
 				}
 
+				/*
 				if( GameSystem.audio )
 				{
 					if( GameSystem.audio.GetHype() > 0.8f && Random.value < 0.01f)
@@ -32,6 +33,7 @@ public class GoalPostDance : MonoBehaviour
 					//soundManager.GetComponent<DialogueManager>().PlaySpeech("PLAYER_DANCE");
 					GameSystem.audio.KeepHypeUp();
 				}
+				*/
 			}
 		}
 	}

@@ -20,8 +20,8 @@ public class HitObjectNoise : MonoBehaviour {
 		if(collision.collider.tag == "soundCollision")
 		{
 
-			if(collision.collider.name != "Field" && collision.collider.name != "grass" && collision.collider.name != "Marking")
-			soundManager.GetComponent<AudioMan>().PlayEffect("OBJECT_HIT2", 1);
+			//if(collision.collider.name != "Field" && collision.collider.name != "grass" && collision.collider.name != "Marking")
+			//soundManager.GetComponent<AudioMan>().PlayEffect("OBJECT_HIT2", 1);
 		}
 	}
 }
