@@ -10,10 +10,10 @@ public class ThrowableObject : MonoBehaviour
 	// Public properties
 	public float knockOutPower = 5.0f;
 	public bool  isThrown = false;
+	public BaseCharacterController owner {get; private set;}
 
 	// Priavate references
 	private Transform slot;
-	private BaseCharacterController thrower;
 
 
 	//--------------------------------------------------------------
@@ -34,14 +34,14 @@ public class ThrowableObject : MonoBehaviour
 	//--------------------------------------
 	public void OnGrabbed( BaseCharacterController character, Transform propSlot )
 	{
-		thrower = character;
+		owner = character;
 		slot = propSlot;
 
 		if( rigidbody )
 			rigidbody.isKinematic = true;
 
 		if( collider )
-			collider.enabled = false;
+			collider.isTrigger = true;
 		
 		// Get addopted by the hand/slot
 		// We keep the world position, as we'll animate the grabbing
@@ -56,7 +56,7 @@ public class ThrowableObject : MonoBehaviour
 	public void OnThrown( BaseCharacterController character, Vector3 force )
 	{
         if (collider)
-            collider.enabled = true;
+			collider.isTrigger = false;
 
 		if( rigidbody )
 		{
@@ -80,7 +80,7 @@ public class ThrowableObject : MonoBehaviour
         return; // HACK: why?
 
 		BaseCharacterController character =  collision.collider.GetComponent<BaseCharacterController>();
-		if( character && character!=thrower )
+		if( character && character!=owner )
 		{
 			if( collision.relativeVelocity.magnitude > knockOutPower 
 			   	&& rigidbody.velocity.magnitude		 > knockOutPower)
