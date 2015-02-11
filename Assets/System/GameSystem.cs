@@ -9,7 +9,7 @@ public class GameSystem
 	private static ScoringEventManager	_scoringEvent;
 	private static SocialManager		_social;
 	private static Commentator  		_commentator;
-	private static AudioMan				_audio;
+	private static CrowdManager			_crowd;
 	#endregion
 
 
@@ -81,16 +81,16 @@ public class GameSystem
 		}
 	}
 
-	public static AudioMan audio
+	public static CrowdManager crowd
 	{
 		get 
 		{
-			if( !_audio )
+			if( !_crowd )
 			{
-				_audio = GameObject.FindObjectOfType<AudioMan>();
+				_crowd = GameObject.FindObjectOfType<CrowdManager>();
 			}
 			
-			return _audio;
+			return _crowd;
 		}
 	}
 	#endregion
