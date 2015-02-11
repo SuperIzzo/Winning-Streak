@@ -50,6 +50,7 @@ public class ScoringEventManager : MonoBehaviour
 		public EventIgnition ignition;
 		public float baseScore; 
 		public float multPoints;
+		public float hypeEffect;
 		public Comment comment;
 	}
 
@@ -82,12 +83,14 @@ public class ScoringEventManager : MonoBehaviour
 		if( scoresMap.ContainsKey(eventType) )
 		{
 			ScoreManager 	score		= GameSystem.score;
+			CrowdManager	crowd		= GameSystem.crowd;
 			ScoreData 		scoreData 	= scoresMap[eventType];
 
 			if( scoreData.ignition == ScoreData.EventIgnition.ONE_TIME )
 			{
 				score.AddScore(		scoreData.baseScore  );
 				score.AddMultPoint(	scoreData.multPoints );
+				crowd.hype += scoreData.hypeEffect;
 			}
 			else
 			{
@@ -112,6 +115,7 @@ public class ScoringEventManager : MonoBehaviour
 	IEnumerator ContinuousPoints( ScoringEvent eventType )
 	{
 		ScoreManager score = GameSystem.score;
+		CrowdManager crowd = GameSystem.crowd;
 		ScoreData scoreData = scoresMap[eventType];
 
 		while( ongoingScores[eventType] )
@@ -121,6 +125,7 @@ public class ScoringEventManager : MonoBehaviour
 			// Add points per second
 			score.AddScore(		scoreData.baseScore  * Time.deltaTime );
 			score.AddMultPoint( scoreData.multPoints * Time.deltaTime );
+			crowd.hype += scoreData.hypeEffect * Time.deltaTime;
 		}
 	}
 
