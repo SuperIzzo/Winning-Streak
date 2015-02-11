@@ -59,7 +59,7 @@ GameObject:
   - 114: {fileID: 11400012}
   - 82: {fileID: 8200000}
   m_Layer: 0
-  m_Name: _AudioManager
+  m_Name: _CrowdManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -461,88 +461,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSourceType: {fileID: 0}
-  ambience: {fileID: 8300000, guid: 26b505cfe0dbcb749bbb2c9f9eae77fa, type: 3}
-  introduction: {fileID: 8300000, guid: 762f34b7a3742b6489b014a7769fea1c, type: 3}
-  soloDetailSounds:
+  _ambience: {fileID: 8300000, guid: 26b505cfe0dbcb749bbb2c9f9eae77fa, type: 3}
+  _introduction: {fileID: 8300000, guid: 762f34b7a3742b6489b014a7769fea1c, type: 3}
+  _soloDetailSounds:
   - {fileID: 8300000, guid: 02d158e3a8e1d5a46b39ed4a948b738d, type: 3}
   - {fileID: 8300000, guid: 872a4939abcddf04e9e9f669b492a8cc, type: 3}
   - {fileID: 8300000, guid: 63af000b81524924bb6b1a7b2a7a1fda, type: 3}
-  massDetailSounds:
-  - {fileID: 8300000, guid: 4aefec37ce1dcea46923185ba0923444, type: 3}
-  - {fileID: 8300000, guid: 727291ee718ac1442b8e44ea91cdfcf2, type: 3}
-  - {fileID: 8300000, guid: 067acd9fc8ba3b344836dcdd598f48b7, type: 3}
-  celebrateSounds:
-  - {fileID: 8300000, guid: ac5dd7e1980c98a4a993d6474b6d0021, type: 3}
-  - {fileID: 8300000, guid: 8bc633f31b833b44ca0686517e37e55c, type: 3}
-  - {fileID: 8300000, guid: 28dabac5f0c16d34494faafd982784f6, type: 3}
-  - {fileID: 8300000, guid: 2492cbdc5f140f647885a5cec0f27665, type: 3}
-  whistleSounds:
-  - {fileID: 8300000, guid: 5f119c32e07eff942ab6c22c3c768d61, type: 3}
   - {fileID: 8300000, guid: bd6c8be30b90d694c8aac2cd139891c7, type: 3}
   - {fileID: 8300000, guid: 7a0d21579437c5d4f9bf7719fbd5fda3, type: 3}
-  - {fileID: 8300000, guid: 24841038a071468419e460fc983cc153, type: 3}
   - {fileID: 8300000, guid: 86fae4787edce9b46af1574cb7bd7afc, type: 3}
   - {fileID: 8300000, guid: 39cf3d3cd571dc14eaa94bdc93fbe2d3, type: 3}
-  tackledSounds:
-  - {fileID: 8300000, guid: a1a2ab83cb96a7f4990a88a965cf07fc, type: 3}
-  - {fileID: 8300000, guid: fbc23ac57def3be4baf0ff0aa91ad221, type: 3}
-  - {fileID: 8300000, guid: a08ac0e6814631c45a6c8c403d65ff44, type: 3}
-  - {fileID: 8300000, guid: a5461629a288b93408ab6a2e8289e0cb, type: 3}
-  - {fileID: 8300000, guid: aa8e6089fd3c1a44e8fcf3872ff8dccb, type: 3}
-  - {fileID: 8300000, guid: 5f0b8299628f1fa428cf29faced86f9a, type: 3}
-  - {fileID: 8300000, guid: ae1f88e969cc281429c2e56ce7f853fa, type: 3}
-  - {fileID: 8300000, guid: ba800e3d5cdb4bb4ab7b8ec66c7e0e26, type: 3}
-  effectSounds:
-  - {fileID: 8300000, guid: 11fbaae3056a0554ab8971c9ceb783bf, type: 3}
-  - {fileID: 8300000, guid: 45a35c5b31f47b34bb9252f659c85525, type: 3}
-  - {fileID: 8300000, guid: 5d65b552117e7fd47bfdbe47628424d4, type: 3}
-  - {fileID: 8300000, guid: 747a95bfe9a555a48b45a66cb75a806c, type: 3}
-  - {fileID: 8300000, guid: aa4ee22fc4fc4c548b0deb70e2105e13, type: 3}
-  - {fileID: 8300000, guid: b1e666d38660a3042ac48f162da328ea, type: 3}
-  - {fileID: 8300000, guid: b61990b246ac098489f187e7e915fa8d, type: 3}
-  - {fileID: 8300000, guid: fad25ea1ce67d7d46a5d66beb8f24e55, type: 3}
-  tackleDodgeSounds:
-  - {fileID: 8300000, guid: 2ff5be31f6fcdf748a46b345d076f5a4, type: 3}
-  - {fileID: 8300000, guid: d6163395fa97e9f4cb1c529d59a2e5fa, type: 3}
-  - {fileID: 8300000, guid: 221884953336cec448532b1d72ea40e2, type: 3}
-  - {fileID: 8300000, guid: c4235a26be223d84d8151155b6aa5a93, type: 3}
-  - {fileID: 8300000, guid: 3c5bdf88884cfef4bb44bb4bf8aadc90, type: 3}
-  - {fileID: 8300000, guid: 7ba83979ada7ded419ac1a94a1c36e06, type: 3}
-  - {fileID: 8300000, guid: cfdfdb8c97cc750438442accd43a806d, type: 3}
-  randomSpeechSounds:
-  - {fileID: 8300000, guid: 364b3f40c7c470d41bd2b7b6b1a8104c, type: 3}
-  - {fileID: 8300000, guid: 2a8d3694bcd59dc428dc7485d1bd0464, type: 3}
-  - {fileID: 8300000, guid: f5b0f96677a0d054e96016205e2aca07, type: 3}
-  - {fileID: 8300000, guid: 9e4f7fc72bf18ca4b81c2ba5eb4a6efe, type: 3}
-  - {fileID: 8300000, guid: 0257de2a9dcf73147a3da4c11381d52c, type: 3}
-  - {fileID: 8300000, guid: 3e622eda6a7fe21449dcbea2c8115627, type: 3}
-  - {fileID: 8300000, guid: a1ea6cbcca26b7b448f69e6f3e524968, type: 3}
-  - {fileID: 8300000, guid: a52c6c2dd7499e2419298aa94ae76c8d, type: 3}
-  - {fileID: 8300000, guid: 886ff96f161777641b248f4852ad1595, type: 3}
-  - {fileID: 8300000, guid: d6f44a8fdd74ecc45b887cba7eac605e, type: 3}
-  - {fileID: 8300000, guid: 3f3d59bf08cb986479b6d051e0c1f893, type: 3}
-  changeHatSounds:
-  - {fileID: 8300000, guid: 07a315818f9d95146ac86a80506f3682, type: 3}
-  - {fileID: 8300000, guid: 19688e6445f267e42a45c6e1d021cbfd, type: 3}
-  - {fileID: 8300000, guid: 39a06ab052f4c784ab543a5884329fab, type: 3}
-  - {fileID: 8300000, guid: 39be9c436088e7a49b332c5e6d6fa92b, type: 3}
-  - {fileID: 8300000, guid: 4eeb514297e6f04498c848bd5d25ce47, type: 3}
-  - {fileID: 8300000, guid: 53eeaced73237e74f97a017c05c8efed, type: 3}
-  - {fileID: 8300000, guid: 5e4748e82a12a534cbc69aee47f7445d, type: 3}
-  - {fileID: 8300000, guid: a0ec58d5bfe0d394d897b5e7350c61d0, type: 3}
-  - {fileID: 8300000, guid: ad32b77713a578c408a51088153a4193, type: 3}
-  - {fileID: 8300000, guid: ef07e27b9f35a1447b7505c393e236bc, type: 3}
-  jseHat: {fileID: 8300000, guid: 7a9dfc1cb833a2f4ab302a7e10e92fef, type: 3}
-  goalSpeechSounds:
-  - {fileID: 8300000, guid: 8eb7f524483c4bf4e9831a266dcc1c61, type: 3}
-  - {fileID: 8300000, guid: cc810005ac2fe8a4f8d9af5f5734f485, type: 3}
-  - {fileID: 8300000, guid: c9d459a638ac3d341a1a94957b09fb40, type: 3}
-  - {fileID: 8300000, guid: 150d4fd924e52e4408b686bfe6de842e, type: 3}
-  - {fileID: 8300000, guid: 60e47c6bd089c4e4a9dd43862004d5f9, type: 3}
-  hype: 0
-  hypeDecay: 9.99999975e-05
-  minHype: .200000003
-  maxHype: 1.10000002
+  - {fileID: 8300000, guid: 5f119c32e07eff942ab6c22c3c768d61, type: 3}
+  - {fileID: 8300000, guid: 24841038a071468419e460fc983cc153, type: 3}
+  _massDetailSounds:
+  - {fileID: 8300000, guid: ac5dd7e1980c98a4a993d6474b6d0021, type: 3}
+  - {fileID: 8300000, guid: 28dabac5f0c16d34494faafd982784f6, type: 3}
+  - {fileID: 8300000, guid: 727291ee718ac1442b8e44ea91cdfcf2, type: 3}
+  - {fileID: 8300000, guid: 067acd9fc8ba3b344836dcdd598f48b7, type: 3}
+  - {fileID: 8300000, guid: 4aefec37ce1dcea46923185ba0923444, type: 3}
+  - {fileID: 8300000, guid: 8bc633f31b833b44ca0686517e37e55c, type: 3}
+  - {fileID: 8300000, guid: 2492cbdc5f140f647885a5cec0f27665, type: 3}
+  _soloDetailRate: .300000012
+  _massDetailRate: .200000003
+  _hype: .300000012
+  _hypeDecay: .00999999978
+  _minHype: .100000001
+  _maxHype: 1
 --- !u!114 &11400014
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1028,6 +972,7 @@ MonoBehaviour:
     ignition: 0
     baseScore: 0
     multPoints: .300000012
+    hypeEffect: .00999999978
     comment:
       comment: 3
       chance: .100000001
@@ -1036,11 +981,12 @@ MonoBehaviour:
   - description: Pick-up Ball
     scoringEvent: 1
     ignition: 0
-    baseScore: 0
-    multPoints: 0
+    baseScore: 100
+    multPoints: 1
+    hypeEffect: .0500000007
     comment:
       comment: 2
-      chance: .699999988
+      chance: .899999976
       delay: 0
       mustBeOn: 0
   - description: Wiggle
@@ -1048,16 +994,29 @@ MonoBehaviour:
     ignition: 1
     baseScore: 10
     multPoints: 1
+    hypeEffect: .0399999991
     comment:
       comment: 7
       chance: 1
       delay: 3
       mustBeOn: 1
+  - description: Goal
+    scoringEvent: 6
+    ignition: 0
+    baseScore: 200
+    multPoints: 5
+    hypeEffect: .5
+    comment:
+      comment: 19
+      chance: 1
+      delay: 0
+      mustBeOn: 0
   - description: 
     scoringEvent: 0
     ignition: 0
     baseScore: 0
     multPoints: 0
+    hypeEffect: 0
     comment:
       comment: 0
       chance: 1
@@ -1094,9 +1053,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 100000, guid: 49a87785aadb97042b7c0f23a6da6533, type: 2}
   initialSpawnDelay: 0
-  spawnDelay: 0
-  spawnAmount: 22
-  spawnLimit: 22
+  spawnDelay: 50
+  spawnAmount: 1
+  spawnLimit: 20
   spawnAreas:
   - {fileID: 484438}
 --- !u!114 &11498596
