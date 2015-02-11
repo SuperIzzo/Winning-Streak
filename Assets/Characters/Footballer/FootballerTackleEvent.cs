@@ -1,15 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class FootballerEventAnnouncer : MonoBehaviour
+public class FootballerTackleEvent : MonoBehaviour
 {
 	public BaseCharacterController controller;
-	public float dodgeScore = 0.3f;
 
-	[Range(0,1)]
-	public float announcementChance = 0.3f;
-
-	public	float tackleMissTime = 5.0f;
+	public float 		tackleMissTime = 5.0f;
+	public AudioClip[]	tackleFailSFX;
+	public AudioClip[]	tackleSucceedSFX;
 
 	private float tackleMissTimer;
 	
@@ -42,6 +40,17 @@ public class FootballerEventAnnouncer : MonoBehaviour
 		{
 			var scoringEvent = GameSystem.scoringEvent;
 			scoringEvent.Fire( ScoringEvent.DODGE_TACKLE );
+
+			if( audio )
+			{
+				audio.clip = tackleFailSFX[ Random.Range(0, tackleFailSFX.Length) ];
+				audio.Play();
+			}
+		}
+		else if( audio )
+		{
+			audio.clip = tackleFailSFX[ Random.Range(0, tackleFailSFX.Length) ];
+			audio.Play();
 		}
 	}
 }
