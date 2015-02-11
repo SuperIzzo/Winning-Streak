@@ -6,7 +6,7 @@ public class RandomCommentsGenerator : MonoBehaviour
 	public float minSilence = 5.0f;
 	public float maxSilence = 10.0f;
 
-	public float silenceTime = 0;
+	private float silenceTime = 0;
 
 	Commentator commentator;
 
