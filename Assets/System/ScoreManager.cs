@@ -13,7 +13,7 @@ public class ScoreManager : MonoBehaviour
 
 	static bool isActive = true;
 
-	static float maxAccumulationTime = 5;
+	static float maxAccumulationTime = 3;
 	static float accumulationTimer = 0;
 	static float accumulatedMult = 0;
 
