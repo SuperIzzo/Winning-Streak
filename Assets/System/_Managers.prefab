@@ -1000,6 +1000,17 @@ MonoBehaviour:
       chance: 1
       delay: 3
       mustBeOn: 1
+  - description: Touchdown
+    scoringEvent: 5
+    ignition: 0
+    baseScore: 100
+    multPoints: 4
+    hypeEffect: .300000012
+    comment:
+      comment: 8
+      chance: 1
+      delay: 0
+      mustBeOn: 0
   - description: Goal
     scoringEvent: 6
     ignition: 0
