@@ -481,8 +481,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4aefec37ce1dcea46923185ba0923444, type: 3}
   - {fileID: 8300000, guid: 8bc633f31b833b44ca0686517e37e55c, type: 3}
   - {fileID: 8300000, guid: 2492cbdc5f140f647885a5cec0f27665, type: 3}
-  _soloDetailRate: .300000012
-  _massDetailRate: .200000003
+  _soloDetailRate: .5
+  _massDetailRate: .349999994
   _hype: .300000012
   _hypeDecay: .00999999978
   _minHype: .100000001
