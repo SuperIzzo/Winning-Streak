@@ -1259,7 +1259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d640f6a39be6544f8a5829237f81110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 4.19999981
+  movementSpeed: 3.79999995
   turningSpeed: 6
   dashBoost: 1.5
   dashDuration: 1
