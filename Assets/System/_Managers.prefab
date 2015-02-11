@@ -446,8 +446,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f1fa9d78919ed14ea464497e98e7eda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSilence: 10
-  maxSilence: 20
+  minSilence: 5
+  maxSilence: 15
   silenceTime: 15
 --- !u!114 &11400012
 MonoBehaviour:
@@ -548,6 +548,61 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 231ddd462ae18ee45bc134f884ebd550, type: 3}
     - {fileID: 8300000, guid: 0ef2e4081292aff48955c840a23fa136, type: 3}
     - {fileID: 8300000, guid: 65a14be5f94f1584083e022c0dfafab7, type: 3}
+  - name: Random 6
+    commentEvent: 1
+    clipQueue:
+    - {fileID: 8300000, guid: 05f47123b0c30924db99f5822430a3f8, type: 3}
+  - name: Random 7.1
+    commentEvent: 1
+    clipQueue:
+    - {fileID: 8300000, guid: e511efdb34ef61744acceb5189ea7797, type: 3}
+  - name: Random 7.2
+    commentEvent: 1
+    clipQueue:
+    - {fileID: 8300000, guid: 45bfe52cb6f71844fb332f17b96f89d6, type: 3}
+  - name: Random 8
+    commentEvent: 1
+    clipQueue:
+    - {fileID: 8300000, guid: e4497f2005fe33049a19ce9b86aea589, type: 3}
+  - name: Random 9
+    commentEvent: 1
+    clipQueue:
+    - {fileID: 8300000, guid: 48ab60b88b949be40874d03eaf7b2f61, type: 3}
+  - name: Random 10
+    commentEvent: 1
+    clipQueue:
+    - {fileID: 8300000, guid: b40482a5eb132fa4293e1a03e7ccafc7, type: 3}
+    - {fileID: 8300000, guid: cc4b2247e0a968444bdc06deed225ded, type: 3}
+    - {fileID: 8300000, guid: e59eafbe7419e5f4cbffc2c1bba68d47, type: 3}
+  - name: Random 11
+    commentEvent: 1
+    clipQueue:
+    - {fileID: 8300000, guid: fe0eb5f3f8c09eb4ca32b7ad12beb7a5, type: 3}
+    - {fileID: 8300000, guid: f31f26f535d89394bbfc9e0be7eeefa7, type: 3}
+  - name: Random 12
+    commentEvent: 1
+    clipQueue:
+    - {fileID: 8300000, guid: 297cc2ff7762d924a9935743db0fbf0a, type: 3}
+  - name: Random 13
+    commentEvent: 1
+    clipQueue:
+    - {fileID: 8300000, guid: d6d8aaa78c984594b9fe9ca8fbc04481, type: 3}
+  - name: Random 14
+    commentEvent: 1
+    clipQueue:
+    - {fileID: 8300000, guid: e7485772c4b45d642929b3e062b30819, type: 3}
+  - name: Random 15
+    commentEvent: 1
+    clipQueue:
+    - {fileID: 8300000, guid: 22b11f540f897b34c86dcccd1e15e83c, type: 3}
+  - name: Random 16
+    commentEvent: 1
+    clipQueue:
+    - {fileID: 8300000, guid: 0ed84ecdf67d63e4ab6e84b2a4d8db62, type: 3}
+  - name: Random 17
+    commentEvent: 1
+    clipQueue:
+    - {fileID: 8300000, guid: d9ebeaea4a73b9342a1d1bc896f88bf8, type: 3}
   - name: Pick-up Ball 1
     commentEvent: 2
     clipQueue:
