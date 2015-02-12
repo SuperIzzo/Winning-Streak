@@ -36,7 +36,7 @@ public class ScoreManager : MonoBehaviour
 		accumulationTimer += Time.deltaTime;
 		if( accumulationTimer > maxAccumulationTime )
 		{
-			float randomBonus = 0.9f + Random.value * 0.6f;
+			float randomBonus = 0.7f + Random.value * 0.5f;
 			accumulatedMult = Mathf.Clamp(accumulatedMult, 0.0f, 10f);
 			AnnouncePoints( accumulatedMult * randomBonus );
 			accumulatedMult = 0;
