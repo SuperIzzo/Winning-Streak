@@ -56,16 +56,43 @@ public class Commentator : MonoBehaviour
 	{
 		switch( ev )
 		{
+		case CommentatorEvent.PTS_1:
+			return 1;
+		case CommentatorEvent.PTS_2:
+			return 1;
+		case CommentatorEvent.PTS_3:
+			return 2;
+		case CommentatorEvent.PTS_4:
+			return 2;
+		case CommentatorEvent.PTS_5:
+			return 3;
+		case CommentatorEvent.PTS_6:
+			return 3;
+		case CommentatorEvent.PTS_7:
+			return 3;
+		case CommentatorEvent.PTS_8:
+			return 4;
+		case CommentatorEvent.PTS_9:
+			return 4;
+		case CommentatorEvent.PTS_10:
+			return 4;
+			
 		case CommentatorEvent.RANDOM:
-			return 0;
+			return 2;
+		case CommentatorEvent.PICKED_BALL:
+			return 2;
+		case CommentatorEvent.WIGGLE:
+			return 3;
 		case CommentatorEvent.GAME_START:
-			return 3;
+			return 4;
 		case CommentatorEvent.SCORED_GOAL:
-			return 3;
+			return 4;
+		case CommentatorEvent.TOUCH_DOWN:
+			return 4;
 		case CommentatorEvent.GAME_OVER:
 			return 10;
 		default:
-			return 2;
+			return 1;
 		}
 	}
 	
