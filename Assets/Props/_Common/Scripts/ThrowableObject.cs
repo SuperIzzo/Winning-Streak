@@ -76,17 +76,29 @@ public class ThrowableObject : MonoBehaviour
 	//--------------------------------------
 	void OnCollisionEnter( Collision collision )
 	{
-		isThrown = false;
-        return; // HACK: why?
-
-		BaseCharacterController character =  collision.collider.GetComponent<BaseCharacterController>();
-		if( character && character!=owner )
+		if( isThrown )
 		{
-			if( collision.relativeVelocity.magnitude > knockOutPower 
-			   	&& rigidbody.velocity.magnitude		 > knockOutPower)
+			var character =  collision.collider.GetComponentInChildren<BaseCharacterController>();
+
+			if( character )
 			{
-                Debug.Log("Relative vel: " + collision.relativeVelocity.magnitude);
-				character.KnockDown();
+				if( character!=owner )
+				{
+					isThrown = false;
+					owner = null;
+
+					if( collision.relativeVelocity.magnitude > knockOutPower 
+					   	&& rigidbody.velocity.magnitude		 > knockOutPower)
+					{
+		                Debug.Log("Relative vel: " + collision.relativeVelocity.magnitude);
+						character.KnockDown();
+					}
+				}
+			}
+			else
+			{
+				isThrown = true;
+				owner = null;
 			}
 		}
 	}
