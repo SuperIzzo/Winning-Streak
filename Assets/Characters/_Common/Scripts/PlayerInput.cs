@@ -36,7 +36,6 @@ public class PlayerInput : MonoBehaviour
 		bool grabUp			= Input.GetButtonUp(   "Grab" 	);
 	
 		bool slowMoDown		= Input.GetButtonDown(   "SlowMo" 	);
-		bool slowMoUp		= Input.GetButtonUp(     "SlowMo" 	);
 
 		// By default axes are separate and map to a unit square
 		// However we want the speed along the diagonals to be the same

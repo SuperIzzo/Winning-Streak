@@ -33,8 +33,6 @@ public class FootballerTackleEvent : MonoBehaviour
 	void ResolveTackle()
 	{
 		BaseCharacterController player = Player.characterController;
-		ScoreManager score = GameSystem.score;
-		Commentator commentator = GameSystem.commentator;
 
 		if( !player.isKnockedDown )
 		{

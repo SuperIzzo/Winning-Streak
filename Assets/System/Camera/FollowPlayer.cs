@@ -15,11 +15,6 @@ public class FollowPlayer : MonoBehaviour
 	public Vector3 lookatOffset = new Vector3();
 	public Vector3 positionOffset = new Vector3();
 
-	Vector3 lastLookAt;
-	Vector3 lookAtNow;
-
-	float lookTimer = 0;
-
 	public float followSpeed = 6;
 	public float dofMultiplier = 1;
 
@@ -60,18 +55,6 @@ public class FollowPlayer : MonoBehaviour
 			return;
 		}
 
-
-		lookTimer += Time.deltaTime;
-
-		if(lookTimer > 1)
-		{
-			lastLookAt = lookAtNow;
-			lookAtNow = player.transform.position + lookatOffset;
-
-
-			lookTimer =0;
-		}
-
 		if( Input.GetKey(KeyCode.PageUp) )
 		{
 			positionOffset.z += Time.unscaledDeltaTime * 2;
@@ -101,8 +84,6 @@ public class FollowPlayer : MonoBehaviour
 		{
 			followSpeed -= Time.unscaledDeltaTime*2;
 		}
-
-		//this.transform.LookAt(Vector3.Lerp(lastLookAt,lookAtNow,Time.deltaTime));
 
 		Quaternion targetRot = Quaternion.LookRotation(player.transform.position - this.transform.position);
 		this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRot, Time.unscaledDeltaTime);
