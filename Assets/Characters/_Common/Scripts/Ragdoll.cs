@@ -12,6 +12,7 @@ using System.Collections.Generic;
 public class Ragdoll : MonoBehaviour
 {
 	public Animator animator;
+	public bool automaticPartsList = true;
 	public List<Rigidbody> parts;
 
 	// Internal property state
@@ -47,6 +48,9 @@ public class Ragdoll : MonoBehaviour
 		if( animator )
 			animator.enabled = false;
 
+		if( automaticPartsList )
+			UpdateParts();
+
 		foreach(Rigidbody part in parts)
 		{
             if (part)
@@ -58,7 +62,7 @@ public class Ragdoll : MonoBehaviour
                 if (part.name == "lShldr" || part.name == "rShldr" || part.name == "lForeArm" || part.name == "rForeArm")
                 {
                     part.freezeRotation = true;
-                }                
+                }            
             }
 		}
 	}
@@ -72,6 +76,9 @@ public class Ragdoll : MonoBehaviour
 		if( animator )
 			animator.enabled = true;
 
+		if( automaticPartsList )
+			UpdateParts();
+
 		foreach(Rigidbody part in parts)
 		{
 			if( part )
@@ -80,5 +87,13 @@ public class Ragdoll : MonoBehaviour
                 part.freezeRotation = false;
             }
 		}
+	}
+
+	//--------------------------------------------------------------
+	/// <summary> Automatically updates the ragdoll parts list </summary>
+	//--------------------------------------
+	void UpdateParts()
+	{
+		parts = new List<Rigidbody>( GetComponentsInChildren<Rigidbody>() );
 	}
 }
