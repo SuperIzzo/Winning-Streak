@@ -95,13 +95,13 @@ MonoBehaviour:
     lookAtOffset: {x: 0, y: 0, z: 0}
     positionOffset: {x: 0, y: 8, z: -30}
     followSpeed: 6
-    turnSpeed: 1
+    turnSpeed: 5
     FOVModifier: 1
   zoomed:
     lookAtOffset: {x: 0, y: 0, z: 0}
-    positionOffset: {x: 0, y: 3, z: -20}
+    positionOffset: {x: 0, y: 6, z: -20}
     followSpeed: 6
-    turnSpeed: 1
+    turnSpeed: 8
     FOVModifier: 1
 --- !u!114 &11400002
 MonoBehaviour:
