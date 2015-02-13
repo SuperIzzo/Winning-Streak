@@ -3,16 +3,16 @@ using System.Collections;
 
 public class DropHelmet : MonoBehaviour
 {
-	public BaseCharacterController charater;
-	
+	public BaseCharacterController character;
+
 	// Update is called once per frame
 	void Update ()
 	{
-		if( charater!=null && charater.isKnockedDown )
+		if( character!=null && character.isKnockedDown )
 		{
 			rigidbody.isKinematic = false;
 			transform.parent = null;
-			charater = null;
+			character = null;
 		}
 	}
 }
