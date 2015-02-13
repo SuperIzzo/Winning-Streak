@@ -15,31 +15,72 @@ using System.Collections.Generic;
 [RequireComponent(typeof(BaseCharacterController))]
 public class AIInput : MonoBehaviour 
 {
+	//--------------------------------------------------------------
+	///<summary> Valid states for the AI </summary>
+	//--------------------------------------
 	public enum AIStates
 	{
-		CHASING,		// to tackle
-		FOLLOWING,		// an ally
-		UNAWARE,		// or... the state of being completely useless
-	}
-	
-    public float avoidRange = 5;
+		/// <summary> When the AI's in persiut
+		/// of an enemytarget. </summary>
+		CHASING,
 
+		/// <summary> When the AI's following
+		/// an ally. </summary>
+		FOLLOWING,
+
+		/// <summary> When the AI is cluelesly
+		/// roaming around. </summary>
+		UNAWARE,
+	}
+
+	//--------------------------------------------------------------
+	#region Public settings
+	//--------------------------------------
+	/// <summary> The radius in which the AI will become alerted
+	/// if an enemy is close. </summary>
 	public float alertRadius = 5.0f;
+
+	/// <summary> The maximal distance between a chasing AI and
+	/// it's target, before the AI gives up.</summary>
 	public float chaseOffDistance = 10.0f; 
+
+	/// <summary> The rate at which an unaware AI will be changing
+	/// its direction </summary>
 	public float redirectionRate = 0.01f;
+
+	/// <summary> The rate at which a chasing AI will randomly
+	/// decide to give up a chase. </summary>
 	public float chaseGiveUpRate = 0.0001f;
+
+	/// <summary> The distance at which a chasing AI will attempt
+	/// to a tackle. </summary>
 	public float tackleRange	= 2.0f;
+	#endregion
 	
-	// Internal links
+
+	//--------------------------------------------------------------
+	#region Internal references
+	//--------------------------------------
 	BaseCharacterController controller;
 	Faction faction;
+	#endregion
 
-	// State
+
+	//--------------------------------------------------------------
+	#region State
+	//--------------------------------------
+	/// <summary> The current AI state. </summary>
 	public AIStates		state {get; private set;}
+
+	/// <summary> Chase target.
+	/// Only valid in the CHASING AIState. </summary>
 	public Transform 	target{get; private set;}
+
+	/// <summary> The roaming direction.
+	/// Only valid in the UNAWARE AIState. </summary>
 	public Vector2		roamingDirection{get; private set;}
-
-
+	#endregion
+	
 	//--------------------------------------------------------------
 	/// <summary> Use this for initialization. </summary>
 	//--------------------------------------

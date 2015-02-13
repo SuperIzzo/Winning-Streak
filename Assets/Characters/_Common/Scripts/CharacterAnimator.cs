@@ -11,13 +11,31 @@ using System.Collections;
 [AddComponentMenu("Character/Character Animator")]
 public class CharacterAnimator : MonoBehaviour
 {
+	//--------------------------------------------------------------
+	#region Public settings
+	//--------------------------------------
+	/// <summary> The goofiness paramater for the animation. </summary>
 	[Range(0.0f,1.0f)]
 	public float goofiness;
-	public BaseCharacterController characterController;
-	public Animator animator;
-	public Ragdoll	ragdoll;
+	#endregion
 
-	// Update is called once per frame
+
+	//--------------------------------------------------------------
+	#region Public references
+	//--------------------------------------
+	/// <summary> The character controller component. </summary>
+	public BaseCharacterController characterController;
+
+	/// <summary> The animator component. </summary>
+	public Animator animator;
+
+	/// <summary> The ragdoll component. </summary>
+	public Ragdoll	ragdoll;
+	#endregion
+	
+	//--------------------------------------------------------------
+	/// <summary> Update is called once per frame </summary>
+	//--------------------------------------
 	void Update ()
 	{
 		float 	speed		= characterController.relativeVelocity.magnitude;

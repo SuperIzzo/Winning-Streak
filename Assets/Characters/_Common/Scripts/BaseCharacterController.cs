@@ -1,38 +1,110 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+//--------------------------------------------------------------
+/// <summary> Base character controller encapsulates the core 
+/// game logic of a game characters. </summary>
+/// <description> This class is purely mechanical. It maintains 
+/// the character's state and manages it internally.
+/// In MVC terms this is the Model. </description>
+//-------------------------------------- 
 [AddComponentMenu("Character/Base Character Controller")]
 public class BaseCharacterController : MonoBehaviour
 {
 	private static readonly float MIN_TURN_VECTOR_MAGNITUDE = 0.1f;
 
-	// Public settings / properties
+	//--------------------------------------------------------------
+	#region  Public settings
+	//--------------------------------------
+	/// <summary> This character's movement speed. </summary>
 	public float	movementSpeed	= 5.0f;
+
+	/// <summary> This character's turning speed. </summary>
 	public float	turningSpeed	= 6.0f;
+
+	/// <summary> The speed boost this character obtains when dashing. </summary>
 	public float	dashBoost		= 3.0f;
+
+	/// <summary> The duration of the dash. </summary>
 	public float 	dashDuration	= 1.0f;
+
+	/// <summary> The dash cooldown before it can be used again. </summary>
 	public float	dashCooldown	= 5.0f;
+
+	/// <summary> The reach radius of this character. </summary>
 	public float	grabRadius		= 1.0f;
+
+	/// <summary> The maximal time the character will
+	/// charge before throwing an object. </summary>
 	public float 	maxChargeTime	= 3.0f;
+
+	/// <summary> The magniture of the force applied 
+	/// to thrown objects. </summary>
 	public float 	throwPower		= 20.0f;
+
+	/// <summary> The duration of the tackle before 
+	/// the character falls knocked down. </summary>
 	public float	tackleDuration	= 0.3f;
+
+	/// <summary> The speed at which this character tackles. </summary>
 	public float	tackleSpeed		= 4.0f;
+
+	/// <summary> The minimal revival time. </summary>
 	public float	reviveTimeMin	= 10.0f;
+
+	/// <summary> The maximal revival time. </summary>
 	public float	reviveTimeMax	= 15.0f;
 
+	/// <summary> The transform grabbed objects go to when held. </summary>
 	public Transform propSlot;
+	#endregion
 
+
+	//--------------------------------------------------------------
+	#region  Public properties
+	//--------------------------------------
+	/// <summary> Gets or sets a value indicating whether this 
+	/// <see cref="BaseCharacterController"/> is knocked down. </summary>
+	/// <value><c>true</c> if knocked down; otherwise, <c>false</c>.</value>
 	public bool		isKnockedDown	 {get{return _isKnockedDown;} set{if(value) KnockDown(); else Revive();} }
+
+	/// <summary> Gets or sets a value indicating whether this
+	/// <see cref="BaseCharacterController"/> is dancing. </summary>
+	/// <value><c>true</c> if dancing; otherwise, <c>false</c>.</value>
 	public bool		isDancing		 {get{return _isDancing;} set{Dance(value);} }
+
+	/// <summary> Gets or sets a value indicating whether this
+	/// <see cref="BaseCharacterController"/> is dashing. </summary>
+	/// <value><c>true</c> if dashing; otherwise, <c>false</c>.</value>
 	public bool		isDashing		 {get{return _isDashing;} set{if(value) Dash();} }
+
+	/// <summary> Gets or sets a value indicating whether this
+	/// <see cref="BaseCharacterController"/> is tackling. </summary>
+	/// <value><c>true</c> if is tackling; otherwise, <c>false</c>.</value>
 	public bool		isTackling		 {get{return _tackleTimer>0;} set{Tackle(value);} }
+
+	/// <summary> Gets or sets a value indicating whether this
+	/// <see cref="BaseCharacterController"/> is charging.
+	/// <value><c>true</c> if is charging; otherwise, <c>false</c>.</value>
 	public bool		isCharging		 {get{return _isCharging;} set{if(value) ChargeThrow(); else Throw();} }
+
+	/// <summary> Returns the relative velocity (readonly). </summary>
+	/// <value>The relative velocity.</value>
 	public Vector2	relativeVelocity {get; private set;}
+
+	/// <summary> Returns the look direction (readonly). </summary>
+	/// <value>The look direction.</value>
 	public Vector3	lookDirection 	 {get; private set;}
 
+	/// <summary> Gets the held object. </summary>
+	/// <value>The held object.</value>
 	public GameObject heldObject	 {get; private set;}
+	#endregion
 
-	// Private state
+
+	//--------------------------------------------------------------
+	#region Private state
+	//--------------------------------------
 	private bool	_isKnockedDown;
 	private bool	_isDancing;
 	private bool	_isDashing;
@@ -42,6 +114,7 @@ public class BaseCharacterController : MonoBehaviour
 	private float	_chargeTimer;
 	private float	_tackleTimer;
 	private float	_reviveTimer;
+	#endregion
 
 
 	//--------------------------------------------------------------
@@ -51,7 +124,7 @@ public class BaseCharacterController : MonoBehaviour
 	{
 		if( !_isKnockedDown )
 		{
-			_tackleTimer = 0.0f;
+			_tackleTimer = 0.0f; // Cancel tackling
 			_reviveTimer = Random.Range(reviveTimeMin, reviveTimeMax);
 			_isKnockedDown = true;
 		}
