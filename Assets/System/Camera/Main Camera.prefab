@@ -50,7 +50,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: .300000012
+  near clip plane: .00999999978
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -91,7 +91,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bcabb35354eba84a878d87d3cc332b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
   normal:
     lookAtOffset: {x: 0, y: 0, z: 0}
     positionOffset: {x: 0, y: 8, z: -30}
@@ -100,7 +99,7 @@ MonoBehaviour:
     FOVModifier: 1
   zoomed:
     lookAtOffset: {x: 0, y: 0, z: 0}
-    positionOffset: {x: 0, y: 0, z: 0}
+    positionOffset: {x: 0, y: 3, z: -20}
     followSpeed: 6
     turnSpeed: 1
     FOVModifier: 1
@@ -135,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddafb42846c62f0449965dc33bc2ab45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  followCamera: {fileID: 0}
+  followCamera: {fileID: 11400000}
 --- !u!124 &12400000
 Behaviour:
   m_ObjectHideFlags: 1
