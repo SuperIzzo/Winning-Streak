@@ -31,11 +31,11 @@ public class FollowTarget : MonoBehaviour
         if (target)
         {
             Quaternion targetRot = Quaternion.LookRotation(target.position - this.transform.position);
-            this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRot, Time.deltaTime * currentConfig.turnSpeed);
+            this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRot, Time.unscaledDeltaTime * currentConfig.turnSpeed);
 
             //side to side tracking
             Vector3 newPos = new Vector3(target.position.x, currentConfig.positionOffset.y, currentConfig.positionOffset.z);
-            this.transform.position = Vector3.Lerp(this.transform.position, newPos, Time.deltaTime * currentConfig.followSpeed);
+			this.transform.position = Vector3.Lerp(this.transform.position, newPos, Time.unscaledDeltaTime * currentConfig.followSpeed);
 
             //fov tracking
             Vector3 invertedCamera = new Vector3(this.transform.position.x, this.transform.position.y,
