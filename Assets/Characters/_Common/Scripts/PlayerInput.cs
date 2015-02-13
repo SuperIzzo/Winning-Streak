@@ -5,7 +5,6 @@ using System.Collections;
 [RequireComponent( typeof(BaseCharacterController) )]
 public class PlayerInput : MonoBehaviour
 {
-	public SloMoManager	slowMo;
     public GameObject CensorBar;
 	private BaseCharacterController controller;
 	private static readonly float AXES_DEADZONE = 0.1f;
@@ -82,16 +81,17 @@ public class PlayerInput : MonoBehaviour
 			controller.Throw();
 		}
 
-		if( slowMo )
+		SloMoManager sloMo = GameSystem.slowMotion;
+		if( sloMo )
 		{
-			bool slow = slowMo.isSlowed;
+			bool slow = sloMo.isSlowed;
 
 			if( slowMoDown )
 				slow = !slow;
 
 			slow |= controller.isKnockedDown;
 
-			slowMo.isSlowed = slow;
+			sloMo.isSlowed = slow;
 		}
 	}
 }
