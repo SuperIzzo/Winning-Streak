@@ -1139,7 +1139,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7c7e7917dd17b3468cc266f18759b41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  avoidRange: 15
   alertRadius: 14
   chaseOffDistance: 40
   redirectionRate: .0199999996
