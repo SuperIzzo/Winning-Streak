@@ -8,7 +8,7 @@ using System.Collections;
 /// controller.
 /// </description>
 //--------------------------------------
-[AddComponentMenu("Character/Character Animator")]
+[AddComponentMenu("Character/Character Animator",200)]
 public class CharacterAnimator : MonoBehaviour
 {
 	//--------------------------------------------------------------

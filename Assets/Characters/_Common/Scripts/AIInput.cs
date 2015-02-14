@@ -12,6 +12,7 @@ using System.Collections.Generic;
 /// that task is reserved for the BaseCharacterController component.
 /// </description>
 //--------------------------------------
+[AddComponentMenu("Character/AI Input",100)]
 [RequireComponent(typeof(BaseCharacterController))]
 public class AIInput : MonoBehaviour 
 {
