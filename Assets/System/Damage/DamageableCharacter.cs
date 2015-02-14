@@ -1,6 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+//--------------------------------------------------------------
+/// <summary> Makes a GameObject with a <see cref="BaseCharacterController"/> 
+/// component damageable. </summary>
+//--------------------------------------
+[AddComponentMenu("Damage/DamageableCharacter",1)]
 [RequireComponent( typeof(BaseCharacterController) )]
 public class DamageableCharacter : Damageable
 {
@@ -16,7 +21,7 @@ public class DamageableCharacter : Damageable
 	}
 
 	//--------------------------------------------------------------
-	/// <summary> A character taking damage. </summary>
+	/// <summary> Callback for a character taking damage. </summary>
 	/// <description> Knocks down the character. </description>
 	//--------------------------------------
 	public override void OnDamage( Damager damager )

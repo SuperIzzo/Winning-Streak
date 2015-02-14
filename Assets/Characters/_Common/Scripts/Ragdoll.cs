@@ -9,14 +9,36 @@ using System.Collections.Generic;
 /// disabling the character animator, and back.
 /// </description>
 //--------------------------------------
+[AddComponentMenu("Physics/Ragdoll")]
 public class Ragdoll : MonoBehaviour
 {
+	//--------------------------------------------------------------
+	#region Public settings
+	//--------------------------------------
+	/// <summary> Reference to the the animator component. </summary>
 	public Animator animator;
-	public bool automaticPartsList = true;
-	public List<Rigidbody> parts;
 
-	// Internal property state
+	/// <summary> Indicates whether the parts list 
+	/// should be generated authomatically. </summary>
+	/// <description> 
+	/// If <c>automaticPartsList<c> is <c>true<c>
+	/// the <c>parts<c> list will be generated on the
+	/// fly from child <see cref="Rigidbody"/>-s
+	/// </description>
+	public bool automaticPartsList = true;
+
+	/// <summary> The list of <see cref="Rigidbody"/> 
+	/// ragdoll parts. </summary>
+	public List<Rigidbody> parts;
+	#endregion
+
+
+	//--------------------------------------------------------------
+	#region Internal state
+	//--------------------------------------
+	/// <summary> Whether the ragdoll is active. </summary>
 	private bool _activated = false;
+	#endregion
 
 	//--------------------------------------------------------------
 	/// <summary> Gets or sets a value indicating whether this 
@@ -91,6 +113,8 @@ public class Ragdoll : MonoBehaviour
 
 	//--------------------------------------------------------------
 	/// <summary> Automatically updates the ragdoll parts list </summary>
+	/// <description> Builds up a new list of all <see cref="Rigidbody"/>-s
+	/// in children of this GameObject. </description>
 	//--------------------------------------
 	void UpdateParts()
 	{

@@ -7,13 +7,20 @@ using System.Collections;
 //--------------------------------------
 public class ThrowableObject : MonoBehaviour
 {
-	// Public properties
+	//--------------------------------------------------------------
+	#region Public settings
+	//--------------------------------------
 	public float knockOutPower = 5.0f;
 	public bool  isThrown = false;
 	public BaseCharacterController owner {get; private set;}
+	#endregion
 
-	// Priavate references
+
+	//--------------------------------------------------------------
+	#region Priavate references
+	//--------------------------------------
 	private Transform slot;
+	#endregion
 
 
 	//--------------------------------------------------------------

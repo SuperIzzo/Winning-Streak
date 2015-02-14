@@ -1,6 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+//--------------------------------------------------------------
+/// <summary> A generic damager that causes damage upon
+/// collision/trigger. </summary>
+//--------------------------------------
+[AddComponentMenu("Damage/Damager",100)]
 public class Damager : MonoBehaviour
 {
 	//--------------------------------------------------------------
@@ -40,9 +45,11 @@ public class Damager : MonoBehaviour
 
 	//--------------------------------------------------------------
 	/// <summary> Does damage calculations and calls back on the damagees. </summary>
-	/// <param name="gameObject"> the game object to be damaged </param>
+	/// <param name="damageable"> the game object to be damaged </param>
+	/// <returns><c>true</c>, if the damageable should be damaged, 
+	/// <c>false</c> otherwise.</returns>
 	//--------------------------------------
-	public virtual bool DamageTest( Damageable gameObject )
+	public virtual bool DamageTest( Damageable damageable )
 	{
 		return true;
 	}

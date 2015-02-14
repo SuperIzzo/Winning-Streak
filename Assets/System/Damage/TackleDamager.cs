@@ -1,6 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+//--------------------------------------------------------------
+/// <summary> Tackle damager that damages only while a 
+/// <see cref="BaseCharacterController"/> is tackling. </summary>
+/// <remarks> This components should be attached to the
+/// damaging parts of a character. </remarks>
+//--------------------------------------
+[AddComponentMenu("Damage/Tackle Damager",102)]
 public class TackleDamager : Damager
 {
 	public BaseCharacterController controller;
@@ -18,7 +25,12 @@ public class TackleDamager : Damager
 
 	//--------------------------------------------------------------
 	/// <summary> Does damage calculations and calls back on the damagees. </summary>
-	/// <param name="gameObject"> the game object to be damaged </param>
+	/// <description> 
+	/// Damages any <see cref="Damageable"/> object that
+	/// this <see cref="Collider"/> collides/triggers but only while the 
+	/// target <see cref="BaseCharacterController"/> is tackling. 
+	/// </description> 
+	/// <param name="damageable"> the damageable to be damaged </param>
 	//--------------------------------------
 	public override bool DamageTest( Damageable damageable )
 	{
