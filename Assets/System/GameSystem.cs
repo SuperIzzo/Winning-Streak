@@ -1,9 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+//--------------------------------------------------------------
+/// <summary> A static global access to game systems. </summary>
+//--------------------------------------
 public class GameSystem
 {
+	//--------------------------------------------------------------
 	#region		Internal variables
+	//--------------------------------------
 	private static SloMoManager 		_slowMotion;
 	private static ScoreManager 		_score;
 	private static ScoringEventManager	_scoringEvent;
@@ -14,8 +19,13 @@ public class GameSystem
 
 
 	// Globally accessible readonly properties
+	//--------------------------------------------------------------
 	#region Public properties
+	//--------------------------------------
 
+	/// <summary> Gets a single instance to the 
+	/// <see cref="SloMoManager"/>. </summary>
+	/// <value> The slow motion manager. </value>
 	public static SloMoManager slowMotion
 	{
 		get
@@ -29,6 +39,9 @@ public class GameSystem
 		}
 	}
 
+	/// <summary> Gets a single instance to the 
+	/// <see cref="ScoreManager"/>. </summary>
+	/// <value> The score manager. </value>
 	public static ScoreManager score
 	{
 		get 
@@ -42,6 +55,9 @@ public class GameSystem
 		}
 	}
 
+	/// <summary> Gets a single instance to the 
+	/// <see cref="ScoringEventManager"/>. </summary>
+	/// <value> The scoring event manager. </value>
 	public static ScoringEventManager scoringEvent
 	{
 		get 
@@ -55,6 +71,9 @@ public class GameSystem
 		}
 	}
 
+	/// <summary> Gets a single instance to the 
+	/// <see cref="SocialManager"/>. </summary>
+	/// <value> The social manager. </value>
 	public static SocialManager social
 	{
 		get 
@@ -68,6 +87,9 @@ public class GameSystem
 		}
 	}
 
+	/// <summary> Gets a single instance to the 
+	/// <see cref="Commentator"/> system. </summary>
+	/// <value> The commentator system. </value>
 	public static Commentator commentator
 	{
 		get 
@@ -81,6 +103,9 @@ public class GameSystem
 		}
 	}
 
+	/// <summary> Gets a single instance to the 
+	/// <see cref="CrowdManager"/>. </summary>
+	/// <value> The crowd manager. </value>
 	public static CrowdManager crowd
 	{
 		get 

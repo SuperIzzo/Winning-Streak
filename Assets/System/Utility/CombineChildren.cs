@@ -1,10 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
+//--------------------------------------------------------------
+/// <summary> Combines all meshes in the object's children into
+/// a single mesh. </summary>
+//--------------------------------------
 [AddComponentMenu("Mesh/Combine Children")]
 public class CombineChildren : MonoBehaviour 
 {
-	
+	//--------------------------------------------------------------
+	/// <summary> Start callback - the only method. </summary>
+	//--------------------------------------
 	void Start()
 	{
 		Matrix4x4 myTransform = transform.worldToLocalMatrix;
