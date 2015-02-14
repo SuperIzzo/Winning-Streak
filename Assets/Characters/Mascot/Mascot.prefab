@@ -980,7 +980,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7c7e7917dd17b3468cc266f18759b41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  avoidRange: 5
   alertRadius: 20
   chaseOffDistance: 50
   redirectionRate: .00999999978
@@ -1037,6 +1036,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 9500000}
+  automaticPartsList: 1
   parts:
   - {fileID: 5400022}
   - {fileID: 5400010}
