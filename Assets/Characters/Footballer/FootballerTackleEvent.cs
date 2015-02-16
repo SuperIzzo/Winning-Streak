@@ -4,6 +4,7 @@ using System.Collections;
 public class FootballerTackleEvent : MonoBehaviour
 {
 	public BaseCharacterController controller;
+	public AIInput				   aiInput;
 
 	public float 		tackleMissTime = 5.0f;
 	public AudioClip[]	tackleFailSFX;
@@ -34,7 +35,7 @@ public class FootballerTackleEvent : MonoBehaviour
 	{
 		BaseCharacterController player = Player.characterController;
 
-		if( !player.isKnockedDown )
+		if( !player.isKnockedDown && aiInput.target == player )
 		{
 			var scoringEvent = GameSystem.scoringEvent;
 			scoringEvent.Fire( ScoringEvent.DODGE_TACKLE );
