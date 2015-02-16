@@ -12,6 +12,7 @@ public class GameSystem
 	private static SloMoManager 		_slowMotion;
 	private static ScoreManager 		_score;
 	private static ScoringEventManager	_scoringEvent;
+	private static DifficultyManager	_difficulty;
 	private static SocialManager		_social;
 	private static Commentator  		_commentator;
 	private static CrowdManager			_crowd;
@@ -71,6 +72,22 @@ public class GameSystem
 		}
 	}
 
+	/// <summary> Gets a single instance to the 
+	/// <see cref="DifficultyManager"/>. </summary>
+	/// <value> The difficulty manager. </value>
+	public static DifficultyManager difficulty
+	{
+		get 
+		{
+			if( !_difficulty )
+			{
+				_difficulty = GameObject.FindObjectOfType<DifficultyManager>();
+			}
+			
+			return _difficulty;
+		}
+	}
+	
 	/// <summary> Gets a single instance to the 
 	/// <see cref="SocialManager"/>. </summary>
 	/// <value> The social manager. </value>
