@@ -17,6 +17,10 @@ using System.Collections.Generic;
 public class AIInput : MonoBehaviour 
 {
 	//--------------------------------------------------------------
+	#region Public types
+	//--------------------------------------
+
+	//--------------------------------------------------------------
 	///<summary> Valid states for the AI </summary>
 	//--------------------------------------
 	public enum AIStates
@@ -33,6 +37,8 @@ public class AIInput : MonoBehaviour
 		/// roaming around. </summary>
 		UNAWARE,
 	}
+	#endregion
+
 
 	//--------------------------------------------------------------
 	#region Public settings
@@ -56,6 +62,10 @@ public class AIInput : MonoBehaviour
 	/// <summary> The distance at which a chasing AI will attempt
 	/// to a tackle. </summary>
 	public float tackleRange	= 2.0f;
+	
+	/// <summary> The rate at which the player will be targeted
+	/// (unfairly) by the AI. </summary>
+	public float playerHate		= 0.0f;
 	#endregion
 	
 
@@ -71,15 +81,15 @@ public class AIInput : MonoBehaviour
 	#region State
 	//--------------------------------------
 	/// <summary> The current AI state. </summary>
-	public AIStates		state {get; private set;}
+	public AIStates					state {get; private set;}
 
 	/// <summary> Chase target.
 	/// Only valid in the CHASING AIState. </summary>
-	public Transform 	target{get; private set;}
+	public BaseCharacterController 	target{get; private set;}
 
 	/// <summary> The roaming direction.
 	/// Only valid in the UNAWARE AIState. </summary>
-	public Vector2		roamingDirection{get; private set;}
+	public Vector2					roamingDirection{get; private set;}
 	#endregion
 	
 	//--------------------------------------------------------------
@@ -137,7 +147,7 @@ public class AIInput : MonoBehaviour
             BaseCharacterController enemy = DetectEnemy();
             if( enemy )
             {
-				target = enemy.transform;
+				target = enemy;
 				state = AIStates.CHASING;
             }
         }
@@ -152,13 +162,13 @@ public class AIInput : MonoBehaviour
 		// if close enough clinch and tackle
 		if( target!=null )
 		{
-			Vector3 direction = target.position - transform.position;
+			Vector3 direction = target.transform.position - transform.position;
 			Vector2 direction2D = new Vector2( direction.x, direction.z ); 
 			float distance = direction2D.magnitude;
 			direction2D.Normalize();
 			controller.Move( direction2D );
 
-			if( distance>chaseOffDistance || chaseGiveUpRate>Random.value )
+			if( distance>chaseOffDistance || chaseGiveUpRate>Random.value || target.isKnockedDown )
 			{
 				state = AIStates.UNAWARE;
 			}
@@ -224,30 +234,48 @@ public class AIInput : MonoBehaviour
 	//--------------------------------------
 	BaseCharacterController DetectEnemy()
 	{
-		Collider[] colliders = Physics.OverlapSphere( transform.position, alertRadius );
+		BaseCharacterController target = null;
 
-		foreach( Collider collider in colliders )
+		// if we hate the player - target him directly
+		if( playerHate > Random.value )
 		{
-			// If it is a different object
-			if( collider.transform != transform )
+			target = Player.characterController;
+		}
+		else
+		{
+			Collider[] colliders = Physics.OverlapSphere( transform.position, alertRadius );
+
+			foreach( Collider collider in colliders )
 			{
-                
-				Faction otherFaction = collider.GetComponent<Faction>();
-				BaseCharacterController otherController = collider.GetComponent<BaseCharacterController>();
-
-                if (!collider.GetComponent<BaseCharacterController>())
-                    continue;
-
-				if( faction && faction.IsAlly(otherFaction) )
-				   continue; // Skip this iteration, we ignore allies
-
-				if( otherController )
+				// If it is a different object
+				if( collider.transform != transform )
 				{
-					return otherController;
+	                
+					Faction otherFaction = collider.GetComponent<Faction>();
+					BaseCharacterController otherController = collider.GetComponent<BaseCharacterController>();
+
+	                if (!collider.GetComponent<BaseCharacterController>())
+	                    continue;
+
+					if( faction && faction.IsAlly(otherFaction) )
+					   continue; // Skip this iteration, we ignore allies
+
+					if( otherController )
+					{
+						if( otherController.isKnockedDown )
+						{
+							continue;
+						}
+						else
+						{
+							target = otherController;
+							break;
+						}
+					}
 				}
 			}
 		}
 
-		return null;
+		return target;
 	}
 }
