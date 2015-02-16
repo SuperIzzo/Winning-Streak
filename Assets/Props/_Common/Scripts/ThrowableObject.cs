@@ -28,6 +28,7 @@ public class ThrowableObject : MonoBehaviour
 	//--------------------------------------
 	void Update ()
 	{
+		// Fly to the slot holder's hand when held
 		if( slot && transform.parent )
 		{
 			transform.localPosition = Vector3.Lerp( transform.localPosition, Vector3.zero, 0.2f );
