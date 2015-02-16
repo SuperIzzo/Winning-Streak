@@ -1,5 +1,7 @@
 fileFormatVersion: 2
 guid: f6c648f19d66add4590ebd3a73d6e3e5
+labels:
+- Character
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
@@ -59,7 +61,7 @@ ModelImporter:
     13700000: afro01Mesh
     13700002: proxy741Mesh
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
   animations:
