@@ -75,6 +75,7 @@ GameObject:
   - 4: {fileID: 400014}
   - 114: {fileID: 11400014}
   - 114: {fileID: 11472594}
+  - 114: {fileID: 11451148}
   - 114: {fileID: 11443766}
   m_Layer: 0
   m_Name: _GameManager
@@ -125,6 +126,7 @@ GameObject:
   - 4: {fileID: 484436}
   - 65: {fileID: 6584436}
   - 114: {fileID: 11484436}
+  - 114: {fileID: 11459108}
   - 114: {fileID: 11498596}
   - 114: {fileID: 11466166}
   m_Layer: 0
@@ -278,7 +280,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 79, y: 0, z: 56}
-  m_Center: {x: 0, y: -1.45000005, z: 5.5}
+  m_Center: {x: 0, y: -1.75, z: 5.5}
 --- !u!65 &6584438
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -991,6 +993,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18de514ff4f6b4a4bbfb871eb5c85e13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11451148
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8acc7b2dd3c02f144b1b5b1187961b3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  incPerSecond: .00100000005
+--- !u!114 &11459108
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca749f05f78ae874b86a4c5cf0995cf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 100000, guid: 358eec46d2866dd49bda2976b400c175, type: 2}
+  initialSpawnDelay: 0
+  spawnDelay: 0
+  spawnAmount: 11
+  spawnLimit: 11
+  spawnAreas:
+  - {fileID: 484436}
 --- !u!114 &11466166
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1024,7 +1056,7 @@ MonoBehaviour:
   - description: Dodge Tackle
     scoringEvent: 2
     ignition: 0
-    baseScore: 0
+    baseScore: 5
     multPoints: .300000012
     hypeEffect: .00999999978
     comment:
@@ -1035,8 +1067,8 @@ MonoBehaviour:
   - description: Pick-up Ball
     scoringEvent: 1
     ignition: 0
-    baseScore: 100
-    multPoints: 1
+    baseScore: .100000001
+    multPoints: .200000003
     hypeEffect: .0500000007
     comment:
       comment: 2
@@ -1046,8 +1078,8 @@ MonoBehaviour:
   - description: Wiggle
     scoringEvent: 4
     ignition: 1
-    baseScore: 10
-    multPoints: 1
+    baseScore: .200000003
+    multPoints: .5
     hypeEffect: .0399999991
     comment:
       comment: 7
@@ -1101,8 +1133,8 @@ MonoBehaviour:
   prefab: {fileID: 100000, guid: 27ea92ec5628075439c7d872de48df5e, type: 2}
   initialSpawnDelay: 0
   spawnDelay: 0
-  spawnAmount: 22
-  spawnLimit: 22
+  spawnAmount: 11
+  spawnLimit: 11
   spawnAreas:
   - {fileID: 484436}
 --- !u!114 &11484438
