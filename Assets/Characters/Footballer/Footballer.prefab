@@ -17,6 +17,7 @@ GameObject:
   - 114: {fileID: 11400012}
   - 114: {fileID: 11400014}
   - 114: {fileID: 11452648}
+  - 114: {fileID: 11494152}
   m_Layer: 0
   m_Name: Footballer
   m_TagString: enemy
@@ -1140,10 +1141,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   alertRadius: 14
-  chaseOffDistance: 40
+  chaseOffDistance: 20
   redirectionRate: .0199999996
   chaseGiveUpRate: 9.99999975e-05
   tackleRange: 1.20000005
+  playerHate: 0
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1280,6 +1282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 11400002}
+  aiInput: {fileID: 11400000}
   tackleMissTime: .699999988
   tackleFailSFX:
   - {fileID: 8300000, guid: b1e666d38660a3042ac48f162da328ea, type: 3}
@@ -1324,6 +1327,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 11400002}
+--- !u!114 &11494152
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d5ccac04aa1a344bba560d4d10ff0dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1
