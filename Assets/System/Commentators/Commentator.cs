@@ -4,7 +4,9 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-
+//--------------------------------------------------------------
+/// <summary> An enumerationn of all commentator event. </summary>
+//--------------------------------------
 public enum CommentatorEvent
 {
 	NONE = 0,
@@ -30,6 +32,9 @@ public enum CommentatorEvent
 }
 
 
+//--------------------------------------------------------------
+/// <summary> A commentator conversation queue. </summary>
+//-------------------------------------- 
 [System.Serializable]
 public class CommentatorQueue
 {
@@ -39,19 +44,39 @@ public class CommentatorQueue
 }
 
 
-
+//--------------------------------------------------------------
+/// <summary> Commentator. </summary>
+//--------------------------------------
 public class Commentator : MonoBehaviour
 {
-	// Public / data
+	#region Public settings
 	public List<CommentatorQueue> commentQueues;
+	#endregion
 
-	// Public properties
+
+	#region Public properties
 	public float timeSinceLastComment {get; private set;}
+	#endregion
 
-	// Internal / state
+
+	#region Private state
 	CommentatorQueue currentQueue;
 	int clipIndex = 0;
-	
+	#endregion
+
+	//--------------------------------------------------------------
+	/// <summary> Returns the relative priority of the  
+	/// commentator event. </summary>
+	/// <description>
+	/// The numbers returned are arbitrary and signify the importance
+	/// of the event in relation to other events. More important
+	/// events will cut-off less important ones when a 
+	/// confict arises. The higher the number the higher the priority
+	/// of the event.
+	/// </description>
+	/// <returns>The event priority.</returns>
+	/// <param name="ev">the event</param>
+	//--------------------------------------
 	public static int GetEventPriority( CommentatorEvent ev )
 	{
 		switch( ev )
@@ -95,8 +120,20 @@ public class Commentator : MonoBehaviour
 			return 1;
 		}
 	}
-	
-	// Public interface
+
+	//--------------------------------------------------------------
+	/// <summary> Play a random comment of the specified 
+	/// <see cref="CommentatorEvent"/> </summary>
+	/// <description>
+	/// The call will fail if a comment queue for the specified 
+	/// <see cref="CommentatorEvent"/> could not be found or a 
+	/// higher priority comment is currently playing, returning 
+	/// <c>false</c>.
+	/// </description>
+	/// <param name="evt">the commentator event.</param>
+	/// <returns> Returns <c>true</c> if a comment was successfully 
+	/// queued; Otherwise <c>false</c>.</returns>
+	//--------------------------------------
 	public bool Comment( CommentatorEvent evt )
 	{
 		#if DEBUG_COMMENTS
