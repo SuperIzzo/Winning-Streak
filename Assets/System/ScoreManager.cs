@@ -45,13 +45,7 @@ public class ScoreManager : MonoBehaviour
 		AttemptComment();
 
 		timePlayed += Time.deltaTime;
-		timer += Time.deltaTime;
-
-		if(timer > 0.1f)
-		{
-			baseScore++;
-			timer = 0;
-		}
+		baseScore += Time.deltaTime * GameSystem.crowd.hype;
 	}
 
 	void AnnouncePoints( float pts )
