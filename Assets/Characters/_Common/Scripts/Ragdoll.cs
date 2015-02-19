@@ -62,6 +62,17 @@ public class Ragdoll : MonoBehaviour
 	}
 
 	//--------------------------------------------------------------
+	/// <summary> Initiates the ragdoll. </summary>
+	//----------------------------------
+	void Start()
+	{
+		if( _activated )
+			ActivateRagdoll();
+		else
+			DeactivateRagdoll();
+	}
+
+	//--------------------------------------------------------------
 	/// <summary> Activates the ragdoll and disables other 
 	/// character animations. </summary>
 	//--------------------------------------
