@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Footballer_red
-  m_Shader: {fileID: 4800000, guid: f3b97c3313bc240d58efe6bec1071bbe, type: 3}
+  m_Name: Footballer_Red
+  m_Shader: {fileID: 4800000, guid: 0e8973720d2db4e89bf93b6adfbf4e7b, type: 3}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
   m_SavedProperties:
@@ -17,21 +17,21 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: b8b507a1dbb121c499bdf2556eedb697, type: 3}
+          m_Texture: {fileID: 2800000, guid: 308217f5946bce844ad8e1aeedff2904, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _BumpMap
         second:
-          m_Texture: {fileID: 2800000, guid: 24777e5d7dcd6164491573b608c47784, type: 3}
+          m_Texture: {fileID: 2800000, guid: 07aa96773db56024c9f6f0a1823bb0a0, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _SpecTex
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: 66776e7cfbd827240a78f784462892e1, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:

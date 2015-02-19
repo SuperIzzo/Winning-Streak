@@ -1,0 +1,467 @@
+fileFormatVersion: 2
+guid: cd247de6bf6e1804c9742eb930a2d57d
+labels:
+- Character
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Footballer:Body
+    100004: Footballer:Body.001
+    100006: Footballer:Body_MeshPart0
+    100008: Footballer:Body_MeshPart1
+    100010: Footballer - LowPoly|abdomen
+    100012: Footballer - LowPoly|chest
+    100014: Footballer - LowPoly|head
+    100016: Footballer - LowPoly|hip
+    100018: Footballer - LowPoly|lCollar
+    100020: Footballer - LowPoly|lFoot
+    100022: Footballer - LowPoly|lForeArm
+    100024: Footballer - LowPoly|lHand
+    100026: Footballer - LowPoly|lShin
+    100028: Footballer - LowPoly|lShldr
+    100030: Footballer - LowPoly|lThigh
+    100032: Footballer - LowPoly|neck
+    100034: Footballer - LowPoly|rCollar
+    100036: Footballer - LowPoly|rFoot
+    100038: Footballer - LowPoly|rForeArm
+    100040: Footballer - LowPoly|rHand
+    100042: Footballer - LowPoly|rShin
+    100044: Footballer - LowPoly|rShldr
+    100046: Footballer - LowPoly|rThigh
+    100048: Footballer
+    100050: Footballer-LowPoly
+    100052: Footballer|abdomen
+    100054: Footballer|chest
+    100056: Footballer|head
+    100058: Footballer|hip
+    100060: Footballer|lCollar
+    100062: Footballer|lFoot
+    100064: Footballer|lForeArm
+    100066: Footballer|lHand
+    100068: Footballer|lShin
+    100070: Footballer|lShldr
+    100072: Footballer|lThigh
+    100074: Footballer|neck
+    100076: Footballer|rCollar
+    100078: Footballer|rFoot
+    100080: Footballer|rForeArm
+    100082: Footballer|rHand
+    100084: Footballer|rShin
+    100086: Footballer|rShldr
+    100088: Footballer|rThigh
+    100090: Footballer - LowPoly
+    100092: abdomen
+    100094: chest
+    100096: head
+    100098: hip
+    100100: lCollar
+    100102: lFoot
+    100104: lForeArm
+    100106: lHand
+    100108: lShin
+    100110: lShldr
+    100112: lThigh
+    100114: neck
+    100116: rCollar
+    100118: rFoot
+    100120: rForeArm
+    100122: rHand
+    100124: rShin
+    100126: rShldr
+    100128: rThigh
+    400000: //RootNode
+    400002: Footballer:Body
+    400004: Footballer:Body.001
+    400006: Footballer:Body_MeshPart0
+    400008: Footballer:Body_MeshPart1
+    400010: Footballer - LowPoly|abdomen
+    400012: Footballer - LowPoly|chest
+    400014: Footballer - LowPoly|head
+    400016: Footballer - LowPoly|hip
+    400018: Footballer - LowPoly|lCollar
+    400020: Footballer - LowPoly|lFoot
+    400022: Footballer - LowPoly|lForeArm
+    400024: Footballer - LowPoly|lHand
+    400026: Footballer - LowPoly|lShin
+    400028: Footballer - LowPoly|lShldr
+    400030: Footballer - LowPoly|lThigh
+    400032: Footballer - LowPoly|neck
+    400034: Footballer - LowPoly|rCollar
+    400036: Footballer - LowPoly|rFoot
+    400038: Footballer - LowPoly|rForeArm
+    400040: Footballer - LowPoly|rHand
+    400042: Footballer - LowPoly|rShin
+    400044: Footballer - LowPoly|rShldr
+    400046: Footballer - LowPoly|rThigh
+    400048: Footballer
+    400050: Footballer-LowPoly
+    400052: Footballer|abdomen
+    400054: Footballer|chest
+    400056: Footballer|head
+    400058: Footballer|hip
+    400060: Footballer|lCollar
+    400062: Footballer|lFoot
+    400064: Footballer|lForeArm
+    400066: Footballer|lHand
+    400068: Footballer|lShin
+    400070: Footballer|lShldr
+    400072: Footballer|lThigh
+    400074: Footballer|neck
+    400076: Footballer|rCollar
+    400078: Footballer|rFoot
+    400080: Footballer|rForeArm
+    400082: Footballer|rHand
+    400084: Footballer|rShin
+    400086: Footballer|rShldr
+    400088: Footballer|rThigh
+    400090: Footballer - LowPoly
+    400092: abdomen
+    400094: chest
+    400096: head
+    400098: hip
+    400100: lCollar
+    400102: lFoot
+    400104: lForeArm
+    400106: lHand
+    400108: lShin
+    400110: lShldr
+    400112: lThigh
+    400114: neck
+    400116: rCollar
+    400118: rFoot
+    400120: rForeArm
+    400122: rHand
+    400124: rShin
+    400126: rShldr
+    400128: rThigh
+    2300000: Footballer:Body.001
+    2300002: Footballer:Body_MeshPart0
+    2300004: Footballer:Body_MeshPart1
+    2300006: Footballer-LowPoly
+    3300000: Footballer:Body.001
+    3300002: Footballer:Body_MeshPart0
+    3300004: Footballer:Body_MeshPart1
+    3300006: Footballer-LowPoly
+    4300000: Footballer:Body.001
+    4300002: Footballer:Body_MeshPart0
+    4300004: Footballer:Body_MeshPart1
+    4300006: Footballer-LowPoly
+    9500000: //RootNode
+    13700000: Footballer-LowPoly
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 3
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .0599999987
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    human:
+    - boneName: hip
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: lThigh
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: rThigh
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: lShin
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: rShin
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: lFoot
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: rFoot
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: abdomen
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: chest
+      humanName: Chest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: neck
+      humanName: Neck
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: head
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: lCollar
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: rCollar
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: lShldr
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: rShldr
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: lForeArm
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: rForeArm
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: lHand
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: rHand
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: Footballer(Clone)
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Footballer
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: -.707106888, y: 0, z: -0, w: .707106769}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: hip
+      position: {x: -2.7939661e-11, y: -.0089941211, z: .54457736}
+      rotation: {x: .644155622, y: -2.55198487e-17, z: -2.3836294e-10, w: .764894545}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: lThigh
+      position: {x: -.0603864044, y: -.00725674024, z: -.00622424623}
+      rotation: {x: .997664332, y: -.0488714874, z: -.00201138854, w: -.0476805829}
+      scale: {x: .999997318, y: 1.00000012, z: .999997556}
+      transformModified: 1
+    - name: lShin
+      position: {x: -3.35276112e-10, y: .246233851, z: 1.27474786e-09}
+      rotation: {x: .0551820472, y: 5.90294235e-07, z: -5.20244498e-07, w: .998476326}
+      scale: {x: 1.00000274, y: .999999881, z: 1.00000238}
+      transformModified: 1
+    - name: lFoot
+      position: {x: -4.09316225e-09, y: .25069049, z: -1.00582831e-09}
+      rotation: {x: -.6061095, y: .0218095165, z: -.0154764112, w: .794931591}
+      scale: {x: 1.00000012, y: 1, z: 1}
+      transformModified: 1
+    - name: rThigh
+      position: {x: .0603864044, y: -.00725674024, z: -.00622424623}
+      rotation: {x: .997664332, y: .0488714874, z: .00201138854, w: -.0476805829}
+      scale: {x: .999997318, y: 1.00000012, z: .999997556}
+      transformModified: 1
+    - name: rShin
+      position: {x: 3.63215846e-10, y: .246233851, z: 1.27474786e-09}
+      rotation: {x: .0551820472, y: -5.90877164e-07, z: 5.22088044e-07, w: .998476326}
+      scale: {x: 1.00000274, y: .999999881, z: 1.00000238}
+      transformModified: 1
+    - name: rFoot
+      position: {x: 4.09316225e-09, y: .25069049, z: -1.22934585e-09}
+      rotation: {x: -.6061095, y: -.0218095165, z: .0154764112, w: .794931591}
+      scale: {x: 1.00000012, y: 1, z: 1}
+      transformModified: 1
+    - name: abdomen
+      position: {x: 2.32106003e-17, y: .0766215473, z: -2.23517405e-09}
+      rotation: {x: .0859846622, y: -4.57217736e-10, z: -5.74735315e-10, w: .996296465}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: chest
+      position: {x: -1.99840136e-17, y: .0406920277, z: 1.67638056e-10}
+      rotation: {x: .0122944685, y: 8.34773639e-10, z: 8.16869905e-10, w: .999924421}
+      scale: {x: 1, y: .999999821, z: .999999821}
+      transformModified: 1
+    - name: rCollar
+      position: {x: .0163649395, y: .160828501, z: .042734772}
+      rotation: {x: -.632787645, y: -.422799796, z: -.405702382, w: .506187379}
+      scale: {x: 1, y: .999999762, z: 1}
+      transformModified: 1
+    - name: rShldr
+      position: {x: -2.68220894e-08, y: .0932130367, z: -4.97326269e-08}
+      rotation: {x: .129448399, y: .727846026, z: -.0910701528, w: .667225242}
+      scale: {x: 1, y: .99999994, z: .99999994}
+      transformModified: 1
+    - name: rForeArm
+      position: {x: 3.660098e-08, y: .147042662, z: -1.7881393e-09}
+      rotation: {x: .0251737721, y: -.00836392213, z: .0213194229, w: .999420822}
+      scale: {x: .99999994, y: 1.00000012, z: 1.00000012}
+      transformModified: 1
+    - name: rHand
+      position: {x: -1.16229071e-08, y: .144737005, z: -7.15255695e-08}
+      rotation: {x: .122932307, y: .642625809, z: -.0639774427, w: .753542721}
+      scale: {x: .999999821, y: 1, z: .999999762}
+      transformModified: 1
+    - name: lCollar
+      position: {x: -.0163649395, y: .160828501, z: .042734772}
+      rotation: {x: -.632787645, y: .422799796, z: .405702382, w: .506187379}
+      scale: {x: 1, y: .999999762, z: 1}
+      transformModified: 1
+    - name: lShldr
+      position: {x: 2.68220894e-08, y: .0932130367, z: -4.97326269e-08}
+      rotation: {x: .129448399, y: -.727846026, z: .0910701454, w: .667225242}
+      scale: {x: 1, y: .99999994, z: .99999994}
+      transformModified: 1
+    - name: lForeArm
+      position: {x: -3.660098e-08, y: .147042662, z: -1.7881393e-09}
+      rotation: {x: .0251738001, y: .00836392026, z: -.0213194229, w: .999420822}
+      scale: {x: .99999994, y: 1.00000012, z: 1.00000012}
+      transformModified: 1
+    - name: lHand
+      position: {x: 1.16229071e-08, y: .144737005, z: -7.15255695e-08}
+      rotation: {x: .122932307, y: -.642625809, z: .0639774427, w: .753542721}
+      scale: {x: .999999821, y: 1, z: .999999762}
+      transformModified: 1
+    - name: neck
+      position: {x: -1.94115566e-17, y: .20387587, z: -7.82311049e-10}
+      rotation: {x: -.0107999137, y: -3.49886703e-10, z: -3.43930884e-10, w: .999941707}
+      scale: {x: 1, y: 1.00000012, z: 1}
+      transformModified: 1
+    - name: head
+      position: {x: 2.81025216e-17, y: .0672785193, z: 2.23517413e-10}
+      rotation: {x: -.0223889332, y: 5.5753907e-10, z: 5.64493341e-10, w: .999749362}
+      scale: {x: 1, y: .999999702, z: .999999821}
+      transformModified: 1
+    - name: Footballer-LowPoly
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 3
+  additionalBone: 0
+  userData: 
