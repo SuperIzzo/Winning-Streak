@@ -1,0 +1,99 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Hair
+  m_Shader: {fileID: 4800000, guid: f3b97c3313bc240d58efe6bec1071bbe, type: 3}
+  m_ShaderKeywords: []
+  m_CustomRenderQueue: -1
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+      data:
+        first:
+          name: _MainTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _BumpMap
+        second:
+          m_Texture: {fileID: 2800000, guid: 3cd3282f62d242b4b812ffd35b6783f6, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _DiffCubeIBL
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _SpecCubeIBL
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _AO
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _SpecularTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+    m_Floats:
+      data:
+        first:
+          name: _Cutoff
+        second: .482142866
+      data:
+        first:
+          name: _PrimaryShift
+        second: .5
+      data:
+        first:
+          name: _Roughness1
+        second: .5
+      data:
+        first:
+          name: _SecondaryShift
+        second: .5
+      data:
+        first:
+          name: _Roughness2
+        second: .535714269
+      data:
+        first:
+          name: _RimStrength
+        second: .464285702
+    m_Colors:
+      data:
+        first:
+          name: _Color
+        second: {r: .0441176295, g: .0411913693, b: .0402248986, a: 1}
+      data:
+        first:
+          name: _AnisoDir
+        second: {r: 0, g: 1, b: 0, a: 0}
+      data:
+        first:
+          name: _SpecularColor1
+        second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _SpecularColor2
+        second: {r: 1, g: 1, b: 1, a: 1}
