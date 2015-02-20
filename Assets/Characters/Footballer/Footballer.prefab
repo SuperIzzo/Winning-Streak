@@ -90,6 +90,7 @@ GameObject:
   - 136: {fileID: 13614414}
   - 54: {fileID: 5414416}
   - 144: {fileID: 14414414}
+  - 114: {fileID: 11495918}
   m_Layer: 0
   m_Name: lForeArm
   m_TagString: Untagged
@@ -374,6 +375,7 @@ GameObject:
   - 136: {fileID: 13614426}
   - 54: {fileID: 5414432}
   - 144: {fileID: 14414430}
+  - 114: {fileID: 11495916}
   m_Layer: 0
   m_Name: rForeArm
   m_TagString: Untagged
@@ -453,7 +455,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.77043295, y: .319522858, z: -13.9213057}
+  m_LocalPosition: {x: -11.6769934, y: .319522858, z: -23.5364819}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 414446}
@@ -1341,6 +1343,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d5ccac04aa1a344bba560d4d10ff0dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11495916
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 114452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7b88aa9d802aa54b934c1463567a6cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 11400002}
+--- !u!114 &11495918
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 114418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7b88aa9d802aa54b934c1463567a6cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 11400002}
 --- !u!135 &13514412
 SphereCollider:
   m_ObjectHideFlags: 1
