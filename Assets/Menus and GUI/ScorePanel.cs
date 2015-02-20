@@ -27,5 +27,6 @@ public class ScorePanel : GUIWindow
 		score.text		= ""+ (int)scoreMan.baseScore;
 		multiplier.text = ""+ (int)scoreMan.multPoints;
 		total.text		= ""+ (int)scoreMan.totalScore;
+		best.text		= ""+ (int)scoreMan.highScore;
 	}
 }
