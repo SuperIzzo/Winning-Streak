@@ -7,6 +7,7 @@ public class FootballerDifficulty : MonoBehaviour
 	private BaseCharacterController controller;
 
 	private float baseMovementSpeed = 0.0f;
+	private float basePlayerHate	= 0.0f;
 
 	// Use this for initialization
 	void Start ()
@@ -16,6 +17,9 @@ public class FootballerDifficulty : MonoBehaviour
 
 		if( controller )
 			baseMovementSpeed = controller.movementSpeed;
+
+		if( aiInput )
+			basePlayerHate = aiInput.playerHate;
 	}
 	
 	// Update is called once per frame
@@ -24,7 +28,7 @@ public class FootballerDifficulty : MonoBehaviour
 		float difficultyLevel = GameSystem.difficulty.level;
 
 		if( aiInput )
-			aiInput.playerHate = difficultyLevel;
+			aiInput.playerHate = basePlayerHate + (1-basePlayerHate)*difficultyLevel;
 
 		if( controller )
 			controller.movementSpeed = baseMovementSpeed + difficultyLevel*2;

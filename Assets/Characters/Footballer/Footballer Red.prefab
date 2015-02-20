@@ -1300,7 +1300,7 @@ MonoBehaviour:
   redirectionRate: .0199999996
   chaseGiveUpRate: 9.99999975e-05
   tackleRange: 1.20000005
-  playerHate: 0
+  playerHate: .100000001
 --- !u!114 &11458460
 MonoBehaviour:
   m_ObjectHideFlags: 1
