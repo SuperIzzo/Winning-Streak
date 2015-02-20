@@ -11,6 +11,9 @@ public class ScoreManager : MonoBehaviour
 	public float totalScore{ get{ return (int)(baseScore * multPoints); } }
 	public float timePlayed = 0;
 
+	// HACK: This should be elsewhere (the social stuff)
+	public float highScore { get; private set; }
+
 	static bool isActive = true;
 
 	static float maxAccumulationTime = 3;
@@ -132,11 +135,38 @@ public class ScoreManager : MonoBehaviour
 	public void StartTimer()
 	{
 		ResetScore();
+		LoadHighScore();
 		isActive = true;
 	}
 
 	public void StopTimer()
 	{
 		isActive = false;
+		StoreHighScore();
+	}
+
+
+
+
+	// HACK: High score stuff should be elsewhere
+	private void LoadHighScore()
+	{
+		highScore =  PlayerPrefs.GetFloat( "HighScore", 0 );
+	}
+
+	// HACK: High score stuff should be elsewhere
+	private void StoreHighScore()
+	{
+		float currentHighScore =  PlayerPrefs.GetFloat( "HighScore", 0 );
+
+		if( totalScore>currentHighScore )
+		{
+			highScore = totalScore;
+			PlayerPrefs.SetFloat( "HighScore", highScore );
+		}
+		else
+		{
+			highScore = currentHighScore;
+		}
 	}
 }
