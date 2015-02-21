@@ -5,7 +5,6 @@ using System.Collections;
 [RequireComponent( typeof(BaseCharacterController) )]
 public class PlayerInput : MonoBehaviour
 {
-    public GameObject CensorBar;
 	private BaseCharacterController controller;
 	private static readonly float AXES_DEADZONE = 0.1f;
 
@@ -52,10 +51,6 @@ public class PlayerInput : MonoBehaviour
 			// Deadzone
 			controlVector = Vector2.zero;
 		}
-
-        //The censor bar is set to not take any collisions so we manually
-        //add force depending on the character input.
-        CensorBar.rigidbody.AddForce(-x * 5, 0, -y * 5);
 
 		controller.Move( controlVector );
 		controller.Dance( dancing );
