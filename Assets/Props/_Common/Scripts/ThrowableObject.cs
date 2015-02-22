@@ -11,8 +11,15 @@ public class ThrowableObject : MonoBehaviour
 	#region Public settings
 	//--------------------------------------
 	public float knockOutPower = 5.0f;
-	public bool  isThrown = false;
 	public BaseCharacterController owner {get; private set;}
+	#endregion
+
+
+	//--------------------------------------------------------------
+	#region Public properties
+	//--------------------------------------
+	public Vector3 throwForce {get; private set;}
+	public bool    isThrown   {get {return throwForce.magnitude>0;}}
 	#endregion
 
 
@@ -72,10 +79,11 @@ public class ThrowableObject : MonoBehaviour
 			rigidbody.AddForce( force , ForceMode.Impulse );
 		}
 
+
         // Unlink, note we keep it in world space
         transform.SetParent(null, true);
         slot = null;
-		isThrown = true;
+		throwForce = force;
 	}
 
 	//--------------------------------------------------------------
@@ -92,7 +100,7 @@ public class ThrowableObject : MonoBehaviour
 			{
 				if( character!=owner )
 				{
-					isThrown = false;
+					throwForce = Vector3.zero;
 					owner = null;
 
 					if( collision.relativeVelocity.magnitude > knockOutPower 
@@ -105,7 +113,6 @@ public class ThrowableObject : MonoBehaviour
 			}
 			else
 			{
-				isThrown = true;
 				owner = null;
 			}
 		}

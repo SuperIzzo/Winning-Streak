@@ -160,7 +160,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knockOutPower: 1
-  isThrown: 0
 --- !u!114 &11458106
 MonoBehaviour:
   m_ObjectHideFlags: 1
