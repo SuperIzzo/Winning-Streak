@@ -21,7 +21,7 @@ public enum ScoringEvent
 /// to the player's interaction with the game world. These events
 /// can be detected from anywhere but must be registered here.
 /// 
-/// ScrEventManager is responsible for awarding players with
+/// ScoringEventManager is responsible for awarding players with
 /// score points and audio-visual feedback (such as commentary).
 /// </description>
 //--------------------------------------
