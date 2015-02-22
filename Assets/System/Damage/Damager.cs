@@ -14,7 +14,11 @@ public class Damager : MonoBehaviour
 	//--------------------------------------
 	void OnTriggerEnter( Collider collider )
 	{
-		CollisionDamage( collider.gameObject );
+		DamageInfo info = new DamageInfo();
+		info.damager = this;
+		info.collision = null;
+
+		CollisionDamage( collider.gameObject, info );
 	}
 
 	//--------------------------------------------------------------
@@ -23,22 +27,28 @@ public class Damager : MonoBehaviour
 	//--------------------------------------
 	void OnCollisionEnter( Collision collision )
 	{
-		CollisionDamage( collision.collider.gameObject );
+		DamageInfo info = new DamageInfo();
+		info.damager = this;
+		info.collision = collision;
+
+		CollisionDamage( collision.collider.gameObject, info );
 	}
 	
 	//--------------------------------------------------------------
-	/// <summary> Collisions callback to apply some damage </summary>
-	/// <param name="otherObject">Other object.</param>
+	/// <summary> Collisions callback to apply some damage to an 
+	/// object we've just collided with. </summary>
+	/// <param name="other">Other object.</param>
+	/// <param name="info">Other object.</param>
 	//--------------------------------------
-	public virtual void CollisionDamage( GameObject otherObject )
+	public virtual void CollisionDamage( GameObject other, DamageInfo info )
 	{
-		Damageable damageable = otherObject.GetComponent<Damageable>();
+		Damageable damageable = other.GetComponent<Damageable>();
 
 		if( damageable )
 		{
 			if( DamageTest(damageable) )
 			{
-				damageable.OnDamage( this );
+				damageable.OnDamage( info );
 			}
 		}
 	}
