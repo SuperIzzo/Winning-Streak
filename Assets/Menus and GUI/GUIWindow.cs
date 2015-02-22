@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
 
 public class GUIWindow : MonoBehaviour
 {
 	public Animator windowAnimator;
+	public GameObject selectedObject;
 	private bool _isVisible;
 	public  bool  isVisible
 	{
@@ -45,5 +47,16 @@ public class GUIWindow : MonoBehaviour
 			if( windowAnimator )
 				windowAnimator.SetBool("visible", false );
 		}
+	}
+
+	public virtual void OnShow()
+	{
+		GainInputFocus();
+	}
+
+	private void GainInputFocus()
+	{
+		if( selectedObject )
+			EventSystem.current.SetSelectedGameObject( selectedObject );
 	}
 }
