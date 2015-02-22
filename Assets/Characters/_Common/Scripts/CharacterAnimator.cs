@@ -31,6 +31,8 @@ public class CharacterAnimator : MonoBehaviour
 
 	/// <summary> The ragdoll component. </summary>
 	public Ragdoll	ragdoll;
+
+	public Rigidbody rootBone;
 	#endregion
 	
 	//--------------------------------------------------------------
@@ -49,6 +51,14 @@ public class CharacterAnimator : MonoBehaviour
 		animator.SetBool(	"wiggle", 		dancing		);
 		animator.SetBool(	"tackle",		tackling	);
 		animator.SetBool(	"charge_throw",	charging	);
+
+		// Fix the character position based on the ragdoll simulations
+		if( ragdoll.activated && !knockedDown && rootBone )
+		{
+			Vector3 position = rootBone.transform.position;
+			position.y = characterController.transform.position.y;
+			characterController.transform.position = position;
+		}
 
 		// ragdoll activates when the character is knocked down
 		ragdoll.activated = knockedDown;
