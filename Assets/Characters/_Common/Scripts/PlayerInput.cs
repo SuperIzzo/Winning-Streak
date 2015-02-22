@@ -7,6 +7,7 @@ public class PlayerInput : MonoBehaviour
 {
 	private BaseCharacterController controller;
 	private static readonly float AXES_DEADZONE = 0.1f;
+	private bool m_isDashAxisInUse = false;
 
 	// Use this for initialization
 	void Start ()
@@ -33,8 +34,10 @@ public class PlayerInput : MonoBehaviour
 		bool dashDown		= Input.GetButtonDown( "Dash"	);
 		bool grabDown		= Input.GetButtonDown( "Grab" 	);
 		bool grabUp			= Input.GetButtonUp(   "Grab" 	);
-	
 		bool slowMoDown		= Input.GetButtonDown(   "SlowMo" 	);
+
+		// Special case for dashDown as XBox triggers are axes
+		dashDown |= GetDashAxisDown();
 
 		// By default axes are separate and map to a unit square
 		// However we want the speed along the diagonals to be the same
@@ -88,4 +91,23 @@ public class PlayerInput : MonoBehaviour
 			sloMo.isSlowed = slow;
 		}
 	}
+
+	bool GetDashAxisDown()
+	{
+		if( Input.GetAxis("Dash") != 0)
+		{
+			if(m_isDashAxisInUse == false)
+			{
+				return true;
+				m_isDashAxisInUse = true;
+			}
+		}
+		if( Input.GetAxis("Dash") == 0)
+		{
+			m_isDashAxisInUse = false;
+		}
+
+		return false;
+	}
+
 }
