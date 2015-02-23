@@ -93,16 +93,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normal:
     lookAtOffset: {x: 0, y: 0, z: 0}
-    positionOffset: {x: 0, y: 8, z: -30}
+    positionOffset: {x: 0, y: 8, z: -40}
     followSpeed: 6
     turnSpeed: 5
-    FOVModifier: 1
+    FOVModifier: .5
   zoomed:
     lookAtOffset: {x: 0, y: 0, z: 0}
-    positionOffset: {x: 0, y: 6, z: -20}
+    positionOffset: {x: 0, y: 6, z: -35}
     followSpeed: 6
     turnSpeed: 8
-    FOVModifier: 1
+    FOVModifier: .200000003
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
