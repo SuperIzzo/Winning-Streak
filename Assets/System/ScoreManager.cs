@@ -61,15 +61,25 @@ public class ScoreManager : MonoBehaviour
 	{
 		if( multToAnnounce >=1 )
 		{
-			Commentator commentator = GameSystem.commentator;
+			float announceChance = multToAnnounce / 5.0f;
 
-			if( commentator )
+			if( announceChance > Random.value )
 			{
-				if( commentator.Comment( GetPtsEvent(multToAnnounce) ) )
+				Commentator commentator = GameSystem.commentator;
+
+				if( commentator )
 				{
-					multPoints += multToAnnounce;
-					multToAnnounce = 0;
+					if( commentator.Comment( GetPtsEvent(multToAnnounce) ) )
+					{
+						multPoints += multToAnnounce;
+						multToAnnounce = 0;
+					}
 				}
+			}
+			else
+			{
+				multPoints += multToAnnounce;
+				multToAnnounce = 0;
 			}
 		}
 	}
