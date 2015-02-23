@@ -50,9 +50,6 @@ public class DamageableCharacter : Damageable
 
 				force *= forceMagnitude;
 
-				if( gameObject.CompareTag( Tags.player ) )
-				Debug.Log( force );
-
 
 				StartCoroutine( ApplyForce(force) );
 			}
