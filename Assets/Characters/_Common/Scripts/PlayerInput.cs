@@ -31,13 +31,13 @@ public class PlayerInput : MonoBehaviour
 		Vector2 controlVector = new Vector2(x,y);
 
 		bool dancing		= Input.GetButton(     "Wiggle" );
-		bool dashDown		= Input.GetButtonDown( "Dash"	);
+		bool dashing		= Input.GetButton( "Dash"	);
 		bool grabDown		= Input.GetButtonDown( "Grab" 	);
 		bool grabUp			= Input.GetButtonUp(   "Grab" 	);
 		bool slowMoDown		= Input.GetButtonDown(   "SlowMo" 	);
 
 		// Special case for dashDown as XBox triggers are axes
-		dashDown |= GetDashAxisDown();
+		dashing |= (Input.GetAxis("Dash")>0.5f);
 
 		// By default axes are separate and map to a unit square
 		// However we want the speed along the diagonals to be the same
@@ -58,8 +58,7 @@ public class PlayerInput : MonoBehaviour
 		controller.Move( controlVector );
 		controller.Dance( dancing );
 
-		if( dashDown )
-			controller.Dash();
+		controller.isDashing = dashing;
 
 		if( grabDown )
 		{

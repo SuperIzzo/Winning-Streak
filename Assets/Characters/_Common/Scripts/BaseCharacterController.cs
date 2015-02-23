@@ -13,19 +13,23 @@ public class BaseCharacterController : MonoBehaviour
 {
 	private static readonly float MIN_TURN_VECTOR_MAGNITUDE = 0.1f;
 
+
 	//--------------------------------------------------------------
 	#region  Public settings
 	//--------------------------------------
 	/// <summary> This character's movement speed. </summary>
-	public float	movementSpeed	= 5.0f;
+	public float	movementSpeed	= 4.5f;
 
 	/// <summary> This character's turning speed. </summary>
 	public float	turningSpeed	= 6.0f;
 
-	/// <summary> The speed boost this character obtains when dashing. </summary>
-	public float	dashBoost		= 3.0f;
+	/// <summary> The speed this character obtains when running. </summary>
+	public float	runSpeed		= 7.0f;
 
-	/// <summary> The duration of the dash. </summary>
+	/// <summary> The speed boost this character obtains when dashing. </summary>
+	public float	dashBoost		= 2.5f;
+
+	/// <summary> The duration of the dash boost. </summary>
 	public float 	dashDuration	= 1.0f;
 
 	/// <summary> The dash cooldown before it can be used again. </summary>
@@ -72,11 +76,16 @@ public class BaseCharacterController : MonoBehaviour
 	/// <see cref="BaseCharacterController"/> is dancing. </summary>
 	/// <value><c>true</c> if dancing; otherwise, <c>false</c>.</value>
 	public bool		isDancing		 {get{return _isDancing;} set{Dance(value);} }
-
+	
 	/// <summary> Gets or sets a value indicating whether this
 	/// <see cref="BaseCharacterController"/> is dashing. </summary>
 	/// <value><c>true</c> if dashing; otherwise, <c>false</c>.</value>
-	public bool		isDashing		 {get{return _isDashing;} set{if(value) Dash();} }
+	public bool		isDashing		 {get{return _isDashing;} set{if(value) Dash(); else StopDash();}}
+
+	/// <summary> Gets or sets a value indicating whether this
+	/// <see cref="BaseCharacterController"/> is running. </summary>
+	/// <value><c>true</c> if running; otherwise, <c>false</c>.</value>
+	public bool		isRunning		 {get{return _isRunning;}}
 
 	/// <summary> Gets or sets a value indicating whether this
 	/// <see cref="BaseCharacterController"/> is tackling. </summary>
@@ -108,6 +117,7 @@ public class BaseCharacterController : MonoBehaviour
 	private bool	_isKnockedDown;
 	private bool	_isDancing;
 	private bool	_isDashing;
+	private bool	_isRunning;
 	private bool	_isCharging;
 	private float	_dashCooldownTimer;
 	private float	_dashDurationTimer;
@@ -181,7 +191,7 @@ public class BaseCharacterController : MonoBehaviour
 
 			if( dance )
 			{
-				CancelDash();
+				StopDash();
 			}
 		}
 	}
@@ -191,20 +201,31 @@ public class BaseCharacterController : MonoBehaviour
 	//--------------------------------------
 	public void Dash()
 	{
-		if( !isKnockedDown && !_isDashing && _dashCooldownTimer <= 0 )
+		if( !isKnockedDown && !_isDashing  )
 		{
-			_isDashing = true;
-			_dashDurationTimer = dashDuration;
-			_dashCooldownTimer = dashCooldown;
+			if( _dashCooldownTimer <= 0 )
+			{
+				_isRunning = false;
+				_isDashing = true;
+				_dashDurationTimer = dashDuration;
+				_dashCooldownTimer = dashCooldown;
+			}
+			else
+			{
+				_isRunning = true;
+				_isDashing = false;
+				_dashCooldownTimer = dashCooldown;
+			}
 		}
 	}
-	
+
 	//--------------------------------------------------------------
 	/// <summary> Cancels the dashing state </summary>
 	//--------------------------------------
-	private void CancelDash()
+	private void StopDash()
 	{
 		_isDashing = false;
+		_isRunning = false;
 		_dashDurationTimer = 0;
 	}
 	
@@ -332,9 +353,14 @@ public class BaseCharacterController : MonoBehaviour
 	//--------------------------------------
 	private void ProcessMovement()
 	{
+		float speed = movementSpeed;
+
+		if( isRunning || isDashing )
+			speed = runSpeed;
+
 		// Normal movement
 		Vector3 moveVel = new Vector3( relativeVelocity.x, 0, relativeVelocity.y );
-				moveVel *= movementSpeed * Time.deltaTime;
+				moveVel *= speed * Time.deltaTime;
 
 		// Dashing
 		Vector3 dashVel = Vector3.zero; 
@@ -368,8 +394,8 @@ public class BaseCharacterController : MonoBehaviour
 	//--------------------------------------
 	private void ProcessDashing()
 	{
-		// Cooldown
-		if( _dashCooldownTimer> 0 )
+		// Cooldown (counts down only while walking)
+		if( !_isDashing && !_isRunning && _dashCooldownTimer> 0 )
 			_dashCooldownTimer -= Time.deltaTime;
 
 		// Duration
@@ -378,7 +404,8 @@ public class BaseCharacterController : MonoBehaviour
 			_dashDurationTimer -= Time.deltaTime;
 			if( _dashDurationTimer<=0 )
 			{
-				CancelDash();
+				StopDash();
+				_isRunning = true;
 			}
 		}
 	}
