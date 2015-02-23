@@ -1365,11 +1365,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d640f6a39be6544f8a5829237f81110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 3.79999995
+  movementSpeed: 3.4000001
   turningSpeed: 6
-  dashBoost: 2
-  dashDuration: 1
-  dashCooldown: 5
+  runSpeed: 4.5999999
+  dashBoost: 3.4000001
+  dashDuration: .699999988
+  dashCooldown: 1.79999995
   grabRadius: 1
   maxChargeTime: 1
   throwPower: 20
