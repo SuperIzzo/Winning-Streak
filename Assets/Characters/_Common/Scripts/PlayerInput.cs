@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+//TODO: This script is messy
+
 [AddComponentMenu("Character/Player Input",100)]
 [RequireComponent( typeof(BaseCharacterController) )]
 public class PlayerInput : MonoBehaviour
@@ -8,6 +10,10 @@ public class PlayerInput : MonoBehaviour
 	private BaseCharacterController controller;
 	private static readonly float AXES_DEADZONE = 0.1f;
 	private bool m_isDashAxisInUse = false;
+
+	private bool handledDeathSlowMo = false;
+	private float slowMoDeathRestoreTimer = -1;
+	private static float SLOW_MO_DEATH_DURATION = 4;
 
 	// Use this for initialization
 	void Start ()
@@ -77,15 +83,35 @@ public class PlayerInput : MonoBehaviour
 			controller.Throw();
 		}
 
+		// Slow-mo
 		SloMoManager sloMo = GameSystem.slowMotion;
 		if( sloMo )
 		{
 			bool slow = sloMo.isSlowed;
 
-			if( slowMoDown )
-				slow = !slow;
+			if( !controller.isKnockedDown )
+			{
+				if( slowMoDown )
+					slow = !slow;
+			}
+			else // this entire "else" block doesn't belong here
+			{
+				if( !handledDeathSlowMo )
+				{
+					handledDeathSlowMo = true;
+					slow = true;
+					slowMoDeathRestoreTimer = SLOW_MO_DEATH_DURATION;
+				}
 
-			slow |= controller.isKnockedDown;
+				if( slowMoDeathRestoreTimer>0 )
+				{
+					slowMoDeathRestoreTimer -= Time.unscaledDeltaTime;
+
+					if( slowMoDeathRestoreTimer <= 0 )
+						slow = false;
+				}
+			}
+
 
 			sloMo.isSlowed = slow;
 		}
