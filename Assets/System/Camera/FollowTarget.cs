@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+//--------------------------------------------------------------
+/// <summary> Camera configuratin for 
+/// following behaviour. </summary>
+//--------------------------------------
 [System.Serializable]
 public class FollowCameraConfig
 {
@@ -11,6 +15,9 @@ public class FollowCameraConfig
 	public float FOVModifier= 1;
 }
 
+//--------------------------------------------------------------
+/// <summary>  Follow target behaviour. </summary>
+//--------------------------------------
 public class FollowTarget : MonoBehaviour
 {
 	public FollowCameraConfig normal;
@@ -27,6 +34,8 @@ public class FollowTarget : MonoBehaviour
 
 	void Update () 
 	{
+		TimeFlowZoom();
+
 	    Quaternion targetRot = Quaternion.LookRotation(target.position - this.transform.position);
 	    this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRot, Time.unscaledDeltaTime * currentConfig.turnSpeed);
 
@@ -39,6 +48,16 @@ public class FollowTarget : MonoBehaviour
 	                                         -this.transform.position.z - 10);
 
 	    camera.fieldOfView = Vector3.Distance(target.position, invertedCamera) * currentConfig.FOVModifier;
+	}
+
+	private void TimeFlowZoom()
+	{
+		TimeFlow timeFlow = GameSystem.timeFlow;
+
+		if( timeFlow.isSlowed )
+			ZoomIn();
+		else
+			ZoomReset();
 	}
 
 	public void ZoomIn()
