@@ -40,6 +40,10 @@ public class CharacterAnimator : MonoBehaviour
 	//--------------------------------------
 	void Update ()
 	{
+		// Only update the animation if time is running
+		if( Mathf.Abs( Time.deltaTime ) <= float.Epsilon )
+			return;
+
 		float 	speed		= characterController.relativeVelocity.magnitude;
 		bool  	dancing		= characterController.isDancing;
 		bool	tackling	= characterController.isTackling;
