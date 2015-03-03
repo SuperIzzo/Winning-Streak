@@ -9,7 +9,7 @@ public class GameSystem
 	//--------------------------------------------------------------
 	#region		Internal variables
 	//--------------------------------------
-	private static SloMoManager 		_slowMotion;
+	private static TimeFlow 			_timeFlow;
 	private static ScoreManager 		_score;
 	private static ScoringEventManager	_scoringEvent;
 	private static DifficultyManager	_difficulty;
@@ -25,18 +25,18 @@ public class GameSystem
 	//--------------------------------------
 
 	/// <summary> Gets a single instance to the 
-	/// <see cref="SloMoManager"/>. </summary>
-	/// <value> The slow motion manager. </value>
-	public static SloMoManager slowMotion
+	/// <see cref="TimeFlow"/>. </summary>
+	/// <value> The time flow manager. </value>
+	public static TimeFlow timeFlow
 	{
 		get
 		{
-			if( !_slowMotion )
+			if( !_timeFlow )
 			{
-				_slowMotion = GameObject.FindObjectOfType<SloMoManager>();
+				_timeFlow = GameObject.FindObjectOfType<TimeFlow>();
 			}
 
-			return _slowMotion;
+			return _timeFlow;
 		}
 	}
 
