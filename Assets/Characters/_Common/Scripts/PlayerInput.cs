@@ -9,11 +9,11 @@ public class PlayerInput : MonoBehaviour
 {
 	private BaseCharacterController controller;
 	private static readonly float AXES_DEADZONE = 0.1f;
-	private bool m_isDashAxisInUse = false;
+	private bool isScreenshotAxisInUse = false;
 
 	private bool handledDeathSlowMo = false;
 	private float slowMoDeathRestoreTimer = -1;
-	private static float SLOW_MO_DEATH_DURATION = 4;
+	private static float SLOW_MO_DEATH_DURATION = 2;
 
 	// Use this for initialization
 	void Start ()
@@ -41,9 +41,28 @@ public class PlayerInput : MonoBehaviour
 		bool grabDown		= Input.GetButtonDown( "Grab" 	);
 		bool grabUp			= Input.GetButtonUp(   "Grab" 	);
 		bool slowMoDown		= Input.GetButtonDown(   "SlowMo" 	);
+		bool pause			= Input.GetButtonDown(	 "Pause"	);
+		bool screenShotDown	= Input.GetButtonDown(	 "Screenshot" );
 
 		// Special case for dashDown as XBox triggers are axes
 		dashing |= (Input.GetAxis("Dash")>0.5f);
+
+
+		// And another special case for screenshots
+		if( Input.GetAxis("Screenshot")>0.5f )
+		{
+			if( !isScreenshotAxisInUse )
+			{
+				isScreenshotAxisInUse = true;
+				screenShotDown = true;
+			}
+		}
+		else
+		{
+			isScreenshotAxisInUse = false;
+		}
+
+
 
 		// By default axes are separate and map to a unit square
 		// However we want the speed along the diagonals to be the same
@@ -83,11 +102,14 @@ public class PlayerInput : MonoBehaviour
 			controller.Throw();
 		}
 
+		if( screenShotDown )
+			TakeScreenshot();
+
 		// Slow-mo
-		SloMoManager sloMo = GameSystem.slowMotion;
-		if( sloMo )
+		TimeFlow timeFlow = GameSystem.timeFlow;
+		if( timeFlow )
 		{
-			bool slow = sloMo.isSlowed;
+			bool slow = timeFlow.isSlowed;
 
 			if( !controller.isKnockedDown )
 			{
@@ -113,26 +135,28 @@ public class PlayerInput : MonoBehaviour
 			}
 
 
-			sloMo.isSlowed = slow;
+			timeFlow.isSlowed = slow;
+
+			if( pause )
+				timeFlow.isPaused = !timeFlow.isPaused;
 		}
 	}
 
-	bool GetDashAxisDown()
+	void TakeScreenshot()
 	{
-		if( Input.GetAxis("Dash") != 0)
-		{
-			if(m_isDashAxisInUse == false)
-			{
-				return true;
-				m_isDashAxisInUse = true;
-			}
-		}
-		if( Input.GetAxis("Dash") == 0)
-		{
-			m_isDashAxisInUse = false;
-		}
+		string screenshotDir = Application.persistentDataPath + "/screenshots";
 
-		return false;
+		if( !System.IO.Directory.Exists( screenshotDir ) )
+			System.IO.Directory.CreateDirectory( screenshotDir );
+
+		string timestamp = System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
+		string screenShotFN = string.Format("{0}/screenshots/screen_{1}.png", 
+		                                    Application.persistentDataPath,
+		                                    timestamp);
+
+		Debug.Log( "Saving screenshot to: " + screenShotFN );  
+
+		Application.CaptureScreenshot( screenShotFN, 2 );
 	}
 
 }
