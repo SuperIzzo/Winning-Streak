@@ -41,7 +41,7 @@ public class FlytroughCamera : MonoBehaviour
 		if( Input.GetButton("Dash") || Input.GetAxis("Dash") > 0.5 )
 			speedUp = 5; 
 
-		transform.position += transform.forward*moveSpeed*speedUp*Input.GetAxis("Vertical");
-		transform.position += transform.right*moveSpeed*speedUp*Input.GetAxis("Horizontal");
+		transform.position += transform.forward*moveSpeed*speedUp*Input.GetAxisRaw("Vertical");
+		transform.position += transform.right*moveSpeed*speedUp*Input.GetAxisRaw("Horizontal");
 	}
 }
