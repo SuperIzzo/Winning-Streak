@@ -1103,7 +1103,7 @@ MonoBehaviour:
     scoringEvent: 6
     ignition: 0
     baseScore: 100
-    multPoints: 4
+    multPoints: 3
     hypeEffect: .300000012
     comment:
       comment: 8
@@ -1111,9 +1111,9 @@ MonoBehaviour:
       delay: 0
       mustBeOn: 0
   - description: Goal
-    scoringEvent: 6
+    scoringEvent: 7
     ignition: 0
-    baseScore: 200
+    baseScore: 250
     multPoints: 5
     hypeEffect: .5
     comment:
