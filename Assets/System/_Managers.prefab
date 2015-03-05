@@ -1088,8 +1088,19 @@ MonoBehaviour:
       chance: .600000024
       delay: 4
       mustBeOn: 1
-  - description: Touchdown
+  - description: Zone Wiggle
     scoringEvent: 5
+    ignition: 1
+    baseScore: 6
+    multPoints: .100000001
+    hypeEffect: .0599999987
+    comment:
+      comment: 0
+      chance: 0
+      delay: 0
+      mustBeOn: 1
+  - description: Touchdown
+    scoringEvent: 6
     ignition: 0
     baseScore: 100
     multPoints: 4
