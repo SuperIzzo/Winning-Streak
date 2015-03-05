@@ -503,6 +503,7 @@ MonoBehaviour:
   baseScore: 0
   multPoints: 1
   timePlayed: 0
+  comboEffect: 1.60000002
 --- !u!114 &11400018
 MonoBehaviour:
   m_ObjectHideFlags: 1
