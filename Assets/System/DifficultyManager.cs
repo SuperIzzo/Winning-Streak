@@ -29,6 +29,14 @@ public class DifficultyManager : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		level += incPerSecond * Time.unscaledDeltaTime;
+		// Note that the difficulty increases independantly
+		// from the timeScale, this make slo-mo a double-edged
+		// knife because frequent use will make the game difficult
+		// much faster denying the players scoring opportunities
+		// Also, to be fair it doesn't run when the game is paused
+		if( Time.timeScale>float.Epsilon )
+		{
+			level += incPerSecond * Time.unscaledDeltaTime;
+		}
 	}
 }
