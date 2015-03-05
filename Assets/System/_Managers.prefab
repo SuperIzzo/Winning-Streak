@@ -1081,12 +1081,12 @@ MonoBehaviour:
     scoringEvent: 4
     ignition: 1
     baseScore: .200000003
-    multPoints: .5
+    multPoints: .100000001
     hypeEffect: .0399999991
     comment:
       comment: 7
-      chance: 1
-      delay: 3
+      chance: .600000024
+      delay: 4
       mustBeOn: 1
   - description: Touchdown
     scoringEvent: 5
