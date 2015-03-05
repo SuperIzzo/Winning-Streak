@@ -10,6 +10,7 @@ public class ScoreManager : MonoBehaviour
 	public float multPoints = 1;
 	public float totalScore{ get{ return (int)(baseScore * multPoints); } }
 	public float timePlayed = 0;
+	public float comboEffect = 1.3f;
 
 	// HACK: This should be elsewhere (the social stuff)
 	public float highScore { get; private set; }
@@ -60,9 +61,20 @@ public class ScoreManager : MonoBehaviour
 
 	void AttemptComment()
 	{
-		if( multToAnnounce >=1 )
+		// A little bit of combo magic,
+		// Here is how it works, usually scores accumulate linearly you go around and gather them
+		// With this formula chained scoring events are greater than independent scoring events.
+		// without it they are equal... What this means is if you make 3 doges in a row one after
+		// another, while the announcement cooldown is running you will make more points than
+		// if you make 3 separate dodges (i.e. you make a dodge, and it gets announce then you 
+		// make a second one it gets announced, then the third).
+		// The severity of this is dictated by "comboEffect" which should be greater than 1
+		float comboedScore = Mathf.Pow(multToAnnounce/10, comboEffect )*10;
+
+		if( comboedScore >=1 )
 		{
-			float announceChance = multToAnnounce / 5.0f;
+			// Points bellow 5 have less chance to get announced
+			float announceChance = 1;//comboedScore / 5.0f;
 
 			if( announceChance > Random.value )
 			{
@@ -70,16 +82,16 @@ public class ScoreManager : MonoBehaviour
 
 				if( commentator )
 				{
-					if( commentator.Comment( GetPtsEvent(multToAnnounce) ) )
+					if( commentator.Comment( GetPtsEvent(comboedScore) ) )
 					{
-						multPoints += multToAnnounce;
+						multPoints += comboedScore;
 						multToAnnounce = 0;
 					}
 				}
 			}
 			else
 			{
-				multPoints += multToAnnounce;
+				multPoints += comboedScore;
 				multToAnnounce = 0;
 			}
 		}
