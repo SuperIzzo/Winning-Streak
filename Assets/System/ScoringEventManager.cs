@@ -9,6 +9,7 @@ public enum ScoringEvent
 	DODGE_TACKLE,
 	HIT_PLAYER,
 	WIGGLE,
+	ZONE_WIGGLE,
 	TOUCH_DOWN,
 	SCORED_GOAL
 }
