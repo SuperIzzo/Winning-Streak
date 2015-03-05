@@ -1069,9 +1069,9 @@ MonoBehaviour:
   - description: Pick-up Ball
     scoringEvent: 1
     ignition: 0
-    baseScore: .100000001
-    multPoints: .200000003
-    hypeEffect: .0500000007
+    baseScore: 0
+    multPoints: 0
+    hypeEffect: 0
     comment:
       comment: 2
       chance: .899999976
