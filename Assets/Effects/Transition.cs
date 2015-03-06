@@ -46,18 +46,26 @@ public class Transition : MonoBehaviour
     IEnumerator MenuPlay()
     {
         float l_timer = 0;
+        foreach (GameObject go1 in TextInScene)
+        {
+            if (go1.activeSelf)
+                go1.SetActive(false);
+        }
 
         while (l_timer < 0.5f)
         {
             l_timer += Time.deltaTime;
             foreach (GameObject go in TransitionObjects)
             {
-                if(go.transform.localScale.x < 2)
-                go.transform.localScale += new Vector3(fadeOutSpeed * Time.deltaTime, fadeOutSpeed * Time.deltaTime, fadeOutSpeed * Time.deltaTime);
+                if (go.transform.localScale.x < 2)
+                    go.transform.localScale += new Vector3(fadeOutSpeed * Time.deltaTime, fadeOutSpeed * Time.deltaTime, fadeOutSpeed * Time.deltaTime);
+                
             }
 
             yield return null;
         }
+
+        
 
         Application.LoadLevel("main-2");
     }
@@ -103,7 +111,7 @@ public class Transition : MonoBehaviour
 
                         foreach (GameObject go1 in TextInScene)
                         {
-                            if (go1.activeSelf == false)
+                            if (!go1.activeSelf)
                                 go1.SetActive(true);
                         }
                     }
