@@ -123,11 +123,6 @@ public class ScoreManager : MonoBehaviour
 		return CommentatorEvent.NONE;
 	}
 
-	void OnGUI()
-	{
-		GUI.Label(new Rect(10,10,200,50), "Score: " + ((int)baseScore) + " x" + ((int)multPoints) );
-	}
-
 	public void AddScore(float toAdd)
 	{
 		if( !isActive )
