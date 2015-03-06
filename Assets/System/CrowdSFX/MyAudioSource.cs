@@ -7,7 +7,6 @@ public class MyAudioSource : MonoBehaviour
 	float pan;
 	float vol;
 
-
 	public void SetAudio( AudioClip clip, float relPan, float relVol )
 	{
 		audioClip = clip; 
@@ -30,6 +29,7 @@ public class MyAudioSource : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
+        audio.volume *= CrowdManager.MasterVolume;
 		if( audioClip==null || audio==null || !audio.isPlaying )
 		{
 			Destroy( gameObject );
