@@ -53,8 +53,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_LocalRotation: {x: .372083366, y: .792200983, z: .0179298576, w: .483373791}
-  m_LocalPosition: {x: 308.384277, y: -62.3740349, z: 58.6530952}
+  m_LocalRotation: {x: .271363288, y: .652842164, z: -.519067526, w: -.480341643}
+  m_LocalPosition: {x: 308.384277, y: -62.3740349, z: 58.65308}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400002}
@@ -94,8 +94,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 3
   m_Type: 1
-  m_Color: {r: 1, g: .983680129, b: .929411769, a: 1}
-  m_Intensity: .529999971
+  m_Color: {r: .996078432, g: .992156863, b: .909803927, a: 1}
+  m_Intensity: .5
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 1
@@ -131,14 +131,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29d78461560b94fbba29123ade3720a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Lux_HDR_Scale: 4
+  Lux_HDR_Scale: 5
   isLinear: 0
   LuxLighting: 0
   Lux_IBL_DiffuseExposure: 1
   Lux_IBL_SpecularExposure: 1
-  diffuseCube: {fileID: 8900000, guid: 81e24598fb10ee9418a7b1ee37515354, type: 2}
+  diffuseCube: {fileID: 8900000, guid: 4b8bf7fc61f016243adae868ad613bbd, type: 2}
   diffuseIsHDR: 1
-  specularCube: {fileID: 8900000, guid: 5ec5fda0b4d580843b2776ad0181c2fc, type: 2}
+  specularCube: {fileID: 8900000, guid: 760edcb41e539154ca6b69b62e814fea, type: 2}
   specularIsHDR: 1
 --- !u!1001 &100100000
 Prefab:

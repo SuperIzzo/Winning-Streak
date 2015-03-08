@@ -22,6 +22,8 @@ public class CrowdManager : MonoBehaviour
 	private float _gradualHype;
 	private float _gradualHypeTransition = 0.1f;
 
+    public static float MasterVolume = 1;
+
 	public float hype
 	{ 
 		get{ return _hype; }
@@ -49,6 +51,7 @@ public class CrowdManager : MonoBehaviour
 						_gradualHype * (1 - _gradualHypeTransition);
 
 		audio.volume = _gradualHype;
+        audio.volume *= MasterVolume;
 	}
 
 	IEnumerator MassDetail()
@@ -61,7 +64,8 @@ public class CrowdManager : MonoBehaviour
 			if( Random.value < _massDetailRate * _gradualHype )
 			{
 				float pan = 0.3f - Random.value * 0.6f;
-				float vol = Mathf.Min(0.3f, Random.value * _gradualHype + 0.1f); 
+				float vol = Mathf.Min(0.3f, Random.value * _gradualHype + 0.1f);
+                vol *= MasterVolume;
 				int random = Random.Range(0, _massDetailSounds.Count);
 				AudioClip clip = _massDetailSounds[ random ];
 				
@@ -80,7 +84,8 @@ public class CrowdManager : MonoBehaviour
 			if( Random.value < _soloDetailRate * _gradualHype )
 			{
 				float pan = 0.5f - Random.value * 1f;
-				float vol = Mathf.Min(1, Random.value * _gradualHype + 0.3f); 
+				float vol = Mathf.Min(1, Random.value * _gradualHype + 0.3f);
+                vol *= MasterVolume;
 				int random = Random.Range(0, _massDetailSounds.Count);
 				AudioClip clip = _soloDetailSounds[ random ];
 				
