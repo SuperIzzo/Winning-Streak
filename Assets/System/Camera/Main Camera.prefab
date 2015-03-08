@@ -14,6 +14,7 @@ GameObject:
   - 81: {fileID: 8100000}
   - 114: {fileID: 11400000}
   - 114: {fileID: 11473886}
+  - 114: {fileID: 11485638}
   - 114: {fileID: 11460760}
   - 114: {fileID: 11400002}
   - 114: {fileID: 11400004}
@@ -150,6 +151,7 @@ MonoBehaviour:
   modes:
   - {fileID: 11400000}
   - {fileID: 11473886}
+  - {fileID: 11485638}
 --- !u!114 &11473886
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -165,6 +167,23 @@ MonoBehaviour:
   moveSpeed: .100000001
   rotationX: 0
   rotationY: 0
+--- !u!114 &11485638
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff3129bdad4847447a168ab176c5a4d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  config:
+    lookAtOffset: {x: 0, y: 0, z: 0}
+    positionOffset: {x: 0, y: 0, z: 0}
+    followSpeed: 6
+    turnSpeed: 5
+    FOVModifier: .5
 --- !u!124 &12400000
 Behaviour:
   m_ObjectHideFlags: 1
