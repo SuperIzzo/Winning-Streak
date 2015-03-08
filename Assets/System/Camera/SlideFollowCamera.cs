@@ -18,7 +18,7 @@ public class FollowCameraConfig
 //--------------------------------------------------------------
 /// <summary>  Follow target behaviour. </summary>
 //--------------------------------------
-public class FollowTarget : MonoBehaviour
+public class SlideFollowCamera : MonoBehaviour
 {
 	public FollowCameraConfig normal;
 	public FollowCameraConfig zoomed;
