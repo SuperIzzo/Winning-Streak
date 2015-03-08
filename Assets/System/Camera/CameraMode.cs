@@ -38,7 +38,8 @@ public class CameraMode : MonoBehaviour
 	{
 		foreach( MonoBehaviour mode in modes )
 		{
-			mode.enabled = false;
+			if( mode != modes[currentMode] )
+				mode.enabled = false;
 		}
 
 		modes[currentMode].enabled = true;
