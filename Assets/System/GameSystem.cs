@@ -16,6 +16,7 @@ public class GameSystem
 	private static SocialManager		_social;
 	private static Commentator  		_commentator;
 	private static CrowdManager			_crowd;
+	private static AchievementsManager	_achievements;
 	#endregion
 
 
@@ -69,6 +70,22 @@ public class GameSystem
 			}
 			
 			return _scoringEvent;
+		}
+	}
+
+	/// <summary> Gets a single instance to the 
+	/// <see cref="AchievementsManager"/>. </summary>
+	/// <value> The achievements manager. </value>
+	public static AchievementsManager achievements
+	{
+		get 
+		{
+			if( !_achievements )
+			{
+				_achievements = GameObject.FindObjectOfType<AchievementsManager>();
+			}
+			
+			return _achievements;
 		}
 	}
 
