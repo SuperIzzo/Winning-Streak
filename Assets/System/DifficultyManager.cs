@@ -1,39 +1,47 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+//--------------------------------------------------------------
+/// <summary> Difficulty Manager manages the difficulty level. </summary>
+//-------------------------------------- 
 public class DifficultyManager : MonoBehaviour
 {
-	private float _level = 0;
-
-	public float level
-	{
-		get
-		{
-			return _level;
-		}
-
-		private set
-		{
-			_level = Mathf.Clamp01(value);
-		}
-	}
-
+	//--------------------------------------------------------------
+	#region  Public settings
+	//--------------------------------------
+	/// <summary> The difficulty increment per second. </summary>
 	public float incPerSecond = 0.001f;
+	#endregion
 
-	// Use this for initialization
-	void Start ()
-	{
-	
+
+	//--------------------------------------------------------------
+	#region  Public properties
+	//--------------------------------------
+	public float level
+	{ 
+		get{return _level;}
+		private set{ _level = Mathf.Clamp01(value);}
 	}
+	#endregion
+
 	
-	// Update is called once per frame
+	//--------------------------------------------------------------
+	#region Private state
+	//--------------------------------------
+	private float _level = 0;
+	#endregion
+
+
+	//--------------------------------------------------------------
+	/// <summary> Update the difficulty level. </summary>
+	//--------------------------------------
 	void Update ()
 	{
 		// Note that the difficulty increases independantly
 		// from the timeScale, this make slo-mo a double-edged
 		// knife because frequent use will make the game difficult
 		// much faster denying the players scoring opportunities
-		// Also, to be fair it doesn't run when the game is paused
+		// Also, just to be fair it doesn't run when the game is paused
 		if( Time.timeScale>float.Epsilon )
 		{
 			level += incPerSecond * Time.unscaledDeltaTime;
