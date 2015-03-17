@@ -1,26 +1,42 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+//--------------------------------------------------------------
+/// <summary> A general purpose spawner. </summary>
+//-------------------------------------- 
 public class Spawner : MonoBehaviour
 {
+	//--------------------------------------------------------------
+	#region Public settings
+	//--------------------------------------
 	public GameObject prefab;
 	public float initialSpawnDelay = 0;
 	public float spawnDelay = 0;
 	public int spawnAmount = 1;
 	public int spawnLimit = 1;
 	public Transform[] spawnAreas;
+	#endregion
 
+
+	//--------------------------------------------------------------
+	#region Private state
+	//--------------------------------------
 	private float spawnTimer;
 	private int spawnCounter;
+	#endregion
 
-	// Use this for initialization
+	//--------------------------------------------------------------
+	/// <summary> Start callback. </summary>
+	//--------------------------------------
 	void Start ()
 	{
 		spawnTimer = initialSpawnDelay;
 	}
-	
-	// Update is called once per frame
-	void Update ()
+
+	//--------------------------------------------------------------
+	/// <summary> Update callback. </summary>
+	//--------------------------------------
+	void Update()
 	{
 		spawnTimer -= Time.deltaTime;
 
@@ -35,6 +51,9 @@ public class Spawner : MonoBehaviour
 		}
 	}
 
+	//--------------------------------------------------------------
+	/// <summary> Spawns a single instance. </summary>
+	//--------------------------------------
 	void Spawn()
 	{
 		if( spawnCounter<spawnLimit )
@@ -42,27 +61,46 @@ public class Spawner : MonoBehaviour
 			spawnCounter++;
 			Vector3 randomPosition = transform.position;
 
-			if( spawnAreas.Length>0 )
-			{
-				int areaIdx = Random.Range(0,spawnAreas.Length);
-				Transform area = spawnAreas[areaIdx];
-
-				if( area.collider )
-				{
-					Vector3 min = area.collider.bounds.min;
-					Vector3 max = area.collider.bounds.max;
-
-					randomPosition.x = Random.Range( min.x, max.x );
-					randomPosition.y = Random.Range( min.y, max.y );
-					randomPosition.z = Random.Range( min.z, max.z );
-				}
-				else
-				{
-					randomPosition = area.position;
-				}
-			}
+			Transform randomArea = GetRandomArea();
+			randomPosition = GetRandomAreaPoint( randomArea );
 
 			GameObject.Instantiate( prefab, randomPosition, Quaternion.identity );
 		}
+	}
+
+	//--------------------------------------------------------------
+	/// <summary> Returns a random spawn area </summary>
+	//--------------------------------------
+	Transform GetRandomArea()
+	{
+		Transform spawnArea = this.transform;
+
+		if( spawnAreas.Length>0 )
+		{
+			int areaIdx = Random.Range(0,spawnAreas.Length);
+			spawnArea = spawnAreas[areaIdx];
+		}
+
+		return spawnArea;
+	}
+
+	//--------------------------------------------------------------
+	/// <summary> Returns a random 3D point on an area. </summary>
+	//--------------------------------------
+	Vector3 GetRandomAreaPoint( Transform area )
+	{
+		Vector3 randomPosition = area.position;
+
+		if( area.collider )
+		{
+			Vector3 min = area.collider.bounds.min;
+			Vector3 max = area.collider.bounds.max;
+			
+			randomPosition.x = Random.Range( min.x, max.x );
+			randomPosition.y = Random.Range( min.y, max.y );
+			randomPosition.z = Random.Range( min.z, max.z );
+		}
+
+		return randomPosition;
 	}
 }
