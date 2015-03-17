@@ -58,7 +58,7 @@ public class SlideFollowCamera : MonoBehaviour
 	//--------------------------------------------------------------
 	/// <summary> Start callback. </summary>
 	//--------------------------------------
-	void Start () 
+	void Start() 
 	{
 		currentConfig = normal;
 	}
@@ -66,7 +66,7 @@ public class SlideFollowCamera : MonoBehaviour
 	//--------------------------------------------------------------
 	/// <summary> Update callback. </summary>
 	//--------------------------------------
-	void Update () 
+	void Update() 
 	{
 		if( target==null )
 		{
