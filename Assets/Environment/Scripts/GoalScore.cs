@@ -30,7 +30,7 @@ public class GoalScore : MonoBehaviour
 			if( lastGoalScore!=this )
 			{
 				ScoringEventManager scoringEvent = GameSystem.scoringEvent;
-				scoringEvent.Fire( ScoringEvent.SCORED_GOAL );
+				scoringEvent.Fire( ScoringEventType.SCORED_GOAL );
 
 				lastGoalScore = this;
 				goalLockTimer = goalLockTime;

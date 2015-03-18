@@ -45,6 +45,6 @@ public class Touchdown : MonoBehaviour
 	void TouchDown()
 	{
 		playerEndZone = endZoneFaction.id;
-		GameSystem.scoringEvent.Fire( ScoringEvent.TOUCH_DOWN );
+		GameSystem.scoringEvent.Fire( ScoringEventType.TOUCH_DOWN );
 	}
 }

@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public enum ScoringEvent
+public enum ScoringEventType
 {
 	NONE = 0,
 	PICKED_BALL,
@@ -28,6 +28,10 @@ public enum ScoringEvent
 //--------------------------------------
 public class ScoringEventManager : MonoBehaviour
 {
+	//--------------------------------------------------------------
+	#region Public types
+	//--------------------------------------
+	///<summary> Contains all data needed for scoring events. </summary>
 	[System.Serializable]
 	public class ScoreData
 	{
@@ -47,39 +51,54 @@ public class ScoringEventManager : MonoBehaviour
 		}
 
 		public string description;
-		public ScoringEvent scoringEvent;
+		public ScoringEventType scoringEvent;
 		public EventIgnition ignition;
 		public float baseScore; 
 		public float multPoints;
 		public float hypeEffect;
 		public Comment comment;
 	}
+	#endregion
 
+
+	//--------------------------------------------------------------
+	#region  Public settings
+	//--------------------------------------
 	public ScoreData[] scoresList;
-	private Dictionary<ScoringEvent, ScoreData> scoresMap;
+	#endregion
 
-	private Dictionary<ScoringEvent, bool> ongoingScores;
 
-	// Use this for initialization
+	//--------------------------------------------------------------
+	#region Private state
+	//--------------------------------------
+	private Dictionary<ScoringEventType, ScoreData> scoresMap;
+	private Dictionary<ScoringEventType, bool> ongoingScores;
+	#endregion
+
+
+	//--------------------------------------------------------------
+	/// <summary> Start callback. </summary>
+	//--------------------------------------
 	void Start ()
 	{
 		// Create and populate the scores map
-		scoresMap = new Dictionary<ScoringEvent, ScoreData>();
-		ongoingScores = new Dictionary<ScoringEvent, bool>();
+		scoresMap = new Dictionary<ScoringEventType, ScoreData>();
+		ongoingScores = new Dictionary<ScoringEventType, bool>();
 
 		foreach( ScoreData data in scoresList )
 		{
 			scoresMap[ data.scoringEvent ] = data;
 		}
 	}
-	
-	// Update is called once per frame
-	void Update ()
-	{
-	
-	}
-	
-	public void Fire( ScoringEvent eventType, bool on = true )
+
+	//--------------------------------------------------------------
+	/// <summary> Fires a scoring event. </summary>
+	/// <description>
+	/// This is how scoring events are reported. Other classes
+	/// detect them and fire when the conditions are met.
+	/// </description>
+	//--------------------------------------
+	public void Fire( ScoringEventType eventType, bool on = true )
 	{
 		if( scoresMap.ContainsKey(eventType) )
 		{
@@ -113,7 +132,10 @@ public class ScoringEventManager : MonoBehaviour
 		}
 	}
 
-	IEnumerator ContinuousPoints( ScoringEvent eventType )
+	//-------------------------------------------------------------
+	/// <summary> A coroutine to update continous scoring. </summary>
+	//--------------------------------------
+	IEnumerator ContinuousPoints( ScoringEventType eventType )
 	{
 		ScoreManager score = GameSystem.score;
 		CrowdManager crowd = GameSystem.crowd;
@@ -130,7 +152,10 @@ public class ScoringEventManager : MonoBehaviour
 		}
 	}
 
-	IEnumerator Comment( ScoringEvent eventType, ScoreData.Comment comment )
+	//-------------------------------------------------------------
+	/// <summary> Delayed commentary. </summary>
+	//-------------------------------------- 
+	IEnumerator Comment( ScoringEventType eventType, ScoreData.Comment comment )
 	{
 		for( float time = comment.delay; time>0; time-=Time.deltaTime )
 		{

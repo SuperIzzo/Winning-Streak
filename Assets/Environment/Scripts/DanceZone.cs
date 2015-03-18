@@ -9,11 +9,11 @@ public class DanceZone: MonoBehaviour
 		{
 			if(other.GetComponent<BaseCharacterController>().isDancing)
 			{
-				GameSystem.scoringEvent.Fire( ScoringEvent.ZONE_WIGGLE, true );
+				GameSystem.scoringEvent.Fire( ScoringEventType.ZONE_WIGGLE, true );
 			}
 			else
 			{
-				GameSystem.scoringEvent.Fire( ScoringEvent.ZONE_WIGGLE, false );
+				GameSystem.scoringEvent.Fire( ScoringEventType.ZONE_WIGGLE, false );
 			}
 		}
 	}

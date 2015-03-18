@@ -28,14 +28,14 @@ public class StreakerEventAnnouncer : MonoBehaviour
 				pickedBallEvent = !pickedBallEvent;
 
 				if( pickedBallEvent )
-					scoringEvent.Fire( ScoringEvent.PICKED_BALL );
+					scoringEvent.Fire( ScoringEventType.PICKED_BALL );
 			}
 
 			// Dance scoring
 			if( controller.isDancing ^ isDancingEvent)
 			{
 				isDancingEvent = !isDancingEvent;
-				scoringEvent.Fire( ScoringEvent.WIGGLE, isDancingEvent );
+				scoringEvent.Fire( ScoringEventType.WIGGLE, isDancingEvent );
 			}
 		}
 	}

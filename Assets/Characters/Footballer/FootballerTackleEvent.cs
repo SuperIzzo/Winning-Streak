@@ -38,7 +38,7 @@ public class FootballerTackleEvent : MonoBehaviour
 		if( !player.isKnockedDown && aiInput.target == player )
 		{
 			var scoringEvent = GameSystem.scoringEvent;
-			scoringEvent.Fire( ScoringEvent.DODGE_TACKLE );
+			scoringEvent.Fire( ScoringEventType.DODGE_TACKLE );
 
 			if( audio )
 			{
