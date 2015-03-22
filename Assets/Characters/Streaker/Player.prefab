@@ -1473,6 +1473,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rootBone: {fileID: 5400024}
+  tackleSFX: {fileID: 8300000, guid: aa4ee22fc4fc4c548b0deb70e2105e13, type: 3}
 --- !u!114 &11400020
 MonoBehaviour:
   m_ObjectHideFlags: 1
