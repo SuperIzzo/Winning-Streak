@@ -10,6 +10,7 @@ using System.Collections;
 public class DamageableCharacter : Damageable
 {
 	public Rigidbody rootBone;
+	public AudioClip tackleSFX;
 	private BaseCharacterController controller;
 
 	//--------------------------------------------------------------
@@ -39,23 +40,33 @@ public class DamageableCharacter : Damageable
 			var damagerController = info.damager.GetComponentInParent<BaseCharacterController>();
 			if( damagerController )
 			{
-				Vector3 force = damagerController.lookDirection * 
-					damagerController.relativeVelocity.magnitude;
+				// Play sound effect
+				if( audio && tackleSFX )
+				{
+					audio.PlayOneShot( tackleSFX );
+				}
 
-				force.y = force.magnitude * 0.07f;
-				force.Normalize();
+				Vector3 direction = transform.position - info.damager.transform.position;
+				direction += damagerController.lookDirection * 3;
 
-				float forceMagnitude = 60.0f 
-					+ Random.value*Random.value*80;
+				//if( info.damager.rigidbody )
+				//	info.damager.rigidbody.velocity *= 0.3f;
 
-				force *= forceMagnitude;
+				// Eliminate Y (we'll add it artificially later)
+				direction.y = 0;
+
+				float yFactor = 0.07f + Random.value * 0.04f;
+				direction.y = direction.magnitude * yFactor;
+				direction.Normalize();
+
+				float forceMagnitude = 80.0f + (Random.value*Random.value * 60.0f);
+
+				Vector3 force = direction * forceMagnitude;
 
 
 				StartCoroutine( ApplyForce(force) );
 			}
 		}
-
-
 	}
 
 
