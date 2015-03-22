@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
 public class FootballerDifficulty : MonoBehaviour
 {
 	private AIInput aiInput;
