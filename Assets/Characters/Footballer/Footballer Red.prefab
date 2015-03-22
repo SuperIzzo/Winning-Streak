@@ -1244,13 +1244,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 6.4000001
   turningSpeed: 6
+  runSpeed: 7
   dashBoost: 3
   dashDuration: 1
   dashCooldown: 5
   grabRadius: 1
   maxChargeTime: 3
   throwPower: 20
-  tackleDuration: .600000024
+  tackleDuration: .400000006
   tackleSpeed: 7
   reviveTimeMin: 10
   reviveTimeMax: 15
@@ -1298,6 +1299,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rootBone: {fileID: 5458462}
+  tackleSFX: {fileID: 0}
 --- !u!114 &11458456
 MonoBehaviour:
   m_ObjectHideFlags: 1
