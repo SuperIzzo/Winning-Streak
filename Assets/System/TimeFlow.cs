@@ -1,41 +1,54 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+//-------------------------------------------------------------
+/// <summary> Time flow - controls the flow of time. </summary>
+//-------------------------------------- 
 public class TimeFlow : MonoBehaviour
 {
-	private float defaultFixedDelta = 0.02f;
 
-	private bool _isSlowed = false;
+	//--------------------------------------------------------------
+	#region  Public properties
+	//--------------------------------------
+	/// <summary> Gets or sets of the time flow is slowed down. </summary>
+	/// <value><c>true</c> if is slowed; otherwise, <c>false</c>.</value>
 	public  bool isSlowed
 	{
 		get { return _isSlowed; }
 		set { _isSlowed = value; UpdateTimeScale(); }
 	}
 
-	private bool _isPaused = false;
-	public  bool isPaused
+	/// <summary> Gets or sets of the time flow is stopped. </summary>
+	/// <value><c>true</c> if is paused; otherwise, <c>false</c>.</value>
+	public  bool isStopped
 	{
-		get { return _isPaused; }
-		set { _isPaused = value; UpdateTimeScale(); }
+		get { return _isStopped; }
+		set { _isStopped = value; UpdateTimeScale(); }
 	}
+	#endregion
 
 
+	//--------------------------------------------------------------
+	#region Private state
+	//--------------------------------------
+	private bool _isSlowed = false;
+	private bool _isStopped = false;
+	#endregion
 
-	void Start()
-	{
-		defaultFixedDelta = Time.fixedDeltaTime;
-	}
 
+	//-------------------------------------------------------------
+	/// <summary> Sets the correct time scale based on 
+	///           properties. </summary>
+	//--------------------------------------
 	void UpdateTimeScale()
 	{
 		float timeScale = 1.0f;
 
-		if( _isPaused )
+		if( _isStopped )
 			timeScale = 0.0f;
 		else if( _isSlowed )
 			timeScale = 0.2f;
 
 		Time.timeScale = timeScale;
-		//Time.fixedDeltaTime = defaultFixedDelta * Time.timeScale;
 	}
 }

@@ -138,7 +138,7 @@ public class PlayerInput : MonoBehaviour
 			timeFlow.isSlowed = slow;
 
 			if( pause )
-				timeFlow.isPaused = !timeFlow.isPaused;
+				timeFlow.isStopped = !timeFlow.isStopped;
 		}
 	}
 
