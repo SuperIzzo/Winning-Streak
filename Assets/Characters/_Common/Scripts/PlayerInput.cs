@@ -3,7 +3,7 @@ using System.Collections;
 
 //TODO: This script is messy
 
-[AddComponentMenu("Character/Player Input",100)]
+[AddComponentMenu("Winning Streak/Character/Player Input",100)]
 [RequireComponent( typeof(BaseCharacterController) )]
 public class PlayerInput : MonoBehaviour
 {

@@ -8,7 +8,7 @@ using System.Collections;
 /// the character's state and manages it internally.
 /// In MVC terms this is the Model. </description>
 //-------------------------------------- 
-[AddComponentMenu("Character/Base Character Controller")]
+[AddComponentMenu("Winning Streak/Character/Base Character Controller")]
 public class BaseCharacterController : MonoBehaviour
 {
 	private static readonly float MIN_TURN_VECTOR_MAGNITUDE = 0.1f;
