@@ -9,13 +9,12 @@ public class GameSystem
 	//--------------------------------------------------------------
 	#region		Internal variables
 	//--------------------------------------
-	private static TimeFlow 			_timeFlow;
+	private static TimeFlow 		_timeFlow;
 	private static ScoreManager 		_score;
 	private static ScoringEventManager	_scoringEvent;
 	private static DifficultyManager	_difficulty;
 	private static SocialManager		_social;
-	private static Commentator  		_commentator;
-	private static CrowdManager			_crowd;
+	private static CrowdManager		_crowd;
 	private static AchievementsManager	_achievements;
 	#endregion
 
@@ -118,22 +117,6 @@ public class GameSystem
 			}
 			
 			return _social;
-		}
-	}
-
-	/// <summary> Gets a single instance to the 
-	/// <see cref="Commentator"/> system. </summary>
-	/// <value> The commentator system. </value>
-	public static Commentator commentator
-	{
-		get 
-		{
-			if( !_commentator )
-			{
-				_commentator = GameObject.FindObjectOfType<Commentator>();
-			}
-			
-			return _commentator;
 		}
 	}
 
