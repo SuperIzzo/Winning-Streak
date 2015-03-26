@@ -2,67 +2,38 @@
 
 using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
+
+
+[AddComponentMenu("Winning Streak/Commentary/Commentator System")]
+
 
 //--------------------------------------------------------------
-/// <summary> An enumerationn of all commentator event. </summary>
+/// <summary> Commentator system component. </summary>
 //--------------------------------------
-public enum CommentatorEvent
+public class CommentatorSystem : MonoBehaviour
 {
-	NONE = 0,
-	RANDOM,
-	PICKED_BALL,
-	DODGE_TACKLE,
-	GAME_START,
-	GAME_OVER,
-	HIT_PLAYER,
-	WIGGLE,
-	TOUCH_DOWN,
-	PTS_1,
-	PTS_2,
-	PTS_3,
-	PTS_4,
-	PTS_5,
-	PTS_6,
-	PTS_7,
-	PTS_8,
-	PTS_9,
-	PTS_10,
-	SCORED_GOAL
-}
-
-
-//--------------------------------------------------------------
-/// <summary> A commentator conversation queue. </summary>
-//-------------------------------------- 
-[System.Serializable]
-public class CommentatorQueue
-{
-	public string name;
-	public CommentatorEvent commentEvent;
-	public List<AudioClip> clipQueue;
-}
-
-
-//--------------------------------------------------------------
-/// <summary> Commentator. </summary>
-//--------------------------------------
-public class Commentator : MonoBehaviour
-{
+	//--------------------------------------------------------------
 	#region Public settings
-	public List<CommentatorQueue> commentQueues;
+	//--------------------------------------
+	public CommentaryDB commentary;
 	#endregion
 
 
+	//--------------------------------------------------------------
 	#region Public properties
+	//--------------------------------------
+	/// <summary> Returns the time since the last comment.</summary>
 	public float timeSinceLastComment {get; private set;}
 	#endregion
 
 
+	//--------------------------------------------------------------
 	#region Private state
-	CommentatorQueue currentQueue;
-	int clipIndex = 0;
+	//--------------------------------------
+	private CommentaryDB.CommentatorQueue currentQueue;
+	private int clipIndex = 0;
 	#endregion
+
 
 	//--------------------------------------------------------------
 	/// <summary> Returns the relative priority of the  
@@ -150,21 +121,21 @@ public class Commentator : MonoBehaviour
 		}
 		
 		// Pick a random comment which matches the event
-		int start = Random.Range(0, commentQueues.Count );
-		int step  = Random.Range(1, commentQueues.Count-1);
+		int start = Random.Range(0, commentary.commentQueues.Count );
+		int step  = Random.Range(1, commentary.commentQueues.Count-1);
 		int i = start+1;
 		
 		// repeat until we've cycled them all
-		for( int j=0; j<commentQueues.Count; j++ )
+		for( int j=0; j<commentary.commentQueues.Count; j++ )
 		{
 			// End condition
 			if( i==start )
 				break;
 			
 			// Wrap around if we have to
-			i = i % commentQueues.Count;
-			
-			CommentatorQueue commentQueue = commentQueues[i];
+			i = i % commentary.commentQueues.Count;
+
+			CommentaryDB.CommentatorQueue commentQueue = commentary.commentQueues[i];
 			if( commentQueue !=null
 			   && commentQueue.commentEvent == evt 
 			   && commentQueue.clipQueue !=null
@@ -182,10 +153,11 @@ public class Commentator : MonoBehaviour
 		
 		return false;
 	}
-	
-	
-	// Sets the current queue
-	private bool PlayeQueue( CommentatorQueue queue )
+
+	//--------------------------------------------------------------
+	/// <summary> Sets the current queue </summary>
+	//--------------------------------------
+	private bool PlayeQueue( CommentaryDB.CommentatorQueue queue )
 	{
 		clipIndex = 0;
 		currentQueue = queue;
@@ -195,14 +167,18 @@ public class Commentator : MonoBehaviour
 		
 		return true;
 	}
-	
-	// Start the commentators
+
+	//--------------------------------------------------------------
+	/// <summary> Start the commentators </summary>
+	//--------------------------------------
 	void Start()
 	{
 		timeSinceLastComment = Time.unscaledTime;
 	}
-	
-	// Updates the Commentator
+
+	//--------------------------------------------------------------
+	/// Updates the Commentator
+	//--------------------------------------
 	void Update()
 	{
 		// If teh audio is not playing move onto the
@@ -229,4 +205,5 @@ public class Commentator : MonoBehaviour
 			}
 		}
 	}
+
 }
