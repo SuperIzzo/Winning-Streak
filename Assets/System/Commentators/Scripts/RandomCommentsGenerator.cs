@@ -8,21 +8,13 @@ public class RandomCommentsGenerator : MonoBehaviour
 
 	private float silenceTime = 0;
 
-	Commentator commentator;
-
-	// Use this for initialization
-	void Start ()
-	{
-		commentator = GameSystem.commentator;
-	}
-	
 	// Update is called once per frame
 	void Update ()
 	{
-		if( Time.unscaledTime - commentator.timeSinceLastComment > silenceTime )
+		if( Time.unscaledTime - Commentator.timeSinceLastComment > silenceTime )
 		{
 			silenceTime = Random.Range(minSilence, maxSilence);
-			commentator.Comment( CommentatorEvent.RANDOM );
+			Commentator.Comment( CommentatorEvent.RANDOM );
 		}
 	}
 }

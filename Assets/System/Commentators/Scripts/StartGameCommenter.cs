@@ -23,10 +23,7 @@ public class StartGameCommenter : MonoBehaviour
 
 			if( frametimer<=0 )
 			{
-				Commentator commentator = GameSystem.commentator;
-
-				if( commentator )
-					announced = commentator.Comment( CommentatorEvent.GAME_START );
+				announced = Commentator.Comment( CommentatorEvent.GAME_START );
 			}
 		}
 	}
