@@ -78,15 +78,10 @@ public class ScoreManager : MonoBehaviour
 
 			if( announceChance > Random.value )
 			{
-				Commentator commentator = GameSystem.commentator;
-
-				if( commentator )
+				if( Commentator.Comment( GetPtsEvent(comboedScore) ) )
 				{
-					if( commentator.Comment( GetPtsEvent(comboedScore) ) )
-					{
-						multPoints += comboedScore;
-						multToAnnounce = 0;
-					}
+					multPoints += comboedScore;
+					multToAnnounce = 0;
 				}
 			}
 			else

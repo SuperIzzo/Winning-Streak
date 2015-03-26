@@ -164,8 +164,7 @@ public class ScoringEventManager : MonoBehaviour
 
 		if( !comment.mustBeOn || ongoingScores[eventType] )
 		{
-			Commentator commentator	= GameSystem.commentator;
-			commentator.Comment( comment.comment );
+			Commentator.Comment( comment.comment );
 		}
 	}
 }
