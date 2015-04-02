@@ -70,7 +70,7 @@ public class SlideFollowCamera : MonoBehaviour
 	{
 		if( target==null )
 		{
-			target = Player.transform;
+			target = Player.p1.transform;
 		}
 
 		if( target!=null )

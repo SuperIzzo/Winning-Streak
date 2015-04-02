@@ -33,7 +33,7 @@ public class FootballerTackleEvent : MonoBehaviour
 
 	void ResolveTackle()
 	{
-		BaseCharacterController player = Player.characterController;
+		BaseCharacterController player = Player.p1.characterController;
 
 		if( !player.isKnockedDown && aiInput.target == player )
 		{

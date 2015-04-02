@@ -239,7 +239,7 @@ public class AIInput : MonoBehaviour
 		// if we hate the player - target him directly
 		if( playerHate > Random.value )
 		{
-			target = Player.characterController;
+			target = Player.p1.characterController;
 		}
 		else
 		{

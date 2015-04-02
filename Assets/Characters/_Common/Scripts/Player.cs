@@ -9,13 +9,27 @@ using System.Collections;
 //--------------------------------------
 public class Player
 {
-	private static GameObject _gameObject;
+	//--------------------------------------------------------------
+	/// <summary> Returns player one. </summary>
+	//--------------------------------------
+	public static Player p1
+	{
+		get
+		{
+			if( _p1 == null ) 
+				_p1 = new Player();
+
+			return _p1;
+		}
+	}
+	private static Player _p1;
+
 
 	//--------------------------------------------------------------
 	/// <summary> Returns the player gameObject (readonly). </summary>
 	/// <value> The player game object.</value>
 	//--------------------------------------
-	public static GameObject gameObject
+	public GameObject gameObject
 	{
 		get
 		{
@@ -25,17 +39,18 @@ public class Player
 			return _gameObject;
 		}
 	}
+	private GameObject _gameObject;
 
 	//--------------------------------------------------------------
 	/// <summary> Returns the player transform (readonly). </summary>
 	/// <value> The player transform.</value>
 	//--------------------------------------
-	public static Transform transform
+	public Transform transform
 	{
 		get
 		{
-			if( Player.gameObject )
-				return Player.gameObject.transform;
+			if( gameObject )
+				return gameObject.transform;
 			else
 				return null;
 		}
@@ -45,12 +60,12 @@ public class Player
 	/// <summary> Returns the player character controller (readonly). </summary>
 	/// <value> The player character controller.</value>
 	//--------------------------------------
-	public static BaseCharacterController characterController
+	public BaseCharacterController characterController
 	{
 		get
 		{
-			if( Player.gameObject )
-				return Player.gameObject.GetComponent<BaseCharacterController>();
+			if( gameObject )
+				return gameObject.GetComponent<BaseCharacterController>();
 			else
 				return null;
 		}

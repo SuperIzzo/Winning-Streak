@@ -9,13 +9,13 @@ public class FreeFollowCamera : MonoBehaviour
 
 	void Start ()
 	{
-		target = Player.transform;
+		target = Player.p1.transform;
 	}
 
 	void OnEnable()
 	{
 		if( !target )
-			target = Player.transform;
+			target = Player.p1.transform;
 
 		config.positionOffset = transform.position - target.position;
 

@@ -41,7 +41,7 @@ public class EndGame : MonoBehaviour
         }
         else
         {
-			player = Player.characterController;
+			player = Player.p1.characterController;
         }
 	}
 }
