@@ -12,17 +12,17 @@ public class CrowdManager : MonoBehaviour
 	public List<AudioClip> _massDetailSounds;
 
 	// Inspector properties
-	public float _soloDetailRate = 0.3f;
-	public float _massDetailRate = 0.2f;
-	public float _hype;
-	public float _hypeDecay = 0.01f;
-	public float _minHype = 0.2f;
-	public float _maxHype = 1.0f;
-	
+	[SerializeField] private float _soloDetailRate = 0.3f;
+	[SerializeField] private float _massDetailRate = 0.2f;
+	[SerializeField] private float _hype;
+	[SerializeField] private float _hypeDecay = 0.01f;
+	[SerializeField] private float _minHype = 0.2f;
+	[SerializeField] private float _maxHype = 1.0f;
+
 	private float _gradualHype;
 	private float _gradualHypeTransition = 0.1f;
 
-    public static float MasterVolume = 1;
+   	public static float MasterVolume = 1;
 
 	public float hype
 	{ 
@@ -51,7 +51,7 @@ public class CrowdManager : MonoBehaviour
 						_gradualHype * (1 - _gradualHypeTransition);
 
 		audio.volume = _gradualHype;
-        audio.volume *= MasterVolume;
+		audio.volume *= MasterVolume;
 	}
 
 	IEnumerator MassDetail()
