@@ -24,6 +24,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400004}
+  - 114: {fileID: 11499910}
   m_Layer: 0
   m_Name: _Managers
   m_TagString: Untagged
@@ -56,32 +57,12 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400014}
-  - 114: {fileID: 11400014}
-  - 114: {fileID: 11472594}
   - 114: {fileID: 11450186}
   - 114: {fileID: 11451148}
   - 114: {fileID: 11443766}
+  - 114: {fileID: 11491660}
   m_Layer: 0
   m_Name: _GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &100018
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 400018}
-  - 82: {fileID: 8200002}
-  - 114: {fileID: 11400018}
-  - 114: {fileID: 11476416}
-  - 114: {fileID: 11476414}
-  m_Layer: 0
-  m_Name: _Commentator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -159,6 +140,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &191660
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 491660}
+  - 114: {fileID: 11491654}
+  - 114: {fileID: 11491656}
+  - 114: {fileID: 11491658}
+  - 114: {fileID: 11402184}
+  m_Layer: 0
+  m_Name: _ScoreManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &400000
 Transform:
   m_ObjectHideFlags: 1
@@ -183,7 +183,6 @@ Transform:
   m_Children:
   - {fileID: 403476}
   - {fileID: 400014}
-  - {fileID: 400018}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &400012
@@ -212,20 +211,9 @@ Transform:
   - {fileID: 484436}
   - {fileID: 484438}
   - {fileID: 400000}
+  - {fileID: 491660}
   m_Father: {fileID: 400004}
   m_RootOrder: 1
---- !u!4 &400018
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100018}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 400004}
-  m_RootOrder: 2
 --- !u!4 &402980
 Transform:
   m_ObjectHideFlags: 1
@@ -275,6 +263,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 400014}
   m_RootOrder: 2
+--- !u!4 &491660
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 191660}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 400014}
+  m_RootOrder: 4
 --- !u!65 &6584436
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -285,7 +285,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 79, y: 0, z: 56}
+  m_Size: {x: 75, y: 0, z: 56}
   m_Center: {x: 0, y: -1.79999995, z: 5.5}
 --- !u!65 &6584438
 BoxCollider:
@@ -305,64 +305,6 @@ AudioSource:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100012}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
---- !u!82 &8200002
-AudioSource:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100018}
   m_Enabled: 1
   serializedVersion: 3
   m_audioClip: {fileID: 0}
@@ -511,33 +453,95 @@ MonoBehaviour:
   _hypeDecay: .00999999978
   _minHype: .100000001
   _maxHype: 1
---- !u!114 &11400014
+--- !u!114 &11402184
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100014}
+  m_GameObject: {fileID: 191660}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d483e1a934152a14c83cd57aa68b3301, type: 3}
+  m_Script: {fileID: 11500000, guid: 3a9dde025453cd04ea72743e630d0031, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseScore: 0
-  multPoints: 1
-  timePlayed: 0
-  comboEffect: 1.60000002
---- !u!114 &11400018
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100018}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3498ec47f8bc9e46821e2ab2b8b873e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  commentary: {fileID: 0}
+  scoresList:
+  - description: Dodge Tackle
+    scoringEvent: 2
+    ignition: 0
+    baseScore: 5
+    multPoints: .300000012
+    hypeEffect: .00999999978
+    comment:
+      comment: 3
+      chance: .100000001
+      delay: 0
+      mustBeOn: 0
+  - description: Pick-up Ball
+    scoringEvent: 1
+    ignition: 0
+    baseScore: 0
+    multPoints: 0
+    hypeEffect: 0
+    comment:
+      comment: 2
+      chance: .899999976
+      delay: 0
+      mustBeOn: 0
+  - description: Wiggle
+    scoringEvent: 4
+    ignition: 1
+    baseScore: .200000003
+    multPoints: .100000001
+    hypeEffect: .0399999991
+    comment:
+      comment: 7
+      chance: .600000024
+      delay: 4
+      mustBeOn: 1
+  - description: Zone Wiggle
+    scoringEvent: 5
+    ignition: 1
+    baseScore: 6
+    multPoints: .100000001
+    hypeEffect: .0599999987
+    comment:
+      comment: 0
+      chance: 0
+      delay: 0
+      mustBeOn: 1
+  - description: Touchdown
+    scoringEvent: 6
+    ignition: 0
+    baseScore: 100
+    multPoints: 3
+    hypeEffect: .300000012
+    comment:
+      comment: 8
+      chance: 1
+      delay: 0
+      mustBeOn: 0
+  - description: Goal
+    scoringEvent: 7
+    ignition: 0
+    baseScore: 250
+    multPoints: 5
+    hypeEffect: .5
+    comment:
+      comment: 19
+      chance: 1
+      delay: 0
+      mustBeOn: 0
+  - description: 
+    scoringEvent: 0
+    ignition: 0
+    baseScore: 0
+    multPoints: 0
+    hypeEffect: 0
+    comment:
+      comment: 0
+      chance: 1
+      delay: 0
+      mustBeOn: 0
 --- !u!114 &11403472
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -546,7 +550,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 103476}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3498ec47f8bc9e46821e2ab2b8b873e, type: 3}
+  m_Script: {fileID: 11500000, guid: 566903f4cece2e146be1c4254ce8d823, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   commentary: {fileID: 11400000, guid: 99c03f0759bb2914ba18dd58aeb7b966, type: 2}
@@ -665,119 +669,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
---- !u!114 &11472594
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a9dde025453cd04ea72743e630d0031, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoresList:
-  - description: Dodge Tackle
-    scoringEvent: 2
-    ignition: 0
-    baseScore: 5
-    multPoints: .300000012
-    hypeEffect: .00999999978
-    comment:
-      comment: 3
-      chance: .100000001
-      delay: 0
-      mustBeOn: 0
-  - description: Pick-up Ball
-    scoringEvent: 1
-    ignition: 0
-    baseScore: 0
-    multPoints: 0
-    hypeEffect: 0
-    comment:
-      comment: 2
-      chance: .899999976
-      delay: 0
-      mustBeOn: 0
-  - description: Wiggle
-    scoringEvent: 4
-    ignition: 1
-    baseScore: .200000003
-    multPoints: .100000001
-    hypeEffect: .0399999991
-    comment:
-      comment: 7
-      chance: .600000024
-      delay: 4
-      mustBeOn: 1
-  - description: Zone Wiggle
-    scoringEvent: 5
-    ignition: 1
-    baseScore: 6
-    multPoints: .100000001
-    hypeEffect: .0599999987
-    comment:
-      comment: 0
-      chance: 0
-      delay: 0
-      mustBeOn: 1
-  - description: Touchdown
-    scoringEvent: 6
-    ignition: 0
-    baseScore: 100
-    multPoints: 3
-    hypeEffect: .300000012
-    comment:
-      comment: 8
-      chance: 1
-      delay: 0
-      mustBeOn: 0
-  - description: Goal
-    scoringEvent: 7
-    ignition: 0
-    baseScore: 250
-    multPoints: 5
-    hypeEffect: .5
-    comment:
-      comment: 19
-      chance: 1
-      delay: 0
-      mustBeOn: 0
-  - description: 
-    scoringEvent: 0
-    ignition: 0
-    baseScore: 0
-    multPoints: 0
-    hypeEffect: 0
-    comment:
-      comment: 0
-      chance: 1
-      delay: 0
-      mustBeOn: 0
---- !u!114 &11476414
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100018}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f1fa9d78919ed14ea464497e98e7eda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minSilence: 5
-  maxSilence: 20
---- !u!114 &11476416
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100018}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8039f5b6965ea684b82b1ab6241fd997, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11484436
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -832,6 +723,50 @@ MonoBehaviour:
   spawnLimit: 11
   spawnAreas:
   - {fileID: 402980}
+--- !u!114 &11491654
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 191660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42d21e0e1b7fcd143ac382ca73c8eb7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11491656
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 191660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c3dea4e04762ce42b0fbbe3c2a081c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11491658
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 191660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb9f6dd844d407444a7ba148cd22d2d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11491660
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0811dad67cf42d74a8c211bc9e24bb05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11498596
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -850,6 +785,17 @@ MonoBehaviour:
   spawnLimit: 11
   spawnAreas:
   - {fileID: 402980}
+--- !u!114 &11499910
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9afb8dc3f8b8bab43bd206b71736d2e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
