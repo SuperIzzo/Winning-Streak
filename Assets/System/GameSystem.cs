@@ -1,11 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
+using RoaringSnail.PersistenceSystems;
 
 //--------------------------------------------------------------
 /// <summary> A static global access to game systems. </summary>
 //--------------------------------------
-public class GameSystem
+public class GameSystem : MonoBehaviour
 {
+	void Awake()
+	{
+		// Initialise the Persistence system...
+		if( Persistence.Active == null )
+		{
+			Persistence.Active = new PrefsPersistence();
+		}
+	}
+
+
 	//--------------------------------------------------------------
 	#region		Internal variables
 	//--------------------------------------
