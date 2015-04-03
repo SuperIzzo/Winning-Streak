@@ -33,10 +33,20 @@ public class EndGame : MonoBehaviour
                 hud.Hide();
                 endGameDialogCountdown = 2.0f;
                 //endGameDialogue.Show();
-				ScoreManager score = GameSystem.score;
+		
+		Score score = Player.p1.score;
+		float highScore = Persistence.GetFloat("HighScore", 0);
+		
+		score.enabled = false;
+		GameSession.current.enabled = false;
 
-				Commentator.Comment( CommentatorEvent.GAME_OVER );
-				score.StopTimer();
+		if( score.total>highScore )
+		{
+			highScore = score.total;
+			Persistence.SetFloat("HighScore", highScore); 
+		}
+
+		Commentator.Comment( CommentatorEvent.GAME_OVER );
             }
         }
         else

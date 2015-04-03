@@ -70,4 +70,22 @@ public class Player
 				return null;
 		}
 	}
+
+	//--------------------------------------------------------------
+	/// <summary> Returns the player's score (readonly). </summary>
+	/// <value> The player character controller.</value>
+	//--------------------------------------
+	public Score score
+	{
+		get
+		{
+			//HACK: There's only one player atm, so only one score
+			//      this will change
+			if( !_score )
+				_score = GameObject.FindObjectOfType<Score>();
+			
+			return _score;
+		}
+	}
+	private Score _score;
 }

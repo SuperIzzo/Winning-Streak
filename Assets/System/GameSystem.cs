@@ -10,7 +10,6 @@ public class GameSystem
 	#region		Internal variables
 	//--------------------------------------
 	private static TimeFlow 		_timeFlow;
-	private static ScoreManager 		_score;
 	private static ScoringEventManager	_scoringEvent;
 	private static DifficultyManager	_difficulty;
 	private static SocialManager		_social;
@@ -37,22 +36,6 @@ public class GameSystem
 			}
 
 			return _timeFlow;
-		}
-	}
-
-	/// <summary> Gets a single instance to the 
-	/// <see cref="ScoreManager"/>. </summary>
-	/// <value> The score manager. </value>
-	public static ScoreManager score
-	{
-		get 
-		{
-			if( !_score )
-			{
-				_score = GameObject.FindObjectOfType<ScoreManager>();
-			}
-
-			return _score;
 		}
 	}
 

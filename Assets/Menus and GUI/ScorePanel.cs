@@ -10,23 +10,18 @@ public class ScorePanel : GUIWindow
 	public Text total;
 	public Text best;
 
-	// Use this for initialization
-	void Start ()
-	{
-
-	}
-	
 	// Update is called once per frame
 	void Update ()
 	{
-		ScoreManager scoreMan = GameSystem.score;
+		Score scoreMan = Player.p1.score;
+		float highScore = Persistence.GetFloat("HighScore", 0);
 
-		System.TimeSpan timeSpan = System.TimeSpan.FromSeconds( scoreMan.timePlayed );  
+		System.TimeSpan timeSpan = System.TimeSpan.FromSeconds( GameSession.current.timePlayed );  
 
 		timePlayed.text = string.Format("{0:D2}:{1:D2}", timeSpan.Minutes, timeSpan.Seconds);
 		score.text		= ""+ (int)scoreMan.baseScore;
-		multiplier.text = ""+ (int)scoreMan.multPoints;
-		total.text		= ""+ (int)scoreMan.totalScore;
-		best.text		= ""+ (int)scoreMan.highScore;
+		multiplier.text 	= ""+ (int)scoreMan.multiplier;
+		total.text		= ""+ (int)scoreMan.total;
+		best.text		= ""+ (int)highScore;
 	}
 }
