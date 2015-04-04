@@ -7,7 +7,7 @@ public class PowerupVisuals : MonoBehaviour {
 
 	void Update()
 	{
-		Vector3 playerPos = Player.transform.position; 
+		Vector3 playerPos = Player.p1.transform.position; 
 		this.transform.position = playerPos + new Vector3(0, 1.15f, -0.5f);
 	}
 

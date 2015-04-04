@@ -102,14 +102,14 @@ public class ScoringEventManager : MonoBehaviour
 	{
 		if( scoresMap.ContainsKey(eventType) )
 		{
-			ScoreManager 	score		= GameSystem.score;
+			Score	 	score		= Player.p1.score;
 			CrowdManager	crowd		= GameSystem.crowd;
 			ScoreData 		scoreData 	= scoresMap[eventType];
 
 			if( scoreData.ignition == ScoreData.EventIgnition.ONE_TIME )
 			{
-				score.AddScore(		scoreData.baseScore  );
-				score.AddMultPoint(	scoreData.multPoints );
+				score.baseScore += scoreData.baseScore;
+				score.comboBuilder += scoreData.multPoints;
 				crowd.hype += scoreData.hypeEffect;
 			}
 			else
@@ -137,17 +137,17 @@ public class ScoringEventManager : MonoBehaviour
 	//--------------------------------------
 	IEnumerator ContinuousPoints( ScoringEventType eventType )
 	{
-		ScoreManager score = GameSystem.score;
-		CrowdManager crowd = GameSystem.crowd;
-		ScoreData scoreData = scoresMap[eventType];
+		Score 		score = Player.p1.score;
+		CrowdManager	crowd = GameSystem.crowd;
+		ScoreData	scoreData = scoresMap[eventType];
 
 		while( ongoingScores[eventType] )
 		{
 			yield return 0;
 
 			// Add points per second
-			score.AddScore(		scoreData.baseScore  * Time.deltaTime );
-			score.AddMultPoint( scoreData.multPoints * Time.deltaTime );
+			score.baseScore	   += scoreData.baseScore  * Time.deltaTime;
+			score.comboBuilder += scoreData.multPoints * Time.deltaTime;
 			crowd.hype += scoreData.hypeEffect * Time.deltaTime;
 		}
 	}

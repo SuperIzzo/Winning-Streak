@@ -1,16 +1,26 @@
 ﻿using UnityEngine;
 using System.Collections;
+using RoaringSnail.PersistenceSystems;
 
 //--------------------------------------------------------------
 /// <summary> A static global access to game systems. </summary>
 //--------------------------------------
-public class GameSystem
+public class GameSystem : MonoBehaviour
 {
+	void Awake()
+	{
+		// Initialise the Persistence system...
+		if( Persistence.Active == null )
+		{
+			Persistence.Active = new PrefsPersistence();
+		}
+	}
+
+
 	//--------------------------------------------------------------
 	#region		Internal variables
 	//--------------------------------------
 	private static TimeFlow 		_timeFlow;
-	private static ScoreManager 		_score;
 	private static ScoringEventManager	_scoringEvent;
 	private static DifficultyManager	_difficulty;
 	private static SocialManager		_social;
@@ -37,22 +47,6 @@ public class GameSystem
 			}
 
 			return _timeFlow;
-		}
-	}
-
-	/// <summary> Gets a single instance to the 
-	/// <see cref="ScoreManager"/>. </summary>
-	/// <value> The score manager. </value>
-	public static ScoreManager score
-	{
-		get 
-		{
-			if( !_score )
-			{
-				_score = GameObject.FindObjectOfType<ScoreManager>();
-			}
-
-			return _score;
 		}
 	}
 

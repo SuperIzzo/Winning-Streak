@@ -94,7 +94,7 @@ public static class Commentator
 		if( Active == null )
 			throw new MissingReferenceException( 
                             "Commentator.Active is not set to a valid " +
-                            "instance.\nTry adding a Commentator component " +
-                            "to the scene.");
+                            "instance.\nTry adding a CommentatorSystem " +
+                            "component to the scene.");
 	}
 }
