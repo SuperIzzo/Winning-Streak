@@ -163,7 +163,7 @@ public class CommentatorSystem : MonoBehaviour
 		currentQueue = queue;
 		
 		// Stop the current commentating event
-		audio.Stop();
+		GetComponent<AudioSource>().Stop();
 		
 		return true;
 	}
@@ -183,7 +183,7 @@ public class CommentatorSystem : MonoBehaviour
 	{
 		// If teh audio is not playing move onto the
 		// the next line in the script (if any left)
-		if( !audio.isPlaying )
+		if( !GetComponent<AudioSource>().isPlaying )
 		{
 			if( currentQueue != null && clipIndex < currentQueue.clipQueue.Count )
 			{
@@ -191,8 +191,8 @@ public class CommentatorSystem : MonoBehaviour
 				
 				if( clip )
 				{
-					audio.clip = clip;
-					audio.Play();
+					GetComponent<AudioSource>().clip = clip;
+					GetComponent<AudioSource>().Play();
 					
 					timeSinceLastComment = Time.unscaledTime;
 				}

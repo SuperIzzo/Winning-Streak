@@ -10,7 +10,7 @@ public class DropHelmet : MonoBehaviour
 	{
 		if( character!=null && character.isKnockedDown )
 		{
-			rigidbody.isKinematic = false;
+			GetComponent<Rigidbody>().isKinematic = false;
 			transform.parent = null;
 			character = null;
 		}

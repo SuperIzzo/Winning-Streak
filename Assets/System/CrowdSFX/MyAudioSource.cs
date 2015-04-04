@@ -19,18 +19,18 @@ public class MyAudioSource : MonoBehaviour
 	{
 		if( audioClip )
 		{
-			audio.volume = vol;
-			audio.pan = pan;
-			audio.clip = audioClip;
-			audio.Play();
+			GetComponent<AudioSource>().volume = vol;
+			GetComponent<AudioSource>().panStereo = pan;
+			GetComponent<AudioSource>().clip = audioClip;
+			GetComponent<AudioSource>().Play();
 		}
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-        audio.volume *= CrowdManager.MasterVolume;
-		if( audioClip==null || audio==null || !audio.isPlaying )
+        GetComponent<AudioSource>().volume *= CrowdManager.MasterVolume;
+		if( audioClip==null || GetComponent<AudioSource>()==null || !GetComponent<AudioSource>().isPlaying )
 		{
 			Destroy( gameObject );
 		}

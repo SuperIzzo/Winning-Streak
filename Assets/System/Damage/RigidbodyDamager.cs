@@ -18,7 +18,7 @@ public class RigidbodyDamager : Damager
 	public override bool DamageTest( Damageable damageable )
 	{
 		//if there is little movement on the y axis, don't damage
-		return rigidbody.velocity.y > 1;
+		return GetComponent<Rigidbody>().velocity.y > 1;
 		
 		// TODO: 	This is a barebones implementation
 		//			in order to make this work properly for flying objects

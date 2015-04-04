@@ -21,7 +21,7 @@ public class SplashScreen : MonoBehaviour {
         foreach (GameObject go in TransitionObjects)
         {
             go.transform.localScale = Vector3.zero;
-            go.renderer.material.color = new Color(Random.Range(0.0f, 1.0f),
+            go.GetComponent<Renderer>().material.color = new Color(Random.Range(0.0f, 1.0f),
                                                    Random.Range(0.0f, 1.0f),
                                                    Random.Range(0.0f, 1.0f));
         }

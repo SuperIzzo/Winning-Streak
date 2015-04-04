@@ -33,9 +33,9 @@ public class CrowdManager : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-		audio.clip = _ambience;
-		audio.loop = true;
-		audio.Play();
+		GetComponent<AudioSource>().clip = _ambience;
+		GetComponent<AudioSource>().loop = true;
+		GetComponent<AudioSource>().Play();
 
 		_gradualHype = hype;
 
@@ -50,8 +50,8 @@ public class CrowdManager : MonoBehaviour
 		_gradualHype = 	hype 		 * _gradualHypeTransition +
 						_gradualHype * (1 - _gradualHypeTransition);
 
-		audio.volume = _gradualHype;
-        audio.volume *= MasterVolume;
+		GetComponent<AudioSource>().volume = _gradualHype;
+        GetComponent<AudioSource>().volume *= MasterVolume;
 	}
 
 	IEnumerator MassDetail()

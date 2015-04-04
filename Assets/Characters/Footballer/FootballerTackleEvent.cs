@@ -40,16 +40,16 @@ public class FootballerTackleEvent : MonoBehaviour
 			var scoringEvent = GameSystem.scoringEvent;
 			scoringEvent.Fire( ScoringEventType.DODGE_TACKLE );
 
-			if( audio )
+			if( GetComponent<AudioSource>() )
 			{
-				audio.clip = tackleFailSFX[ Random.Range(0, tackleFailSFX.Length) ];
-				audio.Play();
+				GetComponent<AudioSource>().clip = tackleFailSFX[ Random.Range(0, tackleFailSFX.Length) ];
+				GetComponent<AudioSource>().Play();
 			}
 		}
-		else if( audio )
+		else if( GetComponent<AudioSource>() )
 		{
-			audio.clip = tackleFailSFX[ Random.Range(0, tackleFailSFX.Length) ];
-			audio.Play();
+			GetComponent<AudioSource>().clip = tackleFailSFX[ Random.Range(0, tackleFailSFX.Length) ];
+			GetComponent<AudioSource>().Play();
 		}
 	}
 }

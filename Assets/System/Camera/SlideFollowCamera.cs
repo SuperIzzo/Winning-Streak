@@ -123,7 +123,7 @@ public class SlideFollowCamera : MonoBehaviour
 
 		float fieldOfView = Vector3.Distance(target.position, invertedCamera);
 		fieldOfView *= currentConfig.FOVModifier;
-		camera.fieldOfView = fieldOfView;
+		GetComponent<Camera>().fieldOfView = fieldOfView;
 	}
 
 	//--------------------------------------------------------------

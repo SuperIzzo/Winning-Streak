@@ -37,14 +37,14 @@ public class HitNoise : MonoBehaviour
 	//--------------------------------------
 	void OnCollisionEnter(Collision collision)
 	{
-		if( audio && hitSound && soundTimer<=0 )
+		if( GetComponent<AudioSource>() && hitSound && soundTimer<=0 )
 		{
 			float collisionPower = collision.relativeVelocity.magnitude;
 			if( collisionPower > 2 )
 			{
-				audio.clip = hitSound;
-				audio.volume = Mathf.Clamp01( collisionPower/collsionPowerRate );
-				audio.Play();
+				GetComponent<AudioSource>().clip = hitSound;
+				GetComponent<AudioSource>().volume = Mathf.Clamp01( collisionPower/collsionPowerRate );
+				GetComponent<AudioSource>().Play();
 			}
 		}
 	}

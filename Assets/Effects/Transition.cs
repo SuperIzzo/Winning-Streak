@@ -32,7 +32,7 @@ public class Transition : MonoBehaviour
                 go.SetActive(true);
 
             go.transform.localScale = new Vector3(2, 2, 2);
-            go.renderer.material.color = new Color(Random.Range(0.0f, 1.0f),
+            go.GetComponent<Renderer>().material.color = new Color(Random.Range(0.0f, 1.0f),
                                                    Random.Range(0.0f, 1.0f),
                                                    Random.Range(0.0f, 1.0f));
         }

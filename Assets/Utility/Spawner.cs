@@ -91,10 +91,10 @@ public class Spawner : MonoBehaviour
 	{
 		Vector3 randomPosition = area.position;
 
-		if( area.collider )
+		if( area.GetComponent<Collider>() )
 		{
-			Vector3 min = area.collider.bounds.min;
-			Vector3 max = area.collider.bounds.max;
+			Vector3 min = area.GetComponent<Collider>().bounds.min;
+			Vector3 max = area.GetComponent<Collider>().bounds.max;
 			
 			randomPosition.x = Random.Range( min.x, max.x );
 			randomPosition.y = Random.Range( min.y, max.y );

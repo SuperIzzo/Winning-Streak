@@ -41,9 +41,9 @@ public class DamageableCharacter : Damageable
 			if( damagerController )
 			{
 				// Play sound effect
-				if( audio && tackleSFX )
+				if( GetComponent<AudioSource>() && tackleSFX )
 				{
-					audio.PlayOneShot( tackleSFX );
+					GetComponent<AudioSource>().PlayOneShot( tackleSFX );
 				}
 
 				Vector3 direction = transform.position - info.damager.transform.position;

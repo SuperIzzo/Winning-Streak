@@ -31,8 +31,8 @@ public class CombineChildren : MonoBehaviour
 			CombineInstance ci = new CombineInstance();
 			ci.mesh = filter.sharedMesh;
 			ci.transform = myTransform * filter.transform.localToWorldMatrix;
-			combines[filter.renderer.sharedMaterial].Add(ci);
-			filter.renderer.enabled = false;
+			combines[filter.GetComponent<Renderer>().sharedMaterial].Add(ci);
+			filter.GetComponent<Renderer>().enabled = false;
 		}
 		
 		foreach(Material m in combines.Keys)

@@ -29,8 +29,8 @@ public class RandomCharacterShouts : MonoBehaviour
 			// Play sounds only of the character's not dead
 			if( controller==null || !controller.isKnockedDown )
 			{
-				audio.clip = clips[ Random.Range(0, clips.Length) ];
-				audio.Play();
+				GetComponent<AudioSource>().clip = clips[ Random.Range(0, clips.Length) ];
+				GetComponent<AudioSource>().Play();
 			}
 		}
 	}

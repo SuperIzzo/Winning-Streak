@@ -52,11 +52,11 @@ public class ThrowableObject : MonoBehaviour
 		owner = character;
 		slot = propSlot;
 
-		if( rigidbody )
-			rigidbody.isKinematic = true;
+		if( GetComponent<Rigidbody>() )
+			GetComponent<Rigidbody>().isKinematic = true;
 
-		if( collider )
-			collider.isTrigger = true;
+		if( GetComponent<Collider>() )
+			GetComponent<Collider>().isTrigger = true;
 		
 		// Get addopted by the hand/slot
 		// We keep the world position, as we'll animate the grabbing
@@ -70,13 +70,13 @@ public class ThrowableObject : MonoBehaviour
 	//--------------------------------------
 	public void OnThrown( BaseCharacterController character, Vector3 force )
 	{
-        if (collider)
-			collider.isTrigger = false;
+        if (GetComponent<Collider>())
+			GetComponent<Collider>().isTrigger = false;
 
-		if( rigidbody )
+		if( GetComponent<Rigidbody>() )
 		{
-			rigidbody.isKinematic = false;
-			rigidbody.AddForce( force , ForceMode.Impulse );
+			GetComponent<Rigidbody>().isKinematic = false;
+			GetComponent<Rigidbody>().AddForce( force , ForceMode.Impulse );
 		}
 
 
@@ -104,7 +104,7 @@ public class ThrowableObject : MonoBehaviour
 					owner = null;
 
 					if( collision.relativeVelocity.magnitude > knockOutPower 
-					   	&& rigidbody.velocity.magnitude		 > knockOutPower)
+					   	&& GetComponent<Rigidbody>().velocity.magnitude		 > knockOutPower)
 					{
 		                Debug.Log("Relative vel: " + collision.relativeVelocity.magnitude);
 						character.KnockDown();
