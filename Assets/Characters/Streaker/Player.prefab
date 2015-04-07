@@ -531,7 +531,6 @@ GameObject:
   - 136: {fileID: 13662912}
   - 54: {fileID: 5462912}
   - 144: {fileID: 14462912}
-  - 114: {fileID: 11421158}
   m_Layer: 0
   m_Name: Dong
   m_TagString: Untagged
@@ -546,7 +545,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.96399403, y: .319522858, z: 7.7752676}
+  m_LocalPosition: {x: 5.71211576, y: .319522858, z: 7.17154121}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400002}
@@ -1508,19 +1507,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toFollow: {fileID: 100044}
---- !u!114 &11421158
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 162912}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 009adc157fd747349ab6f191465fb3a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  position: {x: 0, y: 0, z: 0}
-  distance: 5
 --- !u!114 &11457588
 MonoBehaviour:
   m_ObjectHideFlags: 1
