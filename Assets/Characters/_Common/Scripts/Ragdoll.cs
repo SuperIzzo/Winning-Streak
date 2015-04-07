@@ -109,10 +109,10 @@ public class Ragdoll : MonoBehaviour
 		foreach(Rigidbody part in parts)
 		{
 			if( part )
-            {
+			{
 				part.isKinematic = true;
-                part.freezeRotation = false;
-            }
+				part.freezeRotation = false;
+			}
 		}
 	}
 
