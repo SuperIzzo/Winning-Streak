@@ -86,17 +86,11 @@ public class Ragdoll : MonoBehaviour
 
 		foreach(Rigidbody part in parts)
 		{
-            if (part)
-            {
-                part.isKinematic = false;
-
-                // Jake: stops the infamous helicopter arms 
-				// Izzo: this will work for now, might be a problem if we change the rig
-                if (part.name == "lShldr" || part.name == "rShldr" || part.name == "lForeArm" || part.name == "rForeArm")
-                {
-                    part.freezeRotation = true;
-                }            
-            }
+			if (part)
+			{
+				part.isKinematic = false;
+	       
+			}
 		}
 	}
 	
