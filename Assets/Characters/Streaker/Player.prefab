@@ -16,7 +16,6 @@ GameObject:
   - 114: {fileID: 11400012}
   - 114: {fileID: 11400014}
   - 114: {fileID: 11400016}
-  - 114: {fileID: 11400008}
   - 114: {fileID: 11482714}
   m_Layer: 0
   m_Name: Player
@@ -1411,29 +1410,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef395af6d6b573146b9514b4f15c0c60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11400008
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37f73be46e8d75b4c8dd8700e8b402c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  limbList:
-  - {fileID: 100034}
-  - {fileID: 100040}
-  - {fileID: 100042}
-  - {fileID: 100046}
-  - {fileID: 100022}
-  - {fileID: 100028}
-  - {fileID: 100058}
-  - {fileID: 100036}
-  - {fileID: 100008}
-  - {fileID: 100048}
-  hackDuration: .5
 --- !u!114 &11400010
 MonoBehaviour:
   m_ObjectHideFlags: 1
