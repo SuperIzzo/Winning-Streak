@@ -1,12 +1,15 @@
 using UnityEngine;
 using System.Collections;
 
+// TODO: This file reaks of smelly code, it needs urgent sanitation
+
 public class EndGame : MonoBehaviour
 {
 	private BaseCharacterController player;
 	public GUIWindow endGameDialogue;
 	public GUIWindow hud;
 
+	private bool announced = false;
 	private float endGameDialogCountdown = 0.0f;
 
 	// Use this for initialization
@@ -30,24 +33,33 @@ public class EndGame : MonoBehaviour
             }
             else if (player.isKnockedDown)
             {
-                hud.Hide();
-                endGameDialogCountdown = 2.0f;
-                //endGameDialogue.Show();
-		
-		Score score = Player.p1.score;
-		float highScore = Persistence.GetFloat("HighScore", 0);
-		
-		score.enabled = false;
-		GameSession.current.enabled = false;
-
-		if( score.total>highScore )
+		if( !announced )
 		{
-			highScore = score.total;
-			Persistence.SetFloat("HighScore", highScore); 
-		}
+			announced = true;
 
-		Commentator.Comment( CommentatorEvent.GAME_OVER );
+	                hud.Hide();
+	                endGameDialogCountdown = 2.0f;
+	                //endGameDialogue.Show();
+			
+			Score score = Player.p1.score;
+			float highScore = Persistence.GetFloat("HighScore", 0);
+			
+			score.enabled = false;
+			GameSession.current.enabled = false;
+
+			if( score.total>highScore )
+			{
+				highScore = score.total;
+				Persistence.SetFloat("HighScore", highScore); 
+			}
+
+			Commentator.Comment( CommentatorEvent.GAME_OVER );
+		}
             }
+	    else
+	    {
+		announced = false;
+	    }
         }
         else
         {
