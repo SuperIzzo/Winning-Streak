@@ -25,6 +25,6 @@ public class HypeScore : MonoBehaviour
 	//--------------------------------------
 	void Update ()
 	{
-		score.baseScore +=  Time.deltaTime * GameSystem.crowd.hype;
+		score.baseScore +=  Time.deltaTime * Crowd.hype;
 	}
 }

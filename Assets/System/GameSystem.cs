@@ -24,7 +24,6 @@ public class GameSystem : MonoBehaviour
 	private static ScoringEventManager	_scoringEvent;
 	private static DifficultyManager	_difficulty;
 	private static SocialManager		_social;
-	private static CrowdManager		_crowd;
 	private static AchievementsManager	_achievements;
 	#endregion
 
@@ -111,22 +110,6 @@ public class GameSystem : MonoBehaviour
 			}
 			
 			return _social;
-		}
-	}
-
-	/// <summary> Gets a single instance to the 
-	/// <see cref="CrowdManager"/>. </summary>
-	/// <value> The crowd manager. </value>
-	public static CrowdManager crowd
-	{
-		get 
-		{
-			if( !_crowd )
-			{
-				_crowd = GameObject.FindObjectOfType<CrowdManager>();
-			}
-			
-			return _crowd;
 		}
 	}
 	#endregion
