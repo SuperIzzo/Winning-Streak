@@ -21,10 +21,7 @@ public class Transition : MonoBehaviour
     public void MenuToGame() { StartCoroutine("MenuPlay"); }
 
     void Start()
-    {
-        CrowdManager.MasterVolume = 1;
-
-   
+    {   
 
         foreach (GameObject go in TransitionObjects)
         {

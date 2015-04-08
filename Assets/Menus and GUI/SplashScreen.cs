@@ -16,8 +16,6 @@ public class SplashScreen : MonoBehaviour {
 	
 	void Start () 
     {
-        CrowdManager.MasterVolume = 1;
-
         foreach (GameObject go in TransitionObjects)
         {
             go.transform.localScale = Vector3.zero;
