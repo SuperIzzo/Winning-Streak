@@ -135,8 +135,16 @@ public class BaseCharacterController : MonoBehaviour
 		if( !_isKnockedDown )
 		{
 			_tackleTimer = 0.0f; // Cancel tackling
-			_reviveTimer = Random.Range(reviveTimeMin, reviveTimeMax);
 			_isKnockedDown = true;
+
+			if( reviveTimeMin>=0 && reviveTimeMax>=reviveTimeMin )
+			{
+				_reviveTimer = Random.Range(reviveTimeMin, reviveTimeMax);
+			}
+			else
+			{
+				_reviveTimer = -1;
+			}
 		}
 	}
 
