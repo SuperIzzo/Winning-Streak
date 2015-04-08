@@ -1397,8 +1397,8 @@ MonoBehaviour:
   throwPower: 20
   tackleDuration: .300000012
   tackleSpeed: 4
-  reviveTimeMin: 10
-  reviveTimeMax: 15
+  reviveTimeMin: -1
+  reviveTimeMax: -1
   propSlot: {fileID: 400026}
 --- !u!114 &11400004
 MonoBehaviour:
