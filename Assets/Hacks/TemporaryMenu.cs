@@ -3,7 +3,7 @@ using System.Collections;
 
 public class TemporaryMenu : MonoBehaviour {
 
-    public Transition transition;
+    public GameObject canvas;
 
     bool toGame = false;
     float timer = 0;
@@ -20,7 +20,10 @@ public class TemporaryMenu : MonoBehaviour {
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                transition.MenuToGame();
+                if (canvas.GetComponent<GUITransition>())
+                {
+                    canvas.GetComponent<GUITransition>().ExitScene("main-2");
+                }
                 toGame = true;
             }
         }

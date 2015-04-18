@@ -6,6 +6,9 @@ public class CameraSlowRotate : MonoBehaviour {
 
     private Vector3 rotateDirection;
 
+    private float delay = 1, timer = 0;
+    bool rotate = false;
+
     void Start()
     {
         rotateDirection = new Vector3(0, Random.RandomRange(0, 1), 0);
@@ -16,6 +19,14 @@ public class CameraSlowRotate : MonoBehaviour {
 
 	void Update () 
     {
-        this.gameObject.transform.Rotate(rotateDirection, rotateSpeed * Time.deltaTime);
+        if (rotate)
+            this.gameObject.transform.Rotate(rotateDirection, rotateSpeed * Time.deltaTime);
+        else
+        {
+            timer += Time.deltaTime;
+
+            if (timer > delay)
+                rotate = true;
+        }
 	}
 }
