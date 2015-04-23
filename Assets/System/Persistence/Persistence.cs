@@ -29,7 +29,7 @@ public class Persistence
 	//--------------------------------------
 	public static void DeleteAll()
 	{
-		CeckActive();
+        CheckActive();
 		Active.DeleteAll();
 	}
 	
@@ -40,7 +40,7 @@ public class Persistence
 	//--------------------------------------
 	public static void DeleteKey(string key)
 	{
-		CeckActive();
+        CheckActive();
 		Active.DeleteKey(key);
 	}
 	
@@ -54,7 +54,7 @@ public class Persistence
 	//--------------------------------------
 	public static float GetFloat(string key, float defaultValue = 0.0F)
 	{
-		CeckActive();
+        CheckActive();
 		return Active.GetFloat(key, defaultValue );
 	}
 	
@@ -68,7 +68,7 @@ public class Persistence
 	//--------------------------------------
 	public static int GetInt(string key, int defaultValue = 0)
 	{
-		CeckActive();
+        CheckActive();
 		return Active.GetInt( key, defaultValue );
 	}
 	
@@ -82,7 +82,7 @@ public class Persistence
 	//--------------------------------------
 	public static string GetString(string key, string defaultValue = "")
 	{
-		CeckActive();
+        CheckActive();
 		return Active.GetString( key, defaultValue );
 	}
 	
@@ -95,7 +95,7 @@ public class Persistence
 	//--------------------------------------
 	public static bool HasKey(string key)
 	{
-		CeckActive();
+        CheckActive();
 		return Active.HasKey( key );
 	}
 	
@@ -111,7 +111,7 @@ public class Persistence
 	//--------------------------------------
 	public static void Save()
 	{
-		CeckActive();
+        CheckActive();
 		Active.Save();
 	}
 	
@@ -123,7 +123,7 @@ public class Persistence
 	//--------------------------------------
 	public static void SetFloat(string key, float value)
 	{
-		CeckActive();
+        CheckActive();
 		Active.SetFloat( key, value );
 	}
 	
@@ -135,7 +135,7 @@ public class Persistence
 	//--------------------------------------
 	public static void SetInt(string key, int value)
 	{
-		CeckActive();
+        CheckActive();
 		Active.SetInt( key, value );
 	}
 	
@@ -147,14 +147,14 @@ public class Persistence
 	//--------------------------------------
 	public static void SetString(string key, string value)
 	{
-		CeckActive();
+        CheckActive();
 		Active.SetString( key, value );
 	}
 	
 	//-------------------------------------------------------------
 	/// <summary> Tests if the Active instance is valid </summary>
 	//--------------------------------------
-	private static void CeckActive()
+	private static void CheckActive()
 	{
 		if( Active == null )
 			throw new MissingReferenceException( 

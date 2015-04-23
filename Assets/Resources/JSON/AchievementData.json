@@ -1,0 +1,27 @@
+{
+	"amount" : "2",
+	"achievementNames" : [
+						 "The Winning Streak",
+						 "Can't touch this"
+						 ],
+	
+	"data" : 
+	{
+		"The Winning Streak" : {
+							   "id" : "0",
+							   "description" : "You beat the global highscore!",
+							   "texture" : "Textures/achievementExmaple.png"
+							   },
+
+		"Can't touch this" :   {
+							   "id" : "1",
+							   "description" : "Dance dance",
+							   "texture" : "Textures/dance.png"
+							   }
+
+	}
+
+
+
+
+}
