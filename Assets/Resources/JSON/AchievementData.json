@@ -1,22 +1,92 @@
 {
-	"amount" : "2",
+	"amount" : "12",
 	"achievementNames" : [
-						 "The Winning Streak",
-						 "Can't touch this"
+						 "Getting a-head",
+						 "Anarchist",
+						 "Wiggly",
+						 "Rain Dance",
+						 "Bullseye",
+						 "The 100",
+						 "A true spartan!",
+						 "Devil's advocate",
+						 "You're a beast",
+						 "Mr 3000",
+						 "Sir 5000",
+						 "The Winning Streak"
 						 ],
 	
 	"data" : 
 	{
-		"The Winning Streak" : {
+		"Getting a-head"     : {
 							   "id" : "0",
-							   "description" : "You beat the global highscore!",
+							   "description" : "Throw 10 helmets between the bars",
 							   "texture" : "Textures/achievementExmaple.png"
 							   },
 
-		"Can't touch this" :   {
+		"Anarchist"			 : {
 							   "id" : "1",
-							   "description" : "Dance dance",
-							   "texture" : "Textures/dance.png"
+							   "description" : "Throw 5 balls into the audience",
+							   "texture" : "Textures/achievementExmaple.png"
+							   },
+
+		"Wiggly"			 : {
+							   "id" : "2",
+							   "description" : "Wiggle for 30 seconds",
+							   "texture" : "Textures/achievementExmaple.png"
+							   },
+
+		"Rain Dance"		 : {
+							   "id" : "3",
+							   "description" : "Wiggle for 30 while holding an umbrella",
+							   "texture" : "Textures/achievementExmaple.png"
+							   },
+
+		"Bullseye"			 : {
+							   "id" : "4",
+							   "description" : "Hit the advertisement target",
+							   "texture" : "Textures/achievementExmaple.png"
+							   },
+
+		"The 100"			 : {
+							   "id" : "5",
+							   "description" : "Score 100 points",
+							   "texture" : "Textures/achievementExmaple.png"
+							   },
+
+		"A true spartan!"	 : {
+							   "id" : "6",
+							   "description" : "Score 300 points",
+							   "texture" : "Textures/achievementExmaple.png"
+							   },
+
+		"Devil's advocate"	 : {
+							   "id" : "7",
+							   "description" : "Score 666 points",
+							   "texture" : "Textures/achievementExmaple.png"
+							   },
+
+		"You're a beast"	 : {
+							   "id" : "8",
+							   "description" : "Score 1000 points",
+							   "texture" : "Textures/achievementExmaple.png"
+							   },
+
+		"Mr 3000"			 : {
+							   "id" : "9",
+							   "description" : "Score 3000 points",
+							   "texture" : "Textures/achievementExmaple.png"
+							   },
+
+		"Sir 5000"			 : {
+							   "id" : "10",
+							   "description" : "Score 5000 points",
+							   "texture" : "Textures/achievementExmaple.png"
+							   },
+		
+		"The Winning Streak" : {
+							   "id" : "11",
+							   "description" : "Beat the top score on the global leaderboard",
+							   "texture" : "Textures/achievementExmaple.png"
 							   }
 
 	}

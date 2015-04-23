@@ -6,6 +6,7 @@ using SimpleJSON;
 
 public class AchievementsManager : MonoBehaviour
 {
+    //Where to find the .json file
     const string dataPath = "JSON/AchievementData";
 
     //corresponding data files in the .json file
@@ -17,7 +18,7 @@ public class AchievementsManager : MonoBehaviour
     const string achieveDescriptionValue = "description";
     const string achieveTextureValue = "texture";
 
-
+    //List to store the loaded data into
     public List<Achievement> AchievementData;
 
     void Start()
@@ -116,7 +117,8 @@ public class AchievementsManager : MonoBehaviour
         if (_node[achievementArrayValue][_name] == null)
         {
             throw new MissingReferenceException(
-                "AchievementData.json format error. could not find achievement: '" + _name + "'.");
+                "AchievementData.json format error. could not find achievement: '" 
+                + _name + "'.");
 
             return false;
         }
@@ -124,7 +126,8 @@ public class AchievementsManager : MonoBehaviour
         if (_node[achievementArrayValue][_name][achieveIDValue] == null)
         {
             throw new MissingReferenceException(
-                "AchievementData.json format error. could not find achievement data: '" + _name + ":id'.");
+                "AchievementData.json format error. could not find achievement data: '" 
+                + _name + ":" + achieveIDValue + "'.");
 
             return false;
         }
@@ -132,7 +135,8 @@ public class AchievementsManager : MonoBehaviour
         if (_node[achievementArrayValue][_name][achieveDescriptionValue] == null)
         {
             throw new MissingReferenceException(
-                "AchievementData.json format error. could not find achievement data: '" + _name + ":description'.");
+                "AchievementData.json format error. could not find achievement data: '" 
+                + _name + ":" + achieveDescriptionValue + "'.");
 
             return false;
         }
@@ -140,7 +144,8 @@ public class AchievementsManager : MonoBehaviour
         if (_node[achievementArrayValue][_name][achieveTextureValue] == null)
         {
             throw new MissingReferenceException(
-                "AchievementData.json format error. could not find achievement data: '" + _name + ":texture'.");
+                "AchievementData.json format error. could not find achievement data: '" 
+                + _name + ":" + achieveTextureValue + "'.");
 
             return false;
         }
