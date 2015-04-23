@@ -9,4 +9,6 @@ public class Achievement
 	public string description;
     public string texture;
 	public Sprite icon;
+
+    public bool unlocked = false;
 }

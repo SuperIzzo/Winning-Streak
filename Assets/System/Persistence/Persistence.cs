@@ -55,7 +55,7 @@ public class Persistence
 	public static float GetFloat(string key, float defaultValue = 0.0F)
 	{
         CheckActive();
-		return Active.GetFloat(key, defaultValue );
+		return Active.GetFloat( key, defaultValue );
 	}
 	
 	//-------------------------------------------------------------

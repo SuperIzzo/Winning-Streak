@@ -74,14 +74,14 @@ namespace LocalPlatform
 			return board.loading;
 		}
 
-		public void LoadAchievements( System.Action<IAchievement[]> callback )
-		{
-			throw new System.NotImplementedException();
-			
-			IAchievement[] achievements = new IAchievement[] {};
-			
-			callback( achievements );
-		}
+        public void LoadAchievements(System.Action<IAchievement[]> callback)
+        {
+            throw new System.NotImplementedException();
+
+            IAchievement[] achievements = new IAchievement[] { };
+
+            callback(achievements);
+        }
 
 		public void LoadAchievementDescriptions( System.Action<IAchievementDescription[]> callback )
 		{

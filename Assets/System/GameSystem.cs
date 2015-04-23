@@ -72,10 +72,10 @@ public class GameSystem : MonoBehaviour
 	{
 		get 
 		{
-			if( !_achievements )
-			{
-				_achievements = GameObject.FindObjectOfType<AchievementsManager>();
-			}
+            //if( !_achievements )
+            //{
+            //    _achievements = GameObject.FindObjectOfType<AchievementsManager>();
+            //}
 			
 			return _achievements;
 		}

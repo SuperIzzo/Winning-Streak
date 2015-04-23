@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 using SimpleJSON;
 
-public class AchievementsManager : MonoBehaviour
+public class AchievementsManager
 {
     //Where to find the .json file
     const string dataPath = "JSON/AchievementData";
@@ -19,12 +19,33 @@ public class AchievementsManager : MonoBehaviour
     const string achieveTextureValue = "texture";
 
     //List to store the loaded data into
-    public List<Achievement> AchievementData;
+    private List<Achievement> AchievementData = new List<Achievement>();
 
-    void Start()
+    public void Load()
     {
         LoadAchievements();
+        Debug.Log("Loaded achievements");
     }
+
+    public void UnlockAchievement<T>(T achievement)
+    {
+        if(achievement is int)
+        {
+            //Insert AchievementData.unlocked = true logic
+            Debug.Log("Achievement type is: integer");
+        }
+
+        if (achievement is string)
+        {
+            //Insert AchievementData.unlocked = true logic
+            Debug.Log("Achievement type is: string");
+        }
+    }
+
+
+
+
+
 
     //-------------------------------------------------------------
     /// <summary> Loads the achievements data from the JSON
