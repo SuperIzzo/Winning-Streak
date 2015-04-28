@@ -45,6 +45,7 @@ GameObject:
   - 222: {fileID: 22247762}
   - 114: {fileID: 11483906}
   - 114: {fileID: 11459006}
+  - 114: {fileID: 11463138}
   m_Layer: 5
   m_Name: Score Line
   m_TagString: Untagged
@@ -156,6 +157,21 @@ MonoBehaviour:
   m_PreferredHeight: 40
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
+--- !u!114 &11463138
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 150586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b57cbdff1d28a84481ee94ffb02a4c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rankText: {fileID: 11423982}
+  _nameText: {fileID: 11474802}
+  _scoreText: {fileID: 11456912}
+  _timeText: {fileID: 11492340}
 --- !u!114 &11474802
 MonoBehaviour:
   m_ObjectHideFlags: 1

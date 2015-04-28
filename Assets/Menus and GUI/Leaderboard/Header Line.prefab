@@ -45,6 +45,7 @@ GameObject:
   - 222: {fileID: 22237740}
   - 114: {fileID: 11407514}
   - 114: {fileID: 11468356}
+  - 114: {fileID: 11444696}
   m_Layer: 5
   m_Name: Header Line
   m_TagString: Untagged
@@ -159,6 +160,21 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Time
+--- !u!114 &11444696
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 162536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b57cbdff1d28a84481ee94ffb02a4c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rankText: {fileID: 11464160}
+  _nameText: {fileID: 11408078}
+  _scoreText: {fileID: 11452300}
+  _timeText: {fileID: 11414258}
 --- !u!114 &11452300
 MonoBehaviour:
   m_ObjectHideFlags: 1
