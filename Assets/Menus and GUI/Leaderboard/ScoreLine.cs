@@ -7,10 +7,10 @@ public class ScoreLine : MonoBehaviour
 	//--------------------------------------------------------------
 	#region Inspector settings
 	//--------------------------------------
-	[SerializeField] Text _rankText;
-	[SerializeField] Text _nameText;
-	[SerializeField] Text _scoreText;
-	[SerializeField] Text _timeText;
+	[SerializeField] Text _rankText     = null;
+	[SerializeField] Text _userNameText = null;
+	[SerializeField] Text _scoreText    = null;
+	[SerializeField] Text _timeText     = null;
 	#endregion
 
 
@@ -23,10 +23,10 @@ public class ScoreLine : MonoBehaviour
 		set{ _rankText.text = value; }
 	}
 
-	public string name
+	public string userName
 	{
-		get{ return _nameText.text;  }
-		set{ _nameText.text = value; }
+		get{ return _userNameText.text;  }
+		set{ _userNameText.text = value; }
 	}
 
 	public string score
