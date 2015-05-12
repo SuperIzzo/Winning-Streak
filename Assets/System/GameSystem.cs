@@ -24,7 +24,7 @@ public class GameSystem : MonoBehaviour
 	private static ScoringEventManager	_scoringEvent;
 	private static DifficultyManager	_difficulty;
 	private static SocialManager		_social;
-	private static AchievementsManager	_achievements;
+	//private static AchievementsManager	_achievements;
 	#endregion
 
 
@@ -68,49 +68,49 @@ public class GameSystem : MonoBehaviour
 	/// <summary> Gets a single instance to the 
 	/// <see cref="AchievementsManager"/>. </summary>
 	/// <value> The achievements manager. </value>
-	public static AchievementsManager achievements
-	{
-		get 
-		{
-            //if( !_achievements )
-            //{
-            //    _achievements = GameObject.FindObjectOfType<AchievementsManager>();
-            //}
+    //public static AchievementsManager achievements
+    //{
+    //    get 
+    //    {
+    //        //if( !_achievements )
+    //        //{
+    //        //    _achievements = GameObject.FindObjectOfType<AchievementsManager>();
+    //        //}
 			
-			return _achievements;
-		}
-	}
+    //        return _achievements;
+    //    }
+	//}
 
 	/// <summary> Gets a single instance to the 
 	/// <see cref="DifficultyManager"/>. </summary>
 	/// <value> The difficulty manager. </value>
-	public static DifficultyManager difficulty
-	{
-		get 
-		{
-			if( !_difficulty )
-			{
-				_difficulty = GameObject.FindObjectOfType<DifficultyManager>();
-			}
-			
-			return _difficulty;
-		}
-	}
+    public static DifficultyManager difficulty
+    {
+        get
+        {
+            if (!_difficulty)
+            {
+                _difficulty = GameObject.FindObjectOfType<DifficultyManager>();
+            }
+
+            return _difficulty;
+        }
+    }
 	
 	/// <summary> Gets a single instance to the 
 	/// <see cref="SocialManager"/>. </summary>
 	/// <value> The social manager. </value>
-	public static SocialManager social
-	{
-		get 
-		{
-			if( !_social )
-			{
-				_social = GameObject.FindObjectOfType<SocialManager>();
-			}
+    public static SocialManager social
+    {
+        get 
+        {
+            if( !_social )
+            {
+                _social = GameObject.FindObjectOfType<SocialManager>();
+            }
 			
-			return _social;
-		}
-	}
+            return _social;
+        }
+    }
 	#endregion
 }

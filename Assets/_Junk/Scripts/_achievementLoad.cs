@@ -7,10 +7,7 @@ public class _achievementLoad : MonoBehaviour {
 	void Start () 
     {
         //this would be contained in the social platform stuff?
-        AchievementInterface.LoadAchievements();
-
-        AchievementInterface.GiveAchievement<int>(0);
-        AchievementInterface.GiveAchievement<string>("test");
+        PersistenceInterface.Save();
 	}
 	
 	// Update is called once per frame
