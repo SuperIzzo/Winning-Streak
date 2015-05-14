@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rankText: {fileID: 11423982}
-  _nameText: {fileID: 11474802}
+  _userNameText: {fileID: 11474802}
   _scoreText: {fileID: 11456912}
   _timeText: {fileID: 11492340}
 --- !u!114 &11474802
