@@ -32,7 +32,7 @@ public interface IPersistence
 	//-------------------------------------------------------------
 	/// <summary> Returns the value corresponding to key in the 
 	///			  persistent data if it exists. </summary>
-	/// <returns>The float.</returns>
+	/// <returns>The int.</returns>
 	/// <param name="key">The key.</param>
 	/// <param name="defaultValue">A default value to be returned
 	/// if the key could not be found.</param>
@@ -42,12 +42,22 @@ public interface IPersistence
 	//-------------------------------------------------------------
 	/// <summary> Returns the value corresponding to key in the 
 	///			  persistent data if it exists. </summary>
-	/// <returns>The float.</returns>
+	/// <returns>The string.</returns>
 	/// <param name="key">The key.</param>
 	/// <param name="defaultValue">A default value to be returned
 	/// if the key could not be found.</param>
 	//--------------------------------------
 	string GetString(string key, string defaultValue = "");
+
+	//-------------------------------------------------------------
+	/// <summary> Returns the value corresponding to key in the 
+	///		persistent data if it exists. </summary>
+	/// <returns>The data.</returns>
+	/// <param name="key">The key.</param>
+	/// <param name="defaultValue">A default value to be returned
+	/// if the key could not be found.</param>
+	//--------------------------------------
+	T GetObject<T>( string key, T defaultValue = null ) where T : class;
 
 	//-------------------------------------------------------------
 	/// <summary> Returns true if key exists in the
@@ -70,7 +80,7 @@ public interface IPersistence
 	void Save();
 
 	//-------------------------------------------------------------
-	/// <summary> Sets the value of the preference identified by
+	/// <summary> Sets the value of the persistence identified by
 	/// 		  the specified key. </summary>
 	/// <param name="key">Key.</param>
 	/// <param name="value">Value.</param>
@@ -78,7 +88,7 @@ public interface IPersistence
 	void SetFloat(string key, float value);
 
 	//-------------------------------------------------------------
-	/// <summary> Sets the value of the preference identified by
+	/// <summary> Sets the value of the persistence identified by
 	/// 		  the specified key. </summary>
 	/// <param name="key">Key.</param>
 	/// <param name="value">Value.</param>
@@ -86,12 +96,21 @@ public interface IPersistence
 	void SetInt(string key, int value);
 
 	//-------------------------------------------------------------
-	/// <summary> Sets the value of the preference identified by
+	/// <summary> Sets the value of the persistence identified by
 	/// 		  the specified key. </summary>
 	/// <param name="key">Key.</param>
 	/// <param name="value">Value.</param>
 	//--------------------------------------
 	void SetString(string key, string value);
+	
+	//-------------------------------------------------------------
+	/// <summary> Sets the value of the persistence identified by
+	/// 		  the specified key. </summary>
+	/// <param name="key">Key.</param>
+	/// <param name="value">Value.</param>
+	//--------------------------------------
+	void SetObject<T>( string key, T value) where T : class;
 }
+
 
 }  // namespace RoaringSnail.PeristenceSystems
