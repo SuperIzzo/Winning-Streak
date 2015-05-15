@@ -5,6 +5,8 @@ Temp/
 Obj/
 UnityGenerated/
 Library/
+Assets/UnityVS/
+Assets/UnityVS.meta
  
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
