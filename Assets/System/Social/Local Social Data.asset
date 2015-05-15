@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc990dbd67c64ad42933637ddb53ea3f, type: 3}
+  m_Name: Local Social Data
+  m_EditorClassIdentifier: 
+  defaultUserImage: {fileID: 2800000, guid: 80fb030e357e1854ca83e2e3b9220d96, type: 3}
+  leaderboards:
+  - id: lv01_total_score
+    title: Total Score
+    format: 
+  - id: lv01_base_score
+    title: Base Score
+    format: 
+  - id: lv01_mult_score
+    title: Mult Points
+    format: 
+  - id: lv01_time
+    title: Time
+    format: 
