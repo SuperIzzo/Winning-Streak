@@ -1,4 +1,19 @@
-﻿using UnityEngine;
+/** -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- **\
+|*                                                                            *|
+ * <file>                       MenuControls.cs                       </file> * 
+ *                                                                            * 
+ * <copyright>                                                                * 
+ *   Copyright (C) 2015  Roaring Snail Limited - All Rights Reserved          * 
+ *                                                                            * 
+ *   Unauthorized copying of this file, via any medium is strictly prohibited * 
+ *   Proprietary and confidential                                             * 
+ *                                                               </copyright> * 
+ *                                                                            * 
+ * <author>  Jake Thorne                                            </author> * 
+ * <date>    07-Dec-2014                                              </date> * 
+|*                                                                            *|
+\** -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- **/
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
