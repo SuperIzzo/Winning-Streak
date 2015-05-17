@@ -150,10 +150,6 @@ namespace RoaringSnail.SocialPlatforms.LocalImpl
         public void LoadUsers(string[] userIds, System.Action<IUserProfile[]> callback)
         {
             throw new System.NotImplementedException();
-
-            IUserProfile[] profiles = new IUserProfile[] { };
-
-            callback(profiles);
         }
 
 
@@ -220,10 +216,6 @@ namespace RoaringSnail.SocialPlatforms.LocalImpl
         public void LoadAchievements(System.Action<IAchievement[]> callback)
         {
             throw new System.NotImplementedException();
-
-            IAchievement[] achievements = new IAchievement[] { };
-
-            callback(achievements);
         }
 
 
@@ -236,10 +228,6 @@ namespace RoaringSnail.SocialPlatforms.LocalImpl
         public void LoadAchievementDescriptions(System.Action<IAchievementDescription[]> callback)
         {
             throw new System.NotImplementedException();
-
-            IAchievementDescription[] descs = new IAchievementDescription[] { };
-
-            callback(descs);
         }
 
 
@@ -262,8 +250,6 @@ namespace RoaringSnail.SocialPlatforms.LocalImpl
         public IAchievement CreateAchievement()
         {
             throw new System.NotImplementedException();
-
-            return null;
         }
 
 
@@ -295,8 +281,6 @@ namespace RoaringSnail.SocialPlatforms.LocalImpl
         public void ReportProgress(string id, double progress, System.Action<bool> callback)
         {
             throw new System.NotImplementedException();
-
-            callback(true);
         }
 
 

@@ -106,8 +106,6 @@ public class JSON_Persistence : MonoBehaviour {
         {
             throw new MissingReferenceException(
                 "AchievementData.json format error. could not find node: '" + _value + "'.");
-
-            return false;
         }
 
         return true;
@@ -190,8 +188,6 @@ public class JSON_Persistence : MonoBehaviour {
             throw new MissingReferenceException(
                 "AchievementData.json format error. could not find achievement: '"
                 + _name + "'.");
-
-            return false;
         }
 
         if (_node[achievementArrayValue][_name][achieveIDValue] == null)
@@ -199,8 +195,6 @@ public class JSON_Persistence : MonoBehaviour {
             throw new MissingReferenceException(
                 "AchievementData.json format error. could not find achievement data: '"
                 + _name + ":" + achieveIDValue + "'.");
-
-            return false;
         }
 
         if (_node[achievementArrayValue][_name][achieveDescriptionValue] == null)
@@ -208,8 +202,6 @@ public class JSON_Persistence : MonoBehaviour {
             throw new MissingReferenceException(
                 "AchievementData.json format error. could not find achievement data: '"
                 + _name + ":" + achieveDescriptionValue + "'.");
-
-            return false;
         }
 
         if (_node[achievementArrayValue][_name][achieveTextureValue] == null)
@@ -217,8 +209,6 @@ public class JSON_Persistence : MonoBehaviour {
             throw new MissingReferenceException(
                 "AchievementData.json format error. could not find achievement data: '"
                 + _name + ":" + achieveTextureValue + "'.");
-
-            return false;
         }
 
         return true;

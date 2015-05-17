@@ -44,8 +44,6 @@ namespace RoaringSnail.SocialPlatforms.LocalImpl
         public void LoadFriends(System.Action<bool> callback)
         {
             throw new System.NotImplementedException();
-
-            callback(true);
         }
     }
 }
