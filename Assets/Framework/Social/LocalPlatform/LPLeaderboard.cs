@@ -90,14 +90,14 @@ namespace RoaringSnail.SocialPlatforms.LocalImpl
         /// 	      <see cref="LocalPlatform.Leaderboard"/> is loading.
         /// </summary>
         /// <value><c>true</c> if loading; otherwise, <c>false</c>.</value>
-        public bool loading { get { throw new NotImplementedException(); } }
+        public bool loading { get { return false;} }
 
 
 
         //--------------------------------------------------------------
         /// <summary> Returns the score of the local user. </summary>
         /// <value>The local user score.</value>
-        public IScore localUserScore { get { throw new NotImplementedException(); } }
+        public IScore localUserScore { get { throw new NotSupportedException(); } }
 
 
 
@@ -122,7 +122,7 @@ namespace RoaringSnail.SocialPlatforms.LocalImpl
         /// <summary> Returns the maximal range 
         /// 	      this leaderboard can handle. </summary>
         /// <value>The max range.</value>
-        public uint maxRange { get { throw new NotImplementedException(); } }
+        public uint maxRange { get { return 10000; } }
 
 
 
@@ -131,8 +131,8 @@ namespace RoaringSnail.SocialPlatforms.LocalImpl
         /// <value>The range.</value>
         public Range range
         {
-            get { throw new NotImplementedException(); }
-            set { throw new NotImplementedException(); }
+            get { throw new NotSupportedException(); }
+            set { throw new NotSupportedException(); }
         }
 
 
@@ -143,8 +143,8 @@ namespace RoaringSnail.SocialPlatforms.LocalImpl
         /// <value>The time scope.</value>
         public TimeScope timeScope
         {
-            get { throw new NotImplementedException(); }
-            set { throw new NotImplementedException(); }
+            get { throw new NotSupportedException(); }
+            set { throw new NotSupportedException(); }
         }
 
 
@@ -155,8 +155,8 @@ namespace RoaringSnail.SocialPlatforms.LocalImpl
         /// <value>The user scope.</value>
         public UserScope userScope
         {
-            get { throw new NotImplementedException(); }
-            set { throw new NotImplementedException(); }
+            get { throw new NotSupportedException(); }
+            set { throw new NotSupportedException(); }
         }
         #endregion
 
