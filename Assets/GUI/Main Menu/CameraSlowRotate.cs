@@ -26,7 +26,7 @@ public class CameraSlowRotate : MonoBehaviour {
 
     void Start()
     {
-        rotateDirection = new Vector3(0, Random.RandomRange(0, 1), 0);
+        rotateDirection = new Vector3(0, Random.Range(0, 1), 0);
 
         if (rotateDirection.y == 0)
             rotateDirection.y = -1;
