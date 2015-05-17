@@ -28,13 +28,29 @@ public class Score : MonoBehaviour
 	private static readonly float COMBO_TIME_OUT = 3.0f;
 	private static readonly float MAX_COMBO_POINTS = 10.0f;
 	private static readonly float COMBO_EFFECT = 1.6f;
-	#endregion
+    #endregion
+
+
+    //--------------------------------------------------------------
+    /// <summary> Dispatched when a score parameter changes. </summary>
+    //--------------------------------------
+    public class ScoreEventArgs : System.EventArgs
+    {
+        public Score score { get; private set; }
+        public float points { get; private set; }
+
+        internal ScoreEventArgs(Score score, float points)
+        {
+            this.score = score;
+            this.points = points;
+        }
+    }
 
 
 	//--------------------------------------------------------------
 	#region		Public events
 	//--------------------------------------
-	public delegate void ScoreCallback(Score score, float points);
+	public delegate void ScoreCallback(object sender, ScoreEventArgs e);
 	public event ScoreCallback OnComboCompleted;
 	#endregion
 
@@ -135,8 +151,11 @@ public class Score : MonoBehaviour
 			if( _comboTimer<= 0 )
 			{
 				float comboScore = GetComboScore(_comboBuilder);
-				if( OnComboCompleted != null )
-					OnComboCompleted(this, comboScore);
+                if (OnComboCompleted != null)
+                {
+                    ScoreEventArgs eventArgs = new ScoreEventArgs(this, comboScore);
+                    OnComboCompleted(this, eventArgs);
+                }
 			}
 		}
 	}
@@ -168,9 +187,9 @@ public class Score : MonoBehaviour
 	/// <param name="score">The score instance.</param>
 	/// <param name="comboPoints">Combo points.</param>
 	//--------------------------------------
-	void HandleOnComboCompleted(Score score, float comboPoints)
+	void HandleOnComboCompleted(object sender, ScoreEventArgs combo)
 	{
-		_mult += comboPoints;
+		_mult += combo.points;
 		_comboBuilder = 0;
 	}
 	

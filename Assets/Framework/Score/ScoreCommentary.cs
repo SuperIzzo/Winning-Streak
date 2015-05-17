@@ -55,9 +55,9 @@ public class ScoreCommentary : MonoBehaviour
 	/// <summary> Handles on combo completed events. 
 	/// 	      Invokes commentaries. </summary>
 	//--------------------------------------
-	private void OnComboCompleted(Score score, float comboPoints)
+	private void OnComboCompleted(object sender, Score.ScoreEventArgs combo)
 	{
-		CommentatorEvent pointsEvent = GetPtsEvent( comboPoints );
+		CommentatorEvent pointsEvent = GetPtsEvent( combo.points );
 		Commentator.Comment( pointsEvent );
 	}
 
