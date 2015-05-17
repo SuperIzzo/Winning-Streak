@@ -25,8 +25,6 @@ public class Controls : MonoBehaviour
 	public AudioClip toHats;
 	public AudioClip fromHats;
 	AudioSource sound;
-
-	int cameraSwing = 75;
 	
 	public static int selection = 0;
 	bool transitioning = false;
