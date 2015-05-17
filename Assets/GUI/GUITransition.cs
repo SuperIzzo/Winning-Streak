@@ -14,21 +14,18 @@
 |*                                                                            *|
 \** -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- **/
 using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 
 public class GUITransition : MonoBehaviour {
 
-    public enum TransitionState { ENTER, EXIT };
-    public TransitionState tranState = TransitionState.ENTER;
+    private enum TransitionState { ENTER, EXIT };
+    [SerializeField] TransitionState tranState = TransitionState.ENTER;
 
-    public GameObject camera;
+    [SerializeField] List<GameObject> guiTextObjects = null;
+    [SerializeField] GameObject guiBackdrop = null;
 
-    public List<GameObject> guiText;
-    public GameObject guiBackdrop;
-
-    public float transitionSpeed = 1;
-    public float delay = 1;
+    [SerializeField] float transitionSpeed = 1;
+    [SerializeField] float delay = 1;
 
 
     private float originalScale;
@@ -61,7 +58,7 @@ public class GUITransition : MonoBehaviour {
             scale.x = 0;
             guiBackdrop.transform.localScale = scale;
 
-            foreach (GameObject go in guiText)
+            foreach (GameObject go in guiTextObjects)
             {
                 go.SetActive(false);
             }
@@ -98,7 +95,7 @@ public class GUITransition : MonoBehaviour {
                         guiBackdrop.transform.localScale = scale0;
                         transitioned = true;
 
-                        foreach (GameObject go in guiText)
+                        foreach (GameObject go in guiTextObjects)
                         {
                             go.SetActive(true);
                         }
@@ -108,7 +105,7 @@ public class GUITransition : MonoBehaviour {
                 {
                     if (!disableText)
                     {
-                        foreach (GameObject go in guiText)
+                        foreach (GameObject go in guiTextObjects)
                         {
                             go.SetActive(false);
                         }
