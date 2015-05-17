@@ -13,58 +13,116 @@
  * <date>    11-Feb-2015                                              </date> * 
 |*                                                                            *|
 \** -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- **/
-using UnityEngine;
-using System.Collections;
-
-public class FootballerTackleEvent : MonoBehaviour
+namespace RoaringSnail
 {
-	public BaseCharacterController controller;
-	public AIInput				   aiInput;
+    using UnityEngine;
 
-	public float 		tackleMissTime = 5.0f;
-	public AudioClip[]	tackleFailSFX;
-	public AudioClip[]	tackleSucceedSFX;
 
-	private float tackleMissTimer;
-	
-	// Update is called once per frame
-	void Update ()
-	{
-		if( controller.isTackling && tackleMissTimer<=0 )
-		{
-			tackleMissTimer = tackleMissTime;
-		}
 
-		if( tackleMissTimer>0 )
-		{
-			tackleMissTimer-= Time.deltaTime;
+    [AddComponentMenu("Winning Streak/Character/Footballer Tackle Event", 102)]
+    //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+    /// <summary> Handles special effects and scoring,
+    ///           when the footballer tackles            </summary>
+    //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+    public class FootballerTackleEvent : MonoBehaviour
+    {
+        //..............................................................
+        #region            //  INSPECTOR FIELDS  //
+        //--------------------------------------------------------------
+        [SerializeField] BaseCharacterController    _controller = null;
+        [SerializeField] AIInput                    _aiInput    = null;
 
-			if( tackleMissTimer<=0 )
-			{
-				ResolveTackle();
-			}
-		}
-	}
+        [SerializeField] float                      _tackleMissTime   = 5.0f;
+        [SerializeField] AudioClip[]                _tackleFailSFX    = null;
+        [SerializeField] AudioClip[]                _tackleSucceedSFX = null;
+        #endregion
+        //......................................
 
-	void ResolveTackle()
-	{
-		BaseCharacterController player = Player.p1.characterController;
 
-		if( !player.isKnockedDown && aiInput.target == player )
-		{
-			var scoringEvent = GameSystem.scoringEvent;
-			scoringEvent.Fire( ScoringEventType.DODGE_TACKLE );
+        //..............................................................
+        #region             //  PRIVATE FIELDS  //
+        //--------------------------------------------------------------
+        private BaseCharacterController             _player = null;
+        private AudioSource                         _audio  = null;
+        private float                               _tackleMissTimer  = 0.0f;
+        #endregion
+        //......................................
 
-			if( GetComponent<AudioSource>() )
-			{
-				GetComponent<AudioSource>().clip = tackleFailSFX[ Random.Range(0, tackleFailSFX.Length) ];
-				GetComponent<AudioSource>().Play();
-			}
-		}
-		else if( GetComponent<AudioSource>() )
-		{
-			GetComponent<AudioSource>().clip = tackleFailSFX[ Random.Range(0, tackleFailSFX.Length) ];
-			GetComponent<AudioSource>().Play();
-		}
-	}
+
+        //..............................................................
+        #region                 //  METHODS  //
+        //--------------------------------------------------------------
+        /// <summary> Initializes the component </summary>
+        //--------------------------------------
+        protected void Start()
+        {
+            _player = Player.p1.characterController;
+            _audio  = GetComponent<AudioSource>();
+        }
+
+
+
+        //--------------------------------------------------------------
+        /// <summary> Checks for tackle completion </summary>
+        //--------------------------------------
+        protected void Update()
+        {
+            // HACK:    FootballerTackleEvent shouldn't be guessing
+            //          when the tackle has to happen, this should be an event
+            if (_controller.isTackling && _tackleMissTimer <= 0)
+            {
+                _tackleMissTimer = _tackleMissTime;
+            }
+
+            if (_tackleMissTimer > 0)
+            {
+                _tackleMissTimer -= Time.deltaTime;
+
+                if (_tackleMissTimer <= 0)
+                {
+                    ResolveTackle();
+                }
+            }
+        }
+
+
+
+        //--------------------------------------------------------------
+        /// <summary> Handles the tackle event </summary>
+        //--------------------------------------
+        private void ResolveTackle()
+        {
+            if (!_player.isKnockedDown && _aiInput.target == _player)
+            {
+                // The player is alive... the tackle must have failed
+                var scoringEvent = GameSystem.scoringEvent;
+
+                scoringEvent.Fire( ScoringEventType.DODGE_TACKLE );
+                PlayRandomClip( _tackleFailSFX );
+            }
+            else
+            {
+                // The player is dead... and we were targeting him
+                // the tackle must have succeeded
+                PlayRandomClip( _tackleSucceedSFX );
+            }
+        }
+
+
+
+        //--------------------------------------------------------------
+        /// <summary> Plays a random clip from a list of clips </summary>
+        //--------------------------------------
+        private void PlayRandomClip( AudioClip[] clips )
+        {
+            if (_audio)
+            {
+                int clipIdx = Random.Range(0, clips.Length);
+                _audio.clip = clips[clipIdx];
+                _audio.Play();
+            }
+        }
+        #endregion
+        //......................................
+    }
 }
