@@ -52,42 +52,74 @@ public class AIInput : MonoBehaviour
 		/// roaming around. </summary>
 		UNAWARE,
 	}
-	#endregion
+    #endregion
 
 
-	//--------------------------------------------------------------
-	#region Public settings
-	//--------------------------------------
-	/// <summary> The radius in which the AI will become alerted
-	/// if an enemy is close. </summary>
-	public float alertRadius = 5.0f;
+    [SerializeField] float _alertRadius = 5.0f;
+    [SerializeField] float _chaseOffDistance = 10.0f;
+    [SerializeField] float _redirectionRate = 0.01f;
+    [SerializeField] float _chaseGiveUpRate = 0.0001f;
+    [SerializeField] float _tackleRange = 2.0f;
+    [SerializeField] float _playerHate = 0.0f;
+
+
+    //--------------------------------------------------------------
+    #region Public properties
+    //--------------------------------------
+    /// <summary> The radius in which the AI will become alerted
+    /// if an enemy is close. </summary>
+    public float alertRadius
+    {
+        get { return _alertRadius; }
+        set { _alertRadius = value; }
+    }
 
 	/// <summary> The maximal distance between a chasing AI and
 	/// it's target, before the AI gives up.</summary>
-	public float chaseOffDistance = 10.0f; 
+	public float chaseOffDistance
+    {
+        get { return _chaseOffDistance; }
+        set { _chaseOffDistance = value; }
+    }
 
-	/// <summary> The rate at which an unaware AI will be changing
-	/// its direction </summary>
-	public float redirectionRate = 0.01f;
+    /// <summary> The rate at which an unaware AI will be changing
+    /// its direction </summary>
+    public float redirectionRate
+    {
+        get { return _redirectionRate; }
+        set { _redirectionRate = value; }
+    }
 
-	/// <summary> The rate at which a chasing AI will randomly
-	/// decide to give up a chase. </summary>
-	public float chaseGiveUpRate = 0.0001f;
+    /// <summary> The rate at which a chasing AI will randomly
+    /// decide to give up a chase. </summary>
+    public float chaseGiveUpRate
+    {
+        get { return _chaseGiveUpRate; }
+        set { _chaseGiveUpRate = value; }
+    }
 
-	/// <summary> The distance at which a chasing AI will attempt
-	/// to a tackle. </summary>
-	public float tackleRange	= 2.0f;
-	
-	/// <summary> The rate at which the player will be targeted
-	/// (unfairly) by the AI. </summary>
-	public float playerHate		= 0.0f;
-	#endregion
-	
+    /// <summary> The distance at which a chasing AI will attempt
+    /// to a tackle. </summary>
+    public float tackleRange
+    {
+        get { return _tackleRange; }
+        set { _tackleRange = value; }
+    }
 
-	//--------------------------------------------------------------
-	#region Internal references
-	//--------------------------------------
-	BaseCharacterController controller;
+    /// <summary> The rate at which the player will be targeted
+    /// (unfairly) by the AI. </summary>
+    public float playerHate
+    {
+        get { return _playerHate; }
+        set { _playerHate = value; }
+    }
+    #endregion
+
+
+    //--------------------------------------------------------------
+    #region Internal references
+    //--------------------------------------
+    BaseCharacterController controller;
 	Faction faction;
 	#endregion
 
@@ -110,17 +142,17 @@ public class AIInput : MonoBehaviour
 	//--------------------------------------------------------------
 	/// <summary> Use this for initialization. </summary>
 	//--------------------------------------
-	void Start () 
+	protected void Start() 
 	{
 		controller = GetComponent<BaseCharacterController>();
 		faction = GetComponent<Faction>();
 		state = AIStates.UNAWARE;
 	}
 
-	//--------------------------------------------------------------
-	/// <summary> Update is called once per frame. </summary>
-	//--------------------------------------
-	void Update () 
+    //--------------------------------------------------------------
+    /// <summary> Update is called once per frame. </summary>
+    //--------------------------------------
+    protected void Update() 
 	{
 		switch( state )
 		{
@@ -134,8 +166,6 @@ public class AIInput : MonoBehaviour
 			FollowingState();
 			break;
 		}
-
-        KeepFormation();
 	}
 
 	//--------------------------------------------------------------
@@ -211,37 +241,9 @@ public class AIInput : MonoBehaviour
 
 		// 			If the follow ally target gets out of range change to "STANDING"
 
-		//throw new System.NotImplementedException ();
+		throw new System.NotImplementedException ();
 	}
 
-
-	//--------------------------------------------------------------
-	/// <summary> Keeps formation. </summary>
-	/// <description> The AI considers nearby ally units and the enemy and keeps its formation
-	/// relative to those units.
-	/// </description>
-	//--------------------------------------
-	void KeepFormation()
-	{
-		// TODO: 2. The AI scans for nearby units and tries to stay a certain distance away from them
-
-		//			For the purpose, ideally, you'll need to add 3D vector to keep track of the movement from
-		//			all functions (e.g. aiControlVector) so that you can make a relative change to that
-		//			and at the end of update do controller.Move( aiControlVector );
-
-		//			Alternatively adjust the controller.relativeVelocity by a small factor (based on distance) 
-		//			to make this unity avoid going into the units
-		//			NOTE: You'll have to remove the "private" from "private set"
-
-		//			This function can be improved to make the AI look like a professional football player
-		//			and try to keep an actual formation (this is a bonus feature)
-
-		
-		//We need another controller function to add force onto the new velocity instead of completely erasing it
-		//controller.Move( direction2D + new Vector2(avoidanceForce.x,avoidanceForce.z), false);
-
-		//throw new System.NotImplementedException();
-	}
 
 	//--------------------------------------------------------------
 	/// <summary> Detects the enemy. </summary>
