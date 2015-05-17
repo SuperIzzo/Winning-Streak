@@ -26,10 +26,10 @@ public class CrowdSystem : MonoBehaviour
 	//--------------------------------------------------------------
 	#region Inspector settings
 	//--------------------------------------
-	[SerializeField] AudioClip _ambience;
-	[SerializeField] AudioClip _introduction;
-	[SerializeField] List<AudioClip> _soloDetailSounds;
-	[SerializeField] List<AudioClip> _massDetailSounds;
+	[SerializeField] AudioClip          _ambience = null;
+	[SerializeField] AudioClip          _introduction = null;
+	[SerializeField] List<AudioClip>    _soloDetailSounds = null;
+	[SerializeField] List<AudioClip>    _massDetailSounds = null;
 
 	[SerializeField] private float _soloDetailRate = 0.3f;
 	[SerializeField] private float _massDetailRate = 0.2f;
