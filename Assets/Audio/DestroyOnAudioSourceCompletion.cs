@@ -23,17 +23,17 @@ using System.Collections;
 //--------------------------------------
 public class DestroyOnAudioSourceCompletion : MonoBehaviour
 {
-	AudioSource audio;
+	AudioSource _audio;
 
 	void Start()
 	{
-		audio = GetComponent<AudioSource>();
+		_audio = GetComponent<AudioSource>();
 	}
 
 	// Update is called once per frame
 	void Update () 
 	{
-		if( audio==null || !audio.isPlaying )
+		if( _audio == null || !_audio.isPlaying )
 		{
 			Destroy( gameObject );
 		}
