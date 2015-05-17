@@ -24,8 +24,6 @@ public class FlytroughCamera : MonoBehaviour
 	public float rotationX = 0.0f;
 	public float rotationY = 0.0f;
 
-	private bool mouseLook = true;
-
 	// Use this for initialization
 	void Start ()
 	{
