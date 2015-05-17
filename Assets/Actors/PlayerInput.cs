@@ -118,7 +118,7 @@ public class PlayerInput : MonoBehaviour
 		}
 
 		if( screenShotDown )
-			TakeScreenshot();
+			GameUtils.CaptureScreenshot(2);
 
 		// Slow-mo
 		TimeFlow timeFlow = GameSystem.timeFlow;
@@ -157,21 +157,6 @@ public class PlayerInput : MonoBehaviour
 		}
 	}
 
-	void TakeScreenshot()
-	{
-		string screenshotDir = Application.persistentDataPath + "/screenshots";
 
-		if( !System.IO.Directory.Exists( screenshotDir ) )
-			System.IO.Directory.CreateDirectory( screenshotDir );
-
-		string timestamp = System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
-		string screenShotFN = string.Format("{0}/screenshots/screen_{1}.png", 
-		                                    Application.persistentDataPath,
-		                                    timestamp);
-
-		Debug.Log( "Saving screenshot to: " + screenShotFN );  
-
-		Application.CaptureScreenshot( screenShotFN, 2 );
-	}
 
 }
