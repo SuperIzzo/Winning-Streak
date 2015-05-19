@@ -33,108 +33,98 @@ namespace RoaringSnail.WinningStreak
 
 
         //..............................................................
-        #region            //  PUBLIC SETTINGS  //
+        #region            //  INSPECTOR SETTINGS  //
         //--------------------------------------------------------------
-        /// <summary> This character's movement speed. </summary>
-        public float movementSpeed = 4.5f;
+        [Tooltip("This character's movement speed")]
+        //--------------------------------------
+        [SerializeField] float _movementSpeed = 4.5f;
 
-        /// <summary> This character's turning speed. </summary>
-        public float turningSpeed = 6.0f;
 
-        /// <summary> The speed this character obtains when running. </summary>
-        public float runSpeed = 7.0f;
+        //--------------------------------------------------------------
+        [Tooltip("This character's turning speed")]
+        //--------------------------------------
+        [SerializeField] float _turningSpeed = 6.0f;
 
-        /// <summary> The speed boost this character obtains when dashing. </summary>
-        public float dashBoost = 2.5f;
 
-        /// <summary> The duration of the dash boost. </summary>
-        public float dashDuration = 1.0f;
+        //--------------------------------------------------------------
+        [Tooltip("The speed this character obtains when running.")]
+        //--------------------------------------
+        [SerializeField] float _runSpeed = 7.0f;
 
-        /// <summary> The dash cooldown before it can be used again. </summary>
-        public float dashCooldown = 5.0f;
 
-        /// <summary> The reach radius of this character. </summary>
-        public float grabRadius = 1.0f;
+        //--------------------------------------------------------------
+        [Tooltip("The speed boost this character obtains when dashing.")]
+        //--------------------------------------
+        [SerializeField] float _dashBoost = 2.5f;
 
-        /// <summary> The maximal time the character will
-        /// charge before throwing an object. </summary>
-        public float maxChargeTime = 3.0f;
 
-        /// <summary> The magniture of the force applied 
-        /// to thrown objects. </summary>
-        public float throwPower = 20.0f;
+        //--------------------------------------------------------------
+        [Tooltip("The duration of the dash boost.")]
+        //--------------------------------------
+        [SerializeField] float _dashDuration = 1.0f;
 
-        /// <summary> The duration of the tackle before 
-        /// the character falls knocked down. </summary>
-        public float tackleDuration = 0.3f;
 
-        /// <summary> The speed at which this character tackles. </summary>
-        public float tackleSpeed = 4.0f;
+        //--------------------------------------------------------------
+        [Tooltip("The dash cooldown before it can be used again.")]
+        //--------------------------------------
+        [SerializeField] float _dashCooldown = 5.0f;
 
-        /// <summary> The minimal revival time. </summary>
-        public float reviveTimeMin = 10.0f;
 
-        /// <summary> The maximal revival time. </summary>
-        public float reviveTimeMax = 15.0f;
+        //--------------------------------------------------------------
+        [Tooltip("The reach radius of this character.")]
+        //--------------------------------------
+        [SerializeField] float _grabRadius = 1.0f;
 
-        /// <summary> The transform grabbed objects go to when held. </summary>
-        public Transform propSlot;
+
+        //--------------------------------------------------------------
+        [Tooltip("The maximal time the character will " +
+                 "charge before throwing an object.")]
+        //--------------------------------------
+        [SerializeField] float _maxChargeTime = 3.0f;
+
+
+        //--------------------------------------------------------------
+        [Tooltip("The magniture of the force applied " +
+                  "to thrown objects.")]
+        //--------------------------------------
+        [SerializeField] float _throwPower = 20.0f;
+
+
+        //--------------------------------------------------------------
+        [Tooltip("The duration of the tackle before " + 
+                 "the character falls knocked down.")]
+        //--------------------------------------
+        [SerializeField]  float _tackleDuration = 0.3f;
+
+
+        //--------------------------------------------------------------
+        [Tooltip("The speed at which this character tackles.")]
+        //--------------------------------------
+        [SerializeField]  float _tackleSpeed = 4.0f;
+
+
+        //--------------------------------------------------------------
+        [Tooltip("The minimal revival time.")]
+        //--------------------------------------
+        [SerializeField]  float _reviveTimeMin = 10.0f;
+
+
+        //--------------------------------------------------------------
+        [Tooltip("The maximal revival time.")]
+        //--------------------------------------
+        [SerializeField]  float _reviveTimeMax = 15.0f;
+
+
+        //--------------------------------------------------------------
+        [Tooltip("The transform grabbed objects go to when held.")]
+        //--------------------------------------
+        [SerializeField]  Transform _propSlot;
         #endregion
         //......................................
 
 
-
         //..............................................................
-        #region              //  PUBLIC PROPERTIES  //
-        //--------------------------------------------------------------
-        /// <summary> Gets or sets a value indicating whether this 
-        /// <see cref="BaseCharacterController"/> is knocked down. </summary>
-        /// <value><c>true</c> if knocked down; otherwise, <c>false</c>.</value>
-        public bool isKnockedDown { get { return _isKnockedDown; } set { if (value) KnockDown(); else Revive(); } }
-
-        /// <summary> Gets or sets a value indicating whether this
-        /// <see cref="BaseCharacterController"/> is dancing. </summary>
-        /// <value><c>true</c> if dancing; otherwise, <c>false</c>.</value>
-        public bool isDancing { get { return _isDancing; } set { Dance(value); } }
-
-        /// <summary> Gets or sets a value indicating whether this
-        /// <see cref="BaseCharacterController"/> is dashing. </summary>
-        /// <value><c>true</c> if dashing; otherwise, <c>false</c>.</value>
-        public bool isDashing { get { return _isDashing; } set { if (value) Dash(); else StopDash(); } }
-
-        /// <summary> Gets or sets a value indicating whether this
-        /// <see cref="BaseCharacterController"/> is running. </summary>
-        /// <value><c>true</c> if running; otherwise, <c>false</c>.</value>
-        public bool isRunning { get { return _isRunning; } }
-
-        /// <summary> Gets or sets a value indicating whether this
-        /// <see cref="BaseCharacterController"/> is tackling. </summary>
-        /// <value><c>true</c> if is tackling; otherwise, <c>false</c>.</value>
-        public bool isTackling { get { return _tackleTimer > 0; } set { Tackle(value); } }
-
-        /// <summary> Gets or sets a value indicating whether this
-        /// <see cref="BaseCharacterController"/> is charging.
-        /// <value><c>true</c> if is charging; otherwise, <c>false</c>.</value>
-        public bool isCharging { get { return _isCharging; } set { if (value) ChargeThrow(); else Throw(); } }
-
-        /// <summary> Returns the relative velocity (readonly). </summary>
-        /// <value>The relative velocity.</value>
-        public Vector2 relativeVelocity { get; private set; }
-
-        /// <summary> Returns the look direction (readonly). </summary>
-        /// <value>The look direction.</value>
-        public Vector3 lookDirection { get; private set; }
-
-        /// <summary> Gets the held object. </summary>
-        /// <value>The held object.</value>
-        public GameObject heldObject { get; private set; }
-        #endregion
-        //......................................
-
-
-
-        //..............................................................
-        #region           //  PRIVATE STATE  //
+        #region            //  PRIVATE STATE  //
         //--------------------------------------------------------------
         private bool _isKnockedDown;
         private bool _isDancing;
@@ -152,6 +142,92 @@ namespace RoaringSnail.WinningStreak
 
 
         //..............................................................
+        #region              //  PUBLIC PROPERTIES  //
+        //--------------------------------------------------------------
+        /// <summary> Gets or sets a value indicating whether this 
+        /// <see cref="BaseCharacterController"/> is knocked down. </summary>
+        /// <value><c>true</c> if knocked down; otherwise, <c>false</c>.</value>
+        //--------------------------------------
+        public bool isKnockedDown { get { return _isKnockedDown; } set { if (value) KnockDown(); else Revive(); } }
+
+
+        //--------------------------------------------------------------
+        /// <summary> Gets or sets a value indicating whether this
+        /// <see cref="BaseCharacterController"/> is dancing. </summary>
+        /// <value><c>true</c> if dancing; otherwise, <c>false</c>.</value>
+        //--------------------------------------
+        public bool isDancing { get { return _isDancing; } set { Dance(value); } }
+
+
+        //--------------------------------------------------------------
+        /// <summary> Gets or sets a value indicating whether this
+        /// <see cref="BaseCharacterController"/> is dashing. </summary>
+        /// <value><c>true</c> if dashing; otherwise, <c>false</c>.</value>
+        //--------------------------------------
+        public bool isDashing { get { return _isDashing; } set { if (value) Dash(); else StopDash(); } }
+
+
+        //--------------------------------------------------------------
+        /// <summary> Gets or sets a value indicating whether this
+        /// <see cref="BaseCharacterController"/> is running. </summary>
+        /// <value><c>true</c> if running; otherwise, <c>false</c>.</value>
+        //--------------------------------------
+        public bool isRunning { get { return _isRunning; } }
+
+
+        //--------------------------------------------------------------
+        /// <summary> Gets or sets a value indicating whether this
+        /// <see cref="BaseCharacterController"/> is tackling. </summary>
+        /// <value><c>true</c> if is tackling; otherwise, <c>false</c>.</value>
+        //--------------------------------------
+        public bool isTackling { get { return _tackleTimer > 0; } set { Tackle(value); } }
+
+
+        //--------------------------------------------------------------
+        /// <summary> Gets or sets a value indicating whether this
+        /// <see cref="BaseCharacterController"/> is charging.
+        /// <value><c>true</c> if is charging; otherwise, <c>false</c>.</value>
+        //--------------------------------------
+        public bool isCharging { get { return _isCharging; } set { if (value) ChargeThrow(); else Throw(); } }
+
+
+        //--------------------------------------------------------------
+        /// <summary> Returns the relative velocity (readonly). </summary>
+        /// <value>The relative velocity.</value>
+        //--------------------------------------
+        public Vector2 relativeVelocity { get; private set; }
+
+
+        //--------------------------------------------------------------
+        /// <summary> Returns the look direction (readonly). </summary>
+        /// <value>The look direction.</value>
+        //--------------------------------------
+        public Vector3 lookDirection { get; private set; }
+
+
+        //--------------------------------------------------------------
+        /// <summary> Gets the held object. </summary>
+        /// <value>The held object.</value>
+        //--------------------------------------
+        public GameObject heldObject { get; private set; }
+
+
+        //--------------------------------------------------------------
+        /// <summary> Gets or sets the character movement speed. </summary>
+        /// <value>The movement speed.</value>
+        //--------------------------------------
+        public float movementSpeed
+        {
+            get { return _movementSpeed;  }
+            set { _movementSpeed = value; }
+        }
+        #endregion
+        //......................................
+
+
+            
+
+        //..............................................................
         #region                  //  METHODS  //
         //--------------------------------------------------------------
         /// <summary> Knocks down the character. </summary>
@@ -163,9 +239,9 @@ namespace RoaringSnail.WinningStreak
                 _tackleTimer = 0.0f; // Cancel tackling
                 _isKnockedDown = true;
 
-                if (reviveTimeMin >= 0 && reviveTimeMax >= reviveTimeMin)
+                if (_reviveTimeMin >= 0 && _reviveTimeMax >= _reviveTimeMin)
                 {
-                    _reviveTimer = Random.Range(reviveTimeMin, reviveTimeMax);
+                    _reviveTimer = Random.Range(_reviveTimeMin, _reviveTimeMax);
                 }
                 else
                 {
@@ -173,6 +249,8 @@ namespace RoaringSnail.WinningStreak
                 }
             }
         }
+
+
 
         //--------------------------------------------------------------
         /// <summary> Revives a knocked down character. </summary>
@@ -185,6 +263,8 @@ namespace RoaringSnail.WinningStreak
                 _isKnockedDown = false;
             }
         }
+
+
 
         //--------------------------------------------------------------
         /// <summary> Move in the specified direction with the set
@@ -200,6 +280,8 @@ namespace RoaringSnail.WinningStreak
             }
         }
 
+
+
         //--------------------------------------------------------------
         /// <summary> Turn in the specified direction. </summary>
         /// <param name="dir">The look direction.</param>
@@ -212,6 +294,8 @@ namespace RoaringSnail.WinningStreak
                 lookDirection.Normalize();
             }
         }
+
+
 
         //--------------------------------------------------------------
         /// <summary> Sets the dancing state for the charater </summary>
@@ -230,6 +314,8 @@ namespace RoaringSnail.WinningStreak
             }
         }
 
+
+
         //--------------------------------------------------------------
         /// <summary> Sets dashing state for the charater </summary>
         //--------------------------------------
@@ -241,17 +327,19 @@ namespace RoaringSnail.WinningStreak
                 {
                     _isRunning = false;
                     _isDashing = true;
-                    _dashDurationTimer = dashDuration;
-                    _dashCooldownTimer = dashCooldown;
+                    _dashDurationTimer = _dashDuration;
+                    _dashCooldownTimer = _dashCooldown;
                 }
                 else
                 {
                     _isRunning = true;
                     _isDashing = false;
-                    _dashCooldownTimer = dashCooldown;
+                    _dashCooldownTimer = _dashCooldown;
                 }
             }
         }
+
+
 
         //--------------------------------------------------------------
         /// <summary> Cancels the dashing state </summary>
@@ -263,6 +351,8 @@ namespace RoaringSnail.WinningStreak
             _dashDurationTimer = 0;
         }
 
+
+
         //--------------------------------------------------------------
         /// <summary> Sets the tackling state for the charater </summary>
         /// <param name="tackle">tackling state</param>
@@ -271,9 +361,11 @@ namespace RoaringSnail.WinningStreak
         {
             if (!isKnockedDown && !_isDancing && !isTackling)
             {
-                _tackleTimer = tackleDuration;
+                _tackleTimer = _tackleDuration;
             }
         }
+
+
 
         //--------------------------------------------------------------
         /// <summary> Grabs the nearest pickable object </summary>
@@ -287,7 +379,7 @@ namespace RoaringSnail.WinningStreak
                 float minDistance = Mathf.Infinity;
 
                 // 1. Get all objects within a radius
-                Collider[] envProps = Physics.OverlapSphere(transform.position, grabRadius);
+                Collider[] envProps = Physics.OverlapSphere(transform.position, _grabRadius);
 
                 // 2. Pick the closest one
                 foreach (Collider prop in envProps)
@@ -316,12 +408,14 @@ namespace RoaringSnail.WinningStreak
 
                     if (throwable)
                     {
-                        throwable.OnGrabbed(this, propSlot);
+                        throwable.OnGrabbed(this, _propSlot);
                     }
                 }
 
             }
         }
+
+
 
         //--------------------------------------------------------------
         /// <summary> Charges a throw the object the character is holdign </summary>
@@ -331,9 +425,11 @@ namespace RoaringSnail.WinningStreak
             if (heldObject && !isDancing && !isTackling && !_isCharging)
             {
                 _isCharging = true;
-                _chargeTimer = maxChargeTime;
+                _chargeTimer = _maxChargeTime;
             }
         }
+
+
 
         //--------------------------------------------------------------
         /// <summary> Throws the object the character is holding </summary>
@@ -345,10 +441,10 @@ namespace RoaringSnail.WinningStreak
                 ThrowableObject throwable = heldObject.GetComponent<ThrowableObject>();
                 if (throwable)
                 {
-                    float charge = 1 - (_chargeTimer / maxChargeTime);
+                    float charge = 1 - (_chargeTimer / _maxChargeTime);
                     Vector3 throwForce = lookDirection + (Vector3.up * 0.5f);
                     throwForce.Normalize();
-                    throwForce *= charge * throwPower;
+                    throwForce *= charge * _throwPower;
 
                     throwable.OnThrown(this, throwForce);
                 }
@@ -358,6 +454,8 @@ namespace RoaringSnail.WinningStreak
                 heldObject = null;
             }
         }
+
+
 
         //--------------------------------------------------------------
         /// <summary> Update this instance. </summary>
@@ -382,15 +480,17 @@ namespace RoaringSnail.WinningStreak
             }
         }
 
+
+
         //--------------------------------------------------------------
         /// <summary> Processes the movement. </summary>
         //--------------------------------------
         private void ProcessMovement()
         {
-            float speed = movementSpeed;
+            float speed = _movementSpeed;
 
             if (isRunning || isDashing)
-                speed = runSpeed;
+                speed = _runSpeed;
 
             // Normal movement
             Vector3 moveVel = new Vector3(relativeVelocity.x, 0, relativeVelocity.y);
@@ -401,12 +501,14 @@ namespace RoaringSnail.WinningStreak
             if (isDashing)
             {
                 dashVel = lookDirection;
-                dashVel *= dashBoost * Time.deltaTime;
+                dashVel *= _dashBoost * Time.deltaTime;
             }
 
             // Final result
             transform.position = transform.position + moveVel + dashVel;
         }
+
+
 
         //--------------------------------------------------------------
         /// <summary> Processes the turning. </summary>
@@ -419,9 +521,11 @@ namespace RoaringSnail.WinningStreak
 
                 //smooth transitioning for rotation, also makes the rotation and movement more human like
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRot,
-                                                       Time.deltaTime * turningSpeed);
+                                                       Time.deltaTime * _turningSpeed);
             }
         }
+
+
 
         //--------------------------------------------------------------
         /// <summary> Processes the dashing. </summary>
@@ -444,6 +548,8 @@ namespace RoaringSnail.WinningStreak
             }
         }
 
+
+
         //--------------------------------------------------------------
         /// <summary> Processes the throwing and charging. </summary>
         //--------------------------------------
@@ -460,6 +566,8 @@ namespace RoaringSnail.WinningStreak
             }
         }
 
+
+
         //--------------------------------------------------------------
         /// <summary> Processes the throwing and charging. </summary>
         //--------------------------------------
@@ -468,7 +576,7 @@ namespace RoaringSnail.WinningStreak
             if (_tackleTimer > 0)
             {
                 _tackleTimer -= Time.deltaTime;
-                transform.position += transform.forward * (tackleSpeed * Time.deltaTime);
+                transform.position += transform.forward * (_tackleSpeed * Time.deltaTime);
 
                 // Knock down this character at the end of the tackle
                 if (_tackleTimer <= 0)
@@ -477,6 +585,7 @@ namespace RoaringSnail.WinningStreak
                 }
             }
         }
+
 
 
         //--------------------------------------------------------------
