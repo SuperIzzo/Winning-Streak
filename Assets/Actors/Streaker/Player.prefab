@@ -1467,7 +1467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0c47ae9a27ce0d4b953585a73138e2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clips:
+  _audioClips:
   - {fileID: 8300000, guid: 364b3f40c7c470d41bd2b7b6b1a8104c, type: 3}
   - {fileID: 8300000, guid: 2a8d3694bcd59dc428dc7485d1bd0464, type: 3}
   - {fileID: 8300000, guid: f5b0f96677a0d054e96016205e2aca07, type: 3}
@@ -1478,9 +1478,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a52c6c2dd7499e2419298aa94ae76c8d, type: 3}
   - {fileID: 8300000, guid: 886ff96f161777641b248f4852ad1595, type: 3}
   - {fileID: 8300000, guid: d6f44a8fdd74ecc45b887cba7eac605e, type: 3}
-  - {fileID: 8300000, guid: 3f3d59bf08cb986479b6d051e0c1f893, type: 3}
-  minTime: 8
-  maxTime: 20
+  - {fileID: 8300000, guid: 3f3d59bf08cb986479b6d051e0c1f893, type: 3}  
+  _timeSpan:
+    _min: 8
+    _max: 20
 --- !u!135 &13555966
 SphereCollider:
   m_ObjectHideFlags: 1
