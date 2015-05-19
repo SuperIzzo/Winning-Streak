@@ -28,9 +28,9 @@ namespace RoaringSnail.WinningStreak
         //--------------------------------------
         private static readonly System.Type[] ONE_SHOT_SOUND_COMPONENTS =
         {
-        typeof(AudioSource),
-        typeof(DestroyOnAudioSourceCompletion)
-    };
+            typeof(AudioSource),
+            typeof(DestroyOnAudioSourceCompletion)
+        };
 
         //--------------------------------------------------------------
         /// <summary> Plays one shot sound effect. </summary>
