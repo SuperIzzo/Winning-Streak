@@ -1413,8 +1413,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdc9a247eb43edd409ab87cd2e2c19e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _target: {fileID: 0}
-  _freezeRotation: 2
+  _lookAt: {fileID: 0}
+  _freezeRotation: 5
 --- !u!114 &11462688
 MonoBehaviour:
   m_ObjectHideFlags: 1
