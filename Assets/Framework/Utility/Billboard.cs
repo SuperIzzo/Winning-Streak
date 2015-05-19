@@ -41,7 +41,7 @@ namespace RoaringSnail.WinningStreak
         //--------------------------------------------------------------
         /// <summary> A bitmask containing all three axis flags </summary>
         //--------------------------------------
-        static readonly AxesFlags ALL_AXES 
+        static readonly AxesFlags allAxes 
                                     = AxesFlags.X | AxesFlags.Y | AxesFlags.Z;
 
 
@@ -141,7 +141,7 @@ namespace RoaringSnail.WinningStreak
         //--------------------------------------
         private bool AreAllAxesFrozen()
         {
-            return (_freezeRotation & ALL_AXES) == ALL_AXES;
+            return (_freezeRotation & allAxes) == allAxes;
         }
         #endregion
         //......................................
