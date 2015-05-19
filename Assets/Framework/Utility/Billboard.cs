@@ -88,7 +88,7 @@ namespace RoaringSnail.WinningStreak
             if( _lookAt )
             {
                 // If there's no freezing we just look at target
-                if (true || _freezeRotation == 0)
+                if ( _freezeRotation == 0)
                 {
                     transform.LookAt(_lookAt);
                 }
