@@ -13,14 +13,14 @@
  * <date>    04-Feb-2015                                              </date> * 
 |*                                                                            *|
 \** -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- **/
-using UnityEngine;
-using UnityEngine.SocialPlatforms;
-using System.Collections.Generic;
-
-using RoaringSnail.PersistenceSystems;
-
-namespace RoaringSnail.SocialPlatforms.LocalImpl
+namespace RoaringSnail.WinningStreak.SocialPlatforms.LocalImpl
 {
+    using UnityEngine;
+    using UnityEngine.SocialPlatforms;
+    using System.Collections.Generic;
+
+    using PersistenceSystems;
+
     //--------------------------------------------------------------
     /// <summary> Social platform. </summary>
     /// <description> This is a local (offline) implementation
@@ -219,7 +219,7 @@ namespace RoaringSnail.SocialPlatforms.LocalImpl
         }
 
 
-		
+
         //--------------------------------------------------------------
         /// <summary> Loads the achievement descriptions
         /// 	      and calls back. </summary>

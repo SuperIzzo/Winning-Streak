@@ -13,47 +13,49 @@
  * <date>    15-May-2015                                              </date> * 
 |*                                                                            *|
 \** -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- **/
-using UnityEngine;
-using System.Collections;
-using UnityEngine.UI;
-
-public class HUD : GUIWindow
+namespace RoaringSnail.WinningStreak
 {
-	public float startupShowTime = 5.0f;
-	public Text scoreText;
-	public Text timeText;
+    using UnityEngine;
+    using UnityEngine.UI;
 
-	private float startTime = 0;
-	
-	// Use this for initialization
-	void Start ()
-	{
-		startTime = Time.time;
-		Invoke("Show", startupShowTime);
-	}
-	
-	// Update is called once per frame
-	void Update ()
-	{
-		Score score = Player.p1.score;
+    public class HUD : GUIWindow
+    {
+        public float startupShowTime = 5.0f;
+        public Text scoreText;
+        public Text timeText;
 
-		scoreText.text = "SCORE: " + Mathf.FloorToInt(score.baseScore) +
-				     "\tx" + Mathf.FloorToInt(score.multiplier);
+        private float startTime = 0;
 
-		float timeSinceStart = Time.time - startTime;
-		int seconds = Mathf.FloorToInt(timeSinceStart) % 60;
-		int minutes = Mathf.FloorToInt(timeSinceStart) / 60;
+        // Use this for initialization
+        void Start()
+        {
+            startTime = Time.time;
+            Invoke("Show", startupShowTime);
+        }
 
-		string timeStr = "";
+        // Update is called once per frame
+        void Update()
+        {
+            Score score = Player.p1.score;
 
-		if( minutes < 10 )
-			timeStr += "0";
-		timeStr += minutes + ":";
+            scoreText.text = "SCORE: " + Mathf.FloorToInt(score.baseScore) +
+                         "\tx" + Mathf.FloorToInt(score.multiplier);
 
-		if( seconds < 10 )
-			timeStr += "0";
-		timeStr += seconds;
+            float timeSinceStart = Time.time - startTime;
+            int seconds = Mathf.FloorToInt(timeSinceStart) % 60;
+            int minutes = Mathf.FloorToInt(timeSinceStart) / 60;
 
-		timeText.text = timeStr;
-	}
+            string timeStr = "";
+
+            if (minutes < 10)
+                timeStr += "0";
+            timeStr += minutes + ":";
+
+            if (seconds < 10)
+                timeStr += "0";
+            timeStr += seconds;
+
+            timeText.text = timeStr;
+        }
+    }
 }

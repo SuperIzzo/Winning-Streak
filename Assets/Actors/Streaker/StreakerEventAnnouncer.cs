@@ -13,45 +13,48 @@
  * <date>    01-Dec-2014                                              </date> * 
 |*                                                                            *|
 \** -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- **/
-using UnityEngine;
-using System.Collections;
-
-[RequireComponent(typeof(BaseCharacterController))]
-public class StreakerEventAnnouncer : MonoBehaviour
+namespace RoaringSnail.WinningStreak
 {
-	BaseCharacterController controller;
-	ScoringEventManager 	scoringEvent;
+    using UnityEngine;
 
-	bool	pickedBallEvent 	= false;
-	bool	isDancingEvent		= false;
 
-	// Use this for initialization
-	void Start ()
-	{
-		controller = GetComponent<BaseCharacterController>();
-		scoringEvent = GameSystem.scoringEvent;
-	}
-	
-	// Update is called once per frame
-	void Update ()
-	{
-		if( scoringEvent && controller )
-		{
-			// Ball grab scoring
-			if( controller.heldObject!=null ^ pickedBallEvent )
-			{
-				pickedBallEvent = !pickedBallEvent;
+    [RequireComponent(typeof(BaseCharacterController))]
+    public class StreakerEventAnnouncer : MonoBehaviour
+    {
+        BaseCharacterController controller;
+        ScoringEventManager scoringEvent;
 
-				if( pickedBallEvent )
-					scoringEvent.Fire( ScoringEventType.PICKED_BALL );
-			}
+        bool pickedBallEvent = false;
+        bool isDancingEvent = false;
 
-			// Dance scoring
-			if( controller.isDancing ^ isDancingEvent)
-			{
-				isDancingEvent = !isDancingEvent;
-				scoringEvent.Fire( ScoringEventType.WIGGLE, isDancingEvent );
-			}
-		}
-	}
+        // Use this for initialization
+        void Start()
+        {
+            controller = GetComponent<BaseCharacterController>();
+            scoringEvent = GameSystem.scoringEvent;
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            if (scoringEvent && controller)
+            {
+                // Ball grab scoring
+                if (controller.heldObject != null ^ pickedBallEvent)
+                {
+                    pickedBallEvent = !pickedBallEvent;
+
+                    if (pickedBallEvent)
+                        scoringEvent.Fire(ScoringEventType.PICKED_BALL);
+                }
+
+                // Dance scoring
+                if (controller.isDancing ^ isDancingEvent)
+                {
+                    isDancingEvent = !isDancingEvent;
+                    scoringEvent.Fire(ScoringEventType.WIGGLE, isDancingEvent);
+                }
+            }
+        }
+    }
 }

@@ -13,50 +13,53 @@
  * <date>    03-Mar-2015                                              </date> * 
 |*                                                                            *|
 \** -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- **/
-using UnityEngine;
-using System.Collections;
-
-public class CameraMode : MonoBehaviour
+namespace RoaringSnail.WinningStreak
 {
-	public MonoBehaviour[] modes;
+    using UnityEngine;
 
-	private int currentMode = 0;
 
-	// Use this for initialization
-	void Start ()
-	{
-		UpdateModes();
-	}
-	
-	// Update is called once per frame
-	void Update ()
-	{
-		if( Input.GetButtonDown( "CameraMode" ) )
-		{
-			NextMode();
-		}
-	}
+    public class CameraMode : MonoBehaviour
+    {
+        public MonoBehaviour[] modes;
 
-	void NextMode()
-	{
-		do
-		{
-			currentMode++;
-			currentMode %= modes.Length;
-		}
-		while( modes[currentMode]== null );
+        private int currentMode = 0;
 
-		UpdateModes();
-	}
+        // Use this for initialization
+        void Start()
+        {
+            UpdateModes();
+        }
 
-	void UpdateModes()
-	{
-		foreach( MonoBehaviour mode in modes )
-		{
-			if( mode != modes[currentMode] )
-				mode.enabled = false;
-		}
+        // Update is called once per frame
+        void Update()
+        {
+            if (Input.GetButtonDown("CameraMode"))
+            {
+                NextMode();
+            }
+        }
 
-		modes[currentMode].enabled = true;
-	}
+        void NextMode()
+        {
+            do
+            {
+                currentMode++;
+                currentMode %= modes.Length;
+            }
+            while (modes[currentMode] == null);
+
+            UpdateModes();
+        }
+
+        void UpdateModes()
+        {
+            foreach (MonoBehaviour mode in modes)
+            {
+                if (mode != modes[currentMode])
+                    mode.enabled = false;
+            }
+
+            modes[currentMode].enabled = true;
+        }
+    }
 }

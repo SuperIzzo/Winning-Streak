@@ -13,7 +13,7 @@
  * <date>    27-Jan-2015                                              </date> * 
 |*                                                                            *|
 \** -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- **/
-namespace RoaringSnail
+namespace RoaringSnail.WinningStreak
 {
     using UnityEngine;
 
@@ -54,7 +54,7 @@ namespace RoaringSnail
         //--------------------------------------
         [Tooltip("The object this billboard rotates towards. \n" +
                  "Defaults to the main camera.")]
-        [SerializeField]            Transform _target           = null;
+        [SerializeField]            Transform _lookAt           = null;
 
 
         //--------------------------------------------------------------
@@ -74,8 +74,8 @@ namespace RoaringSnail
         //--------------------------------------
         protected void Start()
         {
-            if(!_target)
-                _target = Camera.main.transform;
+            if(!_lookAt)
+                _lookAt = Camera.main.transform;
         }
 
 
@@ -83,43 +83,65 @@ namespace RoaringSnail
         //--------------------------------------------------------------
         /// <summary> Rotates the object towards the camera </summary>
         //--------------------------------------
-        protected void Update()
+        protected void FixedUpdate()
         {
-            if( _target )
+            if( _lookAt )
             {
                 // If there's no freezing we just look at target
-                if (_freezeRotation == 0)
+                if (true || _freezeRotation == 0)
                 {
-                    transform.LookAt(_target);
+                    transform.LookAt(_lookAt);
                 }
-                // If all axes are frozen we skip
-                else if( (_freezeRotation & ALL_AXES) == ALL_AXES)
-                {
-                    return;
-                }
-                // Otherwise we'll have to rotate partially 
-                // (by reverting individual axes)
-                else
+                // else if not all axes are frozen
+                // we rotate partially
+                else if( !AreAllAxesFrozen() )
                 {
                     Vector3 oldRotation = transform.rotation.eulerAngles;
 
-                    transform.LookAt(_target);
+                    transform.LookAt(_lookAt);
 
                     Vector3 newRotation = transform.rotation.eulerAngles;
 
-
-                    if ((_freezeRotation & AxesFlags.X) > 0)
-                        newRotation.x = oldRotation.x;
-
-                    if ((_freezeRotation & AxesFlags.Y) > 0)
-                        newRotation.y = oldRotation.y;
-
-                    if ((_freezeRotation & AxesFlags.Z) > 0)
-                        newRotation.z = oldRotation.z;
+                    // Eliminate individual axes
+                    newRotation = FreezeIndividualAxes( _freezeRotation, 
+                                                        oldRotation, 
+                                                        newRotation  );
+                    
 
                     transform.rotation = Quaternion.Euler(newRotation);
                 }
             }
+        }
+
+
+
+        //--------------------------------------------------------------
+        /// <summary> Sellectively assigns axes from old to new </summary>
+        //--------------------------------------
+        private Vector3 FreezeIndividualAxes(   AxesFlags axes, 
+                                                Vector3 oldRotation, 
+                                                Vector3 newRotation )
+        {
+            if ((axes & AxesFlags.X) > 0)
+                newRotation.x = oldRotation.x;
+
+            if ((axes & AxesFlags.Y) > 0)
+                newRotation.y = oldRotation.y;
+
+            if ((axes & AxesFlags.Z) > 0)
+                newRotation.z = oldRotation.z;
+
+            return newRotation;
+        }
+
+
+
+        //--------------------------------------------------------------
+        /// <summary> Returns whether rotation is frozen on all axes </summary>
+        //--------------------------------------
+        private bool AreAllAxesFrozen()
+        {
+            return (_freezeRotation & ALL_AXES) == ALL_AXES;
         }
         #endregion
         //......................................

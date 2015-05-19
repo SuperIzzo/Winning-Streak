@@ -13,39 +13,43 @@
  * <date>    08-Mar-2015                                              </date> * 
 |*                                                                            *|
 \** -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- **/
-using UnityEngine;
-using System.Collections;
-
-public class FreeFollowCamera : MonoBehaviour
+namespace RoaringSnail.WinningStreak
 {
-	public FollowCameraConfig config;
+    using UnityEngine;
 
-	private Transform target;
 
-	void Start ()
-	{
-		target = Player.p1.transform;
-	}
 
-	void OnEnable()
-	{
-		if( !target )
-			target = Player.p1.transform;
+    public class FreeFollowCamera : MonoBehaviour
+    {
+        public FollowCameraConfig config;
 
-		config.positionOffset = transform.position - target.position;
+        private Transform target;
 
-		Vector3 targetDir = transform.forward * config.positionOffset.magnitude;
-		config.lookAtOffset = (transform.position + targetDir) - target.position;
-	}
+        void Start()
+        {
+            target = Player.p1.transform;
+        }
 
-	// Use this for initialization
-	void Update ()
-	{
-		Quaternion targetRot = Quaternion.LookRotation((target.position + config.lookAtOffset) - this.transform.position);
-		this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRot, Time.unscaledDeltaTime * config.turnSpeed);
-		
-		//side to side tracking
-		Vector3 newPos = target.position + config.positionOffset;
-		this.transform.position = Vector3.Lerp(this.transform.position, newPos, Time.unscaledDeltaTime * config.followSpeed);
-	}
+        void OnEnable()
+        {
+            if (!target)
+                target = Player.p1.transform;
+
+            config.positionOffset = transform.position - target.position;
+
+            Vector3 targetDir = transform.forward * config.positionOffset.magnitude;
+            config.lookAtOffset = (transform.position + targetDir) - target.position;
+        }
+
+        // Use this for initialization
+        void Update()
+        {
+            Quaternion targetRot = Quaternion.LookRotation((target.position + config.lookAtOffset) - this.transform.position);
+            this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRot, Time.unscaledDeltaTime * config.turnSpeed);
+
+            //side to side tracking
+            Vector3 newPos = target.position + config.positionOffset;
+            this.transform.position = Vector3.Lerp(this.transform.position, newPos, Time.unscaledDeltaTime * config.followSpeed);
+        }
+    }
 }

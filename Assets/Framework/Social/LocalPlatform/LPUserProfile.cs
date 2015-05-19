@@ -13,11 +13,13 @@
  * <date>    04-Feb-2015                                              </date> * 
 |*                                                                            *|
 \** -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- **/
-using UnityEngine;
-using UnityEngine.SocialPlatforms;
-
-namespace RoaringSnail.SocialPlatforms.LocalImpl
+namespace RoaringSnail.WinningStreak.SocialPlatforms.LocalImpl
 {
+    using UnityEngine;
+    using UnityEngine.SocialPlatforms;
+
+
+
     class UserProfile : IUserProfile
     {
         // Public properties

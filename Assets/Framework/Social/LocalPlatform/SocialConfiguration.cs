@@ -13,12 +13,14 @@
  * <date>    14-May-2015                                              </date> * 
 |*                                                                            *|
 \** -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- **/
-using UnityEngine;
-using System.Collections.Generic;
-using System;
-
-namespace RoaringSnail.SocialPlatforms.LocalImpl
+namespace RoaringSnail.WinningStreak.SocialPlatforms.LocalImpl
 {
+    using UnityEngine;
+    using System.Collections.Generic;
+    using System;
+
+
+
     //--------------------------------------------------------------
     /// <summary> Configuration data for the
     ///           local social platform </summary>

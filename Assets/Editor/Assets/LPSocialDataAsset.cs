@@ -14,7 +14,7 @@
 |*                                                                            *|
 \** -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- **/
 using UnityEditor;
-using RoaringSnail.SocialPlatforms.LocalImpl;
+using RoaringSnail.WinningStreak.SocialPlatforms.LocalImpl;
 
 public class LPSocialDataAsset
 {

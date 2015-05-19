@@ -13,19 +13,22 @@
  * <date>    13-Dec-2014                                              </date> * 
 |*                                                                            *|
 \** -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- **/
-using UnityEngine;
-using System.Collections;
-
-
-//--------------------------------------------------------------
-/// <summary> An abstract damageable class. </summary>
-//--------------------------------------
-public abstract class Damageable : MonoBehaviour
+namespace RoaringSnail.WinningStreak
 {
-	//--------------------------------------------------------------
-	/// <summary> Callback that raises the damage event. </summary>
-	/// <param name="damager">The <see cref="Damager"/> 
-	/// that cause the damage.</param>
-	//--------------------------------------
-	public abstract void OnDamage( DamageInfo info );
+    using UnityEngine;
+
+
+
+    //--------------------------------------------------------------
+    /// <summary> An abstract damageable class. </summary>
+    //--------------------------------------
+    public abstract class Damageable : MonoBehaviour
+    {
+        //--------------------------------------------------------------
+        /// <summary> Callback that raises the damage event. </summary>
+        /// <param name="damager">The <see cref="Damager"/> 
+        /// that cause the damage.</param>
+        //--------------------------------------
+        public abstract void OnDamage(DamageInfo info);
+    }
 }

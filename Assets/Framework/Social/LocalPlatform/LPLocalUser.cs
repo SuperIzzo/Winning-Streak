@@ -13,11 +13,11 @@
  * <date>    04-Feb-2015                                              </date> * 
 |*                                                                            *|
 \** -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- **/
-using UnityEngine;
-using UnityEngine.SocialPlatforms;
-
-namespace RoaringSnail.SocialPlatforms.LocalImpl
+namespace RoaringSnail.WinningStreak.SocialPlatforms.LocalImpl
 {
+    using UnityEngine.SocialPlatforms;
+
+
     class LocalUser : UserProfile, ILocalUser
     {
         // Local user has no friends

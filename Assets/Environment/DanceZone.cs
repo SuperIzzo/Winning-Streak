@@ -13,23 +13,25 @@
  * <date>    05-Mar-2015                                              </date> * 
 |*                                                                            *|
 \** -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- **/
-using UnityEngine;
-using System.Collections;
-
-public class DanceZone: MonoBehaviour
+namespace RoaringSnail.WinningStreak
 {
-	void OnTriggerStay(Collider other)
-	{
-		if( other.CompareTag(Tags.player) )
-		{
-			if(other.GetComponent<BaseCharacterController>().isDancing)
-			{
-				GameSystem.scoringEvent.Fire( ScoringEventType.ZONE_WIGGLE, true );
-			}
-			else
-			{
-				GameSystem.scoringEvent.Fire( ScoringEventType.ZONE_WIGGLE, false );
-			}
-		}
-	}
+    using UnityEngine;
+
+    public class DanceZone : MonoBehaviour
+    {
+        void OnTriggerStay(Collider other)
+        {
+            if (other.CompareTag(Tags.player))
+            {
+                if (other.GetComponent<BaseCharacterController>().isDancing)
+                {
+                    GameSystem.scoringEvent.Fire(ScoringEventType.ZONE_WIGGLE, true);
+                }
+                else
+                {
+                    GameSystem.scoringEvent.Fire(ScoringEventType.ZONE_WIGGLE, false);
+                }
+            }
+        }
+    }
 }

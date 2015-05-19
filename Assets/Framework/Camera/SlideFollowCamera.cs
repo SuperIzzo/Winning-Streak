@@ -13,144 +13,147 @@
  * <date>    08-Mar-2015                                              </date> * 
 |*                                                                            *|
 \** -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- **/
-using UnityEngine;
-using System.Collections;
-
-//--------------------------------------------------------------
-/// <summary> Camera configuratin for 
-/// following behaviour. </summary>
-//--------------------------------------
-[System.Serializable]
-public class FollowCameraConfig
+namespace RoaringSnail.WinningStreak
 {
-	public Vector3 lookAtOffset = new Vector3();
-	public Vector3 positionOffset = new Vector3();
-	public float followSpeed = 6;
-	public float turnSpeed = 1;
-	public float FOVModifier= 1;
-}
+    using UnityEngine;
 
-//--------------------------------------------------------------
-/// <summary>  Slide follow camera behaviour. </summary>
-/// <description>
-/// SlideFollowCamera imitates the behaviour of stadium cameras 
-/// which slide on a wire. The camera has four degrees of
-/// freedom:
-/// <list type="bullet">
-/// 	<item> Movement along the global x axis 
-/// 		   (along the lenght of the stadium).</item>
-/// 	<item> Zoom forward </item>
-/// 	<item> Rotation along the x and y local axes </item> 
-/// </list>
-/// 
-/// In addition the camera can have multiple parameter configs.
-/// </description>
-//--------------------------------------
-public class SlideFollowCamera : MonoBehaviour
-{
-	public FollowCameraConfig normal;
-	public FollowCameraConfig zoomed;
 
-	private Transform target;
-	private FollowCameraConfig currentConfig;
+    //--------------------------------------------------------------
+    /// <summary> Camera configuratin for 
+    /// following behaviour. </summary>
+    //--------------------------------------
+    [System.Serializable]
+    public class FollowCameraConfig
+    {
+        public Vector3 lookAtOffset = new Vector3();
+        public Vector3 positionOffset = new Vector3();
+        public float followSpeed = 6;
+        public float turnSpeed = 1;
+        public float FOVModifier = 1;
+    }
 
-	//--------------------------------------------------------------
-	/// <summary> Zooms the camera in on the target. </summary>
-	//--------------------------------------
-	public void ZoomIn()
-	{
-		currentConfig = zoomed;
-	}
+    //--------------------------------------------------------------
+    /// <summary>  Slide follow camera behaviour. </summary>
+    /// <description>
+    /// SlideFollowCamera imitates the behaviour of stadium cameras 
+    /// which slide on a wire. The camera has four degrees of
+    /// freedom:
+    /// <list type="bullet">
+    /// 	<item> Movement along the global x axis 
+    /// 		   (along the lenght of the stadium).</item>
+    /// 	<item> Zoom forward </item>
+    /// 	<item> Rotation along the x and y local axes </item> 
+    /// </list>
+    /// 
+    /// In addition the camera can have multiple parameter configs.
+    /// </description>
+    //--------------------------------------
+    public class SlideFollowCamera : MonoBehaviour
+    {
+        public FollowCameraConfig normal;
+        public FollowCameraConfig zoomed;
 
-	//--------------------------------------------------------------
-	/// <summary> Resets the zoom configuration. </summary>
-	//--------------------------------------
-	public void ZoomReset()
-	{
-		currentConfig = normal;
-	}
+        private Transform target;
+        private FollowCameraConfig currentConfig;
 
-	//--------------------------------------------------------------
-	/// <summary> Start callback. </summary>
-	//--------------------------------------
-	void Start() 
-	{
-		currentConfig = normal;
-	}
+        //--------------------------------------------------------------
+        /// <summary> Zooms the camera in on the target. </summary>
+        //--------------------------------------
+        public void ZoomIn()
+        {
+            currentConfig = zoomed;
+        }
 
-	//--------------------------------------------------------------
-	/// <summary> Update callback. </summary>
-	//--------------------------------------
-	void Update() 
-	{
-		if( target==null )
-		{
-			target = Player.p1.transform;
-		}
+        //--------------------------------------------------------------
+        /// <summary> Resets the zoom configuration. </summary>
+        //--------------------------------------
+        public void ZoomReset()
+        {
+            currentConfig = normal;
+        }
 
-		if( target!=null )
-		{
-			PickZoomConfiguration();
+        //--------------------------------------------------------------
+        /// <summary> Start callback. </summary>
+        //--------------------------------------
+        void Start()
+        {
+            currentConfig = normal;
+        }
 
-			LookAtTarget();
-			TrackTarget();
-			ZoomToTarget();	   	
-		}
-	}
+        //--------------------------------------------------------------
+        /// <summary> Update callback. </summary>
+        //--------------------------------------
+        void Update()
+        {
+            if (target == null)
+            {
+                target = Player.p1.transform;
+            }
 
-	//--------------------------------------------------------------
-	/// <summary> Looks at the target target. </summary>
-	//--------------------------------------
-	private void LookAtTarget()
-	{
-		Vector3 directionToTarget = target.position - transform.position;
-		Quaternion targetRot = Quaternion.LookRotation( directionToTarget );
+            if (target != null)
+            {
+                PickZoomConfiguration();
 
-		float deltaTurn = Time.unscaledDeltaTime * currentConfig.turnSpeed;
-		transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, deltaTurn);
-	}
+                LookAtTarget();
+                TrackTarget();
+                ZoomToTarget();
+            }
+        }
 
-	//--------------------------------------------------------------
-	/// <summary> Slide along the wire towards the target. </summary>
-	//--------------------------------------
-	private void TrackTarget()
-	{
-		//side to side tracking
-		Vector3 newPos = new Vector3(
-			target.position.x,
-			currentConfig.positionOffset.y,
-			currentConfig.positionOffset.z );
+        //--------------------------------------------------------------
+        /// <summary> Looks at the target target. </summary>
+        //--------------------------------------
+        private void LookAtTarget()
+        {
+            Vector3 directionToTarget = target.position - transform.position;
+            Quaternion targetRot = Quaternion.LookRotation(directionToTarget);
 
-		float deltaMove = Time.unscaledDeltaTime * currentConfig.followSpeed;
-		transform.position = Vector3.Lerp(transform.position, newPos, deltaMove);
-	}
+            float deltaTurn = Time.unscaledDeltaTime * currentConfig.turnSpeed;
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, deltaTurn);
+        }
 
-	//--------------------------------------------------------------
-	/// <summary> Looks at target. </summary>
-	//--------------------------------------
-	private void ZoomToTarget()
-	{
-		//fov tracking
-		Vector3 invertedCamera = new Vector3(
-			transform.position.x, 
-			transform.position.y,
-		  	-transform.position.z - 10);
+        //--------------------------------------------------------------
+        /// <summary> Slide along the wire towards the target. </summary>
+        //--------------------------------------
+        private void TrackTarget()
+        {
+            //side to side tracking
+            Vector3 newPos = new Vector3(
+                target.position.x,
+                currentConfig.positionOffset.y,
+                currentConfig.positionOffset.z);
 
-		float fieldOfView = Vector3.Distance(target.position, invertedCamera);
-		fieldOfView *= currentConfig.FOVModifier;
-		GetComponent<Camera>().fieldOfView = fieldOfView;
-	}
+            float deltaMove = Time.unscaledDeltaTime * currentConfig.followSpeed;
+            transform.position = Vector3.Lerp(transform.position, newPos, deltaMove);
+        }
 
-	//--------------------------------------------------------------
-	/// <summary> Choses a zoom configuration </summary>
-	//--------------------------------------
-	private void PickZoomConfiguration()
-	{
-		TimeFlow timeFlow = GameSystem.timeFlow;
+        //--------------------------------------------------------------
+        /// <summary> Looks at target. </summary>
+        //--------------------------------------
+        private void ZoomToTarget()
+        {
+            //fov tracking
+            Vector3 invertedCamera = new Vector3(
+                transform.position.x,
+                transform.position.y,
+                  -transform.position.z - 10);
 
-		if( timeFlow.isSlowed )
-			ZoomIn();
-		else
-			ZoomReset();
-	}
+            float fieldOfView = Vector3.Distance(target.position, invertedCamera);
+            fieldOfView *= currentConfig.FOVModifier;
+            GetComponent<Camera>().fieldOfView = fieldOfView;
+        }
+
+        //--------------------------------------------------------------
+        /// <summary> Choses a zoom configuration </summary>
+        //--------------------------------------
+        private void PickZoomConfiguration()
+        {
+            TimeFlow timeFlow = GameSystem.timeFlow;
+
+            if (timeFlow.isSlowed)
+                ZoomIn();
+            else
+                ZoomReset();
+        }
+    }
 }

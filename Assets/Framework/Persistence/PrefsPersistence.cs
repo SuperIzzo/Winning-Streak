@@ -18,7 +18,7 @@ using System.Collections;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
-namespace RoaringSnail.PersistenceSystems
+namespace RoaringSnail.WinningStreak.PersistenceSystems
 {
 
     //-------------------------------------------------------------

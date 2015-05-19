@@ -13,29 +13,32 @@
  * <date>    08-Apr-2015                                              </date> * 
 |*                                                                            *|
 \** -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- **/
-using UnityEngine;
-using System.Collections;
-
-//-------------------------------------------------------------
-/// <summary> An utility class that has the responsibility of
-/// 	      destroying the gameObject when the audio clip
-///	      stops playing </summary>
-//--------------------------------------
-public class DestroyOnAudioSourceCompletion : MonoBehaviour
+namespace RoaringSnail.WinningStreak
 {
-	AudioSource _audio;
+    using UnityEngine;
 
-	void Start()
-	{
-		_audio = GetComponent<AudioSource>();
-	}
 
-	// Update is called once per frame
-	void Update () 
-	{
-		if( _audio == null || !_audio.isPlaying )
-		{
-			Destroy( gameObject );
-		}
-	}
+    //-------------------------------------------------------------
+    /// <summary> An utility class that has the responsibility of
+    /// 	      destroying the gameObject when the audio clip
+    ///	      stops playing </summary>
+    //--------------------------------------
+    public class DestroyOnAudioSourceCompletion : MonoBehaviour
+    {
+        AudioSource _audio;
+
+        void Start()
+        {
+            _audio = GetComponent<AudioSource>();
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            if (_audio == null || !_audio.isPlaying)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
 }

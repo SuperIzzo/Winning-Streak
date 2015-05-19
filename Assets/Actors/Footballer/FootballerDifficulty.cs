@@ -13,7 +13,7 @@
  * <date>    16-Feb-2015                                              </date> * 
 |*                                                                            *|
 \** -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- **/
-namespace RoaringSnail
+namespace RoaringSnail.WinningStreak
 {
     using UnityEngine;
 
@@ -48,7 +48,7 @@ namespace RoaringSnail
         //--------------------------------------
         protected void Start()
         {
-            _aiInput = GetComponent<AIInput>();
+            _aiInput    = GetComponent<AIInput>();
             _controller = GetComponent<BaseCharacterController>();
 
             if (_controller)

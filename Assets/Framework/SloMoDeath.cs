@@ -13,24 +13,27 @@
  * <date>    27-Jan-2015                                              </date> * 
 |*                                                                            *|
 \** -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- **/
-using UnityEngine;
-using System.Collections;
-
-public class SloMoDeath : MonoBehaviour
+namespace RoaringSnail.WinningStreak
 {
-	BaseCharacterController character;
+    using UnityEngine;
 
-	// Use this for initialization
-	void Start ()
-	{
-		character = GetComponent<BaseCharacterController>();
-	}
+
+    public class SloMoDeath : MonoBehaviour
+    {
+	    BaseCharacterController character;
+
+	    // Use this for initialization
+	    void Start ()
+	    {
+		    character = GetComponent<BaseCharacterController>();
+	    }
 	
-	// Update is called once per frame
-	void Update ()
-	{
-		if( character.isKnockedDown )
-		{
-		}
-	}
+	    // Update is called once per frame
+	    void Update ()
+	    {
+		    if( character.isKnockedDown )
+		    {
+		    }
+	    }
+    }
 }

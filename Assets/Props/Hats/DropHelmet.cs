@@ -13,21 +13,23 @@
  * <date>    14-Feb-2015                                              </date> * 
 |*                                                                            *|
 \** -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- **/
-using UnityEngine;
-using System.Collections;
-
-public class DropHelmet : MonoBehaviour
+namespace RoaringSnail.WinningStreak
 {
-	public BaseCharacterController character;
+    using UnityEngine;
 
-	// Update is called once per frame
-	void Update ()
-	{
-		if( character!=null && character.isKnockedDown )
-		{
-			GetComponent<Rigidbody>().isKinematic = false;
-			transform.parent = null;
-			character = null;
-		}
-	}
+    public class DropHelmet : MonoBehaviour
+    {
+        public BaseCharacterController character;
+
+        // Update is called once per frame
+        void Update()
+        {
+            if (character != null && character.isKnockedDown)
+            {
+                GetComponent<Rigidbody>().isKinematic = false;
+                transform.parent = null;
+                character = null;
+            }
+        }
+    }
 }

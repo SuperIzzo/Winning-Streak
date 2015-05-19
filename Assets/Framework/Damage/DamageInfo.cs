@@ -13,11 +13,14 @@
  * <date>    22-Feb-2015                                              </date> * 
 |*                                                                            *|
 \** -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- **/
-using UnityEngine;
-using System.Collections;
-
-public class DamageInfo
+namespace RoaringSnail.WinningStreak
 {
-	public Damager damager;
-	public Collision collision;
+    using UnityEngine;
+    using System.Collections;
+
+    public class DamageInfo
+    {
+        public Damager damager;
+        public Collision collision;
+    }
 }

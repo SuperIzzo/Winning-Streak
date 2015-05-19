@@ -13,109 +13,112 @@
  * <date>    17-Mar-2015                                              </date> * 
 |*                                                                            *|
 \** -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- **/
-using UnityEngine;
-using System.Collections;
-
-//--------------------------------------------------------------
-/// <summary> A general purpose spawner. </summary>
-//-------------------------------------- 
-public class Spawner : MonoBehaviour
+namespace RoaringSnail.WinningStreak
 {
-	//--------------------------------------------------------------
-	#region Public settings
-	//--------------------------------------
-	public GameObject prefab;
-	public float initialSpawnDelay = 0;
-	public float spawnDelay = 0;
-	public int spawnAmount = 1;
-	public int spawnLimit = 1;
-	public Transform[] spawnAreas;
-	#endregion
+    using UnityEngine;
 
 
-	//--------------------------------------------------------------
-	#region Private state
-	//--------------------------------------
-	private float spawnTimer;
-	private int spawnCounter;
-	#endregion
+    //--------------------------------------------------------------
+    /// <summary> A general purpose spawner. </summary>
+    //-------------------------------------- 
+    public class Spawner : MonoBehaviour
+    {
+        //--------------------------------------------------------------
+        #region Public settings
+        //--------------------------------------
+        public GameObject prefab;
+        public float initialSpawnDelay = 0;
+        public float spawnDelay = 0;
+        public int spawnAmount = 1;
+        public int spawnLimit = 1;
+        public Transform[] spawnAreas;
+        #endregion
 
-	//--------------------------------------------------------------
-	/// <summary> Start callback. </summary>
-	//--------------------------------------
-	void Start ()
-	{
-		spawnTimer = initialSpawnDelay;
-	}
 
-	//--------------------------------------------------------------
-	/// <summary> Update callback. </summary>
-	//--------------------------------------
-	void Update()
-	{
-		spawnTimer -= Time.deltaTime;
+        //--------------------------------------------------------------
+        #region Private state
+        //--------------------------------------
+        private float spawnTimer;
+        private int spawnCounter;
+        #endregion
 
-		if( spawnTimer<=0 )
-		{
-			spawnTimer = spawnDelay;
+        //--------------------------------------------------------------
+        /// <summary> Start callback. </summary>
+        //--------------------------------------
+        void Start()
+        {
+            spawnTimer = initialSpawnDelay;
+        }
 
-			for( int i=0; i<spawnAmount; i++ )
-			{
-				Spawn();
-			}
-		}
-	}
+        //--------------------------------------------------------------
+        /// <summary> Update callback. </summary>
+        //--------------------------------------
+        void Update()
+        {
+            spawnTimer -= Time.deltaTime;
 
-	//--------------------------------------------------------------
-	/// <summary> Spawns a single instance. </summary>
-	//--------------------------------------
-	void Spawn()
-	{
-		if( spawnCounter<spawnLimit )
-		{
-			spawnCounter++;
-			Vector3 randomPosition = transform.position;
+            if (spawnTimer <= 0)
+            {
+                spawnTimer = spawnDelay;
 
-			Transform randomArea = GetRandomArea();
-			randomPosition = GetRandomAreaPoint( randomArea );
+                for (int i = 0; i < spawnAmount; i++)
+                {
+                    Spawn();
+                }
+            }
+        }
 
-			GameObject.Instantiate( prefab, randomPosition, Quaternion.identity );
-		}
-	}
+        //--------------------------------------------------------------
+        /// <summary> Spawns a single instance. </summary>
+        //--------------------------------------
+        void Spawn()
+        {
+            if (spawnCounter < spawnLimit)
+            {
+                spawnCounter++;
+                Vector3 randomPosition = transform.position;
 
-	//--------------------------------------------------------------
-	/// <summary> Returns a random spawn area </summary>
-	//--------------------------------------
-	Transform GetRandomArea()
-	{
-		Transform spawnArea = this.transform;
+                Transform randomArea = GetRandomArea();
+                randomPosition = GetRandomAreaPoint(randomArea);
 
-		if( spawnAreas.Length>0 )
-		{
-			int areaIdx = Random.Range(0,spawnAreas.Length);
-			spawnArea = spawnAreas[areaIdx];
-		}
+                GameObject.Instantiate(prefab, randomPosition, Quaternion.identity);
+            }
+        }
 
-		return spawnArea;
-	}
+        //--------------------------------------------------------------
+        /// <summary> Returns a random spawn area </summary>
+        //--------------------------------------
+        Transform GetRandomArea()
+        {
+            Transform spawnArea = this.transform;
 
-	//--------------------------------------------------------------
-	/// <summary> Returns a random 3D point on an area. </summary>
-	//--------------------------------------
-	Vector3 GetRandomAreaPoint( Transform area )
-	{
-		Vector3 randomPosition = area.position;
+            if (spawnAreas.Length > 0)
+            {
+                int areaIdx = Random.Range(0, spawnAreas.Length);
+                spawnArea = spawnAreas[areaIdx];
+            }
 
-		if( area.GetComponent<Collider>() )
-		{
-			Vector3 min = area.GetComponent<Collider>().bounds.min;
-			Vector3 max = area.GetComponent<Collider>().bounds.max;
-			
-			randomPosition.x = Random.Range( min.x, max.x );
-			randomPosition.y = Random.Range( min.y, max.y );
-			randomPosition.z = Random.Range( min.z, max.z );
-		}
+            return spawnArea;
+        }
 
-		return randomPosition;
-	}
+        //--------------------------------------------------------------
+        /// <summary> Returns a random 3D point on an area. </summary>
+        //--------------------------------------
+        Vector3 GetRandomAreaPoint(Transform area)
+        {
+            Vector3 randomPosition = area.position;
+
+            if (area.GetComponent<Collider>())
+            {
+                Vector3 min = area.GetComponent<Collider>().bounds.min;
+                Vector3 max = area.GetComponent<Collider>().bounds.max;
+
+                randomPosition.x = Random.Range(min.x, max.x);
+                randomPosition.y = Random.Range(min.y, max.y);
+                randomPosition.z = Random.Range(min.z, max.z);
+            }
+
+            return randomPosition;
+        }
+    }
 }

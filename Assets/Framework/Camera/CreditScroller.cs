@@ -13,50 +13,54 @@
  * <date>    27-Nov-2014                                              </date> * 
 |*                                                                            *|
 \** -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- **/
-using UnityEngine;
-using System.Collections;
+namespace RoaringSnail.WinningStreak
+{
+    using UnityEngine;
+    using System.Collections;
 
-public class CreditScroller : MonoBehaviour {
+    public class CreditScroller : MonoBehaviour
+    {
 
-	public float scrollSpeed = 6;
-	void Start () 
-	{
-		GameObject go = GameObject.Find("_GameManager");
-		
-		if(go)
-		{
-			Destroy (go);
-		}
+        public float scrollSpeed = 6;
+        void Start()
+        {
+            GameObject go = GameObject.Find("_GameManager");
 
-		StartCoroutine("Scroll");
-	}
-	
-	// Update is called once per frame
-	void Update () 
-	{
+            if (go)
+            {
+                Destroy(go);
+            }
 
-	}
+            StartCoroutine("Scroll");
+        }
 
-	IEnumerator Scroll()
-	{
-		while(this.transform.position.x < 30)
-	 	{
-			Vector3 newPos = this.transform.position;
-			newPos.x += Time.deltaTime * scrollSpeed;
+        // Update is called once per frame
+        void Update()
+        {
 
-			if(Input.anyKeyDown || Input.GetButton("Dash") || Input.GetButton("Grab") || Input.GetButton("Wiggle"))
-			{
-				Application.Quit ();
-			}
-				
-			if(this.transform.position.x > 29)
-				Application.LoadLevel("menu");
+        }
 
-			this.transform.position = Vector3.Lerp(this.transform.position, newPos,Time.deltaTime);
+        IEnumerator Scroll()
+        {
+            while (this.transform.position.x < 30)
+            {
+                Vector3 newPos = this.transform.position;
+                newPos.x += Time.deltaTime * scrollSpeed;
 
-			yield return null;
-		}
+                if (Input.anyKeyDown || Input.GetButton("Dash") || Input.GetButton("Grab") || Input.GetButton("Wiggle"))
+                {
+                    Application.Quit();
+                }
 
-		Application.Quit ();
-	}
+                if (this.transform.position.x > 29)
+                    Application.LoadLevel("menu");
+
+                this.transform.position = Vector3.Lerp(this.transform.position, newPos, Time.deltaTime);
+
+                yield return null;
+            }
+
+            Application.Quit();
+        }
+    }
 }

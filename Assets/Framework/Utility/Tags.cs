@@ -13,11 +13,12 @@
  * <date>    17-Mar-2015                                              </date> * 
 |*                                                                            *|
 \** -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- **/
-using UnityEngine;
-using System.Collections;
-
-public class Tags 
+namespace RoaringSnail.WinningStreak
 {
-	public static readonly string player		= "Player";
-	public static readonly string ball			= "ball";
+
+    public class Tags
+    {
+        public static readonly string player = "Player";
+        public static readonly string ball = "ball";
+    }
 }

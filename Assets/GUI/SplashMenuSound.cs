@@ -13,27 +13,31 @@
  * <date>    06-Mar-2015                                              </date> * 
 |*                                                                            *|
 \** -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- **/
-using UnityEngine;
-using System.Collections;
+namespace RoaringSnail.WinningStreak
+{
+    using UnityEngine;
 
-public class SplashMenuSound : MonoBehaviour {
 
-     public static SplashMenuSound i;
-     
-     void Awake () 
-     {
-         if(!i) 
-         {
-             if (Application.loadedLevelName == "main-2")
-             {
-                 Destroy(gameObject);
-                 Debug.Break();
-                 return;
-             }
+    public class SplashMenuSound : MonoBehaviour
+    {
 
-             i = this;
-             DontDestroyOnLoad(gameObject);
-         }
-         else Destroy(gameObject);
-     }
+        public static SplashMenuSound i;
+
+        void Awake()
+        {
+            if (!i)
+            {
+                if (Application.loadedLevelName == "main-2")
+                {
+                    Destroy(gameObject);
+                    Debug.Break();
+                    return;
+                }
+
+                i = this;
+                DontDestroyOnLoad(gameObject);
+            }
+            else Destroy(gameObject);
+        }
+    }
 }

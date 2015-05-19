@@ -13,33 +13,36 @@
  * <date>    26-Mar-2015                                              </date> * 
 |*                                                                            *|
 \** -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- **/
-using UnityEngine;
-using System.Collections;
-
-public class StartGameCommenter : MonoBehaviour
+namespace RoaringSnail.WinningStreak
 {
-	public static bool announced = false;
+    using UnityEngine;
 
 
-	int frametimer;
+    public class StartGameCommenter : MonoBehaviour
+    {
+        public static bool announced = false;
 
-	// Use this for initialization
-	void Start ()
-	{
-		frametimer = 5;
-	}
-	
-	// Update is called once per frame
-	void Update ()
-	{
-		if( !announced )
-		{
-			frametimer--;
 
-			if( frametimer<=0 )
-			{
-				announced = Commentator.Comment( CommentatorEvent.GAME_START );
-			}
-		}
-	}
+        int frametimer;
+
+        // Use this for initialization
+        void Start()
+        {
+            frametimer = 5;
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            if (!announced)
+            {
+                frametimer--;
+
+                if (frametimer <= 0)
+                {
+                    announced = Commentator.Comment(CommentatorEvent.GAME_START);
+                }
+            }
+        }
+    }
 }

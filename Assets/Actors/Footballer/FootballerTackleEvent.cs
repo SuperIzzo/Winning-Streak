@@ -13,7 +13,7 @@
  * <date>    11-Feb-2015                                              </date> * 
 |*                                                                            *|
 \** -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- **/
-namespace RoaringSnail
+namespace RoaringSnail.WinningStreak
 {
     using UnityEngine;
 
@@ -56,8 +56,10 @@ namespace RoaringSnail
         //--------------------------------------
         protected void Start()
         {
-            _player = Player.p1.characterController;
-            _audio  = GetComponent<AudioSource>();
+            _player     = Player.p1.characterController;
+            _audio      = GetComponent<AudioSource>();
+            _controller = GetComponent<BaseCharacterController>();
+            _aiInput    = GetComponent<AIInput>();
         }
 
 
@@ -115,7 +117,7 @@ namespace RoaringSnail
         //--------------------------------------
         private void PlayRandomClip( AudioClip[] clips )
         {
-            if (_audio)
+            if( _audio && clips.Length>0 )
             {
                 int clipIdx = Random.Range(0, clips.Length);
                 _audio.clip = clips[clipIdx];

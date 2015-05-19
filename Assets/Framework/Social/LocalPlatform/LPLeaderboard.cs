@@ -13,15 +13,14 @@
  * <date>    14-May-2015                                              </date> * 
 |*                                                                            *|
 \** -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- **/
-using UnityEngine.SocialPlatforms;
-using System.Collections.Generic;
-using System;
-
-using RoaringSnail.PersistenceSystems;
-
-
-namespace RoaringSnail.SocialPlatforms.LocalImpl
+namespace RoaringSnail.WinningStreak.SocialPlatforms.LocalImpl
 {
+    using UnityEngine.SocialPlatforms;
+    using System.Collections.Generic;
+    using System;
+
+    using PersistenceSystems;
+
     //--------------------------------------------------------------
     /// <summary> A local leadeboard implementation</summary>
     //--------------------------------------
@@ -90,7 +89,7 @@ namespace RoaringSnail.SocialPlatforms.LocalImpl
         /// 	      <see cref="LocalPlatform.Leaderboard"/> is loading.
         /// </summary>
         /// <value><c>true</c> if loading; otherwise, <c>false</c>.</value>
-        public bool loading { get { return false;} }
+        public bool loading { get { return false; } }
 
 
 

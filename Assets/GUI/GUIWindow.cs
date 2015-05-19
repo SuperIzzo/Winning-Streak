@@ -13,65 +13,68 @@
  * <date>    03-Dec-2014                                              </date> * 
 |*                                                                            *|
 \** -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- **/
-using UnityEngine;
-using System.Collections;
-using UnityEngine.EventSystems;
-
-public class GUIWindow : MonoBehaviour
+namespace RoaringSnail.WinningStreak
 {
-	public Animator windowAnimator;
-	public GameObject selectedObject;
-	private bool _isVisible;
-	public  bool  isVisible
-	{
-		set{ if( value ) Show(); else Hide(); }
-		get{ return _isVisible; }
-	}
+    using UnityEngine;
+    using UnityEngine.EventSystems;
 
-	// Use this for initialization
-	void Start ()
-	{
-		if( !windowAnimator )
-		{
-			windowAnimator = GetComponent<Animator>();
-		}
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    public class GUIWindow : MonoBehaviour
+    {
+        public Animator windowAnimator;
+        public GameObject selectedObject;
+        private bool _isVisible;
+        public bool isVisible
+        {
+            set { if (value) Show(); else Hide(); }
+            get { return _isVisible; }
+        }
 
-	public void Show()
-	{
-		if( !_isVisible )
-		{
-			_isVisible = true;
+        // Use this for initialization
+        void Start()
+        {
+            if (!windowAnimator)
+            {
+                windowAnimator = GetComponent<Animator>();
+            }
+        }
 
-			if( windowAnimator )
-				windowAnimator.SetBool("visible", true );
-		}
-	}
+        // Update is called once per frame
+        void Update()
+        {
 
-	public void Hide()
-	{
-		if( _isVisible )
-		{
-			_isVisible = false;
+        }
 
-			if( windowAnimator )
-				windowAnimator.SetBool("visible", false );
-		}
-	}
+        public void Show()
+        {
+            if (!_isVisible)
+            {
+                _isVisible = true;
 
-	public virtual void OnShow()
-	{
-		GainInputFocus();
-	}
+                if (windowAnimator)
+                    windowAnimator.SetBool("visible", true);
+            }
+        }
 
-	private void GainInputFocus()
-	{
-		if( selectedObject )
-			EventSystem.current.SetSelectedGameObject( selectedObject );
-	}
+        public void Hide()
+        {
+            if (_isVisible)
+            {
+                _isVisible = false;
+
+                if (windowAnimator)
+                    windowAnimator.SetBool("visible", false);
+            }
+        }
+
+        public virtual void OnShow()
+        {
+            GainInputFocus();
+        }
+
+        private void GainInputFocus()
+        {
+            if (selectedObject)
+                EventSystem.current.SetSelectedGameObject(selectedObject);
+        }
+    }
 }

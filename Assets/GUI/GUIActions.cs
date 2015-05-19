@@ -13,18 +13,21 @@
  * <date>    03-Dec-2014                                               </date> * 
 |*                                                                            *|
 \** -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- **/
-using UnityEngine;
-using System.Collections;
-
-public class GUIActions : MonoBehaviour
+namespace RoaringSnail.WinningStreak
 {
-	public void RestartLevel()
-	{
-		Application.LoadLevel( Application.loadedLevel );
-	}
+    using UnityEngine;
 
-	public void ChangeLevel( string levelName )
-	{
-		Application.LoadLevel( levelName );
-	}
+
+    public class GUIActions : MonoBehaviour
+    {
+        public void RestartLevel()
+        {
+            Application.LoadLevel(Application.loadedLevel);
+        }
+
+        public void ChangeLevel(string levelName)
+        {
+            Application.LoadLevel(levelName);
+        }
+    }
 }

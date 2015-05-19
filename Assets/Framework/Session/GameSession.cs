@@ -13,37 +13,40 @@
  * <date>    04-Apr-2015                                              </date> * 
 |*                                                                            *|
 \** -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- **/
-using UnityEngine;
-using System.Collections;
-
-public class GameSession : MonoBehaviour
+namespace RoaringSnail.WinningStreak
 {
-	public static GameSession current
-	{
-		get
-		{
-			if( !_current )
-			{
-				_current = GameObject.FindObjectOfType<GameSession>();
-			}
-			
-			return _current;
-		}
-	}
-	private static GameSession _current;
+    using UnityEngine;
 
 
-	public float timePlayed {get; private set;}
+    public class GameSession : MonoBehaviour
+    {
+        public static GameSession current
+        {
+            get
+            {
+                if (!_current)
+                {
+                    _current = GameObject.FindObjectOfType<GameSession>();
+                }
 
-	// Use this for initialization
-	void Start ()
-	{
-		timePlayed = 0;
-	}
-	
-	// Update is called once per frame
-	void Update ()
-	{
-		timePlayed += Time.deltaTime;
-	}
+                return _current;
+            }
+        }
+        private static GameSession _current;
+
+
+        public float timePlayed { get; private set; }
+
+        // Use this for initialization
+        void Start()
+        {
+            timePlayed = 0;
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            timePlayed += Time.deltaTime;
+        }
+    }
 }

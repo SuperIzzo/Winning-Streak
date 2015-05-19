@@ -13,21 +13,22 @@
  * <date>    12-May-2015                                              </date> * 
 |*                                                                            *|
 \** -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- **/
-using UnityEngine;
-using System.Collections;
+namespace RoaringSnail.WinningStreak.PersistenceSystems.JSON
+{
 
-static public class PersistenceInterface {
-
-    static private JSON_Persistence persistence = new JSON_Persistence();
-
-    public static void LoadSave()
+    static public class PersistenceInterface
     {
-        persistence.Load();
-    }
 
-    public static void Save()
-    {
-        persistence.Save();
+        static private JSON_Persistence persistence = new JSON_Persistence();
+
+        public static void LoadSave()
+        {
+            persistence.Load();
+        }
+
+        public static void Save()
+        {
+            persistence.Save();
+        }
     }
 }
-
