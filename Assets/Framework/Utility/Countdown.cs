@@ -222,9 +222,9 @@ namespace RoaringSnail.WinningStreak
         /// <summary>  Installs the alarm on a MonoBehaviour 
         ///            as a coroutine.                </summary>
         //--------------------------------------
-        public void Install( MonoBehaviour component )
+        public void InstallCoroutine( MonoBehaviour component )
         {
-            component.StopCoroutine( AlarmRoutine() );
+            component.StartCoroutine( AlarmRoutine() );
         }
 
 
