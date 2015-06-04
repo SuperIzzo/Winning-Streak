@@ -51,8 +51,8 @@ namespace RoaringSnail.WinningStreak.Characters
             _aiInput    = GetComponent<AIInput>();
             _controller = GetComponent<BaseCharacterController>();
 
-            if (_controller)
-                _baseMovementSpeed = _controller.movementSpeed;
+            if( _controller )
+                _baseMovementSpeed = _controller.baseMovementSpeed;
 
             if (_aiInput)
                 _basePlayerHate = _aiInput.playerHate;
@@ -76,7 +76,7 @@ namespace RoaringSnail.WinningStreak.Characters
             if (_controller)
             {
                 const int DIFFICULTY_MULT = 2;
-                _controller.movementSpeed =
+                _controller.baseMovementSpeed =
                     _baseMovementSpeed  +  difficultyLevel * DIFFICULTY_MULT;
             }
 
