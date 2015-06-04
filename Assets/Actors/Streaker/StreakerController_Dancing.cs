@@ -90,5 +90,31 @@ namespace RoaringSnail.WinningStreak.Characters
             if( StoppedDancing != null )
                 StoppedDancing( this, null );
         }
+
+
+
+        //--------------------------------------------------------------
+        /// <summary> Processes the movement. </summary>
+        //--------------------------------------
+        protected override void ProcessMovement()
+        {
+            if( !isDancing )
+            {
+                base.ProcessMovement();
+            }
+        }
+
+
+
+        //--------------------------------------------------------------
+        /// <summary> Processes the turning. </summary>
+        //--------------------------------------
+        protected override void ProcessTurning()
+        {
+            if( !isDancing )
+            {
+                base.ProcessTurning();
+            }
+        }
     }
 }
