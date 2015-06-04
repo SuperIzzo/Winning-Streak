@@ -71,6 +71,17 @@ namespace RoaringSnail.WinningStreak.Characters
 
 
         //--------------------------------------------------------------
+        /// <summary> Updates the footballer. </summary>
+        //--------------------------------------
+        protected override void Update()
+        {
+            base.Update();
+            ProcessTackling();
+        }
+
+
+
+        //--------------------------------------------------------------
         /// <summary> Processes the throwing and charging. </summary>
         //--------------------------------------
         private void ProcessTackling()
