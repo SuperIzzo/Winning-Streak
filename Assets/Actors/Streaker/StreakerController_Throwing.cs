@@ -93,6 +93,17 @@ namespace RoaringSnail.WinningStreak.Characters
 
 
         //--------------------------------------------------------------
+        /// <summary> Charges a throw the object the character is holdign </summary>
+        //--------------------------------------
+        private void CancelThrow()
+        {
+            _isCharging = false;
+            _chargeTime.Stop();
+        }
+
+
+
+        //--------------------------------------------------------------
         /// <summary> Grabs the nearest pickable object </summary>
         //--------------------------------------
         public void Grab()

@@ -51,6 +51,7 @@ namespace RoaringSnail.WinningStreak.Characters
             {
                 _isDancing = true;
                 StopDashing();
+                CancelThrow();
                 OnStartedDancing();
             }
         }
