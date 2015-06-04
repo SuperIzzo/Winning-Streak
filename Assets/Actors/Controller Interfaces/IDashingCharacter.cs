@@ -17,6 +17,11 @@ namespace RoaringSnail.WinningStreak.Characters
 {
     using System;
 
+
+
+    //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+    /// <summary> Dashing character behaviour. </summary>
+    //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     public interface IDashingCharacter
     {
         bool isDashing { get; set; }

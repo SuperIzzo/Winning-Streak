@@ -18,6 +18,9 @@ namespace RoaringSnail.WinningStreak.Characters
     using System;
 
 
+    //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+    /// <summary> Tackling character behaviour. </summary>
+    //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     public interface ITacklingCharacter
     {
         bool isTackling { get; set; }

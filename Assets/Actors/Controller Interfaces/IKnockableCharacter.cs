@@ -18,6 +18,10 @@ namespace RoaringSnail.WinningStreak.Characters
     using System;
 
 
+
+    //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+    /// <summary> Knockable character behaviour. </summary>
+    //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     public interface IKnockableCharacter
     {
         bool isKnockedDown { get; set; }

@@ -18,6 +18,10 @@ namespace RoaringSnail.WinningStreak.Characters
     using System;
     using UnityEngine;
 
+
+    //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+    /// <summary> Throwing character behaviour. </summary>
+    //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     public interface IThrowingCharacter
     {
         GameObject heldObject { get; }

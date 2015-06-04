@@ -18,6 +18,10 @@ namespace RoaringSnail.WinningStreak.Characters
     using System;
 
 
+
+    //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+    /// <summary> Dancing character behaviour. </summary>
+    //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     public interface IDancingCharacter
     {
         bool isDancing { get; set; }

@@ -17,6 +17,10 @@ namespace RoaringSnail.WinningStreak.Characters
 {
     using UnityEngine;
 
+
+    //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+    /// <summary> Mobile character behaviour. </summary>
+    //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     public interface IMobileCharacter
     {
         Vector3 lookDirection { get; }
