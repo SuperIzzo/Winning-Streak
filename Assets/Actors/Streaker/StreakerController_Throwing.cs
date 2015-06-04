@@ -184,9 +184,8 @@ namespace RoaringSnail.WinningStreak.Characters
         //--------------------------------------
         partial void Setup_Throwing()
         {
-            _chargeTime.Install( this );
-
             _chargeTime.AlarmRaised += OnChargeTimeEnded;
+            _chargeTime.InstallCoroutine( this );
         }
     }
 }
