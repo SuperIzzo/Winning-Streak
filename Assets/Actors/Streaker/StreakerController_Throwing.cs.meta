@@ -1,5 +1,7 @@
 fileFormatVersion: 2
 guid: b399c49a0cc93cb4abfa22401a86c9f3
+labels:
+- Character
 timeCreated: 1432197211
 licenseType: Free
 MonoImporter:

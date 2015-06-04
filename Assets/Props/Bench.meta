@@ -1,5 +1,7 @@
 fileFormatVersion: 2
 guid: 3bb29c873d18e4145a7556ec77975470
+labels:
+- Prop
 folderAsset: yes
 timeCreated: 1428760394
 licenseType: Free

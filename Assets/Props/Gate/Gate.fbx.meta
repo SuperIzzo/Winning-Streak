@@ -1,5 +1,7 @@
 fileFormatVersion: 2
 guid: 7440f9bcfd45c1549bed4bd1a1ab3368
+labels:
+- Prop
 timeCreated: 1428760083
 licenseType: Free
 ModelImporter:
