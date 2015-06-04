@@ -19,7 +19,7 @@ namespace RoaringSnail.WinningStreak.Characters
 
 
 
-    [AddComponentMenu("Winning Streak/Character/Footballer Difficulty", 101)]
+    [AddComponentMenu( "Winning Streak/Character/Footballer Difficulty", 101 )]
     //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     /// <summary> Controls the footballers' stats based on difficulty.
     ///                                                    </summary>
@@ -35,10 +35,11 @@ namespace RoaringSnail.WinningStreak.Characters
         //--------------------------------------------------------------
         private AIInput                     _aiInput;
         private BaseCharacterController     _controller;
-        private float                       _baseMovementSpeed = 0.0f;
-        private float                       _basePlayerHate = 0.0f;
+        private float                       _baseMovementSpeed  = 0.0f;
+        private float                       _basePlayerHate     = 0.0f;
         #endregion
         //......................................
+
 
 
         //..............................................................
@@ -54,7 +55,7 @@ namespace RoaringSnail.WinningStreak.Characters
             if( _controller )
                 _baseMovementSpeed = _controller.baseMovementSpeed;
 
-            if (_aiInput)
+            if( _aiInput )
                 _basePlayerHate = _aiInput.playerHate;
         }
 
@@ -67,20 +68,20 @@ namespace RoaringSnail.WinningStreak.Characters
         {
             float difficultyLevel = GameSystem.difficulty.level;
 
-            if (_aiInput)
+            if( _aiInput )
             {
-                _aiInput.playerHate = 
+                _aiInput.playerHate =
                     _basePlayerHate  +  (1 - _basePlayerHate) * difficultyLevel;
             }
 
-            if (_controller)
+            if( _controller )
             {
                 const int DIFFICULTY_MULT = 2;
                 _controller.baseMovementSpeed =
                     _baseMovementSpeed  +  difficultyLevel * DIFFICULTY_MULT;
             }
 
-        }   
+        }
         #endregion
         //......................................
     }

@@ -15,8 +15,12 @@
 \** -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- **/
 namespace RoaringSnail.WinningStreak.Characters
 {
+    using UnityEngine;
+
+
+    [AddComponentMenu( "Winning Streak/Character/Streaker Controller" )]
     //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-    //
+    /// <summary> A streaker character controller </summary>
     //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
     public partial class StreakerController : BaseCharacterController
     {
@@ -25,15 +29,23 @@ namespace RoaringSnail.WinningStreak.Characters
         partial void Process_Dashing();
 
 
+        //--------------------------------------------------------------
+        /// <summary> Initialises the streaker </summary>
+        //--------------------------------------
         protected void Start()
         {
             Setup_Dashing();
             Setup_Throwing();
         }
 
+
+        //--------------------------------------------------------------
+        /// <summary> Updates the streaker. </summary>
+        //--------------------------------------
         protected override void Update()
         {
             base.Update();
+
             Process_Dashing();
         }
     }

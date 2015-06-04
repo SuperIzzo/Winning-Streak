@@ -55,6 +55,8 @@ namespace RoaringSnail.WinningStreak
         private bool _activated = false;
         #endregion
 
+
+
         //--------------------------------------------------------------
         /// <summary> Gets or sets a value indicating whether this 
         /// <see cref="Ragdoll"/> is activated. </summary>
@@ -76,6 +78,8 @@ namespace RoaringSnail.WinningStreak
             }
         }
 
+
+
         //--------------------------------------------------------------
         /// <summary> Initiates the ragdoll. </summary>
         //----------------------------------
@@ -86,6 +90,8 @@ namespace RoaringSnail.WinningStreak
             else
                 DeactivateRagdoll();
         }
+
+
 
         //--------------------------------------------------------------
         /// <summary> Activates the ragdoll and disables other 
@@ -109,6 +115,8 @@ namespace RoaringSnail.WinningStreak
             }
         }
 
+
+
         //--------------------------------------------------------------
         /// <summary> Deactivates the ragdoll and re-enables other 
         /// character animations. </summary>
@@ -130,6 +138,8 @@ namespace RoaringSnail.WinningStreak
                 }
             }
         }
+
+
 
         //--------------------------------------------------------------
         /// <summary> Automatically updates the ragdoll parts list </summary>
