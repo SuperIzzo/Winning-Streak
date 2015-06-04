@@ -25,16 +25,15 @@ namespace RoaringSnail.WinningStreak.Characters
         #region                  //  FIELDS  //
         //--------------------------------------------------------------
         [SerializeField, Tooltip
+        (   "The speed which this character gains while running."     )]
+        //--------------------------------------
+        float _runSpeed = 7.0f;
+
+
+        [SerializeField, Tooltip
         (   "The speed boost this character obtains when dashing."    )]
         //--------------------------------------
-        float _dashBoost        = 2.5f;
-
-
-        //--------------------------------------------------------------
-        [SerializeField, Tooltip
-        (   "The dash cooldown before it can be used again."          )]
-        //--------------------------------------
-        Countdown _dashCooldown = new Countdown(5.0f);
+        float _dashSpeed        = 2.5f;
 
 
         //--------------------------------------------------------------
@@ -42,6 +41,13 @@ namespace RoaringSnail.WinningStreak.Characters
         (   "The duration of the dash boost."                         )]
         //--------------------------------------
         Countdown _dashDuration = new Countdown(1.0f);
+
+
+        //--------------------------------------------------------------
+        [SerializeField, Tooltip
+        (   "The dash cooldown before it can be used again."          )]
+        //--------------------------------------
+        Countdown _dashCooldown = new Countdown(5.0f);
 
 
         private bool _isDashing;
@@ -66,7 +72,7 @@ namespace RoaringSnail.WinningStreak.Characters
 
 
         //..............................................................
-        #region            //  PUBLIC PROPERTIES  //
+        #region                 //  PROPERTIES  //
         //--------------------------------------------------------------
         /// <summary> Gets or sets a value indicating whether this
         /// <see cref="BaseCharacterController" /> is dashing. </summary>
@@ -83,11 +89,36 @@ namespace RoaringSnail.WinningStreak.Characters
 
         //--------------------------------------------------------------
         /// <summary> Gets or sets a value indicating whether this
-        /// <see cref="BaseCharacterController" /> is running. </summary>
+        /// <see cref="StreakerController" /> is running. </summary>
         /// <value>
         ///   <c>true</c> if running; otherwise, <c>false</c>.</value>
         //--------------------------------------
         public bool isRunning { get { return _isRunning; } }
+
+
+
+        //--------------------------------------------------------------
+        /// <summary> Gets the modified movement
+        ///           speed of the streaker </summary>
+        //--------------------------------------
+        public override float movementSpeed
+        {
+            get
+            {
+                float speed = base.movementSpeed;
+
+                if( isRunning )
+                {
+                    speed = _runSpeed;
+                }
+                else if( isDashing )
+                {
+                    speed = _dashSpeed;
+                }
+
+                return speed;
+            }
+        }
         #endregion
         //......................................
 
@@ -114,6 +145,7 @@ namespace RoaringSnail.WinningStreak.Characters
                 _dashCooldown.Restart();
             }
         }
+
 
 
         //--------------------------------------------------------------
@@ -170,7 +202,7 @@ namespace RoaringSnail.WinningStreak.Characters
             StopDashing();
             StartRunning();
         }
-
+        
 
 
         //--------------------------------------------------------------
@@ -178,12 +210,12 @@ namespace RoaringSnail.WinningStreak.Characters
         //--------------------------------------
         partial void Setup_Dashing()
         {
-            // Start the timers
-            _dashCooldown.Install( this );
-            _dashDuration.Install( this );
-
-            // Setup alarm callbacks
+            // Setup alarm callbacks 
             _dashDuration.AlarmRaised += OnDashDurationEnded;
+
+            // Install timers
+            _dashCooldown.InstallCoroutine( this );
+            _dashDuration.InstallCoroutine( this );
         }
 
 
