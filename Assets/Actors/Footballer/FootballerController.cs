@@ -19,8 +19,9 @@ namespace RoaringSnail.WinningStreak.Characters
     using UnityEngine;
 
 
+    [AddComponentMenu( "Winning Streak/Character/Footballer Controller" )]
     //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-    //
+    /// <summary> A fooballer character controller. </summary>
     //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
     public class FootballerController : BaseCharacterController, ITacklingCharacter
     {
@@ -39,11 +40,18 @@ namespace RoaringSnail.WinningStreak.Characters
         float _tackleSpeed = 4.0f;
 
 
-
+        //--------------------------------------------------------------
+        /// <summary> Internal tackle timer </summary>
+        //--------------------------------------
         private float _tackleTimer;
 
 
+
+        //--------------------------------------------------------------
+        /// <summary> Called when the footballer has tackled </summary>
+        //--------------------------------------
         public event EventHandler Tackled;
+
 
 
         //--------------------------------------------------------------
@@ -82,7 +90,7 @@ namespace RoaringSnail.WinningStreak.Characters
 
 
         //--------------------------------------------------------------
-        /// <summary> Processes the throwing and charging. </summary>
+        /// <summary> Processes the tackling. </summary>
         //--------------------------------------
         private void ProcessTackling()
         {
