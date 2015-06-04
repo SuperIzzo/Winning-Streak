@@ -24,7 +24,7 @@ namespace RoaringSnail.WinningStreak.Characters
     public interface IMobileCharacter
     {
         Vector3 lookDirection { get; }
-        float movementSpeed { get; set; }
+        float movementSpeed { get; }
         Vector2 relativeVelocity { get; }
 
         void Move( Vector2 vel, bool turn = true );
