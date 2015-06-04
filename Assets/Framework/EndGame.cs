@@ -15,6 +15,7 @@
 \** -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- **/
 namespace RoaringSnail.WinningStreak
 {
+    using Characters;
     using UnityEngine;
     using System;
 

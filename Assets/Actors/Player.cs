@@ -16,7 +16,7 @@
 namespace RoaringSnail.WinningStreak
 {
     using UnityEngine;
-
+    using Characters;
 
 
     //--------------------------------------------------------------

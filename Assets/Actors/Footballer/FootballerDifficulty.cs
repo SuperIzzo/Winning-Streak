@@ -13,7 +13,7 @@
  * <date>    16-Feb-2015                                              </date> * 
 |*                                                                            *|
 \** -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- **/
-namespace RoaringSnail.WinningStreak
+namespace RoaringSnail.WinningStreak.Characters
 {
     using UnityEngine;
 
