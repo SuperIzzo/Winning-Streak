@@ -982,12 +982,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7c7e7917dd17b3468cc266f18759b41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alertRadius: 20
-  chaseOffDistance: 50
-  redirectionRate: .00999999978
-  chaseGiveUpRate: 9.99999975e-05
-  tackleRange: .400000006
-  playerHate: 0
+  _alertRadius: 20
+  _chaseOffDistance: 50
+  _redirectionRate: .00999999978
+  _chaseGiveUpRate: 9.99999975e-05
+  _tackleRange: 4
+  _playerHate: 0
 --- !u!114 &11400010
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -996,23 +996,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 100046}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d640f6a39be6544f8a5829237f81110, type: 3}
+  m_Script: {fileID: 11500000, guid: 6395be664de40ab45a838c0c0577236e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 3
-  turningSpeed: 6
-  runSpeed: 7
-  dashBoost: 3
-  dashDuration: 1
-  dashCooldown: 5
-  grabRadius: 1
-  maxChargeTime: 3
-  throwPower: 20
-  tackleDuration: .300000012
-  tackleSpeed: 4
-  reviveTimeMin: 10
-  reviveTimeMax: 15
-  propSlot: {fileID: 0}
+  _baseMovementSpeed: 3
+  _turningSpeed: 6
+  _reviveTime:
+    _min: 10
+    _max: 15
+  _tackleDuration: .300000012
+  _tackleSpeed: 4
 --- !u!114 &11417246
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1025,7 +1018,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goofiness: 0
-  characterController: {fileID: 11400010}
+  character: {fileID: 0}
   animator: {fileID: 9525404}
   ragdoll: {fileID: 11492434}
   rootBone: {fileID: 5452178}
