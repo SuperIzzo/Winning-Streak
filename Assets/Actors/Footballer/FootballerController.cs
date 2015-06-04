@@ -90,11 +90,11 @@ namespace RoaringSnail.WinningStreak.Characters
             {
                 _tackleTimer -= Time.deltaTime;
                 transform.position += transform.forward * (_tackleSpeed * Time.deltaTime);
-                OnTackled();
 
                 // Knock down this character at the end of the tackle
                 if( _tackleTimer <= 0 )
                 {
+                    OnTackled();
                     KnockDown();
                 }
             }
