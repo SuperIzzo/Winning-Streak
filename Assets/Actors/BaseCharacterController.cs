@@ -227,15 +227,9 @@ namespace RoaringSnail.WinningStreak.Characters
         //--------------------------------------
         protected virtual void Update()
         {
-            if( !isKnockedDown )
-            {
-                ProcessMovement();
-                ProcessTurning();
-            }
-            else
-            {
-                ProcessRevival();
-            }
+            ProcessMovement();
+            ProcessTurning();
+            ProcessRevival();
         }
 
 
@@ -243,19 +237,22 @@ namespace RoaringSnail.WinningStreak.Characters
         //--------------------------------------------------------------
         /// <summary> Processes the movement. </summary>
         //--------------------------------------
-        private void ProcessMovement()
+        protected virtual void ProcessMovement()
         {
-            float speed = movementSpeed;
+            if( !isKnockedDown )
+            {
+                float speed = movementSpeed;
 
-            // Normal movement
-            var moveVel = new Vector3(  relativeVelocity.x,
-                                        0,
-                                        relativeVelocity.y );
+                // Normal movement
+                var moveVel = new Vector3(  relativeVelocity.x,
+                                            0,
+                                            relativeVelocity.y );
 
-            moveVel *= speed * Time.deltaTime;
+                moveVel *= speed * Time.deltaTime;
 
-            // Final result
-            transform.position = transform.position + moveVel;
+                // Final result
+                transform.position = transform.position + moveVel;
+            }
         }
 
 
@@ -263,9 +260,9 @@ namespace RoaringSnail.WinningStreak.Characters
         //--------------------------------------------------------------
         /// <summary> Processes the turning. </summary>
         //--------------------------------------
-        private void ProcessTurning()
+        protected virtual void ProcessTurning()
         {
-            if( lookDirection.magnitude > 0 )
+            if( !isKnockedDown && lookDirection.magnitude > 0 )
             {
                 Quaternion targetRot =
                     Quaternion.LookRotation( lookDirection, Vector3.up );
@@ -284,9 +281,9 @@ namespace RoaringSnail.WinningStreak.Characters
         //--------------------------------------------------------------
         /// <summary> Processes the revival of a knocked down character. </summary>
         //--------------------------------------
-        private void ProcessRevival()
+        protected virtual void ProcessRevival()
         {
-            if( _reviveTimer > 0 )
+            if( isKnockedDown && _reviveTimer > 0 )
             {
                 _reviveTimer -= Time.deltaTime;
 
