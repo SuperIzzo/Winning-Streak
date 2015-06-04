@@ -15,7 +15,9 @@
 \** -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- **/
 namespace RoaringSnail.WinningStreak
 {
+    using Characters;
     using UnityEngine;
+
 
 
     //--------------------------------------------------------------
@@ -28,6 +30,7 @@ namespace RoaringSnail.WinningStreak
     public class TackleDamager : Damager
     {
 	    public BaseCharacterController controller;
+        private ITacklingCharacter _tackler;
 
 	    //--------------------------------------------------------------
 	    /// <summary> Setup this instance. </summary>
@@ -38,7 +41,9 @@ namespace RoaringSnail.WinningStreak
 		    {
 			    controller = GetComponentInParent<BaseCharacterController>();
 		    }
-	    }
+
+            _tackler = controller.GetComponent<ITacklingCharacter>();
+        }
 
 	    //--------------------------------------------------------------
 	    /// <summary> Does damage calculations and calls back on the damagees. </summary>
@@ -53,7 +58,7 @@ namespace RoaringSnail.WinningStreak
 	    {
 		    bool doDamage = false;
 
-		    if( controller.isTackling )
+		    if(_tackler.isTackling )
 		    {
 			    // Do damage when tackling
 			    doDamage = true;

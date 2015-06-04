@@ -16,12 +16,14 @@
 namespace RoaringSnail.WinningStreak
 {
     using UnityEngine;
+    using Characters;
 
 
     [RequireComponent(typeof(BaseCharacterController))]
     public class StreakerEventAnnouncer : MonoBehaviour
     {
-        BaseCharacterController controller;
+        IThrowingCharacter   _thrower;
+        IDancingCharacter    _dancer;
         ScoringEventManager scoringEvent;
 
         bool pickedBallEvent = false;
@@ -30,17 +32,18 @@ namespace RoaringSnail.WinningStreak
         // Use this for initialization
         void Start()
         {
-            controller = GetComponent<BaseCharacterController>();
+            _thrower = GetComponent<IThrowingCharacter>();
+            _dancer =  GetComponent<IDancingCharacter>();
             scoringEvent = GameSystem.scoringEvent;
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (scoringEvent && controller)
+            if (scoringEvent && _thrower!=null)
             {
                 // Ball grab scoring
-                if (controller.heldObject != null ^ pickedBallEvent)
+                if (_thrower.heldObject != null ^ pickedBallEvent)
                 {
                     pickedBallEvent = !pickedBallEvent;
 
@@ -49,7 +52,7 @@ namespace RoaringSnail.WinningStreak
                 }
 
                 // Dance scoring
-                if (controller.isDancing ^ isDancingEvent)
+                if (_dancer.isDancing ^ isDancingEvent)
                 {
                     isDancingEvent = !isDancingEvent;
                     scoringEvent.Fire(ScoringEventType.WIGGLE, isDancingEvent);

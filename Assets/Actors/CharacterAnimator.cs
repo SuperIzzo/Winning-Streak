@@ -13,7 +13,7 @@
  * <date>    28-Nov-2014                                              </date> * 
 |*                                                                            *|
 \** -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- **/
-namespace RoaringSnail.WinningStreak
+namespace RoaringSnail.WinningStreak.Characters
 {
     using UnityEngine;
 
@@ -41,7 +41,7 @@ namespace RoaringSnail.WinningStreak
         #region Public references
         //--------------------------------------
         /// <summary> The character controller component. </summary>
-        public BaseCharacterController characterController;
+        public GameObject character;
 
         /// <summary> The animator component. </summary>
         public Animator animator;
@@ -52,6 +52,26 @@ namespace RoaringSnail.WinningStreak
         public Rigidbody rootBone;
         #endregion
 
+
+        private IKnockableCharacter _knockable;
+        private IMobileCharacter _mover;
+        private IDancingCharacter _dancer;
+        private IThrowingCharacter _thrower;
+        private ITacklingCharacter _tackler;
+
+
+        void Start()
+        {
+            if( character )
+            {
+                _knockable  = character.GetComponent<IKnockableCharacter>();
+                _mover = character.GetComponent<IMobileCharacter>();
+                _dancer = character.GetComponent<IDancingCharacter>();
+                _thrower = character.GetComponent<IThrowingCharacter>();
+                _tackler = character.GetComponent<ITacklingCharacter>();
+            }
+        }
+
         //--------------------------------------------------------------
         /// <summary> Update is called once per frame </summary>
         //--------------------------------------
@@ -61,28 +81,36 @@ namespace RoaringSnail.WinningStreak
             if (Mathf.Abs(Time.deltaTime) <= float.Epsilon)
                 return;
 
-            float speed = characterController.relativeVelocity.magnitude;
-            bool dancing = characterController.isDancing;
-            bool tackling = characterController.isTackling;
-            bool charging = characterController.isCharging;
-            bool knockedDown = characterController.isKnockedDown;
+
+            float speed = 0;
+            if (_mover != null)
+            { 
+                speed =  _mover.movementSpeed / 8.0f;
+                speed *= _mover.relativeVelocity.magnitude;
+            }
+            
+            bool isDancing =     (_dancer != null) && _dancer.isDancing;
+            bool isTackling =    (_tackler != null) && _tackler.isTackling;
+            bool isCharging =    (_thrower != null) && _thrower.isCharging;
+            bool isKnockedDown = (_knockable != null) && _knockable.isKnockedDown;
+
 
             animator.SetFloat("speed", speed);
             animator.SetFloat("goofiness", goofiness);
-            animator.SetBool("wiggle", dancing);
-            animator.SetBool("tackle", tackling);
-            animator.SetBool("charge_throw", charging);
+            animator.SetBool("wiggle", isDancing);
+            animator.SetBool("tackle", isTackling);
+            animator.SetBool("charge_throw", isCharging);
 
             // Fix the character position based on the ragdoll simulations
-            if (ragdoll.activated && !knockedDown && rootBone)
+            if (ragdoll.activated && !isKnockedDown && rootBone)
             {
                 Vector3 position = rootBone.transform.position;
-                position.y = characterController.transform.position.y;
-                characterController.transform.position = position;
+                position.y = character.transform.position.y;
+                character.transform.position = position;
             }
 
             // ragdoll activates when the character is knocked down
-            ragdoll.activated = knockedDown;
+            ragdoll.activated = isKnockedDown;
         }
     }
 }

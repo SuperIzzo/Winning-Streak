@@ -13,7 +13,7 @@
  * <date>    28-Nov-2014                                              </date> * 
 |*                                                                            *|
 \** -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- **/
-namespace RoaringSnail.WinningStreak
+namespace RoaringSnail.WinningStreak.Characters
 {
     using UnityEngine;
 
@@ -24,7 +24,13 @@ namespace RoaringSnail.WinningStreak
     [RequireComponent(typeof(BaseCharacterController))]
     public class PlayerInput : MonoBehaviour
     {
-        private BaseCharacterController controller;
+        private IKnockableCharacter _knockable;
+        private IMobileCharacter _mover;
+        private IDancingCharacter _dancer;
+        private IThrowingCharacter _thrower;
+        private ITacklingCharacter _tackler;
+        private IDashingCharacter _dasher;
+
         private static readonly float AXES_DEADZONE = 0.1f;
         private bool isScreenshotAxisInUse = false;
 
@@ -35,19 +41,17 @@ namespace RoaringSnail.WinningStreak
         // Use this for initialization
         void Start()
         {
-            controller = GetComponent<BaseCharacterController>();
+            _knockable = GetComponent<IKnockableCharacter>();
+            _mover = GetComponent<IMobileCharacter>();
+            _dancer = GetComponent<IDancingCharacter>();
+            _thrower = GetComponent<IThrowingCharacter>();
+            _tackler = GetComponent<ITacklingCharacter>();
+            _dasher = GetComponent<IDashingCharacter>();
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (!controller)
-            {
-                // Skip the update and log an error
-                Debug.LogError("No character controller found!");
-                return;
-            }
-
             // Get Input
             float x = Input.GetAxis("Horizontal");
             float y = Input.GetAxis("Vertical");
@@ -97,26 +101,30 @@ namespace RoaringSnail.WinningStreak
                 controlVector = Vector2.zero;
             }
 
-            controller.Move(controlVector);
-            controller.Dance(dancing);
+            _mover.Move(controlVector);
 
-            controller.isDashing = dashing;
+            if (dancing)
+                _dancer.StartDancing();
+            else
+                _dancer.StopDancing();
+
+            _dasher.isDashing = dashing;
 
             if (grabDown)
             {
-                if (controller.heldObject)
+                if (_thrower.heldObject)
                 {
-                    controller.ChargeThrow();
+                    _thrower.ChargeThrow();
                 }
                 else
                 {
-                    controller.Grab();
+                    _thrower.Grab();
                 }
             }
 
-            if (grabUp && controller.isCharging)
+            if (grabUp && _thrower.isCharging)
             {
-                controller.Throw();
+                _thrower.Throw();
             }
 
             if (screenShotDown)
@@ -128,7 +136,7 @@ namespace RoaringSnail.WinningStreak
             {
                 bool slow = timeFlow.isSlowed;
 
-                if (!controller.isKnockedDown)
+                if (!_knockable.isKnockedDown)
                 {
                     if (slowMoDown)
                         slow = !slow;

@@ -13,7 +13,7 @@
  * <date>    11-Feb-2015                                              </date> * 
 |*                                                                            *|
 \** -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- **/
-namespace RoaringSnail.WinningStreak
+namespace RoaringSnail.WinningStreak.Characters
 {
     using UnityEngine;
 
@@ -29,7 +29,6 @@ namespace RoaringSnail.WinningStreak
         //..............................................................
         #region            //  INSPECTOR FIELDS  //
         //--------------------------------------------------------------
-        [SerializeField] BaseCharacterController    _controller = null;
         [SerializeField] AIInput                    _aiInput    = null;
 
         [SerializeField] float                      _tackleMissTime   = 5.0f;
@@ -45,6 +44,7 @@ namespace RoaringSnail.WinningStreak
         private BaseCharacterController             _player = null;
         private AudioSource                         _audio  = null;
         private float                               _tackleMissTimer  = 0.0f;
+        private ITacklingCharacter                           _tackler;
         #endregion
         //......................................
 
@@ -58,7 +58,7 @@ namespace RoaringSnail.WinningStreak
         {
             _player     = Player.p1.characterController;
             _audio      = GetComponent<AudioSource>();
-            _controller = GetComponent<BaseCharacterController>();
+            _tackler    = GetComponent<ITacklingCharacter>();
             _aiInput    = GetComponent<AIInput>();
         }
 
@@ -71,7 +71,7 @@ namespace RoaringSnail.WinningStreak
         {
             // HACK:    FootballerTackleEvent shouldn't be guessing
             //          when the tackle has to happen, this should be an event
-            if (_controller.isTackling && _tackleMissTimer <= 0)
+            if (_tackler.isTackling && _tackleMissTimer <= 0)
             {
                 _tackleMissTimer = _tackleMissTime;
             }

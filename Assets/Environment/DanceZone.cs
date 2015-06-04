@@ -15,6 +15,7 @@
 \** -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- **/
 namespace RoaringSnail.WinningStreak
 {
+    using Characters;
     using UnityEngine;
 
     public class DanceZone : MonoBehaviour
@@ -23,7 +24,7 @@ namespace RoaringSnail.WinningStreak
         {
             if (other.CompareTag(Tags.player))
             {
-                if (other.GetComponent<BaseCharacterController>().isDancing)
+                if (other.GetComponent<IDancingCharacter>().isDancing)
                 {
                     GameSystem.scoringEvent.Fire(ScoringEventType.ZONE_WIGGLE, true);
                 }

@@ -13,12 +13,13 @@
  * <date>    18-Dec-2014                                              </date> * 
 |*                                                                            *|
 \** -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- **/
-namespace RoaringSnail.WinningStreak
+namespace RoaringSnail.WinningStreak.Characters
 {
     using UnityEngine;
 
 
-    //--------------------------------------------------------------
+
+    //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     /// <summary> AI character controller. </summary>
     /// <description> AIController is a decision taking component that
     /// manipulates a <see cref="BaseCharacterController"/>. It worrks analogous
@@ -27,15 +28,13 @@ namespace RoaringSnail.WinningStreak
     /// Note: AICharacterController does not and cannot modify the game state,
     /// that task is reserved for the BaseCharacterController component.
     /// </description>
-    //--------------------------------------
-    [AddComponentMenu("Winning Streak/Character/AI Input", 100)]
-    [RequireComponent(typeof(BaseCharacterController))]
+    //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+    [AddComponentMenu( "Winning Streak/Character/AI Input", 100 )]
+    [RequireComponent( typeof( BaseCharacterController ) )]
     public class AIInput : MonoBehaviour
     {
-        //--------------------------------------------------------------
+        //..............................................................
         #region Public types
-        //--------------------------------------
-
         //--------------------------------------------------------------
         ///<summary> Valid states for the AI </summary>
         //--------------------------------------
@@ -54,7 +53,7 @@ namespace RoaringSnail.WinningStreak
             UNAWARE,
         }
         #endregion
-
+        //......................................
 
         [SerializeField]
         float _alertRadius = 5.0f;
@@ -126,8 +125,9 @@ namespace RoaringSnail.WinningStreak
         //--------------------------------------------------------------
         #region Internal references
         //--------------------------------------
-        BaseCharacterController controller;
-        Faction faction;
+        Faction     faction;
+        IMobileCharacter    mobileCharacter;
+        ITacklingCharacter   tackler;
         #endregion
 
 
@@ -151,8 +151,9 @@ namespace RoaringSnail.WinningStreak
         //--------------------------------------
         protected void Start()
         {
-            controller = GetComponent<BaseCharacterController>();
-            faction = GetComponent<Faction>();
+            mobileCharacter = GetComponent<IMobileCharacter>();
+            tackler         = GetComponent<ITacklingCharacter>();
+            faction         = GetComponent<Faction>();
             state = AIState.UNAWARE;
         }
 
@@ -161,7 +162,7 @@ namespace RoaringSnail.WinningStreak
         //--------------------------------------
         protected void Update()
         {
-            switch (state)
+            switch( state )
             {
                 case AIState.UNAWARE:
                     UnawareState();
@@ -185,19 +186,19 @@ namespace RoaringSnail.WinningStreak
             // if ally around, follow
 
             // Occasionally start roaming about
-            if (Random.value < redirectionRate)
+            if( Random.value < redirectionRate )
             {
-                roamingDirection = new Vector2(Random.value - 0.5f, Random.value - 0.5f);
+                roamingDirection = new Vector2( Random.value - 0.5f, Random.value - 0.5f );
                 roamingDirection.Normalize();
             }
 
-            if (roamingDirection.magnitude > 0)
-                controller.Move(roamingDirection * 0.5f);
+            if( roamingDirection.magnitude > 0 )
+                mobileCharacter.Move( roamingDirection * 0.5f );
 
-            if (Random.value < 0.05f)
+            if( Random.value < 0.05f )
             {
                 BaseCharacterController enemy = DetectEnemy();
-                if (enemy)
+                if( enemy )
                 {
                     target = enemy;
                     state = AIState.CHASING;
@@ -212,22 +213,22 @@ namespace RoaringSnail.WinningStreak
         {
             // chase until too far away
             // if close enough clinch and tackle
-            if (target != null)
+            if( target != null )
             {
                 Vector3 direction = target.transform.position - transform.position;
                 Vector2 direction2D = new Vector2(direction.x, direction.z);
                 float distance = direction2D.magnitude;
                 direction2D.Normalize();
-                controller.Move(direction2D);
+                mobileCharacter.Move( direction2D );
 
-                if (distance > chaseOffDistance || chaseGiveUpRate > Random.value || target.isKnockedDown)
+                if( distance > chaseOffDistance || chaseGiveUpRate > Random.value || target.isKnockedDown )
                 {
                     state = AIState.UNAWARE;
                 }
 
-                if (distance < tackleRange)
+                if( distance < tackleRange )
                 {
-                    controller.Tackle(true);
+                    tackler.Tackle();
                 }
             }
         }
@@ -261,7 +262,7 @@ namespace RoaringSnail.WinningStreak
             BaseCharacterController target = null;
 
             // if we hate the player - target him directly
-            if (playerHate > Random.value)
+            if( playerHate > Random.value )
             {
                 target = Player.p1.characterController;
             }
@@ -269,24 +270,24 @@ namespace RoaringSnail.WinningStreak
             {
                 Collider[] colliders = Physics.OverlapSphere(transform.position, alertRadius);
 
-                foreach (Collider collider in colliders)
+                foreach( Collider collider in colliders )
                 {
                     // If it is a different object
-                    if (collider.transform != transform)
+                    if( collider.transform != transform )
                     {
 
                         Faction otherFaction = collider.GetComponent<Faction>();
                         BaseCharacterController otherController = collider.GetComponent<BaseCharacterController>();
 
-                        if (!collider.GetComponent<BaseCharacterController>())
+                        if( !collider.GetComponent<BaseCharacterController>() )
                             continue;
 
-                        if (faction && faction.IsAlly(otherFaction))
+                        if( faction && faction.IsAlly( otherFaction ) )
                             continue; // Skip this iteration, we ignore allies
 
-                        if (otherController)
+                        if( otherController )
                         {
-                            if (otherController.isKnockedDown)
+                            if( otherController.isKnockedDown )
                             {
                                 continue;
                             }
