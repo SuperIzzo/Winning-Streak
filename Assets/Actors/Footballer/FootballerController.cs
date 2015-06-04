@@ -118,6 +118,32 @@ namespace RoaringSnail.WinningStreak.Characters
             if( Tackled != null )
                 Tackled( this, null );
         }
+
+
+
+        //--------------------------------------------------------------
+        /// <summary> Process the movement. </summary>
+        //--------------------------------------
+        protected override void ProcessMovement()
+        {
+            if( !isTackling )
+            {
+                base.ProcessMovement();
+            }
+        }
+
+
+
+        //--------------------------------------------------------------
+        /// <summary> Process the turning. </summary>
+        //--------------------------------------
+        protected override void ProcessTurning()
+        {
+            if( !isTackling )
+            {
+                base.ProcessTurning();
+            }
+        }
     }
 
 }
