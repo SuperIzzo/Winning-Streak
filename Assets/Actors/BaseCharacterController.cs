@@ -19,7 +19,7 @@ namespace RoaringSnail.WinningStreak.Characters
     using UnityEngine;
 
 
-    [AddComponentMenu( "Winning Streak/Character/Base Character Controller" )]
+ 
     //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     /// <summary>  Base character controller encapsulates the core 
     ///            game logic of a game characters.          </summary>
@@ -35,13 +35,15 @@ namespace RoaringSnail.WinningStreak.Characters
     {
         private static readonly float turningThreshold = 0.1f;
 
+
+
         //..............................................................
         #region            //  INSPECTOR SETTINGS  //
         //--------------------------------------------------------------
         [SerializeField, Tooltip
-        (   "This character's movement speed"                         )]
+        (   "This character's base movement speed"                    )]
         //--------------------------------------
-        float _movementSpeed = 4.5f;
+        float _baseMovementSpeed = 4.5f;
 
 
         //--------------------------------------------------------------
@@ -49,14 +51,7 @@ namespace RoaringSnail.WinningStreak.Characters
         (   "This character's turning speed"                          )]
         //--------------------------------------
         float _turningSpeed = 6.0f;
-
-
-        //--------------------------------------------------------------
-        [SerializeField, Tooltip
-        (   "The speed this character obtains when running."          )]
-        //--------------------------------------
-        float _runSpeed = 7.0f;
-
+        
 
         //--------------------------------------------------------------
         [SerializeField, Tooltip
@@ -101,7 +96,7 @@ namespace RoaringSnail.WinningStreak.Characters
 
         //--------------------------------------------------------------
         /// <summary> Returns the relative velocity (readonly). </summary>
-        /// <value>The relative velocity.</value>
+        /// <value> The relative velocity. </value>
         //--------------------------------------
         public Vector2 relativeVelocity { get; private set; }
 
@@ -109,20 +104,32 @@ namespace RoaringSnail.WinningStreak.Characters
 
         //--------------------------------------------------------------
         /// <summary> Returns the look direction (readonly). </summary>
-        /// <value>The look direction.</value>
+        /// <value> The look direction. </value>
         //--------------------------------------
         public Vector3 lookDirection { get; private set; }
 
 
 
         //--------------------------------------------------------------
-        /// <summary> Gets or sets the character movement speed. </summary>
-        /// <value>The movement speed.</value>
+        /// <summary> Gets or sets the character base movement speed.</summary>
+        /// <value> The base movement speed. </value>
         //--------------------------------------
-        public float movementSpeed
+        public float baseMovementSpeed
         {
-            get { return _movementSpeed; }
-            set { _movementSpeed = value; }
+            get { return _baseMovementSpeed; }
+            set { _baseMovementSpeed = value; }
+        }
+
+
+
+        //--------------------------------------------------------------
+        /// <summary> Gets the character movement speed 
+        ///           after modifications.          </summary>
+        /// <value> The movement speed. </value>
+        //--------------------------------------
+        public virtual float movementSpeed
+        {
+            get { return baseMovementSpeed; }
         }
         #endregion
         //......................................
@@ -168,7 +175,7 @@ namespace RoaringSnail.WinningStreak.Characters
         //--------------------------------------
         public void Move( Vector2 vel, bool turn = true )
         {
-            this.relativeVelocity = vel;
+            relativeVelocity = vel;
 
             if( turn )
             {
@@ -238,7 +245,7 @@ namespace RoaringSnail.WinningStreak.Characters
         //--------------------------------------
         private void ProcessMovement()
         {
-            float speed = _movementSpeed;
+            float speed = movementSpeed;
 
             // Normal movement
             var moveVel = new Vector3(  relativeVelocity.x,
