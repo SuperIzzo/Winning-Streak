@@ -34,7 +34,65 @@ namespace RoaringSnail.WinningStreak.Characters
     public class AIInput : MonoBehaviour
     {
         //..............................................................
-        #region Public types
+        #region            //  INPECTOR SETTINGS  //
+        //--------------------------------------------------------------
+        [SerializeField, Tooltip
+        (   "The radius around this ai at which it gets alert"        )]
+        //--------------------------------------
+        float _alertRadius = 5.0f;
+
+
+        //--------------------------------------------------------------
+        [SerializeField, Tooltip
+        (   "The distance at which the ai will give up chasing"       )]
+        //--------------------------------------
+        float _chaseOffDistance = 10.0f;
+
+
+        //--------------------------------------------------------------
+        [SerializeField, Range(0,1), Tooltip
+        (   "How often will the ai change direction"                  )]
+        //--------------------------------------
+        float _redirectionRate = 0.01f;
+
+
+        //--------------------------------------------------------------
+        [SerializeField, Range(0,1), Tooltip
+        (   "How often will the ai simply give up a chase"            )]
+        //--------------------------------------
+        float _chaseGiveUpRate = 0.0001f;
+
+
+        //--------------------------------------------------------------
+        [SerializeField, Tooltip
+        (   "At what distance the ai should attempt a tackle"         )]
+        //--------------------------------------
+        float _tackleRange = 2.0f;
+
+
+        //--------------------------------------------------------------
+        [SerializeField, Range(0,1), Tooltip
+        (   "How often will the ai unfairly target the player"        )]
+        //--------------------------------------
+        float _playerHate = 0.0f;
+        #endregion
+        //......................................
+
+
+
+        //..............................................................
+        #region         //  PRIVATE REFERENCES  //
+        //--------------------------------------------------------------
+        Faction             _faction;
+        IMobileCharacter    _mobileCharacter;
+        ITacklingCharacter  _tackler;
+        #endregion
+        //......................................
+
+
+
+        //..............................................................
+        #region          //  PUBLIC TYPES  //
         //--------------------------------------------------------------
         ///<summary> Valid states for the AI </summary>
         //--------------------------------------
@@ -55,107 +113,121 @@ namespace RoaringSnail.WinningStreak.Characters
         #endregion
         //......................................
 
-        [SerializeField]
-        float _alertRadius = 5.0f;
-        [SerializeField]
-        float _chaseOffDistance = 10.0f;
-        [SerializeField]
-        float _redirectionRate = 0.01f;
-        [SerializeField]
-        float _chaseGiveUpRate = 0.0001f;
-        [SerializeField]
-        float _tackleRange = 2.0f;
-        [SerializeField]
-        float _playerHate = 0.0f;
 
 
+        //..............................................................
+        #region             //  PUBLIC PROPERTIES  //
         //--------------------------------------------------------------
-        #region Public properties
-        //--------------------------------------
         /// <summary> The radius in which the AI will become alerted
         /// if an enemy is close. </summary>
+        //--------------------------------------
         public float alertRadius
         {
             get { return _alertRadius; }
             set { _alertRadius = value; }
         }
 
+
+
+        //--------------------------------------------------------------
         /// <summary> The maximal distance between a chasing AI and
         /// it's target, before the AI gives up.</summary>
+        //--------------------------------------
         public float chaseOffDistance
         {
             get { return _chaseOffDistance; }
             set { _chaseOffDistance = value; }
         }
 
+
+
+        //--------------------------------------------------------------
         /// <summary> The rate at which an unaware AI will be changing
         /// its direction </summary>
+        //--------------------------------------
         public float redirectionRate
         {
             get { return _redirectionRate; }
             set { _redirectionRate = value; }
         }
 
+
+
+        //--------------------------------------------------------------
         /// <summary> The rate at which a chasing AI will randomly
         /// decide to give up a chase. </summary>
+        //--------------------------------------
         public float chaseGiveUpRate
         {
             get { return _chaseGiveUpRate; }
             set { _chaseGiveUpRate = value; }
         }
 
+
+
+        //--------------------------------------------------------------
         /// <summary> The distance at which a chasing AI will attempt
         /// to a tackle. </summary>
+        //--------------------------------------
         public float tackleRange
         {
             get { return _tackleRange; }
             set { _tackleRange = value; }
         }
 
+
+
+        //--------------------------------------------------------------
         /// <summary> The rate at which the player will be targeted
         /// (unfairly) by the AI. </summary>
+        //--------------------------------------
         public float playerHate
         {
             get { return _playerHate; }
             set { _playerHate = value; }
         }
-        #endregion
 
-
-        //--------------------------------------------------------------
-        #region Internal references
-        //--------------------------------------
-        Faction     faction;
-        IMobileCharacter    mobileCharacter;
-        ITacklingCharacter   tackler;
-        #endregion
 
 
         //--------------------------------------------------------------
-        #region State
-        //--------------------------------------
         /// <summary> The current AI state. </summary>
+        //--------------------------------------
         public AIState state { get; private set; }
 
+
+
+        //--------------------------------------------------------------
         /// <summary> Chase target.
         /// Only valid in the CHASING AIState. </summary>
+        //--------------------------------------
         public BaseCharacterController target { get; private set; }
 
+
+
+        //--------------------------------------------------------------
         /// <summary> The roaming direction.
         /// Only valid in the UNAWARE AIState. </summary>
+        //--------------------------------------
         public Vector2 roamingDirection { get; private set; }
         #endregion
+        //......................................
 
+
+
+        //..............................................................
+        #region                //  METHODS  //
         //--------------------------------------------------------------
         /// <summary> Use this for initialization. </summary>
         //--------------------------------------
         protected void Start()
         {
-            mobileCharacter = GetComponent<IMobileCharacter>();
-            tackler         = GetComponent<ITacklingCharacter>();
-            faction         = GetComponent<Faction>();
+            _mobileCharacter = GetComponent<IMobileCharacter>();
+            _tackler         = GetComponent<ITacklingCharacter>();
+            _faction         = GetComponent<Faction>();
             state = AIState.UNAWARE;
         }
+
+
 
         //--------------------------------------------------------------
         /// <summary> Update is called once per frame. </summary>
@@ -176,6 +248,8 @@ namespace RoaringSnail.WinningStreak.Characters
             }
         }
 
+
+
         //--------------------------------------------------------------
         /// <summary> The state of unawareness </summary>
         //--------------------------------------
@@ -193,7 +267,7 @@ namespace RoaringSnail.WinningStreak.Characters
             }
 
             if( roamingDirection.magnitude > 0 )
-                mobileCharacter.Move( roamingDirection * 0.5f );
+                _mobileCharacter.Move( roamingDirection * 0.5f );
 
             if( Random.value < 0.05f )
             {
@@ -205,6 +279,8 @@ namespace RoaringSnail.WinningStreak.Characters
                 }
             }
         }
+
+
 
         //--------------------------------------------------------------
         /// <summary> State of chasing an enemy. </summary>
@@ -219,7 +295,7 @@ namespace RoaringSnail.WinningStreak.Characters
                 Vector2 direction2D = new Vector2(direction.x, direction.z);
                 float distance = direction2D.magnitude;
                 direction2D.Normalize();
-                mobileCharacter.Move( direction2D );
+                _mobileCharacter.Move( direction2D );
 
                 if( distance > chaseOffDistance || chaseGiveUpRate > Random.value || target.isKnockedDown )
                 {
@@ -228,10 +304,12 @@ namespace RoaringSnail.WinningStreak.Characters
 
                 if( distance < tackleRange )
                 {
-                    tackler.Tackle();
+                    _tackler.Tackle();
                 }
             }
         }
+
+
 
         //--------------------------------------------------------------
         /// <summary> Follow an ally unit. </summary>
@@ -251,6 +329,7 @@ namespace RoaringSnail.WinningStreak.Characters
 
             throw new System.NotImplementedException();
         }
+
 
 
         //--------------------------------------------------------------
@@ -282,7 +361,7 @@ namespace RoaringSnail.WinningStreak.Characters
                         if( !collider.GetComponent<BaseCharacterController>() )
                             continue;
 
-                        if( faction && faction.IsAlly( otherFaction ) )
+                        if( _faction && _faction.IsAlly( otherFaction ) )
                             continue; // Skip this iteration, we ignore allies
 
                         if( otherController )
@@ -303,5 +382,7 @@ namespace RoaringSnail.WinningStreak.Characters
 
             return target;
         }
+        #endregion
+        //......................................
     }
 }

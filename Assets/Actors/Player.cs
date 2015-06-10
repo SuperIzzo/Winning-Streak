@@ -19,13 +19,30 @@ namespace RoaringSnail.WinningStreak
     using Characters;
 
 
-    //--------------------------------------------------------------
-    /// <summary> An static utility class that provides easy access 
-    /// to player related objects and components. </summary>
-    //  Note: In multiplayer this will be indexable 
-    //--------------------------------------
+    //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+    /// <summary>   An static utility class that provides easy 
+    ///             access to player related objects and components. 
+    ///                                                   </summary>
+    //   NOTE: In multiplayer this will be indexable 
+    //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     public class Player
     {
+        private static Player _p1;
+
+
+
+        //..............................................................
+        #region            //  PRIVATE REFERENCES  //
+        //--------------------------------------------------------------
+        private GameObject  _gameObject;
+        private Score       _score;
+        #endregion
+        //......................................
+
+
+
+        //..............................................................
+        #region            //  PUBLIC PROPERTIES  //
         //--------------------------------------------------------------
         /// <summary> Returns player one. </summary>
         //--------------------------------------
@@ -33,13 +50,13 @@ namespace RoaringSnail.WinningStreak
         {
             get
             {
-                if (_p1 == null)
+                if( _p1 == null )
                     _p1 = new Player();
 
                 return _p1;
             }
         }
-        private static Player _p1;
+
 
 
         //--------------------------------------------------------------
@@ -50,13 +67,14 @@ namespace RoaringSnail.WinningStreak
         {
             get
             {
-                if (!_gameObject)
-                    _gameObject = GameObject.FindGameObjectWithTag(Tags.player);
+                if( !_gameObject )
+                    _gameObject = GameObject.FindGameObjectWithTag( Tags.player );
 
                 return _gameObject;
             }
         }
-        private GameObject _gameObject;
+
+
 
         //--------------------------------------------------------------
         /// <summary> Returns the player transform (readonly). </summary>
@@ -66,12 +84,13 @@ namespace RoaringSnail.WinningStreak
         {
             get
             {
-                if (gameObject)
+                if( gameObject )
                     return gameObject.transform;
                 else
                     return null;
             }
         }
+
 
         //--------------------------------------------------------------
         /// <summary> Returns the player character controller (readonly). </summary>
@@ -81,12 +100,14 @@ namespace RoaringSnail.WinningStreak
         {
             get
             {
-                if (gameObject)
+                if( gameObject )
                     return gameObject.GetComponent<BaseCharacterController>();
                 else
                     return null;
             }
         }
+
+
 
         //--------------------------------------------------------------
         /// <summary> Returns the player's score (readonly). </summary>
@@ -98,12 +119,13 @@ namespace RoaringSnail.WinningStreak
             {
                 //HACK: There's only one player atm, so only one score
                 //      this will change
-                if (!_score)
+                if( !_score )
                     _score = GameObject.FindObjectOfType<Score>();
 
                 return _score;
             }
         }
-        private Score _score;
+        #endregion
+        //......................................
     }
 }
