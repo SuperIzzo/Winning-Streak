@@ -19,7 +19,7 @@ namespace RoaringSnail.WinningStreak.Characters
 
 
 
-    [AddComponentMenu("Winning Streak/Character/Player Input", 100)]
+    [AddComponentMenu( "Winning Streak/Character/Player Input", 100 )]
     //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     /// <summary> Player input that controls a character. </summary>
     //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -34,6 +34,7 @@ namespace RoaringSnail.WinningStreak.Characters
         //......................................
 
 
+
         //..............................................................
         #region            //  PRIVATE REFERENCES  //
         //--------------------------------------------------------------
@@ -41,7 +42,6 @@ namespace RoaringSnail.WinningStreak.Characters
         private IMobileCharacter    _mover;
         private IDancingCharacter   _dancer;
         private IThrowingCharacter  _thrower;
-        private ITacklingCharacter  _tackler;
         private IDashingCharacter   _dasher;
         #endregion
         //......................................
@@ -79,7 +79,6 @@ namespace RoaringSnail.WinningStreak.Characters
             _mover      = GetComponent<IMobileCharacter>();
             _dancer     = GetComponent<IDancingCharacter>();
             _thrower    = GetComponent<IThrowingCharacter>();
-            _tackler    = GetComponent<ITacklingCharacter>();
             _dasher     = GetComponent<IDashingCharacter>();
         }
 
@@ -315,7 +314,7 @@ namespace RoaringSnail.WinningStreak.Characters
         private static Vector2 FilterInputAxes( Vector2 inputAxes )
         {
             Vector2 outputAxes = Vector2.zero;
-            
+
             if( inputAxes.magnitude > axesDeadzone )
             {
                 // By default axes are separate and map to a unit square
