@@ -18,99 +18,204 @@ namespace RoaringSnail.WinningStreak.Characters
     using UnityEngine;
 
 
-    //--------------------------------------------------------------
+    //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     /// <summary> Character animator. </summary>
     /// <description> 
-    /// Animates the character 3D model based on the character 
-    /// controller.
+    ///     Animates the character 3D model based on the character 
+    ///     controller.
     /// </description>
-    //--------------------------------------
-    [AddComponentMenu("Winning Streak/Character/Character Animator", 200)]
+    //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+    [AddComponentMenu( "Winning Streak/Character/Character Animator", 200 )]
     public class CharacterAnimator : MonoBehaviour
     {
+        //..............................................................
+        #region            //  INSPECTOR SETTINGS  //
         //--------------------------------------------------------------
-        #region Public settings
+        [SerializeField, Range(0,1), Tooltip
+        (   "The goofiness paramater for the animation."              )]
         //--------------------------------------
-        /// <summary> The goofiness paramater for the animation. </summary>
-        [Range(0.0f, 1.0f)]
-        public float goofiness;
-        #endregion
+        float _goofiness;
 
 
         //--------------------------------------------------------------
-        #region Public references
+        [SerializeField, Tooltip
+        (   "The character controller component."                     )]
         //--------------------------------------
-        /// <summary> The character controller component. </summary>
-        public GameObject character;
+        GameObject _character;
 
-        /// <summary> The animator component. </summary>
-        public Animator animator;
 
-        /// <summary> The ragdoll component. </summary>
-        public Ragdoll ragdoll;
+        //--------------------------------------------------------------
+        [SerializeField, Tooltip
+        (   "The animator component."                                 )]
+        //--------------------------------------
+        Animator _animator;
 
-        public Rigidbody rootBone;
+
+        //--------------------------------------------------------------
+        [SerializeField, Tooltip
+        (   "The ragdoll component."                                  )]
+        //--------------------------------------
+        Ragdoll _ragdoll;
+
+
+        //--------------------------------------------------------------
+        [SerializeField, Tooltip
+        (   "The ragdoll component."                                  )]
+        //--------------------------------------
+        Rigidbody _rootBone;
         #endregion
+        //......................................
 
 
-        private IKnockableCharacter _knockable;
-        private IMobileCharacter _mover;
-        private IDancingCharacter _dancer;
-        private IThrowingCharacter _thrower;
-        private ITacklingCharacter _tackler;
+
+        //..............................................................
+        #region             //  PRIVATE FIELDS  //
+        //--------------------------------------------------------------
+        private IKnockableCharacter     _knockable;
+        private IMobileCharacter        _mover;
+        private IDancingCharacter       _dancer;
+        private IThrowingCharacter      _thrower;
+        private ITacklingCharacter      _tackler;
+        private ACCharacterController   _characterAnim;
+        #endregion
+        //......................................
 
 
-        void Start()
+
+        //..............................................................
+        #region                 //  METHODS  //
+        //--------------------------------------------------------------
+        /// <summary> Initiates internal references </summary>
+        //--------------------------------------
+        protected void Start()
         {
-            if( character )
+            if( _character )
             {
-                _knockable  = character.GetComponent<IKnockableCharacter>();
-                _mover = character.GetComponent<IMobileCharacter>();
-                _dancer = character.GetComponent<IDancingCharacter>();
-                _thrower = character.GetComponent<IThrowingCharacter>();
-                _tackler = character.GetComponent<ITacklingCharacter>();
+                _knockable  = _character.GetComponent<IKnockableCharacter>();
+                _mover = _character.GetComponent<IMobileCharacter>();
+                _dancer = _character.GetComponent<IDancingCharacter>();
+                _thrower = _character.GetComponent<IThrowingCharacter>();
+                _tackler = _character.GetComponent<ITacklingCharacter>();
             }
+
+            _characterAnim = new ACCharacterController( _animator );
         }
+
+
 
         //--------------------------------------------------------------
         /// <summary> Update is called once per frame </summary>
         //--------------------------------------
-        void Update()
+        protected void Update()
         {
             // Only update the animation if time is running
-            if (Mathf.Abs(Time.deltaTime) <= float.Epsilon)
-                return;
+            if( TimeIsRunning() )
+            {
+                UpdateSpeed();
+                UpdateWiggle();
+                UpdateTackle();
+                UpdateChargeThrow();
+                UpdateGoofiness();
+                UpdateRagdoll();
+            }
+        }
 
 
+
+        //--------------------------------------------------------------
+        /// <summary> Update the animation speed </summary>
+        //--------------------------------------
+        private void UpdateSpeed()
+        {
             float speed = 0;
-            if (_mover != null)
-            { 
+            if( _mover != null )
+            {
                 speed =  _mover.movementSpeed / 8.0f;
                 speed *= _mover.relativeVelocity.magnitude;
             }
-            
-            bool isDancing =     (_dancer != null) && _dancer.isDancing;
-            bool isTackling =    (_tackler != null) && _tackler.isTackling;
-            bool isCharging =    (_thrower != null) && _thrower.isCharging;
+            _characterAnim.speed        = speed;
+        }
+
+
+
+        //--------------------------------------------------------------
+        /// <summary> Update the animation wiggle state </summary>
+        //--------------------------------------
+        private void UpdateWiggle()
+        {
+            if( _dancer != null )
+            {
+                _characterAnim.wiggle = _dancer.isDancing;
+            }
+        }
+
+
+
+        //--------------------------------------------------------------
+        /// <summary> Updates the animation tackle state </summary>
+        //--------------------------------------
+        private void UpdateTackle()
+        {
+            if( _tackler != null )
+            {
+                _characterAnim.tackle = _tackler.isTackling;
+            }
+        }
+
+
+
+        //--------------------------------------------------------------
+        /// <summary> Update the aniation charge state </summary>
+        //--------------------------------------
+        private void UpdateChargeThrow()
+        {
+            if( _thrower != null )
+            {
+                _characterAnim.chargeThrow = _thrower.isCharging;
+            }
+        }
+
+
+
+        //--------------------------------------------------------------
+        /// <summary> Update the animation goofines </summary>
+        //--------------------------------------
+        private void UpdateGoofiness()
+        {
+            _characterAnim.goofiness    = _goofiness;
+        }
+
+
+
+        //--------------------------------------------------------------
+        /// <summary> Update the animation ragdoll state </summary>
+        //--------------------------------------
+        private void UpdateRagdoll()
+        {
             bool isKnockedDown = (_knockable != null) && _knockable.isKnockedDown;
 
-
-            animator.SetFloat("speed", speed);
-            animator.SetFloat("goofiness", goofiness);
-            animator.SetBool("wiggle", isDancing);
-            animator.SetBool("tackle", isTackling);
-            animator.SetBool("charge_throw", isCharging);
-
-            // Fix the character position based on the ragdoll simulations
-            if (ragdoll.activated && !isKnockedDown && rootBone)
+            // HACK: Fix the character position based on the ragdoll simulation
+            if( _ragdoll.activated && !isKnockedDown && _rootBone )
             {
-                Vector3 position = rootBone.transform.position;
-                position.y = character.transform.position.y;
-                character.transform.position = position;
+                Vector3 position = _rootBone.transform.position;
+                position.y = _character.transform.position.y;
+                _character.transform.position = position;
             }
 
             // ragdoll activates when the character is knocked down
-            ragdoll.activated = isKnockedDown;
+            _ragdoll.activated = isKnockedDown;
         }
+
+
+
+        //--------------------------------------------------------------
+        /// <summary> Returns true only of the time is running </summary>
+        //--------------------------------------
+        private static bool TimeIsRunning()
+        {
+            return Mathf.Abs( Time.deltaTime ) > float.Epsilon;
+        }
+        #endregion
+        //......................................
     }
 }

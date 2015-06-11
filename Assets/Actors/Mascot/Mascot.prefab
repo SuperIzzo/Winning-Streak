@@ -409,7 +409,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100046}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.63999987, y: 0, z: -4.51999998}
+  m_LocalPosition: {x: 50.7011452, y: 0, z: -28.4484138}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 415104}
@@ -1017,11 +1017,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c49450cdecc1e8c4782a124417434f57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goofiness: 0
-  character: {fileID: 0}
-  animator: {fileID: 9525404}
-  ragdoll: {fileID: 11492434}
-  rootBone: {fileID: 5452178}
+  _goofiness: 0
+  _character: {fileID: 100046}
+  _animator: {fileID: 9525404}
+  _ragdoll: {fileID: 11492434}
+  _rootBone: {fileID: 5452178}
 --- !u!114 &11492434
 MonoBehaviour:
   m_ObjectHideFlags: 1
