@@ -18,6 +18,7 @@ namespace RoaringSnail.WinningStreak.Characters
     using UnityEngine;
 
 
+
     //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     /// <summary> Character animator. </summary>
     /// <description> 
@@ -25,6 +26,7 @@ namespace RoaringSnail.WinningStreak.Characters
     ///     controller.
     /// </description>
     //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+    [RequireComponent( typeof( Animator ) )]
     [AddComponentMenu( "Winning Streak/Character/Character Animator", 200 )]
     public class CharacterAnimator : MonoBehaviour
     {
@@ -35,20 +37,6 @@ namespace RoaringSnail.WinningStreak.Characters
         (   "The goofiness paramater for the animation."              )]
         //--------------------------------------
         float _goofiness;
-
-
-        //--------------------------------------------------------------
-        [SerializeField, Tooltip
-        (   "The character controller component."                     )]
-        //--------------------------------------
-        GameObject _character;
-
-
-        //--------------------------------------------------------------
-        [SerializeField, Tooltip
-        (   "The animator component."                                 )]
-        //--------------------------------------
-        Animator _animator;
 
 
         //--------------------------------------------------------------
@@ -89,16 +77,15 @@ namespace RoaringSnail.WinningStreak.Characters
         //--------------------------------------
         protected void Start()
         {
-            if( _character )
-            {
-                _knockable  = _character.GetComponent<IKnockableCharacter>();
-                _mover = _character.GetComponent<IMobileCharacter>();
-                _dancer = _character.GetComponent<IDancingCharacter>();
-                _thrower = _character.GetComponent<IThrowingCharacter>();
-                _tackler = _character.GetComponent<ITacklingCharacter>();
-            }
-
-            _characterAnim = new ACCharacterController( _animator );
+           
+            _knockable  = GetComponentInParent<IKnockableCharacter>();
+            _mover      = GetComponentInParent<IMobileCharacter>();
+            _dancer     = GetComponentInParent<IDancingCharacter>();
+            _thrower    = GetComponentInParent<IThrowingCharacter>();
+            _tackler    = GetComponentInParent<ITacklingCharacter>();
+            
+            var animator = GetComponent<Animator>();
+            _characterAnim = new ACCharacterController( animator );
         }
 
 
@@ -198,8 +185,8 @@ namespace RoaringSnail.WinningStreak.Characters
             if( _ragdoll.activated && !isKnockedDown && _rootBone )
             {
                 Vector3 position = _rootBone.transform.position;
-                position.y = _character.transform.position.y;
-                _character.transform.position = position;
+                position.y = transform.root.position.y;
+                transform.root.position = position;
             }
 
             // ragdoll activates when the character is knocked down

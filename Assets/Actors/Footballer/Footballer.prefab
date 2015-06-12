@@ -1359,8 +1359,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _goofiness: 0
-  _character: {fileID: 100000}
-  _animator: {fileID: 9576654}
   _ragdoll: {fileID: 11484168}
   _rootBone: {fileID: 5401620}
 --- !u!114 &11484168
