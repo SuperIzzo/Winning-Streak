@@ -19,6 +19,8 @@ namespace RoaringSnail.WinningStreak
     using System.Collections;
     using System.Collections.Generic;
 
+
+
     public enum ScoringEventType
     {
         NONE = 0,
@@ -31,7 +33,9 @@ namespace RoaringSnail.WinningStreak
         SCORED_GOAL
     }
 
-    //--------------------------------------------------------------
+
+
+    //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     /// <summary> 	Scoring event manager is an utility class that
     /// 			deals with "scoring events". </summary>
     /// <description> 
@@ -42,12 +46,12 @@ namespace RoaringSnail.WinningStreak
     /// ScoringEventManager is responsible for awarding players with
     /// score points and audio-visual feedback (such as commentary).
     /// </description>
-    //--------------------------------------
+    //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     public class ScoringEventManager : MonoBehaviour
     {
+        //..............................................................
+        #region            //  PUBLIC TYPES  //
         //--------------------------------------------------------------
-        #region Public types
-        //--------------------------------------
         ///<summary> Contains all data needed for scoring events. </summary>
         [System.Serializable]
         public class ScoreData
@@ -61,11 +65,15 @@ namespace RoaringSnail.WinningStreak
                 public bool mustBeOn;
             }
 
+
+
             public enum EventIgnition
             {
                 ONE_TIME,
                 CONTINUOUS
             }
+
+
 
             public string description;
             public ScoringEventType scoringEvent;
@@ -76,23 +84,34 @@ namespace RoaringSnail.WinningStreak
             public Comment comment;
         }
         #endregion
+        //......................................
 
 
+
+        //..............................................................
+        #region            //  PUBLIC SETTINGS  //
         //--------------------------------------------------------------
-        #region  Public settings
+        [SerializeField, Tooltip
+        (   "Database of different awardable scoring events"          )]
         //--------------------------------------
-        public ScoreData[] scoresList;
+        private ScoreData[] _scoresList;
         #endregion
+        //......................................
 
 
+
+        //..............................................................
+        #region            //  PRIVATE SETTINGS  //
         //--------------------------------------------------------------
-        #region Private state
-        //--------------------------------------
         private Dictionary<ScoringEventType, ScoreData> scoresMap;
         private Dictionary<ScoringEventType, bool> ongoingScores;
         #endregion
+        //......................................
 
 
+
+        //..............................................................
+        #region             //  METHODS  //
         //--------------------------------------------------------------
         /// <summary> Start callback. </summary>
         //--------------------------------------
@@ -102,11 +121,13 @@ namespace RoaringSnail.WinningStreak
             scoresMap = new Dictionary<ScoringEventType, ScoreData>();
             ongoingScores = new Dictionary<ScoringEventType, bool>();
 
-            foreach (ScoreData data in scoresList)
+            foreach (ScoreData data in _scoresList)
             {
                 scoresMap[data.scoringEvent] = data;
             }
         }
+
+
 
         //--------------------------------------------------------------
         /// <summary> Fires a scoring event. </summary>
@@ -148,6 +169,8 @@ namespace RoaringSnail.WinningStreak
             }
         }
 
+
+
         //-------------------------------------------------------------
         /// <summary> A coroutine to update continous scoring. </summary>
         //--------------------------------------
@@ -167,6 +190,8 @@ namespace RoaringSnail.WinningStreak
             }
         }
 
+
+
         //-------------------------------------------------------------
         /// <summary> Delayed commentary. </summary>
         //-------------------------------------- 
@@ -182,5 +207,7 @@ namespace RoaringSnail.WinningStreak
                 Commentator.Comment(comment.comment);
             }
         }
+        #endregion
+        //......................................
     }
 }

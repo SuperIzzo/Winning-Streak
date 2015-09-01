@@ -626,7 +626,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a9dde025453cd04ea72743e630d0031, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoresList:
+  _scoresList: []
   - description: Dodge Tackle
     scoringEvent: 2
     ignition: 0

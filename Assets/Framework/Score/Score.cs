@@ -17,18 +17,22 @@ namespace RoaringSnail.WinningStreak
 {
     using UnityEngine;
 
-    //--------------------------------------------------------------
+
+
+    //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     /// <summary> Score deals with scores and stuff. </summary>
-    //--------------------------------------
+    //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     public class Score : MonoBehaviour
     {
+        //..............................................................
+        #region            //  PRIVATE CONSTANTS  //
         //--------------------------------------------------------------
-        #region		Private constants
-        //--------------------------------------
         private static readonly float COMBO_TIME_OUT = 3.0f;
         private static readonly float MAX_COMBO_POINTS = 10.0f;
         private static readonly float COMBO_EFFECT = 1.6f;
         #endregion
+        //......................................
+
 
 
         //--------------------------------------------------------------
@@ -47,23 +51,26 @@ namespace RoaringSnail.WinningStreak
         }
 
 
-        //--------------------------------------------------------------
-        #region		Public events
+
+        //..............................................................
+        #region		         //  PRIVATE EVENTS  //
         //--------------------------------------
         public delegate void ScoreCallback(object sender, ScoreEventArgs e);
         public event ScoreCallback OnComboCompleted;
         #endregion
+        //......................................
 
 
+        //..............................................................
+        #region             //  PUBLIC PROPERTIES  //
         //--------------------------------------------------------------
-        #region		Public properties
-        //--------------------------------------
         /// <summary> Gets or sets the base score. </summary>
         /// <description>
         /// 	The base score value can only be increased. The 
         /// 	recommended way to use this is with the += operator.
         /// </description>
         /// <value>The base score.</value>
+        //--------------------------------------
         public float baseScore
         {
             get { return _baseScore; }
@@ -71,7 +78,9 @@ namespace RoaringSnail.WinningStreak
             set { if (enabled) _baseScore = VerifySameOrBigger(_baseScore, value); }
         }
 
-        //--------------------------------------
+
+
+        //--------------------------------------------------------------
         /// <summary>	Gets or sets the combo builder 
         /// 		and resets the combo timer. </summary>
         /// <description>
@@ -82,6 +91,7 @@ namespace RoaringSnail.WinningStreak
         /// 	When the timer stops the value is added to mult.
         /// </description>
         /// <value>The combo builder.</value>
+        //--------------------------------------
         public float comboBuilder
         {
             get { return _comboBuilder; }
@@ -99,37 +109,50 @@ namespace RoaringSnail.WinningStreak
             }
         }
 
-        //--------------------------------------
-        /// <summary> Returns the current score multiplier (readonly). </summary>
+
+
+        //--------------------------------------------------------------
+        /// <summary> 
+        ///     Returns the current score multiplier (readonly). 
+        ///                                                 </summary>
         /// <value>The multiplier.</value>
+        //--------------------------------------
         public float multiplier
         {
             get { return _mult; }
         }
 
-        //--------------------------------------
+
+
+        //--------------------------------------------------------------
         /// <summary> Returns the total score (readonly). </summary>
         /// <description> 
         /// 	The rounded down values of baseScore times the multiplier.
         /// </description>
         /// <value>The total score .</value>
+        //--------------------------------------
         public float total
         {
             get { return Mathf.Floor(baseScore) * Mathf.Floor(multiplier); }
         }
         #endregion
+        //......................................
 
 
+
+        //..............................................................
+        #region             //  PRIVATE STATE  //
         //--------------------------------------------------------------
-        #region		Private state
-        //--------------------------------------
         private float _baseScore;
         private float _mult;
         private float _comboBuilder;
         private float _comboTimer;
         #endregion
+        //......................................
 
 
+        //..............................................................
+        #region             //  METHODS  //
         //--------------------------------------------------------------
         /// <summary> Initialise this instance. </summary>
         //--------------------------------------
@@ -138,6 +161,8 @@ namespace RoaringSnail.WinningStreak
             OnComboCompleted += HandleOnComboCompleted;
             Reset();
         }
+
+
 
         //--------------------------------------------------------------
         /// <summary> Update this instance. </summary>
@@ -159,6 +184,8 @@ namespace RoaringSnail.WinningStreak
                 }
             }
         }
+
+
 
         //--------------------------------------------------------------
         /// <summary> Gets a reduced comboed score. </summary>
@@ -182,6 +209,8 @@ namespace RoaringSnail.WinningStreak
             return combo01 * MAX_COMBO_POINTS;
         }
 
+
+
         //--------------------------------------------------------------
         /// <summary> Handles the combo completion event. </summary>
         /// <param name="score">The score instance.</param>
@@ -193,6 +222,8 @@ namespace RoaringSnail.WinningStreak
             _comboBuilder = 0;
         }
 
+
+
         //--------------------------------------------------------------
         /// <summary> Resets the score. </summary>
         //--------------------------------------
@@ -203,6 +234,8 @@ namespace RoaringSnail.WinningStreak
             _comboBuilder = 0;
             _comboTimer = 0;
         }
+
+
 
         //--------------------------------------------------------------
         /// <summary> An utility function to raise an exception
@@ -218,5 +251,7 @@ namespace RoaringSnail.WinningStreak
                     "The new assigned value cannot be lower.");
             return newVal;
         }
+        #endregion
+        //......................................
     }
 }
