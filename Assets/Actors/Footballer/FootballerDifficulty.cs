@@ -66,21 +66,23 @@ namespace RoaringSnail.WinningStreak.Characters
         //--------------------------------------
         protected void Update()
         {
-            float difficultyLevel = GameSystem.difficulty.level;
-
-            if( _aiInput )
+            if( GameSystem.difficulty != null )
             {
-                _aiInput.playerHate =
-                    _basePlayerHate  +  (1 - _basePlayerHate) * difficultyLevel;
-            }
+                float difficultyLevel = GameSystem.difficulty.level;
 
-            if( _controller )
-            {
-                const int DIFFICULTY_MULT = 2;
-                _controller.baseMovementSpeed =
-                    _baseMovementSpeed  +  difficultyLevel * DIFFICULTY_MULT;
-            }
+                if( _aiInput )
+                {
+                    _aiInput.playerHate =
+                        _basePlayerHate + (1 - _basePlayerHate) * difficultyLevel;
+                }
 
+                if( _controller )
+                {
+                    const int DIFFICULTY_MULT = 2;
+                    _controller.baseMovementSpeed =
+                        _baseMovementSpeed + difficultyLevel * DIFFICULTY_MULT;
+                }
+            }
         }
         #endregion
         //......................................
