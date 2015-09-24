@@ -15,6 +15,7 @@
 \** -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- **/
 namespace RoaringSnail.WinningStreak.Characters
 {
+    using System;
     using UnityEngine;
 
 
@@ -28,7 +29,7 @@ namespace RoaringSnail.WinningStreak.Characters
     //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     [RequireComponent( typeof( Animator ) )]
     [AddComponentMenu( "Winning Streak/Character/Character Animator", 200 )]
-    public class CharacterAnimator : MonoBehaviour
+    public class CharacterAnimator : MonoBehaviour, ITackleAnimationListener
     {
         //..............................................................
         #region            //  INSPECTOR SETTINGS  //
@@ -65,6 +66,7 @@ namespace RoaringSnail.WinningStreak.Characters
         private IThrowingCharacter      _thrower;
         private ITacklingCharacter      _tackler;
         private ACCharacterController   _characterAnim;
+        private bool    _wasTackling;
         #endregion
         //......................................
 
@@ -86,6 +88,22 @@ namespace RoaringSnail.WinningStreak.Characters
             
             var animator = GetComponent<Animator>();
             _characterAnim = new ACCharacterController( animator );
+
+            // Install KnockedDown event            
+            _knockable.KnockedDown += ( o, e ) =>
+            {
+                _ragdoll.activated = true;
+            };
+
+            // Install Revived event 
+            _knockable.Revived += ( o, e ) =>
+            {
+                _ragdoll.activated = false;
+
+                Vector3 pos = _rootBone.position;
+                pos.y = 0;
+                _rootBone.position = pos;
+            };
         }
 
 
@@ -103,7 +121,6 @@ namespace RoaringSnail.WinningStreak.Characters
                 UpdateTackle();
                 UpdateChargeThrow();
                 UpdateGoofiness();
-                UpdateRagdoll();
             }
         }
 
@@ -171,28 +188,7 @@ namespace RoaringSnail.WinningStreak.Characters
         {
             _characterAnim.goofiness    = _goofiness;
         }
-
-
-
-        //--------------------------------------------------------------
-        /// <summary> Update the animation ragdoll state </summary>
-        //--------------------------------------
-        private void UpdateRagdoll()
-        {
-            bool isKnockedDown = (_knockable != null) && _knockable.isKnockedDown;
-
-            // HACK: Fix the character position based on the ragdoll simulation
-            if( _ragdoll.activated && !isKnockedDown && _rootBone )
-            {
-                Vector3 position = _rootBone.transform.position;
-                position.y = transform.root.position.y;
-                transform.root.position = position;
-            }
-
-            // ragdoll activates when the character is knocked down
-            _ragdoll.activated = isKnockedDown;
-        }
-
+        
 
 
         //--------------------------------------------------------------
@@ -202,6 +198,21 @@ namespace RoaringSnail.WinningStreak.Characters
         {
             return Mathf.Abs( Time.deltaTime ) > float.Epsilon;
         }
+
+
+
+        //--------------------------------------------------------------
+        /// <summary> Returns true only of the time is running </summary>
+        //--------------------------------------
+        public void OnTackleAnimationExit()
+        {
+            _rootBone.isKinematic = false;
+            _rootBone.AddForce( (transform.forward * 0.8f + Vector3.up * 0.2f) * 35, ForceMode.VelocityChange );
+
+            _ragdoll.activated = true;
+        }
+
+
         #endregion
         //......................................
     }
