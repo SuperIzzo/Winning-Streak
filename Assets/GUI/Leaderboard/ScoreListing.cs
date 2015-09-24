@@ -18,24 +18,41 @@ namespace RoaringSnail.WinningStreak
     using UnityEngine;
 
 
-    //--------------------------------------------------------------
+    //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     /// <summary> A list GUI element that holds score fields </summary>
-    //--------------------------------------
+    //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     public class ScoreListing : MonoBehaviour
     {
+        //..............................................................
+        #region            //  INSPECTOR SETTINGS  //
         //--------------------------------------------------------------
-        #region Inspector properties
+        [SerializeField, Tooltip
+        ( "A reference to a ScoreLine template prefab for the header.")]
         //--------------------------------------
-        [SerializeField]
         ScoreLine _headerLine = null;
-        [SerializeField]
+
+
+
+        //--------------------------------------------------------------
+        [SerializeField, Tooltip
+        (  "A reference to a ScoreLine template prefab for the lines.")]
+        //--------------------------------------
         ScoreLine _scoreLine = null;
-        [SerializeField]
+
+
+
+        //--------------------------------------------------------------
+        [SerializeField, Tooltip
+        (  "Number of records per page."                              )]
+        //--------------------------------------
         int _numberOfRecords = 0;
         #endregion
+        //......................................
 
 
 
+        //..............................................................
+        #region           //  METHODS AND PROPERTIES //
         //--------------------------------------------------------------
         /// <summary> Gets the number of records in this list </summary>
         //--------------------------------------
@@ -81,5 +98,7 @@ namespace RoaringSnail.WinningStreak
                 scoreLines[i].transform.SetParent(transform);
             }
         }
+        #endregion
+        //......................................
     }
 }

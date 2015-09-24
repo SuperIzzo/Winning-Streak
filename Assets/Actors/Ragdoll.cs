@@ -123,9 +123,6 @@ namespace RoaringSnail.WinningStreak
         //--------------------------------------
         void DeactivateRagdoll()
         {
-            if (animator)
-                animator.enabled = true;
-
             if (automaticPartsList)
                 UpdateParts();
 
@@ -134,9 +131,11 @@ namespace RoaringSnail.WinningStreak
                 if (part)
                 {
                     part.isKinematic = true;
-                    part.freezeRotation = false;
                 }
             }
+
+            if( animator )
+                animator.enabled = true;
         }
 
 

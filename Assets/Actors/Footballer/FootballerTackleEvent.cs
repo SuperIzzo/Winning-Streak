@@ -30,8 +30,7 @@ namespace RoaringSnail.WinningStreak.Characters
         #region            //  INSPECTOR FIELDS  //
         //--------------------------------------------------------------
         [SerializeField] AIInput                    _aiInput    = null;
-
-        [SerializeField] float                      _tackleMissTime   = 5.0f;
+        
         [SerializeField] AudioClip[]                _tackleFailSFX    = null;
         [SerializeField] AudioClip[]                _tackleSucceedSFX = null;
         #endregion
@@ -43,10 +42,26 @@ namespace RoaringSnail.WinningStreak.Characters
         //--------------------------------------------------------------
         private BaseCharacterController             _player = null;
         private AudioSource                         _audio  = null;
-        private float                               _tackleMissTimer  = 0.0f;
-        private ITacklingCharacter                           _tackler;
+        private ITacklingCharacter                  _tackler;
         #endregion
         //......................................
+
+
+        private BaseCharacterController player
+        {
+            get
+            {
+                if( _player == null )
+                    _player = Player.p1.characterController;
+
+                return _player;
+            }
+
+            set
+            {
+                _player = value;
+            }
+        }
 
 
         //..............................................................
@@ -55,11 +70,15 @@ namespace RoaringSnail.WinningStreak.Characters
         /// <summary> Initializes the component </summary>
         //--------------------------------------
         protected void Start()
-        {
-            _player     = Player.p1.characterController;
+        {            
             _audio      = GetComponent<AudioSource>();
             _tackler    = GetComponent<ITacklingCharacter>();
             _aiInput    = GetComponent<AIInput>();
+
+            if( _tackler!=null )
+            {
+                _tackler.Tackled += OnTackled;
+            }
         }
 
 
@@ -67,24 +86,9 @@ namespace RoaringSnail.WinningStreak.Characters
         //--------------------------------------------------------------
         /// <summary> Checks for tackle completion </summary>
         //--------------------------------------
-        protected void Update()
+        protected void OnTackled(object s, System.EventArgs e )
         {
-            // HACK:    FootballerTackleEvent shouldn't be guessing
-            //          when the tackle has to happen, this should be an event
-            if (_tackler.isTackling && _tackleMissTimer <= 0)
-            {
-                _tackleMissTimer = _tackleMissTime;
-            }
-
-            if (_tackleMissTimer > 0)
-            {
-                _tackleMissTimer -= Time.deltaTime;
-
-                if (_tackleMissTimer <= 0)
-                {
-                    ResolveTackle();
-                }
-            }
+            ResolveTackle();
         }
 
 
@@ -94,19 +98,22 @@ namespace RoaringSnail.WinningStreak.Characters
         //--------------------------------------
         private void ResolveTackle()
         {
-            if (!_player.isKnockedDown && _aiInput.target == _player)
+            if( player != null )
             {
-                // The player is alive... the tackle must have failed
-                var scoringEvent = GameSystem.scoringEvent;
+                if( !player.isKnockedDown && _aiInput.target == _player )
+                {
+                    // The player is alive... the tackle must have failed
+                    var scoringEvent = GameSystem.scoringEvent;
 
-                scoringEvent.Fire( ScoringEventType.DODGE_TACKLE );
-                PlayRandomClip( _tackleFailSFX );
-            }
-            else
-            {
-                // The player is dead... and we were targeting him
-                // the tackle must have succeeded
-                PlayRandomClip( _tackleSucceedSFX );
+                    scoringEvent.Fire( ScoringEventType.DODGE_TACKLE );
+                    PlayRandomClip( _tackleFailSFX );
+                }
+                else
+                {
+                    // The player is dead... and we were targeting him
+                    // the tackle must have succeeded
+                    PlayRandomClip( _tackleSucceedSFX );
+                }
             }
         }
 

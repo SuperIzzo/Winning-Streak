@@ -29,5 +29,10 @@ namespace RoaringSnail.WinningStreak
         {
             Application.LoadLevel(levelName);
         }
+
+        public void QuitGame()
+        {
+            Application.Quit();
+        }
     }
 }

@@ -23,27 +23,15 @@ namespace RoaringSnail.WinningStreak.Characters
     //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     /// <summary> A fooballer character controller. </summary>
     //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
-    public class FootballerController : BaseCharacterController, ITacklingCharacter
+    public class FootballerController : BaseCharacterController,
+                                        ITacklingCharacter,
+                                        ITackleAnimationListener
     {
-        //--------------------------------------------------------------
-        [SerializeField, Tooltip
-        (   "The duration of the tackle before the character falls " +
-            "knocked down."                                           )]
-        //--------------------------------------
-        float _tackleDuration = 0.3f;
-
-
         //--------------------------------------------------------------
         [SerializeField, Tooltip
         (   "The speed at which this character tackles."              )]
         //--------------------------------------
         float _tackleSpeed = 4.0f;
-
-
-        //--------------------------------------------------------------
-        /// <summary> Internal tackle timer </summary>
-        //--------------------------------------
-        private float _tackleTimer;
 
 
 
@@ -60,7 +48,7 @@ namespace RoaringSnail.WinningStreak.Characters
         /// <value>
         ///   <c>true</c> if is tackling; otherwise, <c>false</c>.</value>
         //--------------------------------------
-        public bool isTackling { get { return _tackleTimer > 0; } set { Tackle(); } }
+        public bool isTackling { get; set; }
 
 
 
@@ -70,9 +58,9 @@ namespace RoaringSnail.WinningStreak.Characters
         //--------------------------------------
         public void Tackle()
         {
-            if( !isKnockedDown && !isTackling )
+            if( !isKnockedDown )
             {
-                _tackleTimer = _tackleDuration;
+                isTackling = true;
             }
         }
 
@@ -94,17 +82,9 @@ namespace RoaringSnail.WinningStreak.Characters
         //--------------------------------------
         private void ProcessTackling()
         {
-            if( _tackleTimer > 0 )
+            if( isTackling && !isKnockedDown )
             {
-                _tackleTimer -= Time.deltaTime;
                 transform.position += transform.forward * (_tackleSpeed * Time.deltaTime);
-
-                // Knock down this character at the end of the tackle
-                if( _tackleTimer <= 0 )
-                {
-                    OnTackled();
-                    KnockDown();
-                }
             }
         }
 
@@ -143,6 +123,14 @@ namespace RoaringSnail.WinningStreak.Characters
             {
                 base.ProcessTurning();
             }
+        }
+
+
+        public void OnTackleAnimationExit()
+        {
+            OnTackled();
+            KnockDown();                        
+            isTackling = false;                        
         }
     }
 

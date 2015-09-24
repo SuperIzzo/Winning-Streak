@@ -32,7 +32,14 @@ namespace RoaringSnail.WinningStreak
         public bool isSlowed
         {
             get { return _isSlowed; }
-            set { _isSlowed = value; UpdateTimeScale(); }
+            set
+            {
+                if( _isSlowed != value )
+                {
+                    _isSlowed = value;
+                    UpdateTimeScale();
+                }
+            }
         }
 
         /// <summary> Gets or sets of the time flow is stopped. </summary>
@@ -40,7 +47,14 @@ namespace RoaringSnail.WinningStreak
         public bool isStopped
         {
             get { return _isStopped; }
-            set { _isStopped = value; UpdateTimeScale(); }
+            set
+            {
+                if( _isStopped != value )
+                {
+                    _isStopped = value;
+                    UpdateTimeScale();
+                }
+            }
         }
         #endregion
 
