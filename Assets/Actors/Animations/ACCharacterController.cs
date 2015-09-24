@@ -67,5 +67,11 @@ namespace RoaringSnail.WinningStreak
             get { return _animator.GetBool( avChargeThrow ); }
             set { _animator.SetBool( avChargeThrow, value ); }
         }
+
+        public bool enabled
+        {
+            get { return _animator.enabled; }
+            set { _animator.enabled = value; }
+        }
     }
 }
