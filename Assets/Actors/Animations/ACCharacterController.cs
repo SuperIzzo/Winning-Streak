@@ -41,31 +41,31 @@ namespace RoaringSnail.WinningStreak
         public float speed
         {
             get { return _animator.GetFloat( avSpeed ); }
-            set { _animator.SetFloat( avSpeed, value ); }
+            set { if (enabled) _animator.SetFloat( avSpeed, value ); }
         }
 
         public float goofiness
         {
             get { return _animator.GetFloat( avGoofiness ); }
-            set { _animator.SetFloat( avGoofiness, value ); }
+            set { if( enabled ) _animator.SetFloat( avGoofiness, value ); }
         }
 
         public bool wiggle
         {
             get { return _animator.GetBool( avWiggle ); }
-            set { _animator.SetBool( avWiggle, value ); }
+            set { if( enabled ) _animator.SetBool( avWiggle, value ); }
         }
 
         public bool tackle
         {
             get { return _animator.GetBool( avTackle ); }
-            set { _animator.SetBool( avTackle, value ); }
+            set { if( enabled ) _animator.SetBool( avTackle, value ); }
         }
 
         public bool chargeThrow
         {
             get { return _animator.GetBool( avChargeThrow ); }
-            set { _animator.SetBool( avChargeThrow, value ); }
+            set { if( enabled ) _animator.SetBool( avChargeThrow, value ); }
         }
 
         public bool enabled
