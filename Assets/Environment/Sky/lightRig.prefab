@@ -66,14 +66,14 @@ Light:
   serializedVersion: 6
   m_Type: 1
   m_Color: {r: .996078432, g: .992156863, b: .909803927, a: 1}
-  m_Intensity: 1
+  m_Intensity: .5
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 1
   m_Shadows:
     m_Type: 1
     m_Resolution: -1
-    m_Strength: 1
+    m_Strength: .50999999
     m_Bias: .00999999978
     m_NormalBias: .400000006
   m_Cookie: {fileID: 0}
