@@ -3,9 +3,11 @@
 		_CellSize("Cell Size", Vector) = (0.002,0.002,0,0)
 	}
 	SubShader {
-		Tags { "RenderType"="Opaque" }
+        Tags{ "Queue" = "Overlay" }
 		LOD 400
 		
+        ZWrite Off
+
 		GrabPass { "_PixelationGrabTexture" }
 		
 		Pass {
