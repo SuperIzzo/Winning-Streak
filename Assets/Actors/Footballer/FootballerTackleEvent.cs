@@ -28,11 +28,11 @@ namespace RoaringSnail.WinningStreak.Characters
     {
         //..............................................................
         #region            //  INSPECTOR FIELDS  //
-        //--------------------------------------------------------------
-        [SerializeField] AIInput                    _aiInput    = null;
-        
+        //--------------------------------------------------------------        
         [SerializeField] AudioClip[]                _tackleFailSFX    = null;
         [SerializeField] AudioClip[]                _tackleSucceedSFX = null;
+        [SerializeField] GameObject                 _dustEffect       = null;
+        [SerializeField] Transform                  _dustPosition     = null;
         #endregion
         //......................................
 
@@ -40,11 +40,14 @@ namespace RoaringSnail.WinningStreak.Characters
         //..............................................................
         #region             //  PRIVATE FIELDS  //
         //--------------------------------------------------------------
-        private BaseCharacterController             _player = null;
-        private AudioSource                         _audio  = null;
-        private ITacklingCharacter                  _tackler;
+        private BaseCharacterController             _player  = null;
+        private AudioSource                         _audio   = null;
+        private ITacklingCharacter                  _tackler = null;
+        private AIInput                             _aiInput = null;
+        private bool                                _playFailSfx = false;
         #endregion
         //......................................
+
 
 
         private BaseCharacterController player
@@ -69,7 +72,7 @@ namespace RoaringSnail.WinningStreak.Characters
         //--------------------------------------------------------------
         /// <summary> Initializes the component </summary>
         //--------------------------------------
-        protected void Start()
+        protected void Awake()
         {            
             _audio      = GetComponent<AudioSource>();
             _tackler    = GetComponent<ITacklingCharacter>();
@@ -100,13 +103,13 @@ namespace RoaringSnail.WinningStreak.Characters
         {
             if( player != null )
             {
-                if( !player.isKnockedDown && _aiInput.target == _player )
+                if( !player.isKnockedDown )
                 {
                     // The player is alive... the tackle must have failed
                     var scoringEvent = GameSystem.scoringEvent;
 
                     scoringEvent.Fire( ScoringEventType.DODGE_TACKLE );
-                    PlayRandomClip( _tackleFailSFX );
+                    _playFailSfx = true;                                        
                 }
                 else
                 {
@@ -114,6 +117,32 @@ namespace RoaringSnail.WinningStreak.Characters
                     // the tackle must have succeeded
                     PlayRandomClip( _tackleSucceedSFX );
                 }
+            }
+        }
+
+
+
+        //--------------------------------------------------------------
+        /// <summary> Plays fail sfx on contact with the ground </summary>
+        //--------------------------------------
+        protected void OnCollisionEnter(Collision col)
+        {
+            if( _playFailSfx && col.collider.CompareTag(Tags.field) )
+            {
+                PlayRandomClip( _tackleFailSFX );                
+
+                if( _dustEffect )
+                {
+                    Vector3 pos = transform.position;
+
+                    if( _dustPosition )
+                        pos = _dustPosition.position;
+
+                    Instantiate(  _dustEffect,
+                                  pos,
+                                  Quaternion.identity );
+                }
+                _playFailSfx = false;
             }
         }
 

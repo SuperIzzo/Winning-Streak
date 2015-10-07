@@ -458,7 +458,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.18260288, y: 0, z: -2.52951121}
+  m_LocalPosition: {x: 1.56852198, y: 0, z: 2.31918168}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 463890}
@@ -1070,6 +1070,7 @@ AudioSource:
   m_Pitch: 1
   Loop: 0
   Mute: 0
+  Spatialize: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
@@ -1276,13 +1277,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46ae17c0a4d2cc34f912ca60844d7010, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _aiInput: {fileID: 11400000}
   _tackleFailSFX:
   - {fileID: 8300000, guid: b1e666d38660a3042ac48f162da328ea, type: 3}
   - {fileID: 8300000, guid: 747a95bfe9a555a48b45a66cb75a806c, type: 3}
   _tackleSucceedSFX:
   - {fileID: 8300000, guid: b61990b246ac098489f187e7e915fa8d, type: 3}
   - {fileID: 8300000, guid: aa4ee22fc4fc4c548b0deb70e2105e13, type: 3}
+  _dustEffect: {fileID: 197520, guid: 22a7a4c7012453043ad65e74c86a178a, type: 2}
+  _dustPosition: {fileID: 495092}
 --- !u!114 &11453644
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2031,6 +2033,10 @@ Prefab:
       propertyPath: id
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _dustEffect
+      value: 
+      objectReference: {fileID: 197520, guid: 22a7a4c7012453043ad65e74c86a178a, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100000}
