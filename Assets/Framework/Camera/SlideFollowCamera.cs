@@ -16,6 +16,7 @@
 namespace RoaringSnail.WinningStreak
 {
     using UnityEngine;
+    using UnityStandardAssets.ImageEffects;
 
 
     //--------------------------------------------------------------
@@ -56,6 +57,8 @@ namespace RoaringSnail.WinningStreak
         private Transform target;
         private FollowCameraConfig currentConfig;
 
+        private DepthOfField dof;
+
         //--------------------------------------------------------------
         /// <summary> Zooms the camera in on the target. </summary>
         //--------------------------------------
@@ -78,6 +81,7 @@ namespace RoaringSnail.WinningStreak
         void Start()
         {
             currentConfig = normal;
+            dof = GetComponent<DepthOfField>();
         }
 
         //--------------------------------------------------------------
@@ -97,6 +101,11 @@ namespace RoaringSnail.WinningStreak
                 LookAtTarget();
                 TrackTarget();
                 ZoomToTarget();
+
+                if( dof != null )
+                {
+                    dof.focalTransform = target;
+                }
             }
         }
 
