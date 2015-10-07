@@ -20,5 +20,6 @@ namespace RoaringSnail.WinningStreak
     {
         public static readonly string player = "Player";
         public static readonly string ball = "ball";
+        public static readonly string field = "field";
     }
 }
