@@ -233,7 +233,7 @@ namespace RoaringSnail.WinningStreak.Characters
                     }
                     else
                     {
-                        _thrower.Grab();
+                        _thrower.TargetToGrab();
                     }
                 }
 

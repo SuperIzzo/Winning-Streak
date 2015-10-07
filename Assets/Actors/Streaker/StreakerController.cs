@@ -48,5 +48,17 @@ namespace RoaringSnail.WinningStreak.Characters
 
             Process_Dashing();
         }
+
+
+        //--------------------------------------------------------------
+        /// <summary> Processes the movement. </summary>
+        //--------------------------------------
+        protected override void ProcessMovement()
+        {
+            if( !isDancing && !grabTarget )
+            {
+                base.ProcessMovement();
+            }
+        }
     }
 }

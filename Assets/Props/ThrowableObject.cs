@@ -33,6 +33,7 @@ namespace RoaringSnail.WinningStreak
         #endregion
 
 
+
         //--------------------------------------------------------------
         #region Public properties
         //--------------------------------------
@@ -41,11 +42,13 @@ namespace RoaringSnail.WinningStreak
         #endregion
 
 
+
         //--------------------------------------------------------------
         #region Priavate references
         //--------------------------------------
         private Transform slot;
         #endregion
+
 
 
         //--------------------------------------------------------------
@@ -59,6 +62,8 @@ namespace RoaringSnail.WinningStreak
                 transform.localPosition = Vector3.Lerp(transform.localPosition, Vector3.zero, 0.2f);
             }
         }
+
+
 
         //--------------------------------------------------------------
         /// <summary> Called when the throwable is grabbed. </summary>
@@ -78,8 +83,10 @@ namespace RoaringSnail.WinningStreak
 
             // Get addopted by the hand/slot
             // We keep the world position, as we'll animate the grabbing
-            transform.SetParent(slot, true);
+            transform.SetParent(slot, true);            
         }
+
+
 
         //--------------------------------------------------------------
         /// <summary> Called when the prop is thrown. </summary>
@@ -104,6 +111,8 @@ namespace RoaringSnail.WinningStreak
             throwForce = force;
         }
 
+
+
         //--------------------------------------------------------------
         /// <summary> Raises the collision enter event. </summary>
         /// <param name="collision">Collision data.</param>
@@ -124,7 +133,6 @@ namespace RoaringSnail.WinningStreak
                         if (collision.relativeVelocity.magnitude > knockOutPower
                                && GetComponent<Rigidbody>().velocity.magnitude > knockOutPower)
                         {
-                            Debug.Log("Relative vel: " + collision.relativeVelocity.magnitude);
                             character.KnockDown();
                         }
                     }
@@ -135,5 +143,6 @@ namespace RoaringSnail.WinningStreak
                 }
             }
         }
+
     }
 }

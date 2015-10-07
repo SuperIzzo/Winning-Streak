@@ -63,7 +63,8 @@ namespace RoaringSnail.WinningStreak.Characters
         private IKnockableCharacter     _knockable;
         private IMobileCharacter        _mover;
         private IDancingCharacter       _dancer;
-        private IThrowingCharacter      _thrower;
+        private IGrabbingCharacter      _grabber;
+        private IThrowingCharacter      _thrower;        
         private ITacklingCharacter      _tackler;
         private ACCharacterController   _characterAnim;
         private bool    _wasTackling;
@@ -83,6 +84,7 @@ namespace RoaringSnail.WinningStreak.Characters
             _knockable  = GetComponentInParent<IKnockableCharacter>();
             _mover      = GetComponentInParent<IMobileCharacter>();
             _dancer     = GetComponentInParent<IDancingCharacter>();
+            _grabber    = GetComponentInParent<IGrabbingCharacter>();
             _thrower    = GetComponentInParent<IThrowingCharacter>();
             _tackler    = GetComponentInParent<ITacklingCharacter>();
             
@@ -119,10 +121,11 @@ namespace RoaringSnail.WinningStreak.Characters
                 UpdateSpeed();
                 UpdateWiggle();
                 UpdateTackle();
+                UpdateGrabbing();
                 UpdateChargeThrow();
                 UpdateGoofiness();
             }
-        }
+        }        
 
 
 
@@ -169,6 +172,19 @@ namespace RoaringSnail.WinningStreak.Characters
 
 
         //--------------------------------------------------------------
+        /// <summary> Update the animation goofines </summary>
+        //--------------------------------------
+        private void UpdateGrabbing()
+        {
+            if( _grabber != null )
+            {
+                _characterAnim.grab = (_grabber.grabTarget != null);
+            }
+        }
+
+
+
+        //--------------------------------------------------------------
         /// <summary> Update the aniation charge state </summary>
         //--------------------------------------
         private void UpdateChargeThrow()
@@ -177,7 +193,7 @@ namespace RoaringSnail.WinningStreak.Characters
             {
                 _characterAnim.chargeThrow = _thrower.isCharging;
             }
-        }
+        }        
 
 
 
@@ -212,6 +228,61 @@ namespace RoaringSnail.WinningStreak.Characters
             _ragdoll.activated = true;
         }
 
+        float bendAngle = 0;
+        float bendingSpeed = 4;
+        
+
+        //a callback for calculating IK
+        void OnAnimatorIK()
+        {
+            Animator animator = _characterAnim.animator;
+
+            if( animator && _grabber!=null )
+            {
+                Transform lookObj = null;
+                Transform rightHandObj = null;
+
+                if( _grabber.grabTarget )
+                {
+                    lookObj = _grabber.grabTarget.transform;
+                    rightHandObj = _grabber.grabTarget.transform;
+                    
+                    // Set the look target position, if one has been assigned
+                    if( lookObj != null )
+                    {
+                        animator.SetLookAtWeight( 1 );
+                        animator.SetLookAtPosition( lookObj.position );
+                    }
+
+                    // Set the right hand target position and rotation, if one has been assigned
+                    if( rightHandObj != null )
+                    {
+                        bendAngle = Mathf.Clamp( bendAngle + bendingSpeed, 0, 120 );
+
+                        animator.SetIKPositionWeight( AvatarIKGoal.RightHand, 1 );
+                        animator.SetIKRotationWeight( AvatarIKGoal.RightHand, 1 );
+                        animator.SetIKPosition( AvatarIKGoal.RightHand, rightHandObj.position );
+                        animator.SetIKRotation( AvatarIKGoal.RightHand, rightHandObj.rotation );                        
+                    }
+
+                }
+
+                //if the IK is not active, set the position and rotation of the hand and head back to the original position
+                else
+                {
+                    bendAngle = Mathf.Clamp( bendAngle - bendingSpeed, 0, 180 );
+
+                    animator.SetIKPositionWeight( AvatarIKGoal.RightHand, 0 );
+                    animator.SetIKRotationWeight( AvatarIKGoal.RightHand, 0 );
+                    animator.SetLookAtWeight( 0 );
+                }
+
+                if( bendAngle > 1 )
+                {
+                    animator.SetBoneLocalRotation( HumanBodyBones.Spine, Quaternion.Euler( bendAngle, 0, 0 ) );
+                }
+            }
+        }
 
         #endregion
         //......................................

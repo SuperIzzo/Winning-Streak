@@ -20,16 +20,16 @@ namespace RoaringSnail.WinningStreak.Characters
 
 
     //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-    /// <summary> Throwing character behaviour. </summary>
+    /// <summary> Grabbing character behaviour. </summary>
     //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-    public interface IThrowingCharacter : IGrabbingCharacter
+    public interface IGrabbingCharacter
     {
-        bool isCharging { get; set; }
+        GameObject grabTarget { get;  }
+        GameObject heldObject { get; }
 
-        event EventHandler Charged;
-        event EventHandler Thrown;
-
-        void ChargeThrow();
-        void Throw();
+        event EventHandler Grabbed;
+        
+        void TargetToGrab();
+        void Grab();
     }
 }

@@ -30,6 +30,13 @@ namespace RoaringSnail.WinningStreak.Characters
 
         //--------------------------------------------------------------
         [SerializeField, Tooltip
+        (   "The time required for the character to grab an object."  )]
+        //--------------------------------------
+        Countdown _grabTime = new Countdown(1.0f);
+
+
+        //--------------------------------------------------------------
+        [SerializeField, Tooltip
         (   "The maximal time the character will charge before " +
             " throwing an object."                                    )]
         //--------------------------------------
@@ -50,6 +57,8 @@ namespace RoaringSnail.WinningStreak.Characters
         float _throwPower = 20.0f;
 
         private bool _isCharging;
+        private GameObject _grabTarget;
+        private GameObject _heldObject;
 
         public event EventHandler Grabbed;
         public event EventHandler Charged;
@@ -74,7 +83,45 @@ namespace RoaringSnail.WinningStreak.Characters
         /// <summary> Gets the held object. </summary>
         /// <value>The held object.</value>
         //--------------------------------------
-        public GameObject heldObject { get; private set; }
+        public GameObject heldObject
+        {
+            get { return _heldObject;  }
+            set
+            {
+                grabTarget = null;
+                _heldObject = value;                
+            }
+        }
+
+
+
+        //--------------------------------------------------------------
+        /// <summary> Gets the held object. </summary>
+        /// <value>The held object.</value>
+        //--------------------------------------
+        public GameObject grabTarget
+        {
+            get { return _grabTarget; }
+            private set
+            {
+                if( value!=null && heldObject!=null )
+                {
+                    Debug.LogError( "Trying to grab an object while" +
+                                    " holding another." );
+                }
+
+                _grabTarget = value;
+
+                if( _grabTarget != null )
+                {
+                    _grabTime.Restart();
+                }
+                else
+                {
+                    _grabTime.Stop();
+                }
+            }
+        }
 
 
 
@@ -106,9 +153,9 @@ namespace RoaringSnail.WinningStreak.Characters
         //--------------------------------------------------------------
         /// <summary> Grabs the nearest pickable object </summary>
         //--------------------------------------
-        public void Grab()
+        public void TargetToGrab()
         {
-            if( !heldObject && !isDancing )
+            if( !grabTarget && !heldObject && !isDancing )
             {
                 GameObject closestProp = null;
                 ThrowableObject throwable = null;
@@ -139,15 +186,25 @@ namespace RoaringSnail.WinningStreak.Characters
                 // 3. Profit (link together and announce the grabbing)
                 if( closestProp )
                 {
-                    heldObject = closestProp;
-                    throwable = closestProp.GetComponent<ThrowableObject>();
-
-                    if( throwable )
-                    {
-                        throwable.OnGrabbed( this, _propSlot );
-                    }
+                    grabTarget = closestProp;
                 }
+            }
+        }
 
+
+
+        //--------------------------------------------------------------
+        /// <summary> Grabs the targeted object. </summary>
+        //--------------------------------------
+        public void Grab()
+        {
+            heldObject = grabTarget;
+            heldObject.transform.parent = _propSlot;
+
+            var throwable = heldObject.GetComponent<ThrowableObject>();
+            if( throwable )
+            {
+                throwable.OnGrabbed( this, _propSlot );
             }
         }
 
@@ -191,12 +248,25 @@ namespace RoaringSnail.WinningStreak.Characters
 
 
         //--------------------------------------------------------------
+        /// <summary> Processes the grabbing. </summary>
+        //--------------------------------------
+        private void OnGrabTimeEnded( object sender, EventArgs e )
+        {
+            grabTarget = null; // We give up and stand up
+        }
+
+
+        
+        //--------------------------------------------------------------
         /// <summary> Sets up the character throwing. </summary>
         //--------------------------------------
         partial void Setup_Throwing()
         {
             _chargeTime.AlarmRaised += OnChargeTimeEnded;
             _chargeTime.InstallCoroutine( this );
+
+            _grabTime.AlarmRaised += OnGrabTimeEnded;
+            _grabTime.InstallCoroutine( this );
         }
     }
 }

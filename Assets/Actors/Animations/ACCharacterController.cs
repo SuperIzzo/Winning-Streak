@@ -29,49 +29,58 @@ namespace RoaringSnail.WinningStreak
         private const string avGoofiness     = "goofiness";
         private const string avWiggle        = "wiggle";
         private const string avTackle        = "tackle";
+        private const string avGrab          = "grab";
         private const string avChargeThrow   = "charge_throw";
+        
 
-        private Animator _animator;
+        public Animator animator { get; private set; }
+
 
         public ACCharacterController( Animator animator )
         {
-            _animator = animator;
+            this.animator = animator;
         }
 
         public float speed
         {
-            get { return _animator.GetFloat( avSpeed ); }
-            set { if (enabled) _animator.SetFloat( avSpeed, value ); }
+            get { return animator.GetFloat( avSpeed ); }
+            set { if (enabled) animator.SetFloat( avSpeed, value ); }
         }
 
         public float goofiness
         {
-            get { return _animator.GetFloat( avGoofiness ); }
-            set { if( enabled ) _animator.SetFloat( avGoofiness, value ); }
+            get { return animator.GetFloat( avGoofiness ); }
+            set { if( enabled ) animator.SetFloat( avGoofiness, value ); }
         }
 
         public bool wiggle
         {
-            get { return _animator.GetBool( avWiggle ); }
-            set { if( enabled ) _animator.SetBool( avWiggle, value ); }
+            get { return animator.GetBool( avWiggle ); }
+            set { if( enabled ) animator.SetBool( avWiggle, value ); }
         }
 
         public bool tackle
         {
-            get { return _animator.GetBool( avTackle ); }
-            set { if( enabled ) _animator.SetBool( avTackle, value ); }
+            get { return animator.GetBool( avTackle ); }
+            set { if( enabled ) animator.SetBool( avTackle, value ); }
         }
 
         public bool chargeThrow
         {
-            get { return _animator.GetBool( avChargeThrow ); }
-            set { if( enabled ) _animator.SetBool( avChargeThrow, value ); }
+            get { return animator.GetBool( avChargeThrow ); }
+            set { if( enabled ) animator.SetBool( avChargeThrow, value ); }
+        }
+
+        public bool grab
+        {
+            get { return animator.GetBool( avGrab ); }
+            set { if( enabled ) animator.SetBool( avGrab, value ); }
         }
 
         public bool enabled
         {
-            get { return _animator.enabled; }
-            set { _animator.enabled = value; }
+            get { return animator.enabled; }
+            set { animator.enabled = value; }
         }
     }
 }
