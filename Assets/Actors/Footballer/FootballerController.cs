@@ -126,11 +126,18 @@ namespace RoaringSnail.WinningStreak.Characters
         }
 
 
+
+        //--------------------------------------------------------------
+        /// <summary> Tackle animation exit callback. </summary>
+        //--------------------------------------
         public void OnTackleAnimationExit()
         {
-            OnTackled();
-            KnockDown();                        
-            isTackling = false;                        
+            if( isTackling )
+            {
+                OnTackled();
+                KnockDown();
+                isTackling = false;
+            }
         }
     }
 
