@@ -1,5 +1,7 @@
 fileFormatVersion: 2
-guid: 892f5e4e44e6f75498f4efceaf39c700
+guid: 425f913dfc6f65247a8810c58cbe1492
+timeCreated: 1444204742
+licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
@@ -9,34 +11,27 @@ ModelImporter:
     100006: adSign_04
     100008: adSign_05
     100010: //RootNode
-    100012: adSign_base
     400000: adSign_01
     400002: adSign_02
     400004: adSign_03
     400006: adSign_04
     400008: adSign_05
     400010: //RootNode
-    400012: adSign_base
     2300000: adSign_01
     2300002: adSign_02
     2300004: adSign_03
     2300006: adSign_04
     2300008: adSign_05
-    2300010: //RootNode
-    2300012: adSign_base
     3300000: adSign_01
     3300002: adSign_02
     3300004: adSign_03
     3300006: adSign_04
     3300008: adSign_05
-    3300010: //RootNode
-    3300012: adSign_base
     4300000: adSign_01
     4300002: adSign_02
     4300004: adSign_03
     4300006: adSign_04
     4300008: adSign_05
-    4300010: adSign_base
     9500000: //RootNode
   materials:
     importMaterials: 1
