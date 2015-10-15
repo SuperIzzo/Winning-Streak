@@ -105,7 +105,7 @@ MonoBehaviour:
     positionOffset: {x: 0, y: 8, z: -40}
     followSpeed: 6
     turnSpeed: 5
-    FOVModifier: .5
+    FOVModifier: .600000024
   zoomed:
     lookAtOffset: {x: 0, y: 0, z: 0}
     positionOffset: {x: 0, y: 6, z: -35}
