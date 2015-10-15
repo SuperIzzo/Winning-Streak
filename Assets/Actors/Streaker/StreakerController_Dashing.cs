@@ -30,6 +30,7 @@ namespace RoaringSnail.WinningStreak.Characters
         float _runSpeed = 7.0f;
 
 
+        //--------------------------------------------------------------
         [SerializeField, Tooltip
         (   "The speed boost this character obtains when dashing."    )]
         //--------------------------------------

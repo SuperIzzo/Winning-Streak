@@ -158,7 +158,7 @@ namespace RoaringSnail.WinningStreak.Characters
             if( !grabTarget && !heldObject && !isDancing )
             {
                 GameObject closestProp = null;
-                ThrowableObject throwable = null;
+                IThrowableObject throwable = null;
                 float minDistance = Mathf.Infinity;
 
                 // 1. Get all objects within a radius
@@ -167,12 +167,12 @@ namespace RoaringSnail.WinningStreak.Characters
                 // 2. Pick the closest one
                 foreach( Collider prop in envProps )
                 {
-                    throwable = prop.GetComponent<ThrowableObject>();
+                    throwable = prop.GetComponent<IThrowableObject>();
                     // TODO: Add "Usable" items here the same way
                     //		 a game object has to be either throwable or usable
                     //		 (or both) to be grabbed and later thrown/used.
 
-                    if( throwable )
+                    if( throwable!=null )
                     {
                         Vector3 distance = prop.transform.position - transform.position;
                         if( distance.magnitude < minDistance )
@@ -199,10 +199,10 @@ namespace RoaringSnail.WinningStreak.Characters
         public void Grab()
         {
             heldObject = grabTarget;
-            heldObject.transform.parent = _propSlot;
+            //heldObject.transform.parent = _propSlot;
 
-            var throwable = heldObject.GetComponent<ThrowableObject>();
-            if( throwable )
+            var throwable = heldObject.GetComponent<IThrowableObject>();
+            if( throwable!=null )
             {
                 throwable.OnGrabbed( this, _propSlot );
             }
@@ -217,8 +217,8 @@ namespace RoaringSnail.WinningStreak.Characters
         {
             if( heldObject && _isCharging )
             {
-                var throwable = heldObject.GetComponent<ThrowableObject>();
-                if( throwable )
+                var throwable = heldObject.GetComponent<IThrowableObject>();
+                if( throwable!=null )
                 {
                     float charge = 1 - (_chargeTime.currentTime / _chargeTime.setTime);
                     Vector3 throwForce = lookDirection + (Vector3.up * 0.5f);
