@@ -11,14 +11,13 @@ GameObject:
   - 33: {fileID: 3363742}
   - 23: {fileID: 2376008}
   - 114: {fileID: 11451244}
-  - 64: {fileID: 6478296}
   - 114: {fileID: 11424738}
   m_Layer: 0
   m_Name: Advert
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &169378
 GameObject:
@@ -34,7 +33,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &186718
 GameObject:
@@ -46,12 +45,14 @@ GameObject:
   - 4: {fileID: 467440}
   - 33: {fileID: 3386516}
   - 23: {fileID: 2337158}
+  - 64: {fileID: 6427826}
+  - 54: {fileID: 5429250}
   m_Layer: 0
   m_Name: Pitchside Ad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &422580
 Transform:
@@ -84,7 +85,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 186718}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: -1.62920685e-07}
-  m_LocalPosition: {x: 0, y: .00165563822, z: 53.9099998}
+  m_LocalPosition: {x: -.239999995, y: .00165563822, z: 46.4900017}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 440180}
@@ -153,12 +154,27 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 186718}
   m_Mesh: {fileID: 4300010, guid: 892f5e4e44e6f75498f4efceaf39c700, type: 3}
---- !u!64 &6478296
+--- !u!54 &5429250
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 186718}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!64 &6427826
 MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 143226}
+  m_GameObject: {fileID: 186718}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1

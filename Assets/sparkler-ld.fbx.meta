@@ -1,43 +1,15 @@
 fileFormatVersion: 2
-guid: 892f5e4e44e6f75498f4efceaf39c700
+guid: 84dee39f6c045b54b91d00fe49566810
+timeCreated: 1444671047
+licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
-    100000: adSign_01
-    100002: adSign_02
-    100004: adSign_03
-    100006: adSign_04
-    100008: adSign_05
-    100010: //RootNode
-    100012: adSign_base
-    400000: adSign_01
-    400002: adSign_02
-    400004: adSign_03
-    400006: adSign_04
-    400008: adSign_05
-    400010: //RootNode
-    400012: adSign_base
-    2300000: adSign_01
-    2300002: adSign_02
-    2300004: adSign_03
-    2300006: adSign_04
-    2300008: adSign_05
-    2300010: //RootNode
-    2300012: adSign_base
-    3300000: adSign_01
-    3300002: adSign_02
-    3300004: adSign_03
-    3300006: adSign_04
-    3300008: adSign_05
-    3300010: //RootNode
-    3300012: adSign_base
-    4300000: adSign_01
-    4300002: adSign_02
-    4300004: adSign_03
-    4300006: adSign_04
-    4300008: adSign_05
-    4300010: adSign_base
-    9500000: //RootNode
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: ground-sparks
   materials:
     importMaterials: 1
     materialName: 0
@@ -66,7 +38,7 @@ ModelImporter:
     addColliders: 0
     importBlendShapes: 1
     swapUVChannels: 0
-    generateSecondaryUV: 1
+    generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
@@ -75,7 +47,7 @@ ModelImporter:
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
-    useFileScale: 0
+    useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     splitTangentsAcrossUV: 1

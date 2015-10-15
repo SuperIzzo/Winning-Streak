@@ -49,7 +49,7 @@ namespace RoaringSnail.WinningStreak
             var ball = other.GetComponent<ThrowableObject>();
             if (ball != null && ball.CompareTag(Tags.ball))
             {
-                BaseCharacterController owner = ball.owner;
+                Component owner = ball.thrower as Component;
                 if (!ball.isThrown && owner.CompareTag(Tags.player))
                 {
                     if (endZoneFaction.IsEnemy(playerEndZone))
